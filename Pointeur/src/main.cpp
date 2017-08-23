@@ -13,7 +13,7 @@ void pointer1() {
     cout << "Pointer : Address : " << m_ptr << "\n";
     
     cout << "\n";
-    *m_ptr = 25.23;
+    *m_ptr = 12.34;
     cout << "Data : Content : " << m_data << "\n"; 
     cout << "Data : Address : " << &m_data << "\n"; 
     cout << "Pointer : Content : " << *m_ptr << "\n"; 
