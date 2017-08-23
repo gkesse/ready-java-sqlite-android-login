@@ -1,42 +1,25 @@
 //===============================================
+#include "GFunctor.h"
 #include <iostream>
-#include <string>
+#include <iomanip>
 //===============================================
 using namespace std;
 //===============================================
-void condition1(const int& a, const int& b) {
-    if(a > b) {
-        cout << a << " is greater than " << b << "\n"; 
-        return;
-    }
-    cout << a << " is smaller than " << b << "\n"; 
-}
-//===============================================
-void condition2(const int& a, const int& b) {
-    if(a > b) {
-        cout << a << " is strictly greater than " << b << "\n"; 
-    }
-    else {
-        cout << a << " is smaller than or equal to " << b << "\n"; 
-    }
-}
-//===============================================
-void condition3(const int& a, const int& b) {
-    if(a > b) {
-        cout << a << " is strictly greater than " << b << "\n"; 
-    }
-    else if (a > b) {
-        cout << a << " is strictly smaller than " << b << "\n"; 
-    }
-    else {
-        cout << a << " is equal to " << b << "\n"; 
+void functor1() {
+    GFunctor1 m_functor;
+    
+    for(int i = 0; i < 10; i++) {
+        for(int j = 0; j < 5; j++) {
+            cout << setw(3) << m_functor(i, j) << " ; ";
+        }
+        cout << "\n";
     }
 }
 //===============================================
 int main(int argc, char** argv) {
-    condition1(10, 20);
-    condition2(20, 10);
-    condition3(10, 10);
+    cout << "-------------------------------------------------\n";
+    functor1();
+    cout << "-------------------------------------------------\n";
     return 0;
 }
 //===============================================

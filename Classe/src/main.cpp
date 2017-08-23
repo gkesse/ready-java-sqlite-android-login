@@ -24,7 +24,6 @@ int main(int argc, char** argv) {
     cout << "m_age1 : " << m_person1.getAge() << "\n";
     cout << "m_age2 : " << m_person2.getAge() << "\n";
     cout << "-------------------------------------------------\n";
-    
     return 0;
 }
 //===============================================
