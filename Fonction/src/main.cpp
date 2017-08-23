@@ -21,10 +21,12 @@ string function4(const string& str) {
 }
 //===============================================
 int main(int argc, char** argv) {
+    cout << "-------------------------------------------------\n";
     function1();
     cout << function2() << "\n";
     function3("Hello world!");
     cout << function4("Hello world!") << "\n";
+    cout << "-------------------------------------------------\n";
     return 0;
 }
 //===============================================
