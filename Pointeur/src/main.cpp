@@ -1,42 +1,29 @@
 //===============================================
 #include <iostream>
-#include <string>
 //===============================================
 using namespace std;
 //===============================================
-void condition1(const int& a, const int& b) {
-    if(a > b) {
-        cout << a << " is greater than " << b << "\n"; 
-        return;
-    }
-    cout << a << " is smaller than " << b << "\n"; 
-}
-//===============================================
-void condition2(const int& a, const int& b) {
-    if(a > b) {
-        cout << a << " is strictly greater than " << b << "\n"; 
-    }
-    else {
-        cout << a << " is smaller than or equal to " << b << "\n"; 
-    }
-}
-//===============================================
-void condition3(const int& a, const int& b) {
-    if(a > b) {
-        cout << a << " is strictly greater than " << b << "\n"; 
-    }
-    else if (a > b) {
-        cout << a << " is strictly smaller than " << b << "\n"; 
-    }
-    else {
-        cout << a << " is equal to " << b << "\n"; 
-    }
+void pointer1() {
+    double m_data = 3.14;
+    double *m_ptr = &m_data;
+    
+    cout << "Data : Content : " << m_data << "\n"; 
+    cout << "Data : Address : " << &m_data << "\n"; 
+    cout << "Pointer : Content : " << *m_ptr << "\n"; 
+    cout << "Pointer : Address : " << m_ptr << "\n";
+    
+    cout << "\n";
+    *m_ptr = 25.23;
+    cout << "Data : Content : " << m_data << "\n"; 
+    cout << "Data : Address : " << &m_data << "\n"; 
+    cout << "Pointer : Content : " << *m_ptr << "\n"; 
+    cout << "Pointer : Address : " << m_ptr << "\n";
 }
 //===============================================
 int main(int argc, char** argv) {
-    condition1(10, 20);
-    condition2(20, 10);
-    condition3(10, 10);
+    cout << "-------------------------------------------------\n";
+    pointer1();
+    cout << "-------------------------------------------------\n";
     return 0;
 }
 //===============================================
