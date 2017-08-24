@@ -23,11 +23,12 @@ public:
 public:
     void print(const string& name) const;
 
-public:
+private:
     bool isEqual(const GTime& a) const;
     bool isSmaller(const GTime& a) const;
     void add(const GTime& a);
     void add(const int& a);
+    void print(ostream& s) const;
     
 public:
     GTime& operator+=(const GTime& a);
@@ -37,6 +38,9 @@ public:
     friend GTime operator+(const GTime& a, const GTime& b);
     friend GTime operator+(const GTime& a, const int& b);
     friend GTime operator+(const int& a, const GTime& b);
+
+public:
+    friend ostream& operator<<(ostream& s, const GTime& b);
 
 public:
     friend bool operator==(const GTime& a, const GTime& b);

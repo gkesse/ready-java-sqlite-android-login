@@ -13,10 +13,6 @@ void overload1() {
     m_time2.print("m_time2");
     
     cout << "\n";
-    cout << "m_isEqual1 : m_time1 == m_time1 : " << m_time1.isEqual(m_time1) << "\n";
-    cout << "m_isEqual2 : m_time1 == m_time2 : " << m_time1.isEqual(m_time2) << "\n";
-    
-    cout << "\n";
     cout << "m_isEqual1 : m_time1 == m_time1 : " << (m_time1 == m_time1) << "\n";
     cout << "m_isEqual2 : m_time1 == m_time2 : " << (m_time1 == m_time2) << "\n";
 
@@ -30,15 +26,7 @@ void overload2() {
     GTime m_time2(20, 30, 30);
     m_time1.print("m_time1");
     m_time2.print("m_time2");
-    
-    cout << "\n";
-    cout << "m_isSmaller1 : m_time1 < m_time2 : " << m_time1.isSmaller(m_time2) << "\n";
-    cout << "m_isSmaller2 : m_time2 < m_time1 : " << m_time2.isSmaller(m_time1) << "\n";
-    
-    cout << "\n";
-    cout << "m_isSmaller1 : m_time1 < m_time2 : " << (m_time1 < m_time2) << "\n";
-    cout << "m_isSmaller2 : m_time2 < m_time1 : " << (m_time2 < m_time1) << "\n";
-    
+        
     cout << "\n";
     cout << "m_isSmallerEq1 : m_time1 <= m_time1 : " << (m_time1 <= m_time1) << "\n";
     cout << "m_isSmallerEq2 : m_time1 <= m_time2 : " << (m_time1 <= m_time2) << "\n";
@@ -72,7 +60,7 @@ void overload3() {
     m_time1.print("m_time1");
     
     m_time0 = m_time3 + 30 + m_time4 + 30;
-    m_time0.print("m_time0");
+    cout << "m_time0 : " << m_time0 << "\n";
 }
 //===============================================
 int main(int argc, char** argv) {

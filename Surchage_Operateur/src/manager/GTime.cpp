@@ -84,6 +84,12 @@ void GTime::add(const int& a) {
     m_minute %= 60;
 }
 //===============================================
+void GTime::print(ostream& s) const {
+    s << setw(2) << setfill('0') << m_hour << " h ";
+    s << setw(2) << setfill('0') << m_minute << " min ";
+    s << setw(2) << setfill('0') << m_second << " sec";
+}
+//===============================================
 GTime& GTime::operator+=(const GTime& a) {
     add(a);
     return *this;
@@ -110,6 +116,11 @@ GTime operator+(const int& a, const GTime& b) {
     GTime m_copy(b);
     m_copy += a;
     return m_copy;
+}
+//===============================================
+ostream& operator<<(ostream& s, const GTime& b) {
+    b.print(s);
+    return s;
 }
 //===============================================
 bool operator==(const GTime& a, const GTime& b) {
