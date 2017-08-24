@@ -53,18 +53,26 @@ void overload2() {
 }
 //===============================================
 void overload3() {
+    GTime m_time0;
     GTime m_time1(4, 30, 15);
     GTime m_time2(8, 30, 30);
+    GTime m_time3(8, 30, 30);
+    GTime m_time4(4, 30, 15);
+    m_time0.print("m_time0");
     m_time1.print("m_time1");
     m_time2.print("m_time2");
+    m_time3.print("m_time3");
+    m_time4.print("m_time4");
     
     cout << "\n";
     m_time2 += m_time1;
     m_time2.print("m_time2");
     
-    cout << "\n";
     m_time1 += 45;
     m_time1.print("m_time1");
+    
+    m_time0 = m_time3 + 30 + m_time4 + 30;
+    m_time0.print("m_time0");
 }
 //===============================================
 int main(int argc, char** argv) {

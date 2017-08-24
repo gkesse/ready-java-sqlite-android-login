@@ -34,13 +34,17 @@ public:
     GTime& operator+=(const int& a);
 
 public:
+    friend GTime operator+(const GTime& a, const GTime& b);
+    friend GTime operator+(const GTime& a, const int& b);
+    friend GTime operator+(const int& a, const GTime& b);
+
+public:
     friend bool operator==(const GTime& a, const GTime& b);
     friend bool operator!=(const GTime& a, const GTime& b);
     friend bool operator<(const GTime& a, const GTime& b);
     friend bool operator<=(const GTime& a, const GTime& b);
     friend bool operator>(const GTime& a, const GTime& b);
     friend bool operator>=(const GTime& a, const GTime& b);
-    friend GTime operator+(const GTime& a, const GTime& b);
     
 private:
     int m_hour;

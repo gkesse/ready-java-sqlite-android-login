@@ -94,6 +94,24 @@ GTime& GTime::operator+=(const int& a) {
     return *this;
 }
 //===============================================
+GTime operator+(const GTime& a, const GTime& b) {
+    GTime m_copy(a);
+    m_copy += b;
+    return m_copy;
+}
+//===============================================
+GTime operator+(const GTime& a, const int& b) {
+    GTime m_copy(a);
+    m_copy += b;
+    return m_copy;
+}
+//===============================================
+GTime operator+(const int& a, const GTime& b) {
+    GTime m_copy(b);
+    m_copy += a;
+    return m_copy;
+}
+//===============================================
 bool operator==(const GTime& a, const GTime& b) {
     return a.isEqual(b);
 }
