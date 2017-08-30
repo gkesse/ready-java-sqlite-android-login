@@ -3,7 +3,6 @@
 #define _GRect_
 //===============================================
 #include <iostream>
-#include <string>
 //===============================================
 using namespace std;
 //===============================================
@@ -26,6 +25,7 @@ public:
     void setBottom(const T& bottom);
     
 public:
+    //===============================================
     friend ostream& operator<<(ostream& s, const GRect<T>& rect) {
         s << "(" << rect.m_left << " ; ";
         s << rect.m_right << " ; ";
@@ -33,7 +33,7 @@ public:
         s << rect.m_bottom << ")";
         return s;
     }
-    
+    //===============================================
 private:
     T m_left;
     T m_right;
