@@ -11,7 +11,7 @@ Avec à la fois des compétences en Systèmes Embarqués et en Robotique.
 
 # ReadyCpp
 
-**ReadyCpp** est une bibliothèque de fonction C++ pour la Programmation Orientée Objet en C++.  
+**ReadyCpp** est une bibliothèque de fonctions C++ pour la Programmation Orientée Objet en C++.  
 C'est une bibliothèque développée en C++ et maintenu par 
 [Gerard KESSE](http://5.48.230.127:8855/presentation/ "Accédez à mon site web (ReadyDev)").
 
@@ -24,11 +24,36 @@ Les Concepts Abordés sur les Bases :
 * [Boucle](https://github.com/gkesse/ReadyCpp/tree/master/Boucle "Boucle")  
 * [Fonction](https://github.com/gkesse/ReadyCpp/tree/master/Fonction "Fonction")  
 * [Fichier](https://github.com/gkesse/ReadyCpp/tree/master/Fichier "Fichier")  
-* [Clavier](https://github.com/gkesse/ReadyCpp/tree/master/Clavier "Clavier")  
-* [Clavier](https://github.com/gkesse/ReadyCpp/tree/master/Clavier "Clavier")  
-* [Clavier](https://github.com/gkesse/ReadyCpp/tree/master/Clavier "Clavier")  
-* [Clavier](https://github.com/gkesse/ReadyCpp/tree/master/Clavier "Clavier")  
-* [Clavier](https://github.com/gkesse/ReadyCpp/tree/master/Clavier "Clavier")  
+* [Pointeur](https://github.com/gkesse/ReadyCpp/tree/master/Pointeur "Pointeur")  
+
+Les Concepts Abordés sur la Programmation Orientée Objet :  
+* [Classe](https://github.com/gkesse/ReadyCpp/tree/master/Classe "Classe")  
+* [Surchage Operateur](https://github.com/gkesse/ReadyCpp/tree/master/Surchage_Operateur "Surchage Operateur")  
+* [Héritage](https://github.com/gkesse/ReadyCpp/tree/master/Heritage "Héritage")  
+* [Polymorphisme](https://github.com/gkesse/ReadyCpp/tree/master/Polymorphisme "Polymorphisme")  
+* [Variable Méthode Statique](https://github.com/gkesse/ReadyCpp/tree/master/Variable_Methode_Statique "Variable Méthode Statique")  
+* [Fonction Amie](https://github.com/gkesse/ReadyCpp/tree/master/Fonction_Amie "Fonction Amie")  
+
+Les Concepts Abordés sur les Interfaces Graphiques :  
+* [Fenêtre](https://github.com/gkesse/ReadyCpp/tree/master/Fenetre "Fenêtre")  
+* [Widget](https://github.com/gkesse/ReadyCpp/tree/master/Widget "Widget")  
+* [Signal Slot](https://github.com/gkesse/ReadyCpp/tree/master/Signal_Slot "Signal Slot")  
+* [Boîte de Dialogue](https://github.com/gkesse/ReadyCpp/tree/master/Boite_Dialogue "Boîte de Dialogue")  
+* [Layout](https://github.com/gkesse/ReadyCpp/tree/master/Layout "Layout")  
+* [Bouton](https://github.com/gkesse/ReadyCpp/tree/master/Bouton "Bouton")  
+* [CheckBox](https://github.com/gkesse/ReadyCpp/tree/master/CheckBox "CheckBox")  
+* [RadioButton](https://github.com/gkesse/ReadyCpp/tree/master/RadioButton "RadioButton")  
+* [Label](https://github.com/gkesse/ReadyCpp/tree/master/Label "Label")  
+* [ProgressBar](https://github.com/gkesse/ReadyCpp/tree/master/ProgressBar "ProgressBar")  
+* [LineEdit](https://github.com/gkesse/ReadyCpp/tree/master/LineEdit "LineEdit")  
+* [TextEdit](https://github.com/gkesse/ReadyCpp/tree/master/TextEdit "TextEdit")  
+* [SpinBox](https://github.com/gkesse/ReadyCpp/tree/master/SpinBox "SpinBox")  
+* [DoubleSpinBox](https://github.com/gkesse/ReadyCpp/tree/master/DoubleSpinBox "DoubleSpinBox")  
+* [Slider](https://github.com/gkesse/ReadyCpp/tree/master/Slider "Slider")  
+* [ComboBox](https://github.com/gkesse/ReadyCpp/tree/master/ComboBox "ComboBox")  
+* [Conteneur](https://github.com/gkesse/ReadyCpp/tree/master/Conteneur "Conteneur")  
+* [Traduction](https://github.com/gkesse/ReadyCpp/tree/master/Traduction "Traduction")  
+* [Designer](https://github.com/gkesse/ReadyCpp/tree/master/Designer "Designer")  
 
 
 # Technologies
