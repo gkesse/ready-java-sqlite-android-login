@@ -34,7 +34,7 @@ Les Concepts Abordés sur la Programmation Orientée Objet :
 * [Variable Méthode Statique](https://github.com/gkesse/ReadyCpp/tree/master/Variable_Methode_Statique "Variable Méthode Statique")  
 * [Fonction Amie](https://github.com/gkesse/ReadyCpp/tree/master/Fonction_Amie "Fonction Amie")  
 
-Les Concepts Abordés sur les Interfaces Graphiques :  
+Les Concepts Abordés sur les Interfaces Graphiques avec Qt :  
 * [Fenêtre](https://github.com/gkesse/ReadyCpp/tree/master/Fenetre "Fenêtre")  
 * [Widget](https://github.com/gkesse/ReadyCpp/tree/master/Widget "Widget")  
 * [Signal Slot](https://github.com/gkesse/ReadyCpp/tree/master/Signal_Slot "Signal Slot")  
@@ -54,7 +54,31 @@ Les Concepts Abordés sur les Interfaces Graphiques :
 * [Conteneur](https://github.com/gkesse/ReadyCpp/tree/master/Conteneur "Conteneur")  
 * [Traduction](https://github.com/gkesse/ReadyCpp/tree/master/Traduction "Traduction")  
 * [Designer](https://github.com/gkesse/ReadyCpp/tree/master/Designer "Designer")  
+* [Navigateur Web](https://github.com/gkesse/ReadyCpp/tree/master/Navigateur_Web "Navigateur Web")  
+* [Modèle MVC](https://github.com/gkesse/ReadyCpp/tree/master/Modele_MVC "Modèle MVC")  
+* [Réseau](https://github.com/gkesse/ReadyCpp/tree/master/Reseau "Réseau")  
 
+Les Concepts Abordés sur la Bibliothèque Standard :  
+* [Conteneur](https://github.com/gkesse/ReadyCpp/tree/master/Conteneur "Conteneur")  
+* [Itérateur](https://github.com/gkesse/ReadyCpp/tree/master/Iterateur "Itérateur")  
+* [Foncteur](https://github.com/gkesse/ReadyCpp/tree/master/Foncteur "Foncteur")  
+* [Algorithme](https://github.com/gkesse/ReadyCpp/tree/master/Algorithme "Algorithme")  
+* [Itérateur](https://github.com/gkesse/ReadyCpp/tree/master/Iterateur "Itérateur")  
+* [String](https://github.com/gkesse/ReadyCpp/tree/master/String "String")  
+* [Nombre Complexe](https://github.com/gkesse/ReadyCpp/tree/master/Nombre_Complexe "Nombre Complexe")  
+* [Valarray](https://github.com/gkesse/ReadyCpp/tree/master/Valarray "Valarray")  
+
+Les Concepts Abordés sur les Notions Avancées :  
+* [Exception](https://github.com/gkesse/ReadyCpp/tree/master/Exception "Exception")  
+* [Template](https://github.com/gkesse/ReadyCpp/tree/master/Foncteur "Template")  
+* [Enumeration](https://github.com/gkesse/ReadyCpp/tree/master/Foncteur "Foncteur")  
+
+Liste de Quelques Bibliothèques C++:  
+* Applications 2D : **SDL, Allegro, SFML**
+* Applications 3D : **OpenGL, Irrlicht, Ogre3D**
+* Interface Homme-Machine : **Qt, wxWidgets**
+* Manipulation du Son : **FMOD**
+* Collection de Bibliothèques Spécialisées : **Boost**
 
 # Technologies
 
@@ -62,7 +86,6 @@ Le développement du package **ReadyCpp** a nécessité les technologies suivantes 
 
 * Langages : **C++**
 * IDEs : **Visual Studio**
-* Outils de Construction: **NMake**
+* Outils de Construction: **NMake, Make, CMake, QMake**
 * Editeurs de Texte: **Notepad++**
-* Concepts : **Classe, Héritage, Polymorphisme, Iterateur, Foncteur, STL, Template**
 * Cible : **Windows, UNIX**
