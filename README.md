@@ -11,9 +11,25 @@ Avec à la fois des compétences en Systèmes Embarqués et en Robotique.
 
 # ReadyCpp
 
-**ReadyCpp** est un package illustrant les concepts de la Programmation Orientée Objet en C++.  
-C'est un package développé en C++ et maintenu par 
+**ReadyCpp** est une bibliothèque de fonction C++ pour la Programmation Orientée Objet en C++.  
+C'est une bibliothèque développée en C++ et maintenu par 
 [Gerard KESSE](http://5.48.230.127:8855/presentation/ "Accédez à mon site web (ReadyDev)").
+
+Les Concepts Abordés sur les Bases :  
+* [Message](https://github.com/gkesse/ReadyCpp/tree/master/Message "Message")  
+* [Variable](https://github.com/gkesse/ReadyCpp/tree/master/Clavier "Clavier")  
+* [Clavier](https://github.com/gkesse/ReadyCpp/tree/master/Clavier "Clavier")  
+* [Condition](https://github.com/gkesse/ReadyCpp/tree/master/Condition "Condition")  
+* [Switch Case](https://github.com/gkesse/ReadyCpp/tree/master/Switch_Case "Switch Case")  
+* [Boucle](https://github.com/gkesse/ReadyCpp/tree/master/Boucle "Boucle")  
+* [Fonction](https://github.com/gkesse/ReadyCpp/tree/master/Fonction "Fonction")  
+* [Fichier](https://github.com/gkesse/ReadyCpp/tree/master/Fichier "Fichier")  
+* [Clavier](https://github.com/gkesse/ReadyCpp/tree/master/Clavier "Clavier")  
+* [Clavier](https://github.com/gkesse/ReadyCpp/tree/master/Clavier "Clavier")  
+* [Clavier](https://github.com/gkesse/ReadyCpp/tree/master/Clavier "Clavier")  
+* [Clavier](https://github.com/gkesse/ReadyCpp/tree/master/Clavier "Clavier")  
+* [Clavier](https://github.com/gkesse/ReadyCpp/tree/master/Clavier "Clavier")  
+
 
 # Technologies
 
