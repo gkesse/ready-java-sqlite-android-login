@@ -1,11 +1,8 @@
 //===============================================
-#include <iostream>
-#include <string>
-//===============================================
-using namespace std;
+#include "GError.h"
 //===============================================
 double divide(const double& a, const double& b) {
-    if(b == 0) throw string("ERROR : Divide by zero !");
+    if(b == 0) throw GError(1, "Divide by zero !", 2);
     return a / b;
 }
 //===============================================
@@ -20,8 +17,8 @@ int main(int argc, char** argv) {
     try {
         cout << "The result : " << divide(mA, mB) << "\n";
     }
-    catch(const string& e) {
-        cerr << e << "\n";
+    catch(const exception& e) {
+        cerr << "ERROR Class : " << e.what() << "\n";
     }
     cout << "-------------------------------------------------\n";
     return 0;

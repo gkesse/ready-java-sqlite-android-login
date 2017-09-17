@@ -76,11 +76,11 @@ Les Concepts Abordés sur les Notions Avancées :
 Les Concepts Abordés sur les Exceptions :  
 * [Exception](https://github.com/gkesse/ReadyCpp/tree/master/Exception "Exception")  
 * [Exception Classe](https://github.com/gkesse/ReadyCpp/tree/master/Exception_Classe "Exception Classe")  
-* [bad_alloc](https://github.com/gkesse/ReadyCpp/tree/master/Exception "bad_alloc")  
-* [bad_cast](https://github.com/gkesse/ReadyCpp/tree/master/Exception "bad_cast")  
-* [bad_exception](https://github.com/gkesse/ReadyCpp/tree/master/Exception "bad_exception")  
-* [bad_typeid](https://github.com/gkesse/ReadyCpp/tree/master/Exception "bad_typeid")  
-* [ios_base::failure](https://github.com/gkesse/ReadyCpp/tree/master/Exception "ios_base::failure")  
+* [bad_alloc](https://github.com/gkesse/ReadyCpp/tree/master/bad_alloc "bad_alloc")  
+* [bad_cast](https://github.com/gkesse/ReadyCpp/tree/master/bad_cast "bad_cast")  
+* [bad_exception](https://github.com/gkesse/ReadyCpp/tree/master/bad_exception "bad_exception")  
+* [bad_typeid](https://github.com/gkesse/ReadyCpp/tree/master/bad_typeid "bad_typeid")  
+* [ios_base::failure](https://github.com/gkesse/ReadyCpp/tree/master/failure "ios_base::failure")  
 
 Les Concepts Abordés sur les Erreurs :  
 * [Erreur Simple](https://github.com/gkesse/ReadyCpp/tree/master/Erreur_Simple "Erreur Simple")  
