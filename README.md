@@ -74,6 +74,10 @@ Les Concepts Abordés sur les Notions Avancées :
 * [Template](https://github.com/gkesse/ReadyCpp/tree/master/Foncteur "Template")  
 * [Enumeration](https://github.com/gkesse/ReadyCpp/tree/master/Foncteur "Foncteur")  
 
+Les Concepts Abordés sur les Erreurs :  
+* [Erreur Simple](https://github.com/gkesse/ReadyCpp/tree/master/Erreur_Simple "Erreur Simple")  
+* [Erreur d'Implémentation](https://github.com/gkesse/ReadyCpp/tree/master/Erreur_Implementation "Erreur d'Implémentation")  
+
 Liste de Quelques Bibliothèques C++:  
 * Applications 2D : **SDL, Allegro, SFML**
 * Applications 3D : **OpenGL, Irrlicht, Ogre3D**
