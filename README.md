@@ -70,9 +70,17 @@ Les Concepts Abordés sur la Bibliothèque Standard :
 * [Valarray](https://github.com/gkesse/ReadyCpp/tree/master/Valarray "Valarray")  
 
 Les Concepts Abordés sur les Notions Avancées :  
-* [Exception](https://github.com/gkesse/ReadyCpp/tree/master/Exception "Exception")  
 * [Template](https://github.com/gkesse/ReadyCpp/tree/master/Foncteur "Template")  
 * [Enumeration](https://github.com/gkesse/ReadyCpp/tree/master/Foncteur "Foncteur")  
+
+Les Concepts Abordés sur les Exceptions :  
+* [Exception](https://github.com/gkesse/ReadyCpp/tree/master/Exception "Exception")  
+* [Exception Classe](https://github.com/gkesse/ReadyCpp/tree/master/Exception_Classe "Exception Classe")  
+* [bad_alloc](https://github.com/gkesse/ReadyCpp/tree/master/Exception "bad_alloc")  
+* [bad_cast](https://github.com/gkesse/ReadyCpp/tree/master/Exception "bad_cast")  
+* [bad_exception](https://github.com/gkesse/ReadyCpp/tree/master/Exception "bad_exception")  
+* [bad_typeid](https://github.com/gkesse/ReadyCpp/tree/master/Exception "bad_typeid")  
+* [ios_base::failure](https://github.com/gkesse/ReadyCpp/tree/master/Exception "ios_base::failure")  
 
 Les Concepts Abordés sur les Erreurs :  
 * [Erreur Simple](https://github.com/gkesse/ReadyCpp/tree/master/Erreur_Simple "Erreur Simple")  

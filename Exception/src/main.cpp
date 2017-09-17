@@ -1,37 +1,28 @@
 //===============================================
 #include <iostream>
+#include <string>
 //===============================================
 using namespace std;
 //===============================================
-void loop1(const int& n) {
-    int i = 0;
-    while(i < n) {
-        cout << "While : " << i << "\n";
-        i++;
-    }
-}
-//===============================================
-void loop2(const int& n) {
-    for(int i = 0; i < n; i++) {
-        cout << "For : " << i << "\n";
-    }
-}
-//===============================================
-void loop3(const int& n) {
-    int i = 0;
-    do {
-        cout << "Do While : " << i << "\n";
-        i++;
-    } while(i < n);
+double divide(const double& a, const double& b) {
+    if(b == 0) throw string("ERROR : Divide by zero !");
+    return a / b;
 }
 //===============================================
 int main(int argc, char** argv) {
     cout << "-------------------------------------------------\n";
-    loop1(10);
-    cout << "-------------------------------------------------\n";
-    loop2(10);
-    cout << "-------------------------------------------------\n";
-    loop3(10);
+    double mA;
+    double mB;
+    cout << "Enter the value of A : ";
+    cin >> mA;
+    cout << "Enter the value of B : ";
+    cin >> mB;
+    try {
+    cout << "The result : " << divide(mA, mB) << "\n";
+    }
+    catch(const string& e) {
+        cerr << e << "\n";
+    }
     cout << "-------------------------------------------------\n";
     return 0;
 }
