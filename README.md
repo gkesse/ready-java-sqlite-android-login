@@ -76,6 +76,8 @@ Les Concepts Abordés sur les Notions Avancées :
 Les Concepts Abordés sur les Exceptions :  
 * [Exception](https://github.com/gkesse/ReadyCpp/tree/master/Exception "Exception")  
 * [Exception Classe](https://github.com/gkesse/ReadyCpp/tree/master/Exception_Classe "Exception Classe")  
+* [Exception Prédéfinie](https://github.com/gkesse/ReadyCpp/tree/master/Exception_Predefinie "Exception Prédéfinie")  
+* [Exception Prémâchée](https://github.com/gkesse/ReadyCpp/tree/master/Exception_Premachee "Exception Prémâchée")  
 * [bad_alloc](https://github.com/gkesse/ReadyCpp/tree/master/bad_alloc "bad_alloc")  
 * [bad_cast](https://github.com/gkesse/ReadyCpp/tree/master/bad_cast "bad_cast")  
 * [bad_exception](https://github.com/gkesse/ReadyCpp/tree/master/bad_exception "bad_exception")  
