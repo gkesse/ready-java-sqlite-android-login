@@ -16,6 +16,7 @@ public:
 private:
     void test();
     void help();
+    void write(va_list args);
 
 private:
     const char* __CLASSNAME__;
