@@ -1,20 +1,16 @@
 //================================================
-#ifndef _GConsole_
-#define _GConsole_
+#ifndef _GWindowMath_
+#define _GWindowMath_
 //================================================
-#include "GInclude.h"
+#include "GWindow.h"
 //================================================
-class GConsole {
-private:
-	GConsole();
-	
+class GWindowMath : public GWindow {
 public:
-	~GConsole();
-	static GConsole* Instance();
-    void print(const string &data);
+	GWindowMath();
+	~GWindowMath();
 
 private:
-	static GConsole* m_instance;
+    const char* __CLASSNAME__;
 };
 //================================================
 #endif

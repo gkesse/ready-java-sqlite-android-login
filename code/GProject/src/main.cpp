@@ -1,12 +1,8 @@
 //===============================================
-#include "GSetting.h"
 #include "GProcess.h"
 //===============================================
-using namespace std;
-//===============================================
 int main(int argc, char** argv) {
-    GSetting::Instance()->load("data/config/config2.txt");
-    GProcess::Instance()->run(argc, argv);
+    GProcess::Instance()->process(argc, argv);
     return 0;
 }
 //===============================================

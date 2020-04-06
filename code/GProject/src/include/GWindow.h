@@ -1,20 +1,17 @@
 //================================================
-#ifndef _GSetting_
-#define _GSetting_
+#ifndef _GWindow_
+#define _GWindow_
 //================================================
 #include "GInclude.h"
 //================================================
-class GSetting {
-private:
-    GSetting();
-    
+class GWindow {
 public:
-    ~GSetting();
-    static GSetting* Instance();
-    void load(const string& file);
+	GWindow();
+	virtual ~GWindow();
+	static GWindow* Create(string key);
 
 private:
-    static GSetting* m_instance;
+    const char* __CLASSNAME__;
 };
 //================================================
 #endif
