@@ -2,7 +2,7 @@
 #include "GWindow.h"
 #include "GWindowMath.h"
 //===============================================
-GWindow::GWindow() {
+GWindow::GWindow(QWidget* parent) {
 	__CLASSNAME__ = __FUNCTION__;
 }
 //===============================================

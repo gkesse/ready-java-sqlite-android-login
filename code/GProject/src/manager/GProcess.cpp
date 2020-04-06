@@ -1,5 +1,6 @@
 //===============================================
 #include "GProcess.h"
+#include "GWindowMath.h"
 //===============================================
 GProcess* GProcess::m_instance = 0;
 //===============================================
@@ -23,20 +24,31 @@ void GProcess::process(int argc, char** argv) {
 	for(int i = 1; i < argc;) {
 		string lKey = argv[i++];
 		if(lKey == "test") {
-			test(); lRunFlag = 1; break;
+			test(argc, argv); lRunFlag = 1; break;
+		}
+		else if(lKey == "help") {
+			help(argc, argv); lRunFlag = 1; break;
 		}
 		else if(lKey == "math") {
-			math(); lRunFlag = 1; break;
+			math(argc, argv); lRunFlag = 1; break;
 		}
+		break;
 	}
 	if(lRunFlag == 0) cout << "le process est inconnu\n";
 }
 //===============================================
-void GProcess::test() {
+void GProcess::test(int argc, char** argv) {
 	cout << __CLASSNAME__ << "::" << __FUNCTION__ << "()\n";
 }
 //===============================================
-void GProcess::math() {
+void GProcess::help(int argc, char** argv) {
 	cout << __CLASSNAME__ << "::" << __FUNCTION__ << "()\n";
+}
+//===============================================
+void GProcess::math(int argc, char** argv) {
+	QApplication lApp(argc, argv);
+	GWindow* lWindow = GWindow::Create("math");
+	lWindow->show();
+	lApp.exec();
 }
 //===============================================

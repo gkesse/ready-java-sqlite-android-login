@@ -14,8 +14,9 @@ public:
     void process(int argc, char** argv);
 
 private:
-    void test();
-    void math();
+    void test(int argc, char** argv);
+    void help(int argc, char** argv);
+    void math(int argc, char** argv);
 
 private:
     const char* __CLASSNAME__;

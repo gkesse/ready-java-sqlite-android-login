@@ -4,9 +4,9 @@
 //================================================
 #include "GInclude.h"
 //================================================
-class GWindow {
+class GWindow : public QWidget {
 public:
-	GWindow();
+	GWindow(QWidget* parent = 0);
 	virtual ~GWindow();
 	static GWindow* Create(string key);
 

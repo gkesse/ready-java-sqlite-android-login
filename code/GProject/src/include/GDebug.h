@@ -1,16 +1,25 @@
 //================================================
-#ifndef _GWindowMath_
-#define _GWindowMath_
+#ifndef _GDebug_
+#define _GDebug_
 //================================================
-#include "GWindow.h"
+#include "GInclude.h"
 //================================================
-class GWindowMath : public GWindow {
+class GDebug {
+private:
+	GDebug();
+
 public:
-	GWindowMath(QWidget* parent = 0);
-	~GWindowMath();
+	~GDebug();
+	static GDebug* Instance();
+    void process(char* key, ...);
+
+private:
+    void test();
+    void help();
 
 private:
     const char* __CLASSNAME__;
+	static GDebug* m_instance;
 };
 //================================================
 #endif

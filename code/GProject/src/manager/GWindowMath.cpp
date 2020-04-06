@@ -1,7 +1,8 @@
 //===============================================
 #include "GWindowMath.h"
 //===============================================
-GWindowMath::GWindowMath() : GWindow() {
+GWindowMath::GWindowMath(QWidget* parent) :
+GWindow(parent) {
 	__CLASSNAME__ = __FUNCTION__;
 }
 //===============================================
