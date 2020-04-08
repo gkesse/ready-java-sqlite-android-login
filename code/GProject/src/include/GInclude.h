@@ -14,10 +14,15 @@
 #define _GPLATEFORME_ "WINDOWS"
 //===============================================
 #include <iostream>
+#include <cstdio>
+#include <cstdlib>
 #include <string>
-#include <stdarg.h>
+#include <cstdarg>
+#include <ctime>
 //===============================================
 #include <QtWidgets>
+#include <QScriptEngine>
+#include <QDebug>
 //===============================================
 using namespace std;
 //===============================================

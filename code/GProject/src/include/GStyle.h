@@ -1,25 +1,24 @@
 //================================================
-#ifndef _GWindow_
-#define _GWindow_
+#ifndef _GStyle_
+#define _GStyle_
 //================================================
 #include "GInclude.h"
-#include "GWidget.h"
 //================================================
-class GWindow : public QFrame {
-	Q_OBJECT
+class GStyle {
+private:
+	GStyle();
 
 public:
-	GWindow(QWidget* parent = 0);
-	virtual ~GWindow();
-	static GWindow* Create(string key);
+	~GStyle();
+	static GStyle* Instance();
+    void process(const char* key, ...);
 
-public slots:
-	virtual void slotRun();
+private:
+    void load(QString filename);
 
-protected:
+private:
     const char* __CLASSNAME__;
-    GWidget* m_expression;
-    GWidget* m_textEdit;
+	static GStyle* m_instance;
 };
 //================================================
 #endif

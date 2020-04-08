@@ -11,16 +11,20 @@ private:
 public:
 	~GDebug();
 	static GDebug* Instance();
-    void process(char* key, ...);
+    void process(const char* key, ...);
 
 private:
-    void test();
-    void help();
-    void write(va_list args);
+    void log(va_list args);
+    void sep();
+    void line(const char* data);
+    void write(const char* data);
+    void clear();
+    void date(char* buffer);
 
 private:
     const char* __CLASSNAME__;
 	static GDebug* m_instance;
+	const char* m_filename;
 };
 //================================================
 #endif

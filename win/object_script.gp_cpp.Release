@@ -1,0 +1,15 @@
+INPUT(
+./build/GProcess.o
+./build/GDebug.o
+./build/GStyle.o
+./build/GWindow.o
+./build/GWindowMath.o
+./build/GWidget.o
+./build/GWidgetLineEdit.o
+./build/GWidgetLineEditRun.o
+./build/GWidgetTextEdit.o
+./build/main.o
+./build/qrc_resources.o
+./build/moc_GWindow.o
+./build/moc_GWidget.o
+);

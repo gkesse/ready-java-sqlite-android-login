@@ -1,0 +1,60 @@
+/*===============================================*/
+/* QWidget */
+QWidget {
+    background-color: transparent;
+    font-family: arial;
+    font-size: 16px;
+    color: white;
+    border: none;
+}
+/*===============================================*/
+/* GWindow */
+QFrame#GWindow {
+    background-color: #11100f;
+}
+/*===============================================*/
+/* GWidget */
+QFrame#GWidget {
+    background-color: transparent;
+}
+/*===============================================*/
+/* QLabel */
+QLabel {
+    background-color: transparent;
+    color: #f4a136;
+    min-height: 25px;
+    padding: 0px 5px;
+}
+/*===============================================*/
+/* QLineEdit */
+QLineEdit {
+    background-color: transparent;
+    border: 1px solid #b2cec3;
+    min-width: 250px;
+    min-height: 25px;
+    padding: 0px 5px;
+}
+/*===============================================*/
+/* QPushButton */
+QPushButton {
+    background-color: transparent;
+    border: 1px solid #b2cec3;
+    color: #b2cec3;
+    min-height: 25px;
+    padding: 0px 5px;
+}
+/*===============================================*/
+/* QPushButton */
+QPushButton:hover {
+    background-color: #515150;
+    border: 1px solid #b2cec3;
+    color: #b2cec3;
+}
+/*===============================================*/
+/* QTextEdit */
+QTextEdit {
+    background-color: transparent;
+    border: 1px solid #b2cec3;
+    color: #b2cec3;
+}
+/*===============================================*/

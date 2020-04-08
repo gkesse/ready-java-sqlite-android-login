@@ -225,6 +225,7 @@ Makefile: GProject.pro C:/Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/win32-g++/qmake.conf
 		GProject.pro \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Widgets.prl \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Gui.prl \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Script.prl \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Core.prl
 	$(QMAKE) -o Makefile GProject.pro
 C:/Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/spec_pre.prf:
@@ -393,6 +394,7 @@ C:/Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/lex.prf:
 GProject.pro:
 C:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Widgets.prl:
 C:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Gui.prl:
+C:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Script.prl:
 C:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Core.prl:
 qmake: FORCE
 	@$(QMAKE) -o Makefile GProject.pro

@@ -1,25 +1,24 @@
 //================================================
-#ifndef _GWindow_
-#define _GWindow_
+#ifndef _GPicto_
+#define _GPicto_
 //================================================
 #include "GInclude.h"
-#include "GWidget.h"
 //================================================
-class GWindow : public QFrame {
-	Q_OBJECT
+class GPicto {
+private:
+	GPicto();
 
 public:
-	GWindow(QWidget* parent = 0);
-	virtual ~GWindow();
-	static GWindow* Create(string key);
+	~GPicto();
+	static GPicto* Instance();
+    void process(const char* key, ...);
 
-public slots:
-	virtual void slotRun();
+private:
+    void load(QString filename);
 
-protected:
+private:
     const char* __CLASSNAME__;
-    GWidget* m_expression;
-    GWidget* m_textEdit;
+	static GPicto* m_instance;
 };
 //================================================
 #endif

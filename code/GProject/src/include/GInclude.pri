@@ -5,6 +5,11 @@ HEADERS += \
     $$PWD/GInclude.h \
     $$PWD/GProcess.h \
     $$PWD/GDebug.h \
+    $$PWD/GStyle.h \
     $$PWD/GWindow.h \
     $$PWD/GWindowMath.h \
+    $$PWD/GWidget.h \
+    $$PWD/GWidgetLineEdit.h \
+    $$PWD/GWidgetLineEditRun.h \
+    $$PWD/GWidgetTextEdit.h \
         

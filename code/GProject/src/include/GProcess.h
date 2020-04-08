@@ -14,7 +14,6 @@ public:
     void process(int argc, char** argv);
 
 private:
-    void test(int argc, char** argv);
     void help(int argc, char** argv);
     void math(int argc, char** argv);
 

@@ -1,25 +1,16 @@
 //================================================
-#ifndef _GWindow_
-#define _GWindow_
+#ifndef _GWidgetLineEditRun_
+#define _GWidgetLineEditRun_
 //================================================
-#include "GInclude.h"
 #include "GWidget.h"
 //================================================
-class GWindow : public QFrame {
-	Q_OBJECT
-
+class GWidgetLineEditRun : public GWidget {
 public:
-	GWindow(QWidget* parent = 0);
-	virtual ~GWindow();
-	static GWindow* Create(string key);
+	GWidgetLineEditRun(QWidget* parent = 0);
+	~GWidgetLineEditRun();
 
-public slots:
-	virtual void slotRun();
-
-protected:
+private:
     const char* __CLASSNAME__;
-    GWidget* m_expression;
-    GWidget* m_textEdit;
 };
 //================================================
 #endif
