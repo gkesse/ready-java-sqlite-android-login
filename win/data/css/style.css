@@ -69,6 +69,86 @@ QPushButton:pressed {
     color: #b2cec3;
 }
 /*===============================================*/
+/* QScrollBar */
+QScrollBar:vertical {
+    border: 1px solid #4e516d;
+    background-color: #4e516d;
+    width: 20px;
+    margin: 22px 0 22px 0;
+}
+QScrollBar::handle:vertical {
+    background-color: #02062e;
+    min-height: 20px;
+}
+QScrollBar::add-line:vertical {
+    border: 1px solid #4e516d;
+    background-color: #02062e;
+    height: 20px;
+    subcontrol-position: bottom;
+    subcontrol-origin: margin;
+}
+QScrollBar::sub-line:vertical {
+    border: 1px solid #4e516d;
+    background-color: #02062e;
+    height: 20px;
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+}
+QScrollBar::up-arrow:vertical {
+    image: url(:/img/arrow_up.png);
+    min-width: 4px;
+    min-height: 4px;
+}
+QScrollBar::down-arrow:vertical {
+    image: url(:/img/arrow_down.png);
+    min-width: 4px;
+    min-height: 4px;
+}
+QScrollBar::add-page:vertical, 
+QScrollBar::sub-page:vertical {
+    background-color: none;
+}
+/*===============================================*/
+/* QScrollBar */
+QScrollBar:horizontal {
+    border: 1px solid #4e516d;
+    background-color: #4e516d;
+    height: 20px;
+    margin: 0px 22px 0 22px;
+}
+QScrollBar::handle:horizontal {
+    background-color: #02062e;
+    min-width: 20px;
+}
+QScrollBar::add-line:horizontal {
+    border: 1px solid #4e516d;
+    background-color: #02062e;
+    width: 20px;
+    subcontrol-position: right;
+    subcontrol-origin: margin;
+}
+QScrollBar::sub-line:horizontal {
+    border: 1px solid #4e516d;
+    background-color: #02062e;
+    width: 20px;
+    subcontrol-position: left;
+    subcontrol-origin: margin;
+}
+QScrollBar::left-arrow:horizontal {
+    image: url(:/img/arrow_left.png);
+    min-width: 4px;
+    min-height: 4px;
+}
+QScrollBar::right-arrow:horizontal {
+    image: url(:/img/arrow_right.png);
+    min-width: 4px;
+    min-height: 4px;
+}
+QScrollBar::add-page:horizontal, 
+QScrollBar::sub-page:horizontal {
+    background-color: none;
+}
+/*===============================================*/
 /* QTextEdit */
 QTextEdit {
     background-color: transparent;
