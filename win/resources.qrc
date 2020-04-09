@@ -3,4 +3,7 @@
     <qresource prefix="/css">
         <file alias="style.css">data/css/style.css</file>
     </qresource>
+    <qresource prefix="/img">
+        <file alias="sizegrip.png">data/img/sizegrip.png</file>
+    </qresource>
 </RCC>

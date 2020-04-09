@@ -18,6 +18,21 @@ QFrame#GWidget {
     background-color: transparent;
 }
 /*===============================================*/
+/* GWidgetTitleBar */
+QFrame#GWidgetTitleBar {
+    background-color: teal;
+}
+/*===============================================*/
+/* GTitle */
+QLabel#GTitle {
+    background-color: purple;
+}
+/*===============================================*/
+/* GIcon */
+QLabel#GIcon {
+    background-color: navy;
+}
+/*===============================================*/
 /* QLabel */
 QLabel {
     background-color: transparent;
@@ -43,10 +58,13 @@ QPushButton {
     min-height: 25px;
     padding: 0px 5px;
 }
-/*===============================================*/
-/* QPushButton */
 QPushButton:hover {
     background-color: #515150;
+    border: 1px solid #b2cec3;
+    color: #b2cec3;
+}
+QPushButton:pressed {
+    background-color: transparent;
     border: 1px solid #b2cec3;
     color: #b2cec3;
 }
@@ -56,5 +74,25 @@ QTextEdit {
     background-color: transparent;
     border: 1px solid #b2cec3;
     color: #b2cec3;
+}
+/*===============================================*/
+/* QToolButton */
+QToolButton {
+    background-color: transparent;
+    padding: 0px 5px;
+    min-height: 25px;
+}
+QToolButton:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+QToolButton:pressed {
+    background-color: transparent;
+}
+/*===============================================*/
+/* QSizeGrip */
+QSizeGrip {
+    image: url(:/img/sizegrip.png);
+    min-width: 10px;
+    min-height: 10px;
 }
 /*===============================================*/

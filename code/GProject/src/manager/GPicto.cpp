@@ -1,6 +1,6 @@
 //===============================================
 #include "GPicto.h"
-#include "GWindowMath.h"
+#include "GDebug.h"
 //===============================================
 GPicto* GPicto::m_instance = 0;
 //===============================================
@@ -22,24 +22,42 @@ GPicto* GPicto::Instance() {
 	return m_instance;
 }
 //===============================================
-void GPicto::process(const char* key, ...) {
+QIcon GPicto::process(const char* key, ...) {
+	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
 	bool lRunFlag = 0;
 	va_list lArgs;
 	va_start(lArgs, key);
+	QIcon lIcon;
 	while(1) {
 		if(strcmp(key, "picto") == 0) {
-			QString lFilename = va_arg(lArgs, char*);
-			load(lFilename); lRunFlag = 1; break;
+			int lPicto = va_arg(lArgs, int);
+			lIcon = getPicto(lPicto, m_color); lRunFlag = 1; break;
+		}
+		else if(strcmp(key, "picto_c") == 0) {
+			int lPicto = va_arg(lArgs, int);
+			QColor lColor = va_arg(lArgs, char*);
+			lIcon = getPicto(lPicto, lColor); lRunFlag = 1; break;
+		}
+		else if(strcmp(key, "color") == 0) {
+			QColor lColor = va_arg(lArgs, char*);
+			setColor(lColor); lRunFlag = 1; break;
 		}
 		break;
 	}
 	va_end(lArgs);
+	return lIcon;
 }
 //===============================================
-void GPicto::getPicto(QString filename) {
-	QFile lFile(filename);
-	lFile.open(QFile::ReadOnly);
-	QString lStyleSheet = QLatin1String(lFile.readAll());
-	qApp->setStyleSheet(lStyleSheet);
+QIcon GPicto::getPicto(int picto, QColor color) {
+	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+    m_picto->setDefaultOption("color", color);
+    m_picto->setDefaultOption("color-active", color);
+    m_color = color;
+    return m_picto->icon(picto);
+}
+//===============================================
+void GPicto::setColor(QColor color) {
+	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+	m_color = color;
 }
 //===============================================

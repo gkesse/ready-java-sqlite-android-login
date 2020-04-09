@@ -1,6 +1,6 @@
 //===============================================
 #include "GStyle.h"
-#include "GWindowMath.h"
+#include "GDebug.h"
 //===============================================
 GStyle* GStyle::m_instance = 0;
 //===============================================
@@ -20,6 +20,7 @@ GStyle* GStyle::Instance() {
 }
 //===============================================
 void GStyle::process(const char* key, ...) {
+	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
 	bool lRunFlag = 0;
 	va_list lArgs;
 	va_start(lArgs, key);
@@ -34,6 +35,7 @@ void GStyle::process(const char* key, ...) {
 }
 //===============================================
 void GStyle::load(QString filename) {
+	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
 	QFile lFile(filename);
 	lFile.open(QFile::ReadOnly);
 	QString lStyleSheet = QLatin1String(lFile.readAll());

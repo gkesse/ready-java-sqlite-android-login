@@ -4,9 +4,11 @@
 GWidgetTextEdit::GWidgetTextEdit(QWidget* parent) :
 GWidget(parent) {
 	__CLASSNAME__ = __FUNCTION__;
+	setObjectName("GWidgetTextEdit");
 	m_clear = new QPushButton("Clear");
 	m_clear->setCursor(Qt::PointingHandCursor);
 	m_textEdit = new QTextEdit;
+	m_textEdit->setReadOnly(true);
 
 	QHBoxLayout* lTopLayout = new QHBoxLayout;
 	lTopLayout->setAlignment(Qt::AlignLeft);

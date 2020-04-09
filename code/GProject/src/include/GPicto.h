@@ -11,14 +11,17 @@ private:
 public:
 	~GPicto();
 	static GPicto* Instance();
-    void process(const char* key, ...);
+	QIcon process(const char* key, ...);
 
 private:
-    void load(QString filename);
+    QIcon getPicto(int picto, QColor color);
+    void setColor(QColor color);
 
 private:
     const char* __CLASSNAME__;
 	static GPicto* m_instance;
+	QtAwesome* m_picto;
+	QColor m_color;
 };
 //================================================
 #endif

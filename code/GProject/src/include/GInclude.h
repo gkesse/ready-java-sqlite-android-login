@@ -23,6 +23,7 @@
 #include <QtWidgets>
 #include <QScriptEngine>
 #include <QDebug>
+#include <QtAwesome.h>
 //===============================================
 using namespace std;
 //===============================================
