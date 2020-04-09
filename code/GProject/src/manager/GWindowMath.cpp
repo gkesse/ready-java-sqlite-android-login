@@ -48,14 +48,28 @@ void GWindowMath::slotRun() {
 
 	lExpressionIn = lExpression.remove(QRegExp("\\s"));
 
+	// constantes
 	lExpressionIn.replace("pi","Math.PI");
+	// fonctions
 	lExpressionIn.replace("abs(","Math.abs{");
-	lExpressionIn.replace("sin(","Math.sin{");
+	lExpressionIn.replace("acos(","Math.acos{");
+	lExpressionIn.replace("acosh(","Math.acosh{");
+	lExpressionIn.replace("asin(","Math.asin{");
+	lExpressionIn.replace("asinh(","Math.abs{");
+	lExpressionIn.replace("atan(","Math.atan{");
+	lExpressionIn.replace("atanh(","Math.atanh{");
 	lExpressionIn.replace("cos(","Math.cos{");
-	lExpressionIn.replace("tan(","Math.tan{");
-	//.... and so on for trigonometrical functions)
+	lExpressionIn.replace("cosh(","Math.cosh{");
+	lExpressionIn.replace("exp(","Math.exp{");
+	lExpressionIn.replace("log(","Math.log{");
+	lExpressionIn.replace("log10(","Math.log10{");
+	lExpressionIn.replace("log2(","Math.log2{");
+	lExpressionIn.replace("sin(","Math.sin{");
+	lExpressionIn.replace("sinh(","Math.sinh{");
 	lExpressionIn.replace("sqrt(","Math.sqrt{");
-
+	lExpressionIn.replace("tan(","Math.tan{");
+	lExpressionIn.replace("tanh(","Math.tanh{");
+	// formatage
 	lExpressionIn.replace("(","[");
 	lExpressionIn.replace(")","]");
 	lExpressionIn.replace("^","POW");
@@ -64,12 +78,14 @@ void GWindowMath::slotRun() {
 	lExpressionIn.replace("*","MULT");
 	lExpressionIn.replace("/","DIV");
 
+	// parentheses
 	while (lExpressionIn.contains("[")) {
 		QRegularExpression lRegExp("\\[([^\\]]+)\\]");
 		QRegularExpressionMatch lMatchExp = lRegExp.match(lExpressionIn);
 		QString lOrgExp = lMatchExp.captured(0);
 		QString lFindExp = lMatchExp.captured(1);
 
+		// puissances
 		while (lFindExp.contains("POW")) {
 			QRegularExpression lRegExp1("(\\d+.\\d+POW)|(\\d+POW)");
 			QRegularExpressionMatch lMatchExp1 = lRegExp1.match(lFindExp);
@@ -102,6 +118,7 @@ void GWindowMath::slotRun() {
 		lExpressionIn.replace(""+lOrgExp+"" ,""+BraketResult+"");
 	}
 
+	// puissances
 	while(lExpressionIn.contains("POW")) {
 		QRegularExpression lRegExp1("(\\d+.\\d+POW)|(\\d+POW)");
 		QRegularExpressionMatch lMatchExp1 = lRegExp1.match(lExpressionIn);

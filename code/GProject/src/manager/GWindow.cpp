@@ -46,7 +46,7 @@ void GWindow::initTileBar(QString title, int picto, char* color) {
 	emit windowIconChanged(windowIcon());
 
 	m_sizeGrip = new QSizeGrip(this);
-	m_pixmapBg.load(":/img/vision.png");
+	//m_pixmapBg.load(":/img/vision.png");
 }
 //===============================================
 void GWindow::paintEvent(QPaintEvent *event) {

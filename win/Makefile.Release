@@ -155,7 +155,15 @@ compiler_rcc_clean:
 build/qrc_resources.cpp: resources.qrc \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/bin/rcc.exe \
 		data/css/style.css \
-		data/img/sizegrip.png
+		data/img/arrow_right.png \
+		data/img/arrow_left.png \
+		data/img/arrow_up.png \
+		data/img/arrow_down.png \
+		data/img/border.png \
+		data/img/vision.png \
+		data/img/check.png \
+		data/img/sizegrip.png \
+		data/debug/debug.txt
 	'C:\Qt\Qt5.8.0\5.8\mingw53_32\bin\rcc.exe' -name resources resources.qrc -o build/qrc_resources.cpp
 
 build/qrc_QtAwesome.cpp: ../../../gz_lib/qt_awesome/source/QtAwesome-master/QtAwesome/QtAwesome.qrc \
