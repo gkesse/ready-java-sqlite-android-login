@@ -35,6 +35,7 @@ protected:
     const char* __CLASSNAME__;
     GWidget* m_tileBar;
     GWidget* m_expression;
+    GWidget* m_variable;
     GWidget* m_textEdit;
     QPoint m_pressPosition;
     QSizeGrip* m_sizeGrip;

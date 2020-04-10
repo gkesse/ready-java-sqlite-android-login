@@ -11,6 +11,8 @@ GWindow(parent) {
 	m_tileBar = GWidget::Create("title_bar");
 	m_expression = GWidget::Create("line_edit_run");
 	m_expression->setLabel("Expression");
+	m_variable = GWidget::Create("line_edit");
+	m_variable->setLabel("Variables");
 	m_textEdit = GWidget::Create("text_edit");
 
 	QVBoxLayout* lBodyLayout = new QVBoxLayout;
@@ -18,6 +20,7 @@ GWindow(parent) {
 	lBodyLayout->setSpacing(10);
 	lBodyLayout->setAlignment(Qt::AlignTop);
 	lBodyLayout->addWidget(m_expression);
+	lBodyLayout->addWidget(m_variable);
 	lBodyLayout->addWidget(m_textEdit, 1);
 
 	QVBoxLayout* lMainLayout = new QVBoxLayout;

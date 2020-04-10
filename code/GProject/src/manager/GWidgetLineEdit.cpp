@@ -6,6 +6,7 @@ GWidget(parent) {
 	__CLASSNAME__ = __FUNCTION__;
 	setObjectName("GWidgetLineEdit");
 	m_label = new QLabel;
+	m_label->setObjectName("GLabel");
 	m_lineEidt = new QLineEdit;
 
 	QHBoxLayout* lMainLayout = new QHBoxLayout;
