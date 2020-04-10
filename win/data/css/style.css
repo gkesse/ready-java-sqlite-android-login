@@ -41,6 +41,15 @@ QLabel {
     padding: 0px 5px;
 }
 /*===============================================*/
+/* QLabel */
+QLabel#GLabel {
+    background-color: transparent;
+    color: #f4a136;
+    min-width: 100px;
+    min-height: 25px;
+    padding: 0px 5px;
+}
+/*===============================================*/
 /* QLineEdit */
 QLineEdit {
     background-color: transparent;

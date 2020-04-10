@@ -12,5 +12,4 @@ SOURCES += \
     $$PWD/GWidgetTitleBar.cpp \
 
 LIBS += \
-
     

@@ -24,7 +24,7 @@ GWindow* GWindow::Create(string key) {
 	return new GWindowMath;
 }
 //===============================================
-void GWindow::initTileBar(QString title, int picto, char* color) {
+void GWindow::initTileBar(QString title, int picto, const char* color) {
 	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
 	setWindowFlags(Qt::FramelessWindowHint | Qt::Window);
 	setWindowTitle(title);

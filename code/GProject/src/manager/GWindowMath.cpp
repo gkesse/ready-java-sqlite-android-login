@@ -49,109 +49,38 @@ void GWindowMath::slotRun() {
 	lExpressionIn = lExpression.remove(QRegExp("\\s"));
 
 	// constantes
-	lExpressionIn.replace("pi","Math.PI");
+	lExpressionIn.replace("E","Math.E");
+	lExpressionIn.replace("LN2","Math.LN2");
+	lExpressionIn.replace("LN10","Math.LN10");
+	lExpressionIn.replace("LOG2E","Math.LOG2E");
+	lExpressionIn.replace("PI","Math.PI");
+	lExpressionIn.replace("SQRT1_2","Math.SQRT1_2");
+	lExpressionIn.replace("SQRT2","Math.SQRT2");
 	// fonctions
-	lExpressionIn.replace("abs(","Math.abs{");
-	lExpressionIn.replace("acos(","Math.acos{");
-	lExpressionIn.replace("acosh(","Math.acosh{");
-	lExpressionIn.replace("asin(","Math.asin{");
-	lExpressionIn.replace("asinh(","Math.abs{");
-	lExpressionIn.replace("atan(","Math.atan{");
-	lExpressionIn.replace("atanh(","Math.atanh{");
-	lExpressionIn.replace("cos(","Math.cos{");
-	lExpressionIn.replace("cosh(","Math.cosh{");
-	lExpressionIn.replace("exp(","Math.exp{");
-	lExpressionIn.replace("log(","Math.log{");
-	lExpressionIn.replace("log10(","Math.log10{");
-	lExpressionIn.replace("log2(","Math.log2{");
-	lExpressionIn.replace("sin(","Math.sin{");
-	lExpressionIn.replace("sinh(","Math.sinh{");
-	lExpressionIn.replace("sqrt(","Math.sqrt{");
-	lExpressionIn.replace("tan(","Math.tan{");
-	lExpressionIn.replace("tanh(","Math.tanh{");
-	// formatage
-	lExpressionIn.replace("(","[");
-	lExpressionIn.replace(")","]");
-	lExpressionIn.replace("^","POW");
-	lExpressionIn.replace("+","PLUS");
-	lExpressionIn.replace("-","MINUS");
-	lExpressionIn.replace("*","MULT");
-	lExpressionIn.replace("/","DIV");
-
-	// parentheses
-	while (lExpressionIn.contains("[")) {
-		QRegularExpression lRegExp("\\[([^\\]]+)\\]");
-		QRegularExpressionMatch lMatchExp = lRegExp.match(lExpressionIn);
-		QString lOrgExp = lMatchExp.captured(0);
-		QString lFindExp = lMatchExp.captured(1);
-
-		// puissances
-		while (lFindExp.contains("POW")) {
-			QRegularExpression lRegExp1("(\\d+.\\d+POW)|(\\d+POW)");
-			QRegularExpressionMatch lMatchExp1 = lRegExp1.match(lFindExp);
-
-			QRegularExpression lRegExp2("(POW\\d+.\\d+)|(POW\\d+)");
-			QRegularExpressionMatch lMathcExp2 = lRegExp2.match(lFindExp);
-
-			if(lMatchExp1.hasMatch()) {
-				lExp1 = lMatchExp1.captured(0);
-				lExp1.replace("POW","");
-			}
-
-			if(lMathcExp2.hasMatch()) {
-				lExp2 = lMathcExp2.captured(0);
-				lExp2.replace("POW","");
-			}
-
-			lFindExp.replace (""+lExp1+"" "POW"""+lExp2+"" , "Math.pow(" ""+lExp1+"" ","  ""+lExp2+""  ")");
-		}
-
-
-		lFindExp.replace ("PLUS","+");
-		lFindExp.replace ("MINUS","-");
-		lFindExp.replace("MULT","*");
-		lFindExp.replace("DIV","/");
-
-		QScriptEngine parslExpressionInp;
-		double resultp=parslExpressionInp.evaluate(lFindExp).toNumber();
-		QString BraketResult=(QString::number(resultp));
-		lExpressionIn.replace(""+lOrgExp+"" ,""+BraketResult+"");
-	}
-
-	// puissances
-	while(lExpressionIn.contains("POW")) {
-		QRegularExpression lRegExp1("(\\d+.\\d+POW)|(\\d+POW)");
-		QRegularExpressionMatch lMatchExp1 = lRegExp1.match(lExpressionIn);
-
-		QRegularExpression lRegExp2("(POW\\d+.\\d+)|(POW\\d+)");
-		QRegularExpressionMatch lMatchExp2 = lRegExp2.match(lExpressionIn);
-
-
-		if(lMatchExp1.hasMatch()) {
-			lExp1 = lMatchExp1.captured(0);
-			lExp1.replace("POW","");
-		}
-
-		if(lMatchExp2.hasMatch()) {
-			lExp2 = lMatchExp2.captured(0);
-			lExp2.replace("POW","");
-		}
-
-		lExpressionIn.replace (""+lExp1+"" "POW"""+lExp2+"" , "Math.pow(" ""+lExp1+"" ","  ""+lExp2+""  ")");
-	}
-
-	lExpressionIn.replace("{","(");
-	lExpressionIn.replace("[","(");
-	lExpressionIn.replace("]",")");
-	lExpressionIn.replace ("PLUS","+");
-	lExpressionIn.replace ("MINUS","-");
-	lExpressionIn.replace("MULT","*");
-	lExpressionIn.replace("DIV","/");
+	lExpressionIn.replace("abs(","Math.abs(");
+	lExpressionIn.replace("acos(","Math.acos(");
+	lExpressionIn.replace("acosh(","Math.acosh(");
+	lExpressionIn.replace("asin(","Math.asin(");
+	lExpressionIn.replace("asinh(","Math.abs(");
+	lExpressionIn.replace("atan(","Math.atan(");
+	lExpressionIn.replace("atanh(","Math.atanh(");
+	lExpressionIn.replace("cos(","Math.cos(");
+	lExpressionIn.replace("cosh(","Math.cosh(");
+	lExpressionIn.replace("exp(","Math.exp(");
+	lExpressionIn.replace("log(","Math.log(");
+	lExpressionIn.replace("log10(","Math.log10(");
+	lExpressionIn.replace("log2(","Math.log2(");
+	lExpressionIn.replace("pow(","Math.pow(");
+	lExpressionIn.replace("sin(","Math.sin(");
+	lExpressionIn.replace("sinh(","Math.sinh(");
+	lExpressionIn.replace("sqrt(","Math.sqrt(");
+	lExpressionIn.replace("tan(","Math.tan(");
+	lExpressionIn.replace("tanh(","Math.tanh(");
 
 	QScriptEngine lScript;
 	double lResult = lScript.evaluate(lExpressionIn).toNumber();
 
-	m_textEdit->textEdit()->append(QString("> %1").arg(lExpression));
+	m_textEdit->textEdit()->append(QString("> %1").arg(lExpressionIn));
 	m_textEdit->textEdit()->append(QString("= %1").arg(lResult));
 	m_textEdit->textEdit()->append("");
 }

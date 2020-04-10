@@ -12,7 +12,7 @@ public:
 	GWindow(QWidget* parent = 0);
 	virtual ~GWindow();
 	static GWindow* Create(string key);
-	virtual void initTileBar(QString title, int picto, char* color);
+	virtual void initTileBar(QString title, int picto, const char* color);
 
 protected:
 	void paintEvent(QPaintEvent *event);

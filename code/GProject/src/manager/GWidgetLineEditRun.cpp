@@ -6,6 +6,7 @@ GWidget(parent) {
 	__CLASSNAME__ = __FUNCTION__;
 	setObjectName("GWidgetLineEditRun");
 	m_label = new QLabel("Label");
+	m_label->setObjectName("GLabel");
 	m_lineEidt = new QLineEdit;
 	m_run = new QPushButton("Run");
 	m_run->setCursor(Qt::PointingHandCursor);
