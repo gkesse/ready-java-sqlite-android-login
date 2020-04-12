@@ -25,11 +25,19 @@ void GShell::process(const char* key, ...) {
 	va_list lArgs;
 	va_start(lArgs, key);
 	while(1) {
-		if(strcmp(key, "load") == 0) {
-			lRunFlag = 1; break;
-		}
 		break;
 	}
 	va_end(lArgs);
+}
+//===============================================
+void GShell::run(const char* command, char* output, int size) {
+	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+	char lOutput[256];
+	FILE* lpFile = popen(command, "r");
+	if(output != 0) {
+		int lBytes = fread(output, sizeof(char), size, lpFile);
+		output[lBytes] = 0;
+	}
+	pclose(lpFile);
 }
 //===============================================

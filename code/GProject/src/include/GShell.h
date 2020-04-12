@@ -12,8 +12,7 @@ public:
 	~GShell();
 	static GShell* Instance();
     void process(const char* key, ...);
-
-private:
+    void run(const char* command, char* output, int size);
 
 private:
     const char* __CLASSNAME__;

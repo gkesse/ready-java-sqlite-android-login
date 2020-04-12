@@ -3,6 +3,7 @@
 #include "GWindowMath.h"
 #include "GDebug.h"
 #include "GStyle.h"
+#include "GShell.h"
 //===============================================
 GProcess* GProcess::m_instance = 0;
 //===============================================
@@ -27,6 +28,9 @@ void GProcess::process(int argc, char** argv) {
 	string lKey = "";
 	for(int i = 1; i < argc;) {
 		lKey = argv[i++];
+		if(lKey == "test") {
+			test(argc, argv); lRunFlag = 1; break;
+		}
 		if(lKey == "math") {
 			window(argc, argv, lKey.c_str()); lRunFlag = 1; break;
 		}
@@ -36,6 +40,13 @@ void GProcess::process(int argc, char** argv) {
 		break;
 	}
 	if(lRunFlag == 0) help(argc, argv);
+}
+//===============================================
+void GProcess::test(int argc, char** argv) {
+	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+	char lOutput[256];
+	GShell::Instance()->run("pwd", lOutput, 255);
+	cout << lOutput << "\n";
 }
 //===============================================
 void GProcess::help(int argc, char** argv) {
