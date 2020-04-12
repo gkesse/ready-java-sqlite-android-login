@@ -21,7 +21,6 @@ GShell* GShell::Instance() {
 //===============================================
 void GShell::process(const char* key, ...) {
 	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
-	bool lRunFlag = 0;
 	va_list lArgs;
 	va_start(lArgs, key);
 	while(1) {
@@ -31,6 +30,12 @@ void GShell::process(const char* key, ...) {
 }
 //===============================================
 void GShell::run(const char* command, char* output, int size) {
-	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+	//GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+	FILE* lpFile = popen(command, "r");
+	if(output != 0) {
+		int lBytes = fread(output, 1, size, lpFile);
+		output[lBytes] = 0;
+	}
+	pclose(lpFile);
 }
 //===============================================

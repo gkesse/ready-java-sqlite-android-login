@@ -44,9 +44,9 @@ void GProcess::process(int argc, char** argv) {
 //===============================================
 void GProcess::test(int argc, char** argv) {
 	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
-	char lOutput[256];
-	GShell::Instance()->run("pwd", lOutput, 255);
-	cout << lOutput << "\n";
+	char lData[256];
+	GShell::Instance()->run("pwd", lData, 255);
+	cout << lData << "\n";
 }
 //===============================================
 void GProcess::help(int argc, char** argv) {

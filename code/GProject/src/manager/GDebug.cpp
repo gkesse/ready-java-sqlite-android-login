@@ -22,15 +22,14 @@ GDebug* GDebug::Instance() {
 }
 //===============================================
 void GDebug::process(const char* key, ...) {
-	bool lRunFlag = 0;
 	va_list lArgs;
 	va_start(lArgs, key);
 	while(1) {
 		if(strcmp(key, "log") == 0) {
-			log(lArgs); lRunFlag = 1; break;
+			log(lArgs); break;
 		}
 		else if(strcmp(key, "sep") == 0) {
-			sep(); lRunFlag = 1; break;
+			sep(); break;
 		}
 		break;
 	}
