@@ -4,6 +4,7 @@
 #include "GDebug.h"
 #include "GStyle.h"
 #include "GShell.h"
+#include "GMuParser.h"
 //===============================================
 GProcess* GProcess::m_instance = 0;
 //===============================================
@@ -44,9 +45,8 @@ void GProcess::process(int argc, char** argv) {
 //===============================================
 void GProcess::test(int argc, char** argv) {
 	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
-	char lData[256];
-	GShell::Instance()->run("pwd", lData, 255);
-	cout << lData << "\n";
+	double lResult = GMuParser::Instance()->run("2^8");
+	cout << lResult << "\n";
 }
 //===============================================
 void GProcess::help(int argc, char** argv) {

@@ -15,6 +15,9 @@
 #include <cstdarg>
 #include <ctime>
 //===============================================
+#include <exprtk.hpp>
+#include <muParser.h>
+//===============================================
 using namespace std;
 //===============================================
 #endif
@@ -24,6 +27,8 @@ using namespace std;
 #define _GPLATEFORME_ "WINDOWS"
 //===============================================
 #define _GUSE_QT_OFF_
+#define _GUSE_EXPRTK_OFF_
+#define _GUSE_MUPARSER_ON_
 //===============================================
 #include <iostream>
 #include <cstdio>
@@ -32,12 +37,12 @@ using namespace std;
 #include <cstdarg>
 #include <ctime>
 //===============================================
-using namespace std;
-//===============================================
 #include <QtWidgets>
 #include <QScriptEngine>
 #include <QDebug>
 #include <QtAwesome.h>
+//===============================================
+using namespace std;
 //===============================================
 #endif
 //===============================================

@@ -19,16 +19,6 @@ GShell* GShell::Instance() {
 	return m_instance;
 }
 //===============================================
-void GShell::process(const char* key, ...) {
-	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
-	va_list lArgs;
-	va_start(lArgs, key);
-	while(1) {
-		break;
-	}
-	va_end(lArgs);
-}
-//===============================================
 void GShell::run(const char* command, char* output, int size) {
 	//GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
 	FILE* lpFile = popen(command, "r");
