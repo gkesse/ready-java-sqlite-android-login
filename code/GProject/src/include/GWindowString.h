@@ -1,15 +1,20 @@
 //================================================
-#ifndef _GWidgetLineEdit_
-#define _GWidgetLineEdit_
-//================================================
-#include "GWidget.h"
+#ifndef _GWindowString_
+#define _GWindowString_
+//===============================================
+#include "GWindow.h"
 //===============================================
 #if defined(_GUSE_QT_ON_)
 //================================================
-class GWidgetLineEdit : public GWidget {
+class GWindowString : public GWindow {
 public:
-	GWidgetLineEdit(QWidget* parent = 0);
-	~GWidgetLineEdit();
+	GWindowString(QWidget* parent = 0);
+	~GWindowString();
+
+public slots:
+	void slotReplace();
+	void slotRegExp();
+	void slotToUpper();
 
 private:
     const char* __CLASSNAME__;

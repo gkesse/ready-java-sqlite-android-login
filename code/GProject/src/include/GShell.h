@@ -1,21 +1,24 @@
 //================================================
-#ifndef _GWidgetLineEdit_
-#define _GWidgetLineEdit_
+#ifndef _GShell_
+#define _GShell_
 //================================================
-#include "GWidget.h"
-//===============================================
-#if defined(_GUSE_QT_ON_)
+#include "GInclude.h"
 //================================================
-class GWidgetLineEdit : public GWidget {
+class GShell {
+private:
+	GShell();
+
 public:
-	GWidgetLineEdit(QWidget* parent = 0);
-	~GWidgetLineEdit();
+	~GShell();
+	static GShell* Instance();
+    void process(const char* key, ...);
+
+private:
 
 private:
     const char* __CLASSNAME__;
+	static GShell* m_instance;
 };
-//================================================
-#endif
 //================================================
 #endif
 //================================================

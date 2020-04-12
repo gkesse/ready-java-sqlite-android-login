@@ -1,11 +1,15 @@
 //===============================================
 #include "GWidget.h"
+#include "GWidgetTitleBar.h"
 #include "GWidgetLineEdit.h"
 #include "GWidgetLineEditRun.h"
+#include "GWidgetLineEditCheck.h"
 #include "GWidgetTextEdit.h"
-#include "GWidgetTitleBar.h"
+#include "GWidgetPushButton.h"
 #include "GPicto.h"
 #include "GDebug.h"
+//===============================================
+#if defined(_GUSE_QT_ON_)
 //===============================================
 GWidget::GWidget(QWidget* parent) :
 QFrame(parent) {
@@ -21,6 +25,7 @@ QFrame(parent) {
 	m_minimize = 0;
 	m_maximize = 0;
 	m_close = 0;
+	m_check = 0;
 }
 //===============================================
 GWidget::~GWidget() {
@@ -29,10 +34,12 @@ GWidget::~GWidget() {
 //===============================================
 GWidget* GWidget::Create(string key) {
 	//GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+	if(key == "title_bar") return new GWidgetTitleBar;
 	if(key == "line_edit") return new GWidgetLineEdit;
 	if(key == "line_edit_run") return new GWidgetLineEditRun;
+	if(key == "line_edit_check") return new GWidgetLineEditCheck;
 	if(key == "text_edit") return new GWidgetTextEdit;
-	if(key == "title_bar") return new GWidgetTitleBar;
+	if(key == "push_button") return new GWidgetPushButton;
 	return new GWidgetLineEdit;
 }
 //===============================================
@@ -44,6 +51,11 @@ void GWidget::setLabel(QString label) {
 QString GWidget::getText() {
     GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
 	return m_lineEidt->text();
+}
+//===============================================
+bool GWidget::getCheck() {
+    GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+	return m_check->isChecked();
 }
 //===============================================
 QTextEdit* GWidget::textEdit() {
@@ -90,4 +102,11 @@ void GWidget::slotWindowFullScreen(int oldState, int newState) {
 		m_maximize->setIcon(GPicto::Instance()->process("picto", fa::windowrestore));
 	}
 }
+//===============================================
+void GWidget::slotCheck(bool ok) {
+	m_lineEidt->setEnabled(ok);
+	m_lineEidt->setReadOnly(!ok);
+}
+//================================================
+#endif
 //===============================================

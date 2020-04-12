@@ -15,12 +15,12 @@ public:
 
 private:
     void help(int argc, char** argv);
-    void math(int argc, char** argv);
+    void window(int argc, char** argv, const char* key);
 
 private:
     const char* __CLASSNAME__;
 	static GProcess* m_instance;
 };
-//================================================
+//===============================================
 #endif
 //================================================

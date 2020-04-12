@@ -1,8 +1,10 @@
 //================================================
 #ifndef _GWidget_
 #define _GWidget_
-//================================================
+//===============================================
 #include "GInclude.h"
+//===============================================
+#if defined(_GUSE_QT_ON_)
 //================================================
 class GWidget : public QFrame {
 	Q_OBJECT
@@ -13,6 +15,7 @@ public:
 	static GWidget* Create(string key);
 	virtual void setLabel(QString label);
 	virtual QString getText();
+	virtual bool getCheck();
 	virtual QTextEdit* textEdit();
 
 public slots:
@@ -20,6 +23,7 @@ public slots:
 	virtual void slotWindowIconChange(QIcon icon);
 	virtual void slotWindowMaximize(int oldState, int newState);
 	virtual void slotWindowFullScreen(int oldState, int newState);
+	virtual void slotCheck(bool ok);
 
 signals:
 	void emitRun();
@@ -37,13 +41,16 @@ protected:
     QLabel* m_icon;
     QLabel* m_title;
     QLineEdit* m_lineEidt;
+    QTextEdit* m_textEdit;
     QPushButton* m_run;
     QPushButton* m_clear;
     QToolButton* m_minimize;
     QToolButton* m_maximize;
     QToolButton* m_close;
-    QTextEdit* m_textEdit;
+    QCheckBox* m_check;
 };
+//================================================
+#endif
 //================================================
 #endif
 //================================================

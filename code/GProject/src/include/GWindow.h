@@ -4,6 +4,8 @@
 //================================================
 #include "GInclude.h"
 #include "GWidget.h"
+//===============================================
+#if defined(_GUSE_QT_ON_)
 //================================================
 class GWindow : public QFrame {
 	Q_OBJECT
@@ -25,7 +27,11 @@ public slots:
 	virtual void slotWindowMinimize();
 	virtual void slotWindowMaximize();
 	virtual void slotWindowFullScreen();
+	//
 	virtual void slotRun();
+	virtual void slotReplace();
+	virtual void slotRegExp();
+	virtual void slotToUpper();
 
 signals:
 	void emitWindowMaximize(int oldState, int newState);
@@ -34,13 +40,21 @@ signals:
 protected:
     const char* __CLASSNAME__;
     GWidget* m_tileBar;
+    //
     GWidget* m_expression;
     GWidget* m_variable;
     GWidget* m_textEdit;
+    GWidget* m_string;
+    GWidget* m_replace;
+    GWidget* m_regExp;
+    GWidget* m_toUpper;
+    //
     QPoint m_pressPosition;
     QSizeGrip* m_sizeGrip;
     QPixmap m_pixmapBg;
 };
+//================================================
+#endif
 //================================================
 #endif
 //================================================

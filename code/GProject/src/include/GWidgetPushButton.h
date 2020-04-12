@@ -1,15 +1,15 @@
 //================================================
-#ifndef _GWidgetLineEdit_
-#define _GWidgetLineEdit_
-//================================================
+#ifndef _GWidgetPushButton_
+#define _GWidgetPushButton_
+//===============================================
 #include "GWidget.h"
 //===============================================
 #if defined(_GUSE_QT_ON_)
 //================================================
-class GWidgetLineEdit : public GWidget {
+class GWidgetPushButton : public GWidget {
 public:
-	GWidgetLineEdit(QWidget* parent = 0);
-	~GWidgetLineEdit();
+	GWidgetPushButton(QWidget* parent = 0);
+	~GWidgetPushButton();
 
 private:
     const char* __CLASSNAME__;

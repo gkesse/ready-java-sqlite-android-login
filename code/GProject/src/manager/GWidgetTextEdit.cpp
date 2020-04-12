@@ -1,6 +1,8 @@
 //===============================================
 #include "GWidgetTextEdit.h"
 //===============================================
+#if defined(_GUSE_QT_ON_)
+//===============================================
 GWidgetTextEdit::GWidgetTextEdit(QWidget* parent) :
 GWidget(parent) {
 	__CLASSNAME__ = __FUNCTION__;
@@ -29,4 +31,6 @@ GWidget(parent) {
 GWidgetTextEdit::~GWidgetTextEdit() {
 
 }
+//================================================
+#endif
 //===============================================

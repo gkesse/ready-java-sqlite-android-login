@@ -1,30 +1,30 @@
 //===============================================
-#include "GWidgetLineEditRun.h"
+#include "GWidgetLineEditCheck.h"
 //===============================================
 #if defined(_GUSE_QT_ON_)
 //===============================================
-GWidgetLineEditRun::GWidgetLineEditRun(QWidget* parent) :
+GWidgetLineEditCheck::GWidgetLineEditCheck(QWidget* parent) :
 GWidget(parent) {
 	__CLASSNAME__ = __FUNCTION__;
-	setObjectName("GWidgetLineEditRun");
+	setObjectName("GWidgetLineEditCheck");
 	m_label = new QLabel("Label");
 	m_label->setObjectName("GLabel");
 	m_lineEidt = new QLineEdit;
-	m_run = new QPushButton("Run");
-	m_run->setCursor(Qt::PointingHandCursor);
+	m_check = new QCheckBox;
+	m_check->setCursor(Qt::PointingHandCursor);
 
 	QHBoxLayout* lMainLayout = new QHBoxLayout;
 	lMainLayout->setMargin(0);
 	lMainLayout->addWidget(m_label);
-	lMainLayout->addWidget(m_lineEidt);
-	lMainLayout->addWidget(m_run);
+	lMainLayout->addWidget(m_lineEidt, 1);
+	lMainLayout->addWidget(m_check);
 
 	setLayout(lMainLayout);
 
-	connect(m_run, SIGNAL(clicked()), this, SIGNAL(emitRun()));
+	connect(m_check, SIGNAL(clicked(bool)), this, SLOT(slotCheck(bool)));
 }
 //===============================================
-GWidgetLineEditRun::~GWidgetLineEditRun() {
+GWidgetLineEditCheck::~GWidgetLineEditCheck() {
 
 }
 //================================================

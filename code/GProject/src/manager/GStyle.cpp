@@ -2,6 +2,8 @@
 #include "GStyle.h"
 #include "GDebug.h"
 //===============================================
+#if defined(_GUSE_QT_ON_)
+//===============================================
 GStyle* GStyle::m_instance = 0;
 //===============================================
 GStyle::GStyle() {
@@ -41,4 +43,6 @@ void GStyle::load(QString filename) {
 	QString lStyleSheet = QLatin1String(lFile.readAll());
 	qApp->setStyleSheet(lStyleSheet);
 }
+//================================================
+#endif
 //===============================================

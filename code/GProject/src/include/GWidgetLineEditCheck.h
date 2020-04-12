@@ -1,15 +1,15 @@
 //================================================
-#ifndef _GWidgetLineEdit_
-#define _GWidgetLineEdit_
-//================================================
+#ifndef _GWidgetLineEditCheck_
+#define _GWidgetLineEditCheck_
+//===============================================
 #include "GWidget.h"
 //===============================================
 #if defined(_GUSE_QT_ON_)
 //================================================
-class GWidgetLineEdit : public GWidget {
+class GWidgetLineEditCheck : public GWidget {
 public:
-	GWidgetLineEdit(QWidget* parent = 0);
-	~GWidgetLineEdit();
+	GWidgetLineEditCheck(QWidget* parent = 0);
+	~GWidgetLineEditCheck();
 
 private:
     const char* __CLASSNAME__;

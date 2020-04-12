@@ -4,6 +4,8 @@
 #include "GPicto.h"
 #include "GDebug.h"
 //===============================================
+#if defined(_GUSE_QT_ON_)
+//===============================================
 GWindowMath::GWindowMath(QWidget* parent) :
 GWindow(parent) {
 	__CLASSNAME__ = __FUNCTION__;
@@ -11,7 +13,7 @@ GWindow(parent) {
 	m_tileBar = GWidget::Create("title_bar");
 	m_expression = GWidget::Create("line_edit_run");
 	m_expression->setLabel("Expression");
-	m_variable = GWidget::Create("line_edit");
+	m_variable = GWidget::Create("line_edit_check");
 	m_variable->setLabel("Variables");
 	m_textEdit = GWidget::Create("text_edit");
 
@@ -81,10 +83,28 @@ void GWindowMath::slotRun() {
 	lExpressionIn.replace("tanh(","Math.tanh(");
 
 	QScriptEngine lScript;
+
+	QString lVariable = m_variable->getText();
+
+	if(m_variable->getCheck() == true) {
+		if(lVariable != "") {
+			lVariable.replace(QRegExp("\\s"), "");
+			QStringList lSplitMap = lVariable.split(";");
+			for(int i = 0; i < lSplitMap.size(); i++) {
+				QStringList lVarMap = lSplitMap[i].split("=");
+				if(lVarMap.size() == 2) {
+					lScript.globalObject().setProperty(lVarMap[0], lVarMap[1]);
+				}
+			}
+		}
+	}
+
 	double lResult = lScript.evaluate(lExpressionIn).toNumber();
 
 	m_textEdit->textEdit()->append(QString("> %1").arg(lExpressionIn));
 	m_textEdit->textEdit()->append(QString("= %1").arg(lResult));
 	m_textEdit->textEdit()->append("");
 }
+//================================================
+#endif
 //===============================================

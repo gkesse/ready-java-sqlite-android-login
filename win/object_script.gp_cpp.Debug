@@ -7,11 +7,14 @@ INPUT(
 ./build/GPicto.o
 ./build/GWindow.o
 ./build/GWindowMath.o
+./build/GWindowString.o
 ./build/GWidget.o
+./build/GWidgetTitleBar.o
 ./build/GWidgetLineEdit.o
 ./build/GWidgetLineEditRun.o
+./build/GWidgetLineEditCheck.o
 ./build/GWidgetTextEdit.o
-./build/GWidgetTitleBar.o
+./build/GWidgetPushButton.o
 ./build/main.o
 ./build/qrc_resources.o
 ./build/qrc_QtAwesome.o

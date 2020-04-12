@@ -3,6 +3,8 @@
 #include "GPicto.h"
 #include "GDebug.h"
 //===============================================
+#if defined(_GUSE_QT_ON_)
+//===============================================
 GWidgetTitleBar::GWidgetTitleBar(QWidget* parent) :
 GWidget(parent) {
 	__CLASSNAME__ = __FUNCTION__;
@@ -73,4 +75,6 @@ void GWidgetTitleBar::mouseDoubleClickEvent(QMouseEvent *event) {
 	}
 	QWidget::mouseDoubleClickEvent(event);
 }
+//================================================
+#endif
 //===============================================

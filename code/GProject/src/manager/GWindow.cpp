@@ -1,8 +1,11 @@
 //===============================================
 #include "GWindow.h"
 #include "GWindowMath.h"
+#include "GWindowString.h"
 #include "GPicto.h"
 #include "GDebug.h"
+//===============================================
+#if defined(_GUSE_QT_ON_)
 //===============================================
 GWindow::GWindow(QWidget* parent) :
 QFrame(parent) {
@@ -10,8 +13,12 @@ QFrame(parent) {
 	setObjectName("GWindow");
 	m_tileBar = 0;
 	m_expression = 0;
+	m_variable = 0;
 	m_textEdit = 0;
 	m_sizeGrip = 0;
+	m_string = 0;
+	m_regExp = 0;
+	m_toUpper = 0;
 }
 //===============================================
 GWindow::~GWindow() {
@@ -21,6 +28,7 @@ GWindow::~GWindow() {
 GWindow* GWindow::Create(string key) {
 	//GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
 	if(key == "math") return new GWindowMath;
+	if(key == "string") return new GWindowString;
 	return new GWindowMath;
 }
 //===============================================
@@ -119,4 +127,9 @@ void GWindow::slotWindowFullScreen() {
 }
 //===============================================
 void GWindow::slotRun() {}
+void GWindow::slotReplace() {}
+void GWindow::slotRegExp() {}
+void GWindow::slotToUpper() {}
+//===============================================
+#endif
 //===============================================

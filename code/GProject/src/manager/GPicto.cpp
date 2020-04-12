@@ -2,6 +2,8 @@
 #include "GPicto.h"
 #include "GDebug.h"
 //===============================================
+#if defined(_GUSE_QT_ON_)
+//===============================================
 GPicto* GPicto::m_instance = 0;
 //===============================================
 GPicto::GPicto() {
@@ -60,4 +62,6 @@ void GPicto::setColor(QColor color) {
 	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
 	m_color = color;
 }
+//================================================
+#endif
 //===============================================
