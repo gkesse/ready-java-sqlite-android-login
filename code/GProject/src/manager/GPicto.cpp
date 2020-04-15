@@ -2,7 +2,7 @@
 #include "GPicto.h"
 #include "GDebug.h"
 //===============================================
-#if defined(_GUSE_QT_ON_)
+#if defined(_GUSE_QTAWESOME_ON_)
 //===============================================
 GPicto* GPicto::m_instance = 0;
 //===============================================

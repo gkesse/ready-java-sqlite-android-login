@@ -11,7 +11,7 @@ private:
 public:
 	~GShell();
 	static GShell* Instance();
-    void test();
+    void test(int argc, char** argv);
     void run(const char* command, char* output, int size);
 
 private:

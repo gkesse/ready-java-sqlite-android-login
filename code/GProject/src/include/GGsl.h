@@ -1,27 +1,23 @@
 //================================================
-#ifndef _GMuParser_
-#define _GMuParser_
+#ifndef _GGsl_
+#define _GGsl_
 //================================================
 #include "GInclude.h"
 //===============================================
-#if defined(_GUSE_MUPARSER_ON_)
+#if defined(_GUSE_GSL_ON_)
 //================================================
-class GMuParser {
+class GGsl {
 private:
-	GMuParser();
+	GGsl();
 
 public:
-	~GMuParser();
-	static GMuParser* Instance();
+	~GGsl();
+	static GGsl* Instance();
 	void test(int argc, char** argv);
-    void add(const char* key, double value);
-    double run(const char* expression);
 
 private:
     const char* __CLASSNAME__;
-	static GMuParser* m_instance;
-	mu::Parser m_parser;
-	map<string, double> m_map;
+	static GGsl* m_instance;
 };
 //================================================
 #endif

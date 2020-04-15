@@ -26,9 +26,13 @@ using namespace std;
 //===============================================
 #define _GPLATEFORME_ "WINDOWS"
 //===============================================
-#define _GUSE_QT_ON_
 #define _GUSE_EXPRTK_OFF_
 #define _GUSE_MUPARSER_OFF_
+#define _GUSE_GSL_ON_
+#define _GUSE_OPENCV_ON_
+#define _GUSE_QT_ON_
+#define _GUSE_QTAWESOME_ON_
+#define _GUSE_QCUSTOMPLOT_ON_
 //===============================================
 #include <iostream>
 #include <cstdio>
@@ -45,11 +49,26 @@ using namespace std;
 #include <muParser.h>
 #endif
 //===============================================
+#if defined(_GUSE_GSL_ON_)
+#include <gsl/gsl_sf.h>
+#endif
+//===============================================
+#if defined(_GUSE_OPENCV_ON_)
+#include <opencv2/opencv.hpp>
+#endif
+//===============================================
 #if defined(_GUSE_QT_ON_)
 #include <QtWidgets>
 #include <QScriptEngine>
 #include <QDebug>
+#endif
+//===============================================
+#if defined(_GUSE_QTAWESOME_ON_)
 #include <QtAwesome.h>
+#endif
+//===============================================
+#if defined(_GUSE_QCUSTOMPLOT_ON_)
+#include <qcustomplot.h>
 #endif
 //===============================================
 using namespace std;

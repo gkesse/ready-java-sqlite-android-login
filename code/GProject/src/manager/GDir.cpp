@@ -7,6 +7,7 @@ GDir* GDir::m_instance = 0;
 //===============================================
 GDir::GDir() {
 	__CLASSNAME__ = __FUNCTION__;
+	homePath(m_homePath);
 }
 //===============================================
 GDir::~GDir() {
@@ -20,14 +21,18 @@ GDir* GDir::Instance() {
 	return m_instance;
 }
 //===============================================
-void GDir::test() {
+void GDir::test(int argc, char** argv) {
 	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
 	char lHome[256];
 	homePath(lHome);
 	cout << lHome << "\n";
 }
 //===============================================
-void GDir::homePath(char* buffer) {
+char* GDir::homePath() {
+	return m_homePath;
+}
+//===============================================
+	void GDir::homePath(char* buffer) {
 	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
 #if defined(__WIN32)
 	homePathWin(buffer);

@@ -1,9 +1,12 @@
 INPUT(
 ./build\QtAwesome.o
 ./build\QtAwesomeAnim.o
+./build\qcustomplot.o
 ./build\GShell.o
 ./build\GExprTk.o
 ./build\GMuParser.o
+./build\GGsl.o
+./build\GQCustomPlot.o
 ./build\GProcess.o
 ./build\GDebug.o
 ./build\GStyle.o
@@ -23,6 +26,7 @@ INPUT(
 ./build\qrc_QtAwesome.o
 ./build\moc_QtAwesome.o
 ./build\moc_QtAwesomeAnim.o
+./build\moc_qcustomplot.o
 ./build\moc_GWindow.o
 ./build\moc_GWidget.o
 );

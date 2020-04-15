@@ -6,7 +6,7 @@ MOC_DIR = build
 UI_DIR = build
 RCC_DIR = build
 CONFIG += console release c++11
-QT += widgets script
+QT += widgets script printsupport
 RESOURCES += resources.qrc
 
 include(../code/GProject/src/GMain.pri)

@@ -1,27 +1,24 @@
 //================================================
-#ifndef _GMuParser_
-#define _GMuParser_
+#ifndef _GQCustomPlot_
+#define _GQCustomPlot_
 //================================================
 #include "GInclude.h"
 //===============================================
-#if defined(_GUSE_MUPARSER_ON_)
+#if defined(_GUSE_QCUSTOMPLOT_ON_)
 //================================================
-class GMuParser {
+class GQCustomPlot {
 private:
-	GMuParser();
+	GQCustomPlot();
 
 public:
-	~GMuParser();
-	static GMuParser* Instance();
+	~GQCustomPlot();
+	static GQCustomPlot* Instance();
 	void test(int argc, char** argv);
-    void add(const char* key, double value);
-    double run(const char* expression);
 
 private:
     const char* __CLASSNAME__;
-	static GMuParser* m_instance;
-	mu::Parser m_parser;
-	map<string, double> m_map;
+	static GQCustomPlot* m_instance;
+	QCustomPlot* m_plot;
 };
 //================================================
 #endif

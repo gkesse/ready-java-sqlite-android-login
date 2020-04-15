@@ -19,7 +19,7 @@ GShell* GShell::Instance() {
 	return m_instance;
 }
 //===============================================
-void GShell::test() {
+void GShell::test(int argc, char** argv) {
 	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
 	char lCommand[256];
 	char lOuput[256];

@@ -1,27 +1,23 @@
 //================================================
-#ifndef _GMuParser_
-#define _GMuParser_
+#ifndef _GOpenCV_
+#define _GOpenCV_
 //================================================
 #include "GInclude.h"
 //===============================================
-#if defined(_GUSE_MUPARSER_ON_)
+#if defined(_GUSE_OPENCV_ON_)
 //================================================
-class GMuParser {
+class GOpenCV {
 private:
-	GMuParser();
+	GOpenCV();
 
 public:
-	~GMuParser();
-	static GMuParser* Instance();
+	~GOpenCV();
+	static GOpenCV* Instance();
 	void test(int argc, char** argv);
-    void add(const char* key, double value);
-    double run(const char* expression);
 
 private:
     const char* __CLASSNAME__;
-	static GMuParser* m_instance;
-	mu::Parser m_parser;
-	map<string, double> m_map;
+	static GOpenCV* m_instance;
 };
 //================================================
 #endif

@@ -22,7 +22,7 @@ GExprTk* GExprTk::Instance() {
 	return m_instance;
 }
 //===============================================
-void GExprTk::test() {
+void GExprTk::test(int argc, char** argv) {
 	double lResult = run("2^8");
 	cout << lResult << "\n";
 }

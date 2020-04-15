@@ -6,6 +6,8 @@ HEADERS += \
     $$PWD/GShell.h \
     $$PWD/GExprTk.h \
     $$PWD/GMuParser.h \
+    $$PWD/GGsl.h \
+    $$PWD/GQCustomPlot.h \
     $$PWD/GProcess.h \
     $$PWD/GDebug.h \
     $$PWD/GStyle.h \

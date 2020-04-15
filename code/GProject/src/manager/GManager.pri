@@ -2,6 +2,8 @@ SOURCES += \
     $$PWD/GShell.cpp \
     $$PWD/GExprTk.cpp \
     $$PWD/GMuParser.cpp \
+    $$PWD/GGsl.cpp \
+    $$PWD/GQCustomPlot.cpp \
     $$PWD/GProcess.cpp \
     $$PWD/GDebug.cpp \
     $$PWD/GStyle.cpp \
@@ -19,4 +21,5 @@ SOURCES += \
 
 LIBS += \
     -lmuparser \
+    -lgsl -lgslcblas -lm \
     

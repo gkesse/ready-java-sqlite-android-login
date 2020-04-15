@@ -202,8 +202,10 @@ Makefile: GProject.pro C:/Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/win32-g++/qmake.conf
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/default_pre.prf \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/win32/default_pre.prf \
 		../../ReadyLib/dev/qtawesome/mingw/QtAwesome.pri \
+		../../ReadyLib/dev/qcustomplot/mingw/GQCustomPlot.pri \
 		../../ReadyLib/dev/exprtk/mingw/GExprTk.pri \
 		../../ReadyLib/dev/muparser/mingw/GMuParser.pri \
+		../../ReadyLib/dev/gsl/mingw/GGsl.pri \
 		../code/GProject/src/include/GInclude.pri \
 		../code/GProject/src/manager/GManager.pri \
 		../code/GProject/src/GMain.pri \
@@ -226,6 +228,7 @@ Makefile: GProject.pro C:/Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/win32-g++/qmake.conf
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/yacc.prf \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/lex.prf \
 		GProject.pro \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5PrintSupport.prl \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Widgets.prl \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Gui.prl \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Script.prl \
@@ -374,8 +377,10 @@ C:/Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/toolchain.prf:
 C:/Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/default_pre.prf:
 C:/Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/win32/default_pre.prf:
 ../../ReadyLib/dev/qtawesome/mingw/QtAwesome.pri:
+../../ReadyLib/dev/qcustomplot/mingw/GQCustomPlot.pri:
 ../../ReadyLib/dev/exprtk/mingw/GExprTk.pri:
 ../../ReadyLib/dev/muparser/mingw/GMuParser.pri:
+../../ReadyLib/dev/gsl/mingw/GGsl.pri:
 ../code/GProject/src/include/GInclude.pri:
 ../code/GProject/src/manager/GManager.pri:
 ../code/GProject/src/GMain.pri:
@@ -398,6 +403,7 @@ C:/Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/exceptions.prf:
 C:/Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/yacc.prf:
 C:/Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/lex.prf:
 GProject.pro:
+C:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5PrintSupport.prl:
 C:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Widgets.prl:
 C:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Gui.prl:
 C:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Script.prl:
