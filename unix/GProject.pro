@@ -5,7 +5,7 @@ OBJECTS_DIR = build
 MOC_DIR = build
 UI_DIR = build
 RCC_DIR = build
-CONFIG += console release c++11
+CONFIG += console release c++17
 QT += widgets script
 RESOURCES += resources.qrc
 

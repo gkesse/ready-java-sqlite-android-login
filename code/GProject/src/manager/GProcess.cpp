@@ -4,7 +4,9 @@
 #include "GDebug.h"
 #include "GStyle.h"
 #include "GShell.h"
+#include "GDir.h"
 #include "GMuParser.h"
+#include "GExprTk.h"
 //===============================================
 GProcess* GProcess::m_instance = 0;
 //===============================================
@@ -38,6 +40,9 @@ void GProcess::process(int argc, char** argv) {
 		if(lKey == "string") {
 			window(argc, argv, lKey.c_str()); lRunFlag = 1; break;
 		}
+		if(lKey == "muparser") {
+			muParser(argc, argv); lRunFlag = 1; break;
+		}
 		break;
 	}
 	if(lRunFlag == 0) help(argc, argv);
@@ -45,8 +50,7 @@ void GProcess::process(int argc, char** argv) {
 //===============================================
 void GProcess::test(int argc, char** argv) {
 	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
-	double lResult = GMuParser::Instance()->run("2^8");
-	cout << lResult << "\n";
+	//GDir::Instance()->test();
 }
 //===============================================
 void GProcess::help(int argc, char** argv) {
@@ -57,9 +61,9 @@ void GProcess::help(int argc, char** argv) {
 	printf("\t%s\n", "Operations sur le module gp_cpp.");
 	printf("\n");
 	printf("%s\n", "Utilisation:");
-	printf("\t\033[0;35m%s\033[0m : \033[0;33m%s\033[0m\n", lModule, "afficher aide");
-	printf("\t\033[0;35m%s\033[0m \033[36m%s\033[0m : \033[0;33m%s\033[0m\n", lModule, "math", "operations mathematiques");
-	printf("\t\033[0;35m%s\033[0m \033[36m%s\033[0m : \033[0;33m%s\033[0m\n", lModule, "string", "operations chaines caracteres");
+	printf("\t\%s : %s\n", lModule, "afficher aide");
+	printf("\t\%s %s : %s\n", lModule, "math", "operations mathematiques");
+	printf("\t\%s %s : %s\n", lModule, "string", "operations chaines caracteres");
 	printf("\n");
 }
 //===============================================
@@ -71,6 +75,23 @@ void GProcess::window(int argc, char** argv, const char* key) {
 	GWindow* lWindow = GWindow::Create(key);
 	lWindow->show();
 	lApp.exec();
+#endif
+}
+//===============================================
+void GProcess::muParser(int argc, char** argv) {
+	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+#if defined(_GUSE_MUPARSER_ON_)
+	if(argc <= 2) return;
+	char* lExpression = argv[2];
+	for(int i = 3; i < argc;) {
+		char* lKey = argv[i++];
+		double lValue = atof(argv[i++]);
+		GMuParser::Instance()->add(lKey, lValue);
+	}
+	map<string, double> lMap;
+
+	double lResult = GMuParser::Instance()->run(lExpression);
+	cout << lResult;
 #endif
 }
 //===============================================

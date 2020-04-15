@@ -2,8 +2,6 @@ INPUT(
 ./build\QtAwesome.o
 ./build\QtAwesomeAnim.o
 ./build\GShell.o
-./build\GExprTk.o
-./build\GMuParser.o
 ./build\GProcess.o
 ./build\GDebug.o
 ./build\GStyle.o

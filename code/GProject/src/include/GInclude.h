@@ -33,14 +33,24 @@ using namespace std;
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
-#include <string>
+#include <cstring>
 #include <cstdarg>
 #include <ctime>
 //===============================================
+#if defined(_GUSE_EXPRTK_ON_)
+#include <exprtk.hpp>
+#endif
+//===============================================
+#if defined(_GUSE_MUPARSER_ON_)
+#include <muParser.h>
+#endif
+//===============================================
+#if defined(_GUSE_QT_ON_)
 #include <QtWidgets>
 #include <QScriptEngine>
 #include <QDebug>
 #include <QtAwesome.h>
+#endif
 //===============================================
 using namespace std;
 //===============================================

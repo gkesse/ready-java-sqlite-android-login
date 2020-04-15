@@ -1,22 +1,26 @@
 //================================================
-#ifndef _GShell_
-#define _GShell_
+#ifndef _GDir_
+#define _GDir_
 //================================================
 #include "GInclude.h"
 //================================================
-class GShell {
+class GDir {
 private:
-	GShell();
+	GDir();
 
 public:
-	~GShell();
-	static GShell* Instance();
+	~GDir();
+	static GDir* Instance();
     void test();
-    void run(const char* command, char* output, int size);
+    void homePath(char* buffer);
+
+private:
+    void homePathWin(char* buffer);
+    void homePathUnix(char* buffer);
 
 private:
     const char* __CLASSNAME__;
-	static GShell* m_instance;
+	static GDir* m_instance;
 };
 //================================================
 #endif

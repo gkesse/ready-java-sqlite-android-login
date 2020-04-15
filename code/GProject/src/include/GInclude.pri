@@ -4,6 +4,8 @@ INCLUDEPATH += \
 HEADERS += \
     $$PWD/GInclude.h \
     $$PWD/GShell.h \
+    $$PWD/GExprTk.h \
+    $$PWD/GMuParser.h \
     $$PWD/GProcess.h \
     $$PWD/GDebug.h \
     $$PWD/GStyle.h \

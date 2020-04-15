@@ -1,5 +1,7 @@
 SOURCES += \
     $$PWD/GShell.cpp \
+    $$PWD/GExprTk.cpp \
+    $$PWD/GMuParser.cpp \
     $$PWD/GProcess.cpp \
     $$PWD/GDebug.cpp \
     $$PWD/GStyle.cpp \
@@ -16,4 +18,5 @@ SOURCES += \
     $$PWD/GWidgetPushButton.cpp \
 
 LIBS += \
+    -lmuparser \
     

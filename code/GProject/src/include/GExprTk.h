@@ -13,6 +13,7 @@ private:
 public:
 	~GExprTk();
 	static GExprTk* Instance();
+	void test();
     void add(const char* symbol, double value);
     double run(const char* expression);
 

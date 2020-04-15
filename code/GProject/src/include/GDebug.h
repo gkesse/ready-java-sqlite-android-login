@@ -20,11 +20,15 @@ private:
     void write(const char* data);
     void clear();
     void date(char* buffer);
+    void homePathWin();
+    void homePathUnix();
 
 private:
     const char* __CLASSNAME__;
 	static GDebug* m_instance;
-	const char* m_filename;
+	char m_homePath[256];
+	char m_debugPath[256];
+	char m_filename[256];
 };
 //================================================
 #endif

@@ -21,8 +21,18 @@ GMuParser* GMuParser::Instance() {
 	return m_instance;
 }
 //===============================================
-void GMuParser::add(const char* key, double* value) {
-	m_parser.DefineVar(key, value);
+void GMuParser::test() {
+	double x = 3;
+	double y = 7;
+	add("x", x);
+	add("y", y);
+	double lResult = run("x^2 + 2*x*y + y^2");
+	cout << lResult << "\n";
+}
+//===============================================
+void GMuParser::add(const char* key, double value) {
+	m_map[key] = value;
+	m_parser.DefineVar(key, &m_map[key]);
 }
 //===============================================
 double GMuParser::run(const char* expression) {
