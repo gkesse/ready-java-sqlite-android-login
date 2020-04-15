@@ -186,8 +186,7 @@ build/qrc_resources.cpp: resources.qrc \
 		data/img/border.png \
 		data/img/vision.png \
 		data/img/check.png \
-		data/img/sizegrip.png \
-		data/debug/debug.txt
+		data/img/sizegrip.png
 	C:\Qt\Qt5.8.0\5.8\mingw53_32\bin\rcc.exe -name resources resources.qrc -o build\qrc_resources.cpp
 
 build/qrc_QtAwesome.cpp: ../../ReadyLib/dev/qtawesome/mingw/QtAwesome.qrc \
@@ -3500,6 +3499,7 @@ build/GProcess.o: ../code/GProject/src/manager/GProcess.cpp ../code/GProject/src
 		../code/GProject/src/include/GDebug.h \
 		../code/GProject/src/include/GStyle.h \
 		../code/GProject/src/include/GShell.h \
+		../code/GProject/src/include/GDir.h \
 		../code/GProject/src/include/GMuParser.h \
 		../code/GProject/src/include/GExprTk.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build\GProcess.o ..\code\GProject\src\manager\GProcess.cpp
@@ -3983,7 +3983,8 @@ build/GDebug.o: ../code/GProject/src/manager/GDebug.cpp ../code/GProject/src/inc
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/QIcon \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/QIconEngine \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/QPainter \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QVariantMap
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QVariantMap \
+		../code/GProject/src/include/GDir.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build\GDebug.o ..\code\GProject\src\manager\GDebug.cpp
 
 build/GStyle.o: ../code/GProject/src/manager/GStyle.cpp ../code/GProject/src/include/GStyle.h \
@@ -5922,6 +5923,7 @@ build/GWindowMath.o: ../code/GProject/src/manager/GWindowMath.cpp ../code/GProje
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QVariantMap \
 		../code/GProject/src/include/GWidget.h \
 		../code/GProject/src/include/GPicto.h \
+		../code/GProject/src/include/GShell.h \
 		../code/GProject/src/include/GDebug.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build\GWindowMath.o ..\code\GProject\src\manager\GWindowMath.cpp
 

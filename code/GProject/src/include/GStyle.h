@@ -13,9 +13,6 @@ private:
 public:
 	~GStyle();
 	static GStyle* Instance();
-    void process(const char* key, ...);
-
-private:
     void load(QString filename);
 
 private:

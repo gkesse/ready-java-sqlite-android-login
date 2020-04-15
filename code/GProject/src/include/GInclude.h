@@ -26,9 +26,9 @@ using namespace std;
 //===============================================
 #define _GPLATEFORME_ "WINDOWS"
 //===============================================
-#define _GUSE_QT_OFF_
+#define _GUSE_QT_ON_
 #define _GUSE_EXPRTK_OFF_
-#define _GUSE_MUPARSER_ON_
+#define _GUSE_MUPARSER_OFF_
 //===============================================
 #include <iostream>
 #include <cstdio>

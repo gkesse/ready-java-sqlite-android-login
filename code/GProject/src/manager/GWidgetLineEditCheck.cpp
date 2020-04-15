@@ -22,6 +22,8 @@ GWidget(parent) {
 	setLayout(lMainLayout);
 
 	connect(m_check, SIGNAL(clicked(bool)), this, SLOT(slotCheck(bool)));
+
+	slotCheck(false);
 }
 //===============================================
 GWidgetLineEditCheck::~GWidgetLineEditCheck() {

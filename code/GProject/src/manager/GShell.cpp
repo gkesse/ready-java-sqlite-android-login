@@ -34,7 +34,7 @@ void GShell::run(const char* command, char* output, int size) {
 	FILE* lpFile = popen(command, "r");
 	if(output != 0) {
 		int lBytes = fread(output, 1, size, lpFile);
-		if(lBytes >= 1) output[lBytes - 1] = 0;
+		if(lBytes >= 1) output[lBytes] = 0;
 	}
 	pclose(lpFile);
 }

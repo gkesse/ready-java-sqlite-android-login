@@ -2,6 +2,7 @@
 #include "GWindowMath.h"
 #include "GWidget.h"
 #include "GPicto.h"
+#include "GShell.h"
 #include "GDebug.h"
 //===============================================
 #if defined(_GUSE_QT_ON_)
@@ -48,61 +49,22 @@ void GWindowMath::slotRun() {
 	QString lExpression = m_expression->getText();
 	if(lExpression == "") return;
 
-	QString lExpressionIn;
-	QString lExp1, lExp2;
-
-	lExpressionIn = lExpression.remove(QRegExp("\\s"));
-
-	// constantes
-	lExpressionIn.replace("E","Math.E");
-	lExpressionIn.replace("LN2","Math.LN2");
-	lExpressionIn.replace("LN10","Math.LN10");
-	lExpressionIn.replace("LOG2E","Math.LOG2E");
-	lExpressionIn.replace("PI","Math.PI");
-	lExpressionIn.replace("SQRT1_2","Math.SQRT1_2");
-	lExpressionIn.replace("SQRT2","Math.SQRT2");
-	// fonctions
-	lExpressionIn.replace("abs(","Math.abs(");
-	lExpressionIn.replace("acos(","Math.acos(");
-	lExpressionIn.replace("acosh(","Math.acosh(");
-	lExpressionIn.replace("asin(","Math.asin(");
-	lExpressionIn.replace("asinh(","Math.abs(");
-	lExpressionIn.replace("atan(","Math.atan(");
-	lExpressionIn.replace("atanh(","Math.atanh(");
-	lExpressionIn.replace("cos(","Math.cos(");
-	lExpressionIn.replace("cosh(","Math.cosh(");
-	lExpressionIn.replace("exp(","Math.exp(");
-	lExpressionIn.replace("log(","Math.log(");
-	lExpressionIn.replace("log10(","Math.log10(");
-	lExpressionIn.replace("log2(","Math.log2(");
-	lExpressionIn.replace("pow(","Math.pow(");
-	lExpressionIn.replace("sin(","Math.sin(");
-	lExpressionIn.replace("sinh(","Math.sinh(");
-	lExpressionIn.replace("sqrt(","Math.sqrt(");
-	lExpressionIn.replace("tan(","Math.tan(");
-	lExpressionIn.replace("tanh(","Math.tanh(");
-
-	QScriptEngine lScript;
-
-	QString lVariable = m_variable->getText();
+	QString lVariable = "";
 
 	if(m_variable->getCheck() == true) {
-		if(lVariable != "") {
-			lVariable.replace(QRegExp("\\s"), "");
-			QStringList lSplitMap = lVariable.split(";");
-			for(int i = 0; i < lSplitMap.size(); i++) {
-				QStringList lVarMap = lSplitMap[i].split("=");
-				if(lVarMap.size() == 2) {
-					lScript.globalObject().setProperty(lVarMap[0], lVarMap[1]);
-				}
-			}
-		}
+		lVariable = m_variable->getText();
+
 	}
 
-	double lResult = lScript.evaluate(lExpressionIn).toNumber();
+	char lCommand[256];
+	char lOutput[256];
+	const char* lExpressionIn = lExpression.toStdString().c_str();
+	const char* lVariableIn = lVariable.toStdString().c_str();
+	sprintf(lCommand, "gp_muparser muparser \"%s\" %s", lExpressionIn, lVariableIn);
+	GShell::Instance()->run(lCommand, lOutput, 255);
 
-	m_textEdit->textEdit()->append(QString("> %1").arg(lExpressionIn));
-	m_textEdit->textEdit()->append(QString("= %1").arg(lResult));
+	m_textEdit->textEdit()->append(QString("> %1").arg(lExpression));
+	m_textEdit->textEdit()->append(QString("= %1").arg(lOutput));
 	m_textEdit->textEdit()->append("");
 }
 //================================================

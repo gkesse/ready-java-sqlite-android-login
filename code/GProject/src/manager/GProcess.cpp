@@ -53,7 +53,7 @@ void GProcess::process(int argc, char** argv) {
 //===============================================
 void GProcess::test(int argc, char** argv) {
 	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
-	GMuParser::Instance()->test();
+	//GMuParser::Instance()->test();
 }
 //===============================================
 void GProcess::help(int argc, char** argv) {
@@ -76,7 +76,7 @@ void GProcess::window(int argc, char** argv, const char* key) {
 	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
 #if defined(_GUSE_QT_ON_)
 	QApplication lApp(argc, argv);
-	GStyle::Instance()->process("load", ":/css/style.css");
+	GStyle::Instance()->load(":/css/style.css");
 	GWindow* lWindow = GWindow::Create(key);
 	lWindow->show();
 	lApp.exec();
