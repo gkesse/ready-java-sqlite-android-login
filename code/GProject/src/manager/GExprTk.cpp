@@ -8,6 +8,7 @@ GExprTk* GExprTk::m_instance = 0;
 //===============================================
 GExprTk::GExprTk() {
 	__CLASSNAME__ = __FUNCTION__;
+	m_symbol.add_constants();
 }
 //===============================================
 GExprTk::~GExprTk() {
@@ -26,8 +27,9 @@ void GExprTk::test() {
 	cout << lResult << "\n";
 }
 //===============================================
-void GExprTk::add(const char* symbol, double value) {
-	m_symbol.add_variable(symbol, value);
+void GExprTk::add(const char* key, double value) {
+	m_map[key] = value;
+	m_symbol.add_variable(key, m_map[key]);
 }
 //===============================================
 double GExprTk::run(const char* expression) {

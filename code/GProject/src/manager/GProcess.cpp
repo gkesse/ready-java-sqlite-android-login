@@ -43,6 +43,9 @@ void GProcess::process(int argc, char** argv) {
 		if(lKey == "muparser") {
 			muParser(argc, argv); lRunFlag = 1; break;
 		}
+		if(lKey == "exprtk") {
+			exprTk(argc, argv); lRunFlag = 1; break;
+		}
 		break;
 	}
 	if(lRunFlag == 0) help(argc, argv);
@@ -50,7 +53,7 @@ void GProcess::process(int argc, char** argv) {
 //===============================================
 void GProcess::test(int argc, char** argv) {
 	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
-	//GDir::Instance()->test();
+	GMuParser::Instance()->test();
 }
 //===============================================
 void GProcess::help(int argc, char** argv) {
@@ -63,6 +66,8 @@ void GProcess::help(int argc, char** argv) {
 	printf("%s\n", "Utilisation:");
 	printf("\t\%s : %s\n", lModule, "afficher aide");
 	printf("\t\%s %s : %s\n", lModule, "math", "operations mathematiques");
+	printf("\t\%s %s : %s\n", lModule, "muparser <expr> <var>", "operations mathematiques muparser");
+	printf("\t\%s %s : %s\n", lModule, "exprtk <expr> <var>", "operations mathematiques exprtk");
 	printf("\t\%s %s : %s\n", lModule, "string", "operations chaines caracteres");
 	printf("\n");
 }
@@ -88,9 +93,22 @@ void GProcess::muParser(int argc, char** argv) {
 		double lValue = atof(argv[i++]);
 		GMuParser::Instance()->add(lKey, lValue);
 	}
-	map<string, double> lMap;
-
 	double lResult = GMuParser::Instance()->run(lExpression);
+	cout << lResult;
+#endif
+}
+//===============================================
+void GProcess::exprTk(int argc, char** argv) {
+	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+#if defined(_GUSE_EXPRTK_ON_)
+	if(argc <= 2) return;
+	char* lExpression = argv[2];
+	for(int i = 3; i < argc;) {
+		char* lKey = argv[i++];
+		double lValue = atof(argv[i++]);
+		GExprTk::Instance()->add(lKey, lValue);
+	}
+	double lResult = GExprTk::Instance()->run(lExpression);
 	cout << lResult;
 #endif
 }
