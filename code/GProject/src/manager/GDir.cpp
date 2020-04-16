@@ -8,6 +8,7 @@ GDir* GDir::m_instance = 0;
 GDir::GDir() {
 	__CLASSNAME__ = __FUNCTION__;
 	homePath(m_homePath);
+	m_dataPath = homePath() + "/.readydev/readycpp";
 }
 //===============================================
 GDir::~GDir() {
@@ -28,8 +29,12 @@ void GDir::test(int argc, char** argv) {
 	cout << lHome << "\n";
 }
 //===============================================
-char* GDir::homePath() {
-	return m_homePath;
+string GDir::homePath() {
+	return string(m_homePath);
+}
+//===============================================
+string GDir::dataPath() {
+	return m_dataPath;
 }
 //===============================================
 	void GDir::homePath(char* buffer) {
@@ -46,7 +51,7 @@ void GDir::homePathWin(char* buffer) {
 	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
 	char lCommand[256];
 	sprintf(lCommand, "%s", "echo %HOMEDRIVE%%HOMEPATH%");
-	GShell::Instance()->run(lCommand, buffer, 255);
+	GShell::Instance()->run(lCommand, buffer, 255, 1);
 #endif
 }
 //===============================================
@@ -55,7 +60,7 @@ void GDir::homePathUnix(char* buffer) {
 	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
 	char lCommand[256];
 	sprintf(lCommand, "%s", "echo $HOME");
-	GShell::Instance()->run(lCommand, buffer, 255);
+	GShell::Instance()->run(lCommand, buffer, 255, 1);
 #endif
 }
 //===============================================

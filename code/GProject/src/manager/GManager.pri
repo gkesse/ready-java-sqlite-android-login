@@ -1,8 +1,10 @@
 SOURCES += \
     $$PWD/GShell.cpp \
+    $$PWD/GDir.cpp \
     $$PWD/GExprTk.cpp \
     $$PWD/GMuParser.cpp \
     $$PWD/GGsl.cpp \
+    $$PWD/GOpenCV.cpp \
     $$PWD/GQCustomPlot.cpp \
     $$PWD/GProcess.cpp \
     $$PWD/GDebug.cpp \
@@ -22,4 +24,5 @@ SOURCES += \
 LIBS += \
     -lmuparser \
     -lgsl -lgslcblas -lm \
+    -lopencv_core2413 -lopencv_highgui2413 -lopencv_imgproc2413 \
     

@@ -24,8 +24,9 @@ GOpenCV* GOpenCV::Instance() {
 //===============================================
 void GOpenCV::test(int argc, char** argv) {
 	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
-	char* lHomePath = GDir::Instance()->homePath();
-	string lFilename = lHomePath + "\\fruits.jpg";
+	string lDataPath = GDir::Instance()->dataPath();
+	string lFilename = lDataPath + "/data/img/fruits.jpg";
+	cout << lFilename;
 	cv::Mat lImg = cv::imread(lFilename,-1);
 	if(lImg.empty()) return;
 	cv::namedWindow("OpenCV | ReadyDev", cv::WINDOW_AUTOSIZE);

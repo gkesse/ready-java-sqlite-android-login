@@ -3,9 +3,11 @@ INPUT(
 ./build\QtAwesomeAnim.o
 ./build\qcustomplot.o
 ./build\GShell.o
+./build\GDir.o
 ./build\GExprTk.o
 ./build\GMuParser.o
 ./build\GGsl.o
+./build\GOpenCV.o
 ./build\GQCustomPlot.o
 ./build\GProcess.o
 ./build\GDebug.o
