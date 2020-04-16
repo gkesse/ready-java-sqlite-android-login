@@ -1,23 +1,24 @@
 //================================================
-#ifndef _GWindowString_
-#define _GWindowString_
-//===============================================
-#include "GWindow.h"
-//===============================================
-#if defined(_GUSE_QT_ON_)
+#ifndef _GOpenGL_
+#define _GOpenGL_
 //================================================
-class GWindowString : public GWindow {
-public:
-	GWindowString(QWidget* parent = 0);
-	~GWindowString();
+#include "GInclude.h"
+//===============================================
+#if defined(_GUSE_OPENGL_ON_)
+//================================================
+class GOpenGL {
+private:
+	GOpenGL();
 
-public slots:
-	void slotReplace();
-	void slotRegExp();
-	void slotToUpper();
+public:
+	~GOpenGL();
+	static GOpenGL* Instance();
+	void test(int argc, char** argv);
 
 private:
     const char* __CLASSNAME__;
+	static GOpenGL* m_instance;
+	GLFWwindow* m_window;
 };
 //================================================
 #endif

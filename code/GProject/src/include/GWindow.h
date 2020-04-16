@@ -44,10 +44,6 @@ protected:
     GWidget* m_expression;
     GWidget* m_variable;
     GWidget* m_textEdit;
-    GWidget* m_string;
-    GWidget* m_replace;
-    GWidget* m_regExp;
-    GWidget* m_toUpper;
     //
     QPoint m_pressPosition;
     QSizeGrip* m_sizeGrip;

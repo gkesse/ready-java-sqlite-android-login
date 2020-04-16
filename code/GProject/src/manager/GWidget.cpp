@@ -75,31 +75,31 @@ void GWidget::slotWindowIconChange(QIcon icon) {
 //===============================================
 void GWidget::slotWindowMaximize(int oldState, int newState) {
     GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
-    GPicto::Instance()->process("color", "orange");
+    GPicto::Instance()->setColor("orange");
     if(oldState == Qt::WindowMaximized) {
-		m_maximize->setIcon(GPicto::Instance()->process("picto", fa::windowmaximize));
+		m_maximize->setIcon(GPicto::Instance()->getPicto(fa::windowmaximize));
 	}
 	else if(oldState == Qt::WindowFullScreen) {
-		m_maximize->setIcon(GPicto::Instance()->process("picto", fa::windowmaximize));
+		m_maximize->setIcon(GPicto::Instance()->getPicto(fa::windowmaximize));
 	}
 	else {
-		m_maximize->setIcon(GPicto::Instance()->process("picto", fa::windowrestore));
+		m_maximize->setIcon(GPicto::Instance()->getPicto(fa::windowrestore));
 	}
 }
 //===============================================
 void GWidget::slotWindowFullScreen(int oldState, int newState) {
     GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
-    GPicto::Instance()->process("color", "orange");
+    GPicto::Instance()->setColor("orange");
 	if(oldState == Qt::WindowFullScreen) {
 		if(newState == Qt::WindowMaximized) {
-			m_maximize->setIcon(GPicto::Instance()->process("picto", fa::windowrestore));
+			m_maximize->setIcon(GPicto::Instance()->getPicto(fa::windowrestore));
 		}
 		else {
-			m_maximize->setIcon(GPicto::Instance()->process("picto", fa::windowmaximize));
+			m_maximize->setIcon(GPicto::Instance()->getPicto(fa::windowmaximize));
 		}
 	}
 	else {
-		m_maximize->setIcon(GPicto::Instance()->process("picto", fa::windowrestore));
+		m_maximize->setIcon(GPicto::Instance()->getPicto(fa::windowrestore));
 	}
 }
 //===============================================

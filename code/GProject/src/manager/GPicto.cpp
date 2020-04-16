@@ -24,37 +24,10 @@ GPicto* GPicto::Instance() {
 	return m_instance;
 }
 //===============================================
-QIcon GPicto::process(const char* key, ...) {
+QIcon GPicto::getPicto(int picto) {
 	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
-	bool lRunFlag = 0;
-	va_list lArgs;
-	va_start(lArgs, key);
-	QIcon lIcon;
-	while(1) {
-		if(strcmp(key, "picto") == 0) {
-			int lPicto = va_arg(lArgs, int);
-			lIcon = getPicto(lPicto, m_color); lRunFlag = 1; break;
-		}
-		else if(strcmp(key, "picto_c") == 0) {
-			int lPicto = va_arg(lArgs, int);
-			QColor lColor = va_arg(lArgs, char*);
-			lIcon = getPicto(lPicto, lColor); lRunFlag = 1; break;
-		}
-		else if(strcmp(key, "color") == 0) {
-			QColor lColor = va_arg(lArgs, char*);
-			setColor(lColor); lRunFlag = 1; break;
-		}
-		break;
-	}
-	va_end(lArgs);
-	return lIcon;
-}
-//===============================================
-QIcon GPicto::getPicto(int picto, QColor color) {
-	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
-    m_picto->setDefaultOption("color", color);
-    m_picto->setDefaultOption("color-active", color);
-    m_color = color;
+    m_picto->setDefaultOption("color", m_color);
+    m_picto->setDefaultOption("color-active", m_color);
     return m_picto->icon(picto);
 }
 //===============================================

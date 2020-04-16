@@ -17,10 +17,10 @@ GWidget(parent) {
 	m_maximize = new QToolButton;
 	m_close = new QToolButton;
 
-	GPicto::Instance()->process("color", "orange");
-	m_minimize->setIcon(GPicto::Instance()->process("picto", fa::windowminimize));
-	m_maximize->setIcon(GPicto::Instance()->process("picto", fa::windowmaximize));
-	m_close->setIcon(GPicto::Instance()->process("picto", fa::close));
+	GPicto::Instance()->setColor("orange");
+	m_minimize->setIcon(GPicto::Instance()->getPicto(fa::windowminimize));
+	m_maximize->setIcon(GPicto::Instance()->getPicto(fa::windowmaximize));
+	m_close->setIcon(GPicto::Instance()->getPicto(fa::close));
 
 	m_minimize->setCursor(Qt::PointingHandCursor);
 	m_maximize->setCursor(Qt::PointingHandCursor);

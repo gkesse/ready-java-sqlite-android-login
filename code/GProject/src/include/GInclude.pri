@@ -9,6 +9,7 @@ HEADERS += \
     $$PWD/GMuParser.h \
     $$PWD/GGsl.h \
     $$PWD/GOpenCV.h \
+    $$PWD/GOpenGL.h \
     $$PWD/GQCustomPlot.h \
     $$PWD/GProcess.h \
     $$PWD/GDebug.h \
@@ -16,7 +17,6 @@ HEADERS += \
     $$PWD/GPicto.h \
     $$PWD/GWindow.h \
     $$PWD/GWindowMath.h \
-    $$PWD/GWindowString.h \
     $$PWD/GWidget.h \
     $$PWD/GWidgetTitleBar.h \
     $$PWD/GWidgetLineEdit.h \

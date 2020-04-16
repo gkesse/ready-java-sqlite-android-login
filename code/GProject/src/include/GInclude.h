@@ -30,6 +30,7 @@ using namespace std;
 #define _GUSE_MUPARSER_OFF_
 #define _GUSE_GSL_ON_
 #define _GUSE_OPENCV_ON_
+#define _GUSE_OPENGL_ON_
 #define _GUSE_QT_ON_
 #define _GUSE_QTAWESOME_ON_
 #define _GUSE_QCUSTOMPLOT_ON_
@@ -57,6 +58,10 @@ using namespace std;
 #include <opencv2/opencv.hpp>
 #endif
 //===============================================
+#if defined(_GUSE_OPENGL_ON_)
+#include <GLFW/glfw3.h>
+#endif
+//===============================================
 #if defined(_GUSE_QT_ON_)
 #include <QtWidgets>
 #include <QScriptEngine>
@@ -74,6 +79,8 @@ using namespace std;
 using namespace std;
 //===============================================
 #endif
+//===============================================
+#include "GStruct.h"
 //===============================================
 #endif
 //===============================================

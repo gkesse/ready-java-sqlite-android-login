@@ -13,10 +13,7 @@ private:
 public:
 	~GPicto();
 	static GPicto* Instance();
-	QIcon process(const char* key, ...);
-
-private:
-    QIcon getPicto(int picto, QColor color);
+    QIcon getPicto(int picto);
     void setColor(QColor color);
 
 private:

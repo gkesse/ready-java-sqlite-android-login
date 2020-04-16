@@ -1,7 +1,6 @@
 //===============================================
 #include "GWindow.h"
 #include "GWindowMath.h"
-#include "GWindowString.h"
 #include "GPicto.h"
 #include "GDebug.h"
 //===============================================
@@ -16,9 +15,6 @@ QFrame(parent) {
 	m_variable = 0;
 	m_textEdit = 0;
 	m_sizeGrip = 0;
-	m_string = 0;
-	m_regExp = 0;
-	m_toUpper = 0;
 }
 //===============================================
 GWindow::~GWindow() {
@@ -28,7 +24,6 @@ GWindow::~GWindow() {
 GWindow* GWindow::Create(string key) {
 	//GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
 	if(key == "math") return new GWindowMath;
-	if(key == "string") return new GWindowString;
 	return new GWindowMath;
 }
 //===============================================
@@ -36,7 +31,8 @@ void GWindow::initTileBar(QString title, int picto, const char* color) {
 	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
 	setWindowFlags(Qt::FramelessWindowHint | Qt::Window);
 	setWindowTitle(title);
-	setWindowIcon(GPicto::Instance()->process("picto_c", picto, color));
+	GPicto::Instance()->setColor(color);
+	setWindowIcon(GPicto::Instance()->getPicto(picto));
 
 	connect(m_tileBar, SIGNAL(emitWindowPress(QPoint)), this, SLOT(slotWindowPress(QPoint)));
 	connect(m_tileBar, SIGNAL(emitWindowMove(QPoint)), this, SLOT(slotWindowMove(QPoint)));
