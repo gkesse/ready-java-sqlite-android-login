@@ -31,6 +31,7 @@ using namespace std;
 #define _GUSE_GSL_ON_
 #define _GUSE_OPENCV_ON_
 #define _GUSE_OPENGL_ON_
+#define _GUSE_GSOAP_ON_
 #define _GUSE_QT_ON_
 #define _GUSE_QTAWESOME_ON_
 #define _GUSE_QCUSTOMPLOT_ON_
@@ -60,6 +61,10 @@ using namespace std;
 //===============================================
 #if defined(_GUSE_OPENGL_ON_)
 #include <GLFW/glfw3.h>
+#endif
+//===============================================
+#if defined(_GUSE_GSOAP_ON_)
+#include <opencv2/opencv.hpp>
 #endif
 //===============================================
 #if defined(_GUSE_QT_ON_)
