@@ -10,6 +10,7 @@
 #include "GGsl.h"
 #include "GOpenCV.h"
 #include "GOpenGL.h"
+#include "GCMocka.h"
 #include "GQCustomPlot.h"
 //===============================================
 GProcess* GProcess::m_instance = 0;
@@ -57,7 +58,7 @@ void GProcess::process(int argc, char** argv) {
 //===============================================
 void GProcess::test(int argc, char** argv) {
 	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
-	GOpenGL::Instance()->test(argc, argv);
+	GCMocka::Instance()->test(argc, argv);
 }
 //===============================================
 void GProcess::help(int argc, char** argv) {

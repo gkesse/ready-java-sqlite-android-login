@@ -23,6 +23,7 @@ SOURCES += \
     $$PWD/GWidgetPushButton.cpp \
 
 LIBS += \
+    -lcmocka \
     -lmuparser \
     -lgsl -lgslcblas -lm \
     -lopencv_core2413 -lopencv_highgui2413 -lopencv_imgproc2413 \

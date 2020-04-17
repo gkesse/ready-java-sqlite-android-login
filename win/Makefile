@@ -208,6 +208,7 @@ Makefile: GProject.pro C:/Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/win32-g++/qmake.conf
 		../../ReadyLib/dev/gsl/mingw/GGsl.pri \
 		../../ReadyLib/dev/opencv/mingw/GOpenCV.pri \
 		../../ReadyLib/dev/glfw/mingw/GGLfw.pri \
+		../../ReadyLib/dev/cmocka/1.1.5/mingw32/GCMocka.pri \
 		../code/GProject/src/include/GInclude.pri \
 		../code/GProject/src/manager/GManager.pri \
 		../code/GProject/src/GMain.pri \
@@ -385,6 +386,7 @@ C:/Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/win32/default_pre.prf:
 ../../ReadyLib/dev/gsl/mingw/GGsl.pri:
 ../../ReadyLib/dev/opencv/mingw/GOpenCV.pri:
 ../../ReadyLib/dev/glfw/mingw/GGLfw.pri:
+../../ReadyLib/dev/cmocka/1.1.5/mingw32/GCMocka.pri:
 ../code/GProject/src/include/GInclude.pri:
 ../code/GProject/src/manager/GManager.pri:
 ../code/GProject/src/GMain.pri:

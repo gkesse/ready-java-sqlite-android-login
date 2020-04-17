@@ -26,16 +26,17 @@ using namespace std;
 //===============================================
 #define _GPLATEFORME_ "WINDOWS"
 //===============================================
-#define _GUSE_EXPRTK_OFF_
-#define _GUSE_MUPARSER_OFF_
-#define _GUSE_GSL_ON_
-#define _GUSE_OPENCV_ON_
-#define _GUSE_OPENGL_ON_
-#define _GUSE_GSOAP_ON_
+#define _GUSE_EXPRTK_ON_0
+#define _GUSE_MUPARSER_ON_0
+#define _GUSE_GSL_ON_0
+#define _GUSE_OPENCV_ON_0
+#define _GUSE_OPENGL_ON_0
+#define _GUSE_GSOAP_ON_0
 #define _GUSE_CMOCKA_ON_
-#define _GUSE_QT_ON_
-#define _GUSE_QTAWESOME_ON_
-#define _GUSE_QCUSTOMPLOT_ON_
+//===============================================
+#define _GUSE_QT_ON_0
+#define _GUSE_QTAWESOME_ON_0
+#define _GUSE_QCUSTOMPLOT_ON_0
 //===============================================
 #include <iostream>
 #include <cstdio>
@@ -69,6 +70,7 @@ using namespace std;
 #endif
 //===============================================
 #if defined(_GUSE_CMOCKA_ON_)
+#include <setjmp.h>
 #include <cmocka.h>
 #endif
 //===============================================

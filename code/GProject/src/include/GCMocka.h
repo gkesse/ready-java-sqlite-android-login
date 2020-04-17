@@ -16,6 +16,11 @@ public:
 	void test(int argc, char** argv);
 
 private:
+	static void onTest(void** state);
+	static int onStart(void** state);
+	static int onEnd(void** state);
+
+private:
     const char* __CLASSNAME__;
 	static GCMocka* m_instance;
 };

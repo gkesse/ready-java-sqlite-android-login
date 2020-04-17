@@ -11,7 +11,7 @@ GCMocka::GCMocka() {
 }
 //===============================================
 GCMocka::~GCMocka() {
-	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+
 }
 //===============================================
 GCMocka* GCMocka::Instance() {
@@ -24,8 +24,23 @@ GCMocka* GCMocka::Instance() {
 void GCMocka::test(int argc, char** argv) {
 	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
 	CMUnitTest lTestMap[] = {
-
+		cmocka_unit_test(onTest)
 	};
+	cmocka_run_group_tests(lTestMap, onStart, onEnd);
+}
+//===============================================
+void GCMocka::onTest(void** state) {
+	GDebug::Instance()->process("log", "GCMocka", "::", __FUNCTION__, "()", 0);
+}
+//===============================================
+int GCMocka::onStart(void** state) {
+	GDebug::Instance()->process("log", "GCMocka", "::", __FUNCTION__, "()", 0);
+	return 0;
+}
+//===============================================
+int GCMocka::onEnd(void** state) {
+	GDebug::Instance()->process("log", "GCMocka", "::", __FUNCTION__, "()", 0);
+	return 0;
 }
 //================================================
 #endif
