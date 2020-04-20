@@ -57,7 +57,7 @@ void GProcess::process(int argc, char** argv) {
 //===============================================
 void GProcess::test(int argc, char** argv) {
     GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
-    GShell::Instance()->test(argc, argv);
+    GDir::Instance()->test(argc, argv);
 }
 //===============================================
 void GProcess::help(int argc, char** argv) {
