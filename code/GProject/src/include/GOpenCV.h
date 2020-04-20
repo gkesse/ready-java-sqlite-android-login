@@ -8,16 +8,16 @@
 //================================================
 class GOpenCV {
 private:
-	GOpenCV();
+    GOpenCV();
 
 public:
-	~GOpenCV();
-	static GOpenCV* Instance();
-	void test(int argc, char** argv);
+    ~GOpenCV();
+    static GOpenCV* Instance();
+    void test(int argc, char** argv);
 
 private:
     const char* __CLASSNAME__;
-	static GOpenCV* m_instance;
+    static GOpenCV* m_instance;
 };
 //================================================
 #endif

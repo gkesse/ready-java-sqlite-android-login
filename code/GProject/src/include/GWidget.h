@@ -7,33 +7,33 @@
 #if defined(_GUSE_QT_ON_)
 //================================================
 class GWidget : public QFrame {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	GWidget(QWidget* parent = 0);
-	virtual ~GWidget();
-	static GWidget* Create(string key);
-	virtual void setLabel(QString label);
-	virtual QString getText();
-	virtual bool getCheck();
-	virtual QTextEdit* textEdit();
+    GWidget(QWidget* parent = 0);
+    virtual ~GWidget();
+    static GWidget* Create(string key);
+    virtual void setLabel(QString label);
+    virtual QString getText();
+    virtual bool getCheck();
+    virtual QTextEdit* textEdit();
 
 public slots:
-	virtual void slotWindowTitleChange(QString text);
-	virtual void slotWindowIconChange(QIcon icon);
-	virtual void slotWindowMaximize(int oldState, int newState);
-	virtual void slotWindowFullScreen(int oldState, int newState);
-	virtual void slotCheck(bool ok);
+    virtual void slotWindowTitleChange(QString text);
+    virtual void slotWindowIconChange(QIcon icon);
+    virtual void slotWindowMaximize(int oldState, int newState);
+    virtual void slotWindowFullScreen(int oldState, int newState);
+    virtual void slotCheck(bool ok);
 
 signals:
-	void emitRun();
-	void emitClear();
-	void emitWindowPress(QPoint position);
-	void emitWindowMove(QPoint position);
-	void emitWindowMinimize();
-	void emitWindowMaximize();
-	void emitWindowClose();
-	void emitWindowFullScreen();
+    void emitRun();
+    void emitClear();
+    void emitWindowPress(QPoint position);
+    void emitWindowMove(QPoint position);
+    void emitWindowMinimize();
+    void emitWindowMaximize();
+    void emitWindowClose();
+    void emitWindowFullScreen();
 
 protected:
     const char* __CLASSNAME__;

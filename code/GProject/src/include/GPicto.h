@@ -8,19 +8,19 @@
 //================================================
 class GPicto {
 private:
-	GPicto();
+    GPicto();
 
 public:
-	~GPicto();
-	static GPicto* Instance();
+    ~GPicto();
+    static GPicto* Instance();
     QIcon getPicto(int picto);
     void setColor(QColor color);
 
 private:
     const char* __CLASSNAME__;
-	static GPicto* m_instance;
-	QtAwesome* m_picto;
-	QColor m_color;
+    static GPicto* m_instance;
+    QtAwesome* m_picto;
+    QColor m_color;
 };
 //================================================
 #endif

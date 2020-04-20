@@ -8,8 +8,8 @@
 //================================================
 class GWidgetPushButton : public GWidget {
 public:
-	GWidgetPushButton(QWidget* parent = 0);
-	~GWidgetPushButton();
+    GWidgetPushButton(QWidget* parent = 0);
+    ~GWidgetPushButton();
 
 private:
     const char* __CLASSNAME__;

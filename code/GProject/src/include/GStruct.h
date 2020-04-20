@@ -6,11 +6,11 @@ typedef struct _sGVertex sGVertex;
 typedef struct _sGColor sGColor;
 //================================================
 struct _sGVertex {
-	double x, y, z;
+    double x, y, z;
 };
 //================================================
 struct _sGColor {
-	double r, g, b, a;
+    double r, g, b, a;
 };
 //===============================================
 #endif

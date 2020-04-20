@@ -8,17 +8,17 @@
 //================================================
 class GQCustomPlot {
 private:
-	GQCustomPlot();
+    GQCustomPlot();
 
 public:
-	~GQCustomPlot();
-	static GQCustomPlot* Instance();
-	void test(int argc, char** argv);
+    ~GQCustomPlot();
+    static GQCustomPlot* Instance();
+    void test(int argc, char** argv);
 
 private:
     const char* __CLASSNAME__;
-	static GQCustomPlot* m_instance;
-	QCustomPlot* m_plot;
+    static GQCustomPlot* m_instance;
+    QCustomPlot* m_plot;
 };
 //================================================
 #endif

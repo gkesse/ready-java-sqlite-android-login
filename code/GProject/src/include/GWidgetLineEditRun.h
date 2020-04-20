@@ -8,8 +8,8 @@
 //================================================
 class GWidgetLineEditRun : public GWidget {
 public:
-	GWidgetLineEditRun(QWidget* parent = 0);
-	~GWidgetLineEditRun();
+    GWidgetLineEditRun(QWidget* parent = 0);
+    ~GWidgetLineEditRun();
 
 private:
     const char* __CLASSNAME__;

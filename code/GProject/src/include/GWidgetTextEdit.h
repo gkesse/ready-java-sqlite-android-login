@@ -8,8 +8,8 @@
 //================================================
 class GWidgetTextEdit : public GWidget {
 public:
-	GWidgetTextEdit(QWidget* parent = 0);
-	~GWidgetTextEdit();
+    GWidgetTextEdit(QWidget* parent = 0);
+    ~GWidgetTextEdit();
 
 private:
     const char* __CLASSNAME__;

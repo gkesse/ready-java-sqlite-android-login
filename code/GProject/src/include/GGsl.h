@@ -8,16 +8,16 @@
 //================================================
 class GGsl {
 private:
-	GGsl();
+    GGsl();
 
 public:
-	~GGsl();
-	static GGsl* Instance();
-	void test(int argc, char** argv);
+    ~GGsl();
+    static GGsl* Instance();
+    void test(int argc, char** argv);
 
 private:
     const char* __CLASSNAME__;
-	static GGsl* m_instance;
+    static GGsl* m_instance;
 };
 //================================================
 #endif

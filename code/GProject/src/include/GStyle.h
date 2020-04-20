@@ -8,16 +8,16 @@
 //================================================
 class GStyle {
 private:
-	GStyle();
+    GStyle();
 
 public:
-	~GStyle();
-	static GStyle* Instance();
+    ~GStyle();
+    static GStyle* Instance();
     void load(QString filename);
 
 private:
     const char* __CLASSNAME__;
-	static GStyle* m_instance;
+    static GStyle* m_instance;
 };
 //================================================
 #endif

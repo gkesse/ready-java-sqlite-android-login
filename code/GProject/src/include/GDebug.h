@@ -6,12 +6,12 @@
 //================================================
 class GDebug {
 private:
-	GDebug();
+    GDebug();
 
 public:
-	~GDebug();
-	static GDebug* Instance();
-	void test(int argc, char** argv);
+    ~GDebug();
+    static GDebug* Instance();
+    void test(int argc, char** argv);
     void write(const char* key, ...);
     void process(const char* key, ...);
     void sep();
@@ -24,10 +24,10 @@ public:
 
 private:
     const char* __CLASSNAME__;
-	static GDebug* m_instance;
-	char m_homePath[256];
-	char m_debugPath[256];
-	char m_filename[256];
+    static GDebug* m_instance;
+    char m_homePath[256];
+    char m_debugPath[256];
+    char m_filename[256];
 };
 //================================================
 #endif

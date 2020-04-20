@@ -8,16 +8,16 @@
 //================================================
 class GSoap {
 private:
-	GSoap();
+    GSoap();
 
 public:
-	~GSoap();
-	static GSoap* Instance();
-	void test(int argc, char** argv);
+    ~GSoap();
+    static GSoap* Instance();
+    void test(int argc, char** argv);
 
 private:
     const char* __CLASSNAME__;
-	static GSoap* m_instance;
+    static GSoap* m_instance;
 };
 //================================================
 #endif

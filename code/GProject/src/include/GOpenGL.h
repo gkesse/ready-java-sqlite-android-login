@@ -8,17 +8,17 @@
 //================================================
 class GOpenGL {
 private:
-	GOpenGL();
+    GOpenGL();
 
 public:
-	~GOpenGL();
-	static GOpenGL* Instance();
-	void test(int argc, char** argv);
+    ~GOpenGL();
+    static GOpenGL* Instance();
+    void test(int argc, char** argv);
 
 private:
     const char* __CLASSNAME__;
-	static GOpenGL* m_instance;
-	GLFWwindow* m_window;
+    static GOpenGL* m_instance;
+    GLFWwindow* m_window;
 };
 //================================================
 #endif

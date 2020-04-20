@@ -8,8 +8,8 @@
 //================================================
 class GWidgetLineEditCheck : public GWidget {
 public:
-	GWidgetLineEditCheck(QWidget* parent = 0);
-	~GWidgetLineEditCheck();
+    GWidgetLineEditCheck(QWidget* parent = 0);
+    ~GWidgetLineEditCheck();
 
 private:
     const char* __CLASSNAME__;

@@ -8,11 +8,11 @@
 //================================================
 class GWindowMath : public GWindow {
 public:
-	GWindowMath(QWidget* parent = 0);
-	~GWindowMath();
+    GWindowMath(QWidget* parent = 0);
+    ~GWindowMath();
 
 public slots:
-	void slotRun();
+    void slotRun();
 
 private:
     const char* __CLASSNAME__;

@@ -6,23 +6,23 @@
 //================================================
 class GProcess {
 private:
-	GProcess();
+    GProcess();
 
 public:
-	~GProcess();
-	static GProcess* Instance();
-	void process(int argc, char** argv);
+    ~GProcess();
+    static GProcess* Instance();
+    void process(int argc, char** argv);
 
 private:
-	void test(int argc, char** argv);
-	void help(int argc, char** argv);
-	void window(int argc, char** argv, const char* key);
-	void muParser(int argc, char** argv);
-	void exprTk(int argc, char** argv);
+    void test(int argc, char** argv);
+    void help(int argc, char** argv);
+    void window(int argc, char** argv, const char* key);
+    void muParser(int argc, char** argv);
+    void exprTk(int argc, char** argv);
 
 private:
-	const char* __CLASSNAME__;
-	static GProcess* m_instance;
+    const char* __CLASSNAME__;
+    static GProcess* m_instance;
 };
 //===============================================
 #endif
