@@ -12,7 +12,7 @@ GOpenGL::GOpenGL() {
 }
 //===============================================
 GOpenGL::~GOpenGL() {
-	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
 }
 //===============================================
 GOpenGL* GOpenGL::Instance() {
@@ -23,7 +23,7 @@ GOpenGL* GOpenGL::Instance() {
 }
 //===============================================
 void GOpenGL::test(int argc, char** argv) {
-	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
 	glfwInit();
 	m_window = glfwCreateWindow(640, 480, "OpenGL | ReadyDev", NULL, NULL);
 	glfwMakeContextCurrent(m_window);

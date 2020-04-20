@@ -23,7 +23,7 @@ GDir* GDir::Instance() {
 }
 //===============================================
 void GDir::test(int argc, char** argv) {
-	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
 	char lHome[256];
 	homePath(lHome);
 	cout << lHome << "\n";
@@ -38,7 +38,7 @@ string GDir::dataPath() {
 }
 //===============================================
 	void GDir::homePath(char* buffer) {
-	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
 #if defined(__WIN32)
 	homePathWin(buffer);
 #else
@@ -48,7 +48,7 @@ string GDir::dataPath() {
 //===============================================
 void GDir::homePathWin(char* buffer) {
 #if defined(__WIN32)
-	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
 	char lCommand[256];
 	sprintf(lCommand, "%s", "echo %HOMEDRIVE%%HOMEPATH%");
 	GShell::Instance()->run(lCommand, buffer, 255, 1);
@@ -57,7 +57,7 @@ void GDir::homePathWin(char* buffer) {
 //===============================================
 void GDir::homePathUnix(char* buffer) {
 #if defined(__WIN32)
-	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
 	char lCommand[256];
 	sprintf(lCommand, "%s", "echo $HOME");
 	GShell::Instance()->run(lCommand, buffer, 255, 1);

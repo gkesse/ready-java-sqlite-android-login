@@ -36,7 +36,7 @@ void GMuParser::add(const char* key, double value) {
 }
 //===============================================
 double GMuParser::run(const char* expression) {
-	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
 	m_parser.SetExpr(expression);
 	double lResult = m_parser.Eval();
 	return lResult;

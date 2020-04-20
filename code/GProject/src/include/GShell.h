@@ -12,7 +12,14 @@ public:
 	~GShell();
 	static GShell* Instance();
     void test(int argc, char** argv);
-    void run(const char* command, char* output, int size, int shift = 0);
+    void run(const char* command, char* output, int size, int shift);
+
+private:
+#if defined(__WIN32)
+	testWin(argc, argv);
+#elif defined(__unix)
+    void testUnix(int argc, char** argv);
+#endif
 
 private:
     const char* __CLASSNAME__;

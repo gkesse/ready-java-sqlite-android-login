@@ -45,7 +45,7 @@ GWindowMath::~GWindowMath() {
 }
 //===============================================
 void GWindowMath::slotRun() {
-	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
 	QString lExpression = m_expression->getText();
 	if(lExpression == "") return;
 

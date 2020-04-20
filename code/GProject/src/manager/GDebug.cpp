@@ -26,22 +26,33 @@ GDebug* GDebug::Instance() {
 	return m_instance;
 }
 //===============================================
-void GDebug::process(const char* key, ...) {
+void GDebug::test(int argc, char** argv) {
+	write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
+}
+//===============================================
+void GDebug::write(const char* key, ...) {
+	if(key == 0) return;
+	char lBuffer[256];
+	char lDate[256];
+	int lIndex = 0;
+	date(lDate);
+	lIndex += sprintf(&lBuffer[lIndex], "%s | ", lDate);
+	lIndex += sprintf(&lBuffer[lIndex], "%s", key);
 	va_list lArgs;
 	va_start(lArgs, key);
 	while(1) {
-		if(strcmp(key, "log") == 0) {
-			log(lArgs); break;
-		}
-		else if(strcmp(key, "sep") == 0) {
-			sep(); break;
-		}
-		break;
+		char* lData = va_arg(lArgs, char*);
+		if(lData == 0) break;
+		lIndex += sprintf(&lBuffer[lIndex], "%s", lData);
 	}
 	va_end(lArgs);
+	cout << lBuffer << "\n";
 }
 //===============================================
-void GDebug::log(va_list args) {
+void GDebug::process(const char* key, ...) {
+}
+//===============================================
+/*void GDebug::log(va_list args) {
 	char lBuffer[256];
 	char lDate[256];
 	int lIndex = 0;
@@ -52,8 +63,8 @@ void GDebug::log(va_list args) {
 		if(lData == 0) break;
 		lIndex += sprintf(&lBuffer[lIndex], "%s", lData);
 	}
-	write(lBuffer);
-}
+	//write(lBuffer);
+}*/
 //===============================================
 void GDebug::sep() {
 	const char* lSep = "=================================================";
@@ -65,10 +76,11 @@ void GDebug::line(const char* data) {
 	char lDate[256];
 	date(lDate);
 	sprintf(lBuffer, "%s | %s", lDate, data);
-	write(lBuffer);
+	//log(lBuffer);
+	cout << lBuffer << "\n";
 }
 //===============================================
-void GDebug::write(const char* data) {
+void GDebug::log(const char* data) {
 	FILE* lpFile = fopen(m_filename, "a+");
 	fprintf(lpFile, "%s\n", data);
 	fclose(lpFile);

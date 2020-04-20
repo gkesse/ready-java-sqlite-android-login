@@ -4,7 +4,6 @@ SOURCES += \
     $$PWD/GExprTk.cpp \
     $$PWD/GMuParser.cpp \
     $$PWD/GGsl.cpp \
-    $$PWD/GCMocka.cpp \
     $$PWD/GOpenCV.cpp \
     $$PWD/GOpenGL.cpp \
     $$PWD/GQCustomPlot.cpp \

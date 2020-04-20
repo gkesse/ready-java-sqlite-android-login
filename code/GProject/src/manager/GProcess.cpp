@@ -10,7 +10,6 @@
 #include "GGsl.h"
 #include "GOpenCV.h"
 #include "GOpenGL.h"
-#include "GCMocka.h"
 #include "GQCustomPlot.h"
 //===============================================
 GProcess* GProcess::m_instance = 0;
@@ -31,7 +30,7 @@ GProcess* GProcess::Instance() {
 }
 //===============================================
 void GProcess::process(int argc, char** argv) {
-	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
 	bool lRunFlag = 0;
 	string lKey = "";
 	for(int i = 1; i < argc;) {
@@ -57,12 +56,12 @@ void GProcess::process(int argc, char** argv) {
 }
 //===============================================
 void GProcess::test(int argc, char** argv) {
-	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
-	GCMocka::Instance()->test(argc, argv);
+	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
+	GShell::Instance()->test(argc, argv);
 }
 //===============================================
 void GProcess::help(int argc, char** argv) {
-	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
 	const char* lModule = "gp_cpp";
 	printf("\n");
 	printf("%s\n", "Description:");
@@ -78,7 +77,7 @@ void GProcess::help(int argc, char** argv) {
 }
 //===============================================
 void GProcess::window(int argc, char** argv, const char* key) {
-	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
 #if defined(_GUSE_QT_ON_)
 	QApplication lApp(argc, argv);
 	GStyle::Instance()->load(":/css/style.css");
@@ -89,7 +88,7 @@ void GProcess::window(int argc, char** argv, const char* key) {
 }
 //===============================================
 void GProcess::muParser(int argc, char** argv) {
-	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
 #if defined(_GUSE_MUPARSER_ON_)
 	if(argc <= 2) return;
 	char* lExpression = argv[2];
@@ -104,7 +103,7 @@ void GProcess::muParser(int argc, char** argv) {
 }
 //===============================================
 void GProcess::exprTk(int argc, char** argv) {
-	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
 #if defined(_GUSE_EXPRTK_ON_)
 	if(argc <= 2) return;
 	char* lExpression = argv[2];

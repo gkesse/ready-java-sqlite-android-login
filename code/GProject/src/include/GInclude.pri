@@ -8,7 +8,6 @@ HEADERS += \
     $$PWD/GExprTk.h \
     $$PWD/GMuParser.h \
     $$PWD/GGsl.h \
-    $$PWD/GCMocka.h \
     $$PWD/GOpenCV.h \
     $$PWD/GOpenGL.h \
     $$PWD/GQCustomPlot.h \

@@ -33,7 +33,7 @@ void GExprTk::add(const char* key, double value) {
 }
 //===============================================
 double GExprTk::run(const char* expression) {
-	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
 	string lExpressionIn = expression;
 	exprtk::expression<double> lExpression;
 	lExpression.register_symbol_table(m_symbol);

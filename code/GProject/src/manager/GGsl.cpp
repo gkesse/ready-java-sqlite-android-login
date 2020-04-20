@@ -22,7 +22,7 @@ GGsl* GGsl::Instance() {
 }
 //===============================================
 void GGsl::test(int argc, char** argv) {
-	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
 	double x = 5.0;
 	double y = gsl_sf_bessel_J0 (x);
 	printf ("J0(%g) = %.18e\n", x, y);

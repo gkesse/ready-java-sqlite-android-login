@@ -22,13 +22,13 @@ GWindow::~GWindow() {
 }
 //===============================================
 GWindow* GWindow::Create(string key) {
-	//GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+	//GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
 	if(key == "math") return new GWindowMath;
 	return new GWindowMath;
 }
 //===============================================
 void GWindow::initTileBar(QString title, int picto, const char* color) {
-	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
 	setWindowFlags(Qt::FramelessWindowHint | Qt::Window);
 	setWindowTitle(title);
 	GPicto::Instance()->setColor(color);
@@ -54,7 +54,7 @@ void GWindow::initTileBar(QString title, int picto, const char* color) {
 }
 //===============================================
 void GWindow::paintEvent(QPaintEvent *event) {
-	//GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+	//GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
 	QPainter lPainter(this);
 	lPainter.setPen(QPen(QBrush("teal"), 2));
 	lPainter.setBrush(Qt::NoBrush);
@@ -70,33 +70,33 @@ void GWindow::paintEvent(QPaintEvent *event) {
 }
 //===============================================
 void GWindow::resizeEvent(QResizeEvent *event) {
-	//GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+	//GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
 	int lSizeGrip = 10;
 	m_sizeGrip->setGeometry(width() - lSizeGrip, height() - lSizeGrip, lSizeGrip, lSizeGrip);
 }
 //===============================================
 void GWindow::closeEvent(QCloseEvent *event) {
-	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
 }
 //===============================================
 void GWindow::slotWindowPress(QPoint position) {
-	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
 	m_pressPosition = position - frameGeometry().topLeft();
 }
 //===============================================
 void GWindow::slotWindowMove(QPoint position) {
-	//GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+	//GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
 	QPoint lMovePosition = position - m_pressPosition;
 	move(lMovePosition);
 }
 //===============================================
 void GWindow::slotWindowMinimize() {
-	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
 	showMinimized();
 }
 //===============================================
 void GWindow::slotWindowMaximize() {
-	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
 	int lWindowState = windowState();
 	if(lWindowState == Qt::WindowMaximized) {
 		showNormal();
@@ -111,7 +111,7 @@ void GWindow::slotWindowMaximize() {
 }
 //===============================================
 void GWindow::slotWindowFullScreen() {
-	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
 	int lWindowState = windowState();
 	if(lWindowState == Qt::WindowFullScreen) {
 		showNormal();

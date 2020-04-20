@@ -33,7 +33,7 @@ GWidget::~GWidget() {
 }
 //===============================================
 GWidget* GWidget::Create(string key) {
-	//GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+	//GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
 	if(key == "title_bar") return new GWidgetTitleBar;
 	if(key == "line_edit") return new GWidgetLineEdit;
 	if(key == "line_edit_run") return new GWidgetLineEditRun;
@@ -44,37 +44,37 @@ GWidget* GWidget::Create(string key) {
 }
 //===============================================
 void GWidget::setLabel(QString label) {
-    GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+    GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
 	m_label->setText(label);
 }
 //===============================================
 QString GWidget::getText() {
-    GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+    GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
 	return m_lineEidt->text();
 }
 //===============================================
 bool GWidget::getCheck() {
-    GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+    GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
 	return m_check->isChecked();
 }
 //===============================================
 QTextEdit* GWidget::textEdit() {
-    GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+    GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
 	return m_textEdit;
 }
 //===============================================
 void GWidget::slotWindowTitleChange(QString text) {
-    GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+    GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
 	m_title->setText(text);
 }
 //===============================================
 void GWidget::slotWindowIconChange(QIcon icon) {
-    GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+    GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
 	m_icon->setPixmap(icon.pixmap(QSize(20, 20)));
 }
 //===============================================
 void GWidget::slotWindowMaximize(int oldState, int newState) {
-    GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+    GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
     GPicto::Instance()->setColor("orange");
     if(oldState == Qt::WindowMaximized) {
 		m_maximize->setIcon(GPicto::Instance()->getPicto(fa::windowmaximize));
@@ -88,7 +88,7 @@ void GWidget::slotWindowMaximize(int oldState, int newState) {
 }
 //===============================================
 void GWidget::slotWindowFullScreen(int oldState, int newState) {
-    GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+    GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
     GPicto::Instance()->setColor("orange");
 	if(oldState == Qt::WindowFullScreen) {
 		if(newState == Qt::WindowMaximized) {

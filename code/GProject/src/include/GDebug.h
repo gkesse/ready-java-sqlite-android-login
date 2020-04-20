@@ -11,13 +11,12 @@ private:
 public:
 	~GDebug();
 	static GDebug* Instance();
+	void test(int argc, char** argv);
+    void write(const char* key, ...);
     void process(const char* key, ...);
-
-private:
-    void log(va_list args);
     void sep();
     void line(const char* data);
-    void write(const char* data);
+    void log(const char* data);
     void clear();
     void date(char* buffer);
     void homePathWin();

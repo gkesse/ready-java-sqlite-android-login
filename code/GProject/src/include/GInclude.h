@@ -15,8 +15,13 @@
 #include <cstdarg>
 #include <ctime>
 //===============================================
+#if defined(_GUSE_EXPRTK_ON_)
 #include <exprtk.hpp>
+#endif
+//===============================================
+#if defined(_GUSE_MUPARSER_ON_)
 #include <muParser.h>
+#endif
 //===============================================
 using namespace std;
 //===============================================

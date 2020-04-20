@@ -23,7 +23,7 @@ GOpenCV* GOpenCV::Instance() {
 }
 //===============================================
 void GOpenCV::test(int argc, char** argv) {
-	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
 	string lDataPath = GDir::Instance()->dataPath();
 	string lFilename = lDataPath + "/data/img/fruits.jpg";
 	cout << lFilename;

@@ -25,14 +25,14 @@ GPicto* GPicto::Instance() {
 }
 //===============================================
 QIcon GPicto::getPicto(int picto) {
-	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
     m_picto->setDefaultOption("color", m_color);
     m_picto->setDefaultOption("color-active", m_color);
     return m_picto->icon(picto);
 }
 //===============================================
 void GPicto::setColor(QColor color) {
-	GDebug::Instance()->process("log", __CLASSNAME__, "::", __FUNCTION__, "()", 0);
+	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
 	m_color = color;
 }
 //================================================
