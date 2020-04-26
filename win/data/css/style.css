@@ -41,6 +41,14 @@ QLabel {
     padding: 0px 5px;
 }
 /*===============================================*/
+/* QCheckBox */
+QCheckBox {
+    background-color: transparent;
+}
+QCheckBox::indicator {
+    border: 1px solid #b2cec3
+}
+/*===============================================*/
 /* QLabel */
 QLabel#GLabel {
     background-color: transparent;

@@ -5,6 +5,7 @@
 #include "GStyle.h"
 #include "GShell.h"
 #include "GDir.h"
+#include "GEnv.h"
 #include "GMuParser.h"
 #include "GMuParserX.h"
 #include "GExprTk.h"
@@ -71,6 +72,7 @@ void GProcess::help(int argc, char** argv) {
 //===============================================
 void GProcess::window(int argc, char** argv, const char* key) {
     GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
+    GEnv::Instance()->setEnv();
 #if defined(_GUSE_QT_ON_)
     QApplication lApp(argc, argv);
     GStyle::Instance()->load(":/css/style.css");
@@ -79,4 +81,3 @@ void GProcess::window(int argc, char** argv, const char* key) {
     lApp.exec();
 #endif
 }
-//===============================================

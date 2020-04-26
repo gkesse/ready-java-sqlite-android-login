@@ -85,6 +85,7 @@ SOURCES       = ../../ReadyLib/dev/qtawesome/4.7.0/mingw/QtAwesome.cpp \
 		build/moc_qcustomplot.cpp \
 		build/moc_GQt.cpp \
 		build/moc_GQtDBusInterface.cpp \
+		build/moc_GQCustomPlot.cpp \
 		build/moc_GWindow.cpp \
 		build/moc_GWidget.cpp
 OBJECTS       = build/QtAwesome.o \
@@ -123,6 +124,7 @@ OBJECTS       = build/QtAwesome.o \
 		build/moc_qcustomplot.o \
 		build/moc_GQt.o \
 		build/moc_GQtDBusInterface.o \
+		build/moc_GQCustomPlot.o \
 		build/moc_GWindow.o \
 		build/moc_GWidget.o
 DIST          = /usr/lib/qt5/mkspecs/features/spec_pre.prf \
@@ -518,9 +520,9 @@ compiler_moc_predefs_clean:
 build/moc_predefs.h: /usr/lib/qt5/mkspecs/features/data/dummy.cpp
 	g++ -fno-keep-inline-dllexport -D_GNU_SOURCE -pipe -O2 -Wall -W -dM -E -o build/moc_predefs.h /usr/lib/qt5/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: build/moc_QtAwesome.cpp build/moc_QtAwesomeAnim.cpp build/moc_qcustomplot.cpp build/moc_GQt.cpp build/moc_GQtDBusInterface.cpp build/moc_GWindow.cpp build/moc_GWidget.cpp
+compiler_moc_header_make_all: build/moc_QtAwesome.cpp build/moc_QtAwesomeAnim.cpp build/moc_qcustomplot.cpp build/moc_GQt.cpp build/moc_GQtDBusInterface.cpp build/moc_GQCustomPlot.cpp build/moc_GWindow.cpp build/moc_GWidget.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) build/moc_QtAwesome.cpp build/moc_QtAwesomeAnim.cpp build/moc_qcustomplot.cpp build/moc_GQt.cpp build/moc_GQtDBusInterface.cpp build/moc_GWindow.cpp build/moc_GWidget.cpp
+	-$(DEL_FILE) build/moc_QtAwesome.cpp build/moc_QtAwesomeAnim.cpp build/moc_qcustomplot.cpp build/moc_GQt.cpp build/moc_GQtDBusInterface.cpp build/moc_GQCustomPlot.cpp build/moc_GWindow.cpp build/moc_GWidget.cpp
 build/moc_QtAwesome.cpp: ../../ReadyLib/dev/qtawesome/4.7.0/mingw/QtAwesomeAnim.h \
 		../../ReadyLib/dev/qtawesome/4.7.0/mingw/QtAwesome.h \
 		build/moc_predefs.h \
@@ -608,6 +610,42 @@ build/moc_GQtDBusInterface.cpp: ../code/GProject/src/include/GInclude.h \
 		build/moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include build/moc_predefs.h -I/usr/lib/qt5/mkspecs/cygwin-g++ -I/cygdrive/c/Users/Admin/Downloads/Programs/ReadyCpp/unix -I/cygdrive/c/Users/Admin/Downloads/Programs/ReadyLib/dev/qtawesome/4.7.0/mingw -I/cygdrive/c/Users/Admin/Downloads/Programs/ReadyLib/dev/qcustomplot/2.0.1/mingw -I/cygdrive/c/Users/Admin/Downloads/Programs/ReadyLib/dev/exprtk/1.0.0/mingw/include -I/cygdrive/c/Users/Admin/Downloads/Programs/ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx -I/cygdrive/c/Users/Admin/Downloads/Programs/ReadyCpp/code/GProject/src/include -I/usr/include/qt5 -I/usr/include/qt5/QtPrintSupport -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtScript -I/usr/include/qt5/QtDBus -I/usr/include/qt5/QtCore -I/usr/lib/gcc/x86_64-pc-cygwin/9.3.0/include/c++ -I/usr/lib/gcc/x86_64-pc-cygwin/9.3.0/include/c++/x86_64-pc-cygwin -I/usr/lib/gcc/x86_64-pc-cygwin/9.3.0/include/c++/backward -I/usr/lib/gcc/x86_64-pc-cygwin/9.3.0/include -I/usr/include -I/usr/include/w32api ../code/GProject/src/include/GQtDBusInterface.h -o build/moc_GQtDBusInterface.cpp
+
+build/moc_GQCustomPlot.cpp: ../code/GProject/src/include/GInclude.h \
+		../../ReadyLib/dev/exprtk/1.0.0/mingw/include/GExprTkLib.h \
+		../../ReadyLib/dev/exprtk/1.0.0/mingw/include/exprtk.hpp \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpParser.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpDefines.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpParserBase.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpIOprt.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpICallback.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpIToken.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpTypes.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/suSortPred.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpMatrix.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpMatrixError.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpCompat.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpFwdDecl.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpIPackage.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpIPrecedence.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpIValReader.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpValue.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpIValue.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpTokenReader.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpError.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpParserMessageProvider.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpStack.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpVariable.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpRPN.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpValueCache.h \
+		../../ReadyLib/dev/qtawesome/4.7.0/mingw/QtAwesome.h \
+		../../ReadyLib/dev/qtawesome/4.7.0/mingw/QtAwesomeAnim.h \
+		../../ReadyLib/dev/qcustomplot/2.0.1/mingw/qcustomplot.h \
+		../code/GProject/src/include/GStruct.h \
+		../code/GProject/src/include/GQCustomPlot.h \
+		build/moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include build/moc_predefs.h -I/usr/lib/qt5/mkspecs/cygwin-g++ -I/cygdrive/c/Users/Admin/Downloads/Programs/ReadyCpp/unix -I/cygdrive/c/Users/Admin/Downloads/Programs/ReadyLib/dev/qtawesome/4.7.0/mingw -I/cygdrive/c/Users/Admin/Downloads/Programs/ReadyLib/dev/qcustomplot/2.0.1/mingw -I/cygdrive/c/Users/Admin/Downloads/Programs/ReadyLib/dev/exprtk/1.0.0/mingw/include -I/cygdrive/c/Users/Admin/Downloads/Programs/ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx -I/cygdrive/c/Users/Admin/Downloads/Programs/ReadyCpp/code/GProject/src/include -I/usr/include/qt5 -I/usr/include/qt5/QtPrintSupport -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtScript -I/usr/include/qt5/QtDBus -I/usr/include/qt5/QtCore -I/usr/lib/gcc/x86_64-pc-cygwin/9.3.0/include/c++ -I/usr/lib/gcc/x86_64-pc-cygwin/9.3.0/include/c++/x86_64-pc-cygwin -I/usr/lib/gcc/x86_64-pc-cygwin/9.3.0/include/c++/backward -I/usr/lib/gcc/x86_64-pc-cygwin/9.3.0/include -I/usr/include -I/usr/include/w32api ../code/GProject/src/include/GQCustomPlot.h -o build/moc_GQCustomPlot.cpp
 
 build/moc_GWindow.cpp: ../code/GProject/src/include/GInclude.h \
 		../../ReadyLib/dev/exprtk/1.0.0/mingw/include/GExprTkLib.h \
@@ -1171,6 +1209,7 @@ build/GProcess.o: ../code/GProject/src/manager/GProcess.cpp ../code/GProject/src
 		../code/GProject/src/include/GStyle.h \
 		../code/GProject/src/include/GShell.h \
 		../code/GProject/src/include/GDir.h \
+		../code/GProject/src/include/GEnv.h \
 		../code/GProject/src/include/GMuParser.h \
 		../code/GProject/src/include/GMuParserX.h \
 		../code/GProject/src/include/GExprTk.h \
@@ -1672,6 +1711,9 @@ build/moc_GQt.o: build/moc_GQt.cpp
 
 build/moc_GQtDBusInterface.o: build/moc_GQtDBusInterface.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/moc_GQtDBusInterface.o build/moc_GQtDBusInterface.cpp
+
+build/moc_GQCustomPlot.o: build/moc_GQCustomPlot.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/moc_GQCustomPlot.o build/moc_GQCustomPlot.cpp
 
 build/moc_GWindow.o: build/moc_GWindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/moc_GWindow.o build/moc_GWindow.cpp

@@ -33,6 +33,24 @@ QLabel#GIcon {
     background-color: navy;
 }
 /*===============================================*/
+/* QCheckBox */
+QCheckBox::indicator {
+    background-color: transparent;
+    border: 1px solid #b2cec3
+}
+QCheckBox::indicator:unchecked:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+QCheckBox::indicator:checked {
+    image: url(:/img/check.png);
+}
+QCheckBox::indicator:checked:hover {
+    image: url(:/img/check.png);
+}
+QCheckBox::indicator:checked:pressed {
+    image: url(:/img/check.png);
+}
+/*===============================================*/
 /* QLabel */
 QLabel {
     background-color: transparent;

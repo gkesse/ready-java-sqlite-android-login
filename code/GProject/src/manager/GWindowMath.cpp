@@ -49,22 +49,30 @@ void GWindowMath::slotRun() {
     QString lExpression = m_expression->getText();
     if(lExpression == "") return;
 
+    GExprTkLib lExprTk;
+    lExprTk.setExpr(lExpression.toStdString());
+
     QString lVariable = "";
 
     if(m_variable->getCheck() == true) {
         lVariable = m_variable->getText();
-
+        QStringList lMap = lVariable.split(" ");
+        for(int i = 0; i < lMap.size();) {
+        	string lKey = lMap[i++].toStdString();
+        	double lValue = lMap[i++].toDouble();
+        	lExprTk.addConstant(lKey, lValue);
+        }
     }
 
-    char lCommand[256];
-    char lOutput[256];
-    const char* lExpressionIn = lExpression.toStdString().c_str();
-    const char* lVariableIn = lVariable.toStdString().c_str();
-    sprintf(lCommand, "gp_muparser muparser \"%s\" %s", lExpressionIn, lVariableIn);
-    GShell::Instance()->run(lCommand, lOutput, 255, 0);
+    lExprTk.setConstants();
+    lExprTk.setSymbols();
+    lExprTk.compile();
+
+    double lResult = lExprTk.eval();
 
     m_textEdit->textEdit()->append(QString("> %1").arg(lExpression));
-    m_textEdit->textEdit()->append(QString("= %1").arg(lOutput));
+    if(lVariable != "") m_textEdit->textEdit()->append(QString("> %1").arg(lVariable));
+    m_textEdit->textEdit()->append(QString("= %1").arg(lResult));
     m_textEdit->textEdit()->append("");
 }
 //================================================
