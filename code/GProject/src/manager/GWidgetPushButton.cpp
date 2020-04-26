@@ -1,5 +1,6 @@
 //===============================================
 #include "GWidgetPushButton.h"
+#include "GDebug.h"
 //===============================================
 #if defined(_GUSE_QT_ON_)
 //===============================================
@@ -25,6 +26,11 @@ GWidget(parent) {
 //===============================================
 GWidgetPushButton::~GWidgetPushButton() {
 
+}
+//===============================================
+void GWidgetPushButton::setLabel(QString label) {
+	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
+	m_label->setText(label);
 }
 //================================================
 #endif

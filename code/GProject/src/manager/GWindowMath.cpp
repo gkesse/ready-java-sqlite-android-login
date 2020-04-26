@@ -12,6 +12,7 @@ GWindow(parent) {
     __CLASSNAME__ = __FUNCTION__;
     setObjectName("GWindowMath");
     m_tileBar = GWidget::Create("title_bar");
+
     m_expression = GWidget::Create("line_edit_run");
     m_expression->setLabel("Expression");
     m_variable = GWidget::Create("line_edit_check");
@@ -42,6 +43,10 @@ GWindow(parent) {
 //===============================================
 GWindowMath::~GWindowMath() {
 
+}
+//===============================================
+void GWindowMath::closeEvent(QCloseEvent *event) {
+    GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
 }
 //===============================================
 void GWindowMath::slotRun() {

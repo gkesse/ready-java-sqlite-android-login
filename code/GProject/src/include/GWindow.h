@@ -19,7 +19,6 @@ public:
 protected:
     void paintEvent(QPaintEvent *event);
     void resizeEvent(QResizeEvent *event);
-    void closeEvent(QCloseEvent *event);
 
 public slots:
     virtual void slotWindowPress(QPoint position);
@@ -27,11 +26,7 @@ public slots:
     virtual void slotWindowMinimize();
     virtual void slotWindowMaximize();
     virtual void slotWindowFullScreen();
-    //
     virtual void slotRun();
-    virtual void slotReplace();
-    virtual void slotRegExp();
-    virtual void slotToUpper();
 
 signals:
     void emitWindowMaximize(int oldState, int newState);
@@ -40,11 +35,6 @@ signals:
 protected:
     const char* __CLASSNAME__;
     GWidget* m_tileBar;
-    //
-    GWidget* m_expression;
-    GWidget* m_variable;
-    GWidget* m_textEdit;
-    //
     QPoint m_pressPosition;
     QSizeGrip* m_sizeGrip;
     QPixmap m_pixmapBg;

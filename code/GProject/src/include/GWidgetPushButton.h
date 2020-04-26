@@ -11,8 +11,13 @@ public:
     GWidgetPushButton(QWidget* parent = 0);
     ~GWidgetPushButton();
 
+public:
+    void setLabel(QString label);
+
 private:
     const char* __CLASSNAME__;
+    QLabel* m_label;
+    QPushButton* m_run;
 };
 //================================================
 #endif

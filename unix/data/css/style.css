@@ -51,6 +51,12 @@ QCheckBox::indicator:checked:pressed {
     image: url(:/img/check.png);
 }
 /*===============================================*/
+/* QCustomPlot */
+QCustomPlot {
+    background-color: transparent;
+    border: 1px solid #b2cec3
+}
+/*===============================================*/
 /* QLabel */
 QLabel {
     background-color: transparent;

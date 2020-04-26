@@ -1,16 +1,16 @@
 //===============================================
-#include "GWidgetTextEdit.h"
+#include "GWidgetPlot.h"
+#include "GDebug.h"
 //===============================================
 #if defined(_GUSE_QT_ON_)
 //===============================================
-GWidgetTextEdit::GWidgetTextEdit(QWidget* parent) :
+GWidgetPlot::GWidgetPlot(QWidget* parent) :
 GWidget(parent) {
     __CLASSNAME__ = __FUNCTION__;
-    setObjectName("GWidgetTextEdit");
+    setObjectName("GWidgetPlot");
     m_clear = new QPushButton("Clear");
     m_clear->setCursor(Qt::PointingHandCursor);
-    m_textEdit = new QTextEdit;
-    m_textEdit->setReadOnly(true);
+    m_customPlot = new QCustomPlot;
 
     QHBoxLayout* lTopLayout = new QHBoxLayout;
     lTopLayout->setAlignment(Qt::AlignLeft);
@@ -21,19 +21,19 @@ GWidget(parent) {
     QVBoxLayout* lMainLayout = new QVBoxLayout;
     lMainLayout->setMargin(0);
     lMainLayout->addLayout(lTopLayout);
-    lMainLayout->addWidget(m_textEdit);
+    lMainLayout->addWidget(m_customPlot);
 
     setLayout(lMainLayout);
 
-    connect(m_clear, SIGNAL(clicked()), m_textEdit, SLOT(clear()));
+    //connect(m_clear, SIGNAL(clicked()), m_textEdit, SLOT(clear()));
 }
 //===============================================
-GWidgetTextEdit::~GWidgetTextEdit() {
+GWidgetPlot::~GWidgetPlot() {
 
 }
 //================================================
-QTextEdit* GWidgetTextEdit::textEdit() {
-	return m_textEdit;
+QCustomPlot* GWidgetPlot::plot() {
+	return m_customPlot;
 }
 //================================================
 #endif

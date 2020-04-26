@@ -1,5 +1,6 @@
 //===============================================
 #include "GWidgetLineEditRun.h"
+#include "GDebug.h"
 //===============================================
 #if defined(_GUSE_QT_ON_)
 //===============================================
@@ -26,6 +27,16 @@ GWidget(parent) {
 //===============================================
 GWidgetLineEditRun::~GWidgetLineEditRun() {
 
+}
+//===============================================
+void GWidgetLineEditRun::setLabel(QString label) {
+	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
+	m_label->setText(label);
+}
+//===============================================
+QString GWidgetLineEditRun::getText() {
+	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
+	return m_lineEidt->text();
 }
 //================================================
 #endif

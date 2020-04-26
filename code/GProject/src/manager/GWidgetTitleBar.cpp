@@ -75,6 +75,46 @@ void GWidgetTitleBar::mouseDoubleClickEvent(QMouseEvent *event) {
     }
     QWidget::mouseDoubleClickEvent(event);
 }
+//===============================================
+void GWidgetTitleBar::slotWindowTitleChange(QString text) {
+	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
+	m_title->setText(text);
+}
+//===============================================
+void GWidgetTitleBar::slotWindowIconChange(QIcon icon) {
+	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
+	m_icon->setPixmap(icon.pixmap(QSize(20, 20)));
+}
+//===============================================
+void GWidgetTitleBar::slotWindowMaximize(int oldState, int newState) {
+	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
+	GPicto::Instance()->setColor("orange");
+	if(oldState == Qt::WindowMaximized) {
+		m_maximize->setIcon(GPicto::Instance()->getPicto(fa::windowmaximize));
+	}
+	else if(oldState == Qt::WindowFullScreen) {
+		m_maximize->setIcon(GPicto::Instance()->getPicto(fa::windowmaximize));
+	}
+	else {
+		m_maximize->setIcon(GPicto::Instance()->getPicto(fa::windowrestore));
+	}
+}
+//===============================================
+void GWidgetTitleBar::slotWindowFullScreen(int oldState, int newState) {
+	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
+	GPicto::Instance()->setColor("orange");
+	if(oldState == Qt::WindowFullScreen) {
+		if(newState == Qt::WindowMaximized) {
+			m_maximize->setIcon(GPicto::Instance()->getPicto(fa::windowrestore));
+		}
+		else {
+			m_maximize->setIcon(GPicto::Instance()->getPicto(fa::windowmaximize));
+		}
+	}
+	else {
+		m_maximize->setIcon(GPicto::Instance()->getPicto(fa::windowrestore));
+	}
+}
 //================================================
 #endif
 //===============================================

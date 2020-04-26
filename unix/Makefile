@@ -71,12 +71,14 @@ SOURCES       = ../../ReadyLib/dev/qtawesome/4.7.0/mingw/QtAwesome.cpp \
 		../code/GProject/src/manager/GPicto.cpp \
 		../code/GProject/src/manager/GWindow.cpp \
 		../code/GProject/src/manager/GWindowMath.cpp \
+		../code/GProject/src/manager/GWindowMathFunc.cpp \
 		../code/GProject/src/manager/GWidget.cpp \
 		../code/GProject/src/manager/GWidgetTitleBar.cpp \
 		../code/GProject/src/manager/GWidgetLineEdit.cpp \
 		../code/GProject/src/manager/GWidgetLineEditRun.cpp \
 		../code/GProject/src/manager/GWidgetLineEditCheck.cpp \
 		../code/GProject/src/manager/GWidgetTextEdit.cpp \
+		../code/GProject/src/manager/GWidgetPlot.cpp \
 		../code/GProject/src/manager/GWidgetPushButton.cpp \
 		../code/GProject/src/main.cpp build/qrc_resources.cpp \
 		build/qrc_QtAwesome.cpp \
@@ -109,12 +111,14 @@ OBJECTS       = build/QtAwesome.o \
 		build/GPicto.o \
 		build/GWindow.o \
 		build/GWindowMath.o \
+		build/GWindowMathFunc.o \
 		build/GWidget.o \
 		build/GWidgetTitleBar.o \
 		build/GWidgetLineEdit.o \
 		build/GWidgetLineEditRun.o \
 		build/GWidgetLineEditCheck.o \
 		build/GWidgetTextEdit.o \
+		build/GWidgetPlot.o \
 		build/GWidgetPushButton.o \
 		build/main.o \
 		build/qrc_resources.o \
@@ -232,12 +236,14 @@ DIST          = /usr/lib/qt5/mkspecs/features/spec_pre.prf \
 		../code/GProject/src/include/GPicto.h \
 		../code/GProject/src/include/GWindow.h \
 		../code/GProject/src/include/GWindowMath.h \
+		../code/GProject/src/include/GWindowMathFunc.h \
 		../code/GProject/src/include/GWidget.h \
 		../code/GProject/src/include/GWidgetTitleBar.h \
 		../code/GProject/src/include/GWidgetLineEdit.h \
 		../code/GProject/src/include/GWidgetLineEditRun.h \
 		../code/GProject/src/include/GWidgetLineEditCheck.h \
 		../code/GProject/src/include/GWidgetTextEdit.h \
+		../code/GProject/src/include/GWidgetPlot.h \
 		../code/GProject/src/include/GWidgetPushButton.h ../../ReadyLib/dev/qtawesome/4.7.0/mingw/QtAwesome.cpp \
 		../../ReadyLib/dev/qtawesome/4.7.0/mingw/QtAwesomeAnim.cpp \
 		../../ReadyLib/dev/qcustomplot/2.0.1/mingw/qcustomplot.cpp \
@@ -259,12 +265,14 @@ DIST          = /usr/lib/qt5/mkspecs/features/spec_pre.prf \
 		../code/GProject/src/manager/GPicto.cpp \
 		../code/GProject/src/manager/GWindow.cpp \
 		../code/GProject/src/manager/GWindowMath.cpp \
+		../code/GProject/src/manager/GWindowMathFunc.cpp \
 		../code/GProject/src/manager/GWidget.cpp \
 		../code/GProject/src/manager/GWidgetTitleBar.cpp \
 		../code/GProject/src/manager/GWidgetLineEdit.cpp \
 		../code/GProject/src/manager/GWidgetLineEditRun.cpp \
 		../code/GProject/src/manager/GWidgetLineEditCheck.cpp \
 		../code/GProject/src/manager/GWidgetTextEdit.cpp \
+		../code/GProject/src/manager/GWidgetPlot.cpp \
 		../code/GProject/src/manager/GWidgetPushButton.cpp \
 		../code/GProject/src/main.cpp
 QMAKE_TARGET  = gp_cpp
@@ -468,8 +476,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents resources.qrc ../../ReadyLib/dev/qtawesome/4.7.0/mingw/QtAwesome.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../../ReadyLib/dev/qtawesome/4.7.0/mingw/QtAwesome.h ../../ReadyLib/dev/qtawesome/4.7.0/mingw/QtAwesomeAnim.h ../../ReadyLib/dev/qcustomplot/2.0.1/mingw/qcustomplot.h ../code/GProject/src/include/GInclude.h ../code/GProject/src/include/GShell.h ../code/GProject/src/include/GDir.h ../code/GProject/src/include/GEnv.h ../code/GProject/src/include/GExprTk.h ../code/GProject/src/include/GMuParser.h ../code/GProject/src/include/GMuParserX.h ../code/GProject/src/include/GGsl.h ../code/GProject/src/include/GOpenCV.h ../code/GProject/src/include/GOpenGL.h ../code/GProject/src/include/GQt.h ../code/GProject/src/include/GQtDBusInterface.h ../code/GProject/src/include/GQCustomPlot.h ../code/GProject/src/include/GProcess.h ../code/GProject/src/include/GDebug.h ../code/GProject/src/include/GStyle.h ../code/GProject/src/include/GPicto.h ../code/GProject/src/include/GWindow.h ../code/GProject/src/include/GWindowMath.h ../code/GProject/src/include/GWidget.h ../code/GProject/src/include/GWidgetTitleBar.h ../code/GProject/src/include/GWidgetLineEdit.h ../code/GProject/src/include/GWidgetLineEditRun.h ../code/GProject/src/include/GWidgetLineEditCheck.h ../code/GProject/src/include/GWidgetTextEdit.h ../code/GProject/src/include/GWidgetPushButton.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../../ReadyLib/dev/qtawesome/4.7.0/mingw/QtAwesome.cpp ../../ReadyLib/dev/qtawesome/4.7.0/mingw/QtAwesomeAnim.cpp ../../ReadyLib/dev/qcustomplot/2.0.1/mingw/qcustomplot.cpp ../code/GProject/src/manager/GShell.cpp ../code/GProject/src/manager/GDir.cpp ../code/GProject/src/manager/GEnv.cpp ../code/GProject/src/manager/GExprTk.cpp ../code/GProject/src/manager/GMuParser.cpp ../code/GProject/src/manager/GMuParserX.cpp ../code/GProject/src/manager/GGsl.cpp ../code/GProject/src/manager/GOpenCV.cpp ../code/GProject/src/manager/GOpenGL.cpp ../code/GProject/src/manager/GQt.cpp ../code/GProject/src/manager/GQtDBusInterface.cpp ../code/GProject/src/manager/GQCustomPlot.cpp ../code/GProject/src/manager/GProcess.cpp ../code/GProject/src/manager/GDebug.cpp ../code/GProject/src/manager/GStyle.cpp ../code/GProject/src/manager/GPicto.cpp ../code/GProject/src/manager/GWindow.cpp ../code/GProject/src/manager/GWindowMath.cpp ../code/GProject/src/manager/GWidget.cpp ../code/GProject/src/manager/GWidgetTitleBar.cpp ../code/GProject/src/manager/GWidgetLineEdit.cpp ../code/GProject/src/manager/GWidgetLineEditRun.cpp ../code/GProject/src/manager/GWidgetLineEditCheck.cpp ../code/GProject/src/manager/GWidgetTextEdit.cpp ../code/GProject/src/manager/GWidgetPushButton.cpp ../code/GProject/src/main.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../../ReadyLib/dev/qtawesome/4.7.0/mingw/QtAwesome.h ../../ReadyLib/dev/qtawesome/4.7.0/mingw/QtAwesomeAnim.h ../../ReadyLib/dev/qcustomplot/2.0.1/mingw/qcustomplot.h ../code/GProject/src/include/GInclude.h ../code/GProject/src/include/GShell.h ../code/GProject/src/include/GDir.h ../code/GProject/src/include/GEnv.h ../code/GProject/src/include/GExprTk.h ../code/GProject/src/include/GMuParser.h ../code/GProject/src/include/GMuParserX.h ../code/GProject/src/include/GGsl.h ../code/GProject/src/include/GOpenCV.h ../code/GProject/src/include/GOpenGL.h ../code/GProject/src/include/GQt.h ../code/GProject/src/include/GQtDBusInterface.h ../code/GProject/src/include/GQCustomPlot.h ../code/GProject/src/include/GProcess.h ../code/GProject/src/include/GDebug.h ../code/GProject/src/include/GStyle.h ../code/GProject/src/include/GPicto.h ../code/GProject/src/include/GWindow.h ../code/GProject/src/include/GWindowMath.h ../code/GProject/src/include/GWindowMathFunc.h ../code/GProject/src/include/GWidget.h ../code/GProject/src/include/GWidgetTitleBar.h ../code/GProject/src/include/GWidgetLineEdit.h ../code/GProject/src/include/GWidgetLineEditRun.h ../code/GProject/src/include/GWidgetLineEditCheck.h ../code/GProject/src/include/GWidgetTextEdit.h ../code/GProject/src/include/GWidgetPlot.h ../code/GProject/src/include/GWidgetPushButton.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../../ReadyLib/dev/qtawesome/4.7.0/mingw/QtAwesome.cpp ../../ReadyLib/dev/qtawesome/4.7.0/mingw/QtAwesomeAnim.cpp ../../ReadyLib/dev/qcustomplot/2.0.1/mingw/qcustomplot.cpp ../code/GProject/src/manager/GShell.cpp ../code/GProject/src/manager/GDir.cpp ../code/GProject/src/manager/GEnv.cpp ../code/GProject/src/manager/GExprTk.cpp ../code/GProject/src/manager/GMuParser.cpp ../code/GProject/src/manager/GMuParserX.cpp ../code/GProject/src/manager/GGsl.cpp ../code/GProject/src/manager/GOpenCV.cpp ../code/GProject/src/manager/GOpenGL.cpp ../code/GProject/src/manager/GQt.cpp ../code/GProject/src/manager/GQtDBusInterface.cpp ../code/GProject/src/manager/GQCustomPlot.cpp ../code/GProject/src/manager/GProcess.cpp ../code/GProject/src/manager/GDebug.cpp ../code/GProject/src/manager/GStyle.cpp ../code/GProject/src/manager/GPicto.cpp ../code/GProject/src/manager/GWindow.cpp ../code/GProject/src/manager/GWindowMath.cpp ../code/GProject/src/manager/GWindowMathFunc.cpp ../code/GProject/src/manager/GWidget.cpp ../code/GProject/src/manager/GWidgetTitleBar.cpp ../code/GProject/src/manager/GWidgetLineEdit.cpp ../code/GProject/src/manager/GWidgetLineEditRun.cpp ../code/GProject/src/manager/GWidgetLineEditCheck.cpp ../code/GProject/src/manager/GWidgetTextEdit.cpp ../code/GProject/src/manager/GWidgetPlot.cpp ../code/GProject/src/manager/GWidgetPushButton.cpp ../code/GProject/src/main.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -1359,6 +1367,7 @@ build/GWindow.o: ../code/GProject/src/manager/GWindow.cpp ../code/GProject/src/i
 		../code/GProject/src/include/GStruct.h \
 		../code/GProject/src/include/GWidget.h \
 		../code/GProject/src/include/GWindowMath.h \
+		../code/GProject/src/include/GWindowMathFunc.h \
 		../code/GProject/src/include/GPicto.h \
 		../code/GProject/src/include/GDebug.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/GWindow.o ../code/GProject/src/manager/GWindow.cpp
@@ -1402,6 +1411,45 @@ build/GWindowMath.o: ../code/GProject/src/manager/GWindowMath.cpp ../code/GProje
 		../code/GProject/src/include/GDebug.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/GWindowMath.o ../code/GProject/src/manager/GWindowMath.cpp
 
+build/GWindowMathFunc.o: ../code/GProject/src/manager/GWindowMathFunc.cpp ../code/GProject/src/include/GWindowMathFunc.h \
+		../code/GProject/src/include/GWindow.h \
+		../code/GProject/src/include/GInclude.h \
+		../../ReadyLib/dev/exprtk/1.0.0/mingw/include/GExprTkLib.h \
+		../../ReadyLib/dev/exprtk/1.0.0/mingw/include/exprtk.hpp \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpParser.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpDefines.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpParserBase.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpIOprt.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpICallback.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpIToken.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpTypes.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/suSortPred.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpMatrix.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpMatrixError.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpCompat.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpFwdDecl.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpIPackage.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpIPrecedence.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpIValReader.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpValue.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpIValue.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpTokenReader.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpError.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpParserMessageProvider.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpStack.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpVariable.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpRPN.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpValueCache.h \
+		../../ReadyLib/dev/qtawesome/4.7.0/mingw/QtAwesome.h \
+		../../ReadyLib/dev/qtawesome/4.7.0/mingw/QtAwesomeAnim.h \
+		../../ReadyLib/dev/qcustomplot/2.0.1/mingw/qcustomplot.h \
+		../code/GProject/src/include/GStruct.h \
+		../code/GProject/src/include/GWidget.h \
+		../code/GProject/src/include/GPicto.h \
+		../code/GProject/src/include/GShell.h \
+		../code/GProject/src/include/GDebug.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/GWindowMathFunc.o ../code/GProject/src/manager/GWindowMathFunc.cpp
+
 build/GWidget.o: ../code/GProject/src/manager/GWidget.cpp ../code/GProject/src/include/GWidget.h \
 		../code/GProject/src/include/GInclude.h \
 		../../ReadyLib/dev/exprtk/1.0.0/mingw/include/GExprTkLib.h \
@@ -1439,6 +1487,7 @@ build/GWidget.o: ../code/GProject/src/manager/GWidget.cpp ../code/GProject/src/i
 		../code/GProject/src/include/GWidgetLineEditRun.h \
 		../code/GProject/src/include/GWidgetLineEditCheck.h \
 		../code/GProject/src/include/GWidgetTextEdit.h \
+		../code/GProject/src/include/GWidgetPlot.h \
 		../code/GProject/src/include/GWidgetPushButton.h \
 		../code/GProject/src/include/GPicto.h \
 		../code/GProject/src/include/GDebug.h
@@ -1513,7 +1562,8 @@ build/GWidgetLineEdit.o: ../code/GProject/src/manager/GWidgetLineEdit.cpp ../cod
 		../../ReadyLib/dev/qtawesome/4.7.0/mingw/QtAwesome.h \
 		../../ReadyLib/dev/qtawesome/4.7.0/mingw/QtAwesomeAnim.h \
 		../../ReadyLib/dev/qcustomplot/2.0.1/mingw/qcustomplot.h \
-		../code/GProject/src/include/GStruct.h
+		../code/GProject/src/include/GStruct.h \
+		../code/GProject/src/include/GDebug.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/GWidgetLineEdit.o ../code/GProject/src/manager/GWidgetLineEdit.cpp
 
 build/GWidgetLineEditRun.o: ../code/GProject/src/manager/GWidgetLineEditRun.cpp ../code/GProject/src/include/GWidgetLineEditRun.h \
@@ -1548,7 +1598,8 @@ build/GWidgetLineEditRun.o: ../code/GProject/src/manager/GWidgetLineEditRun.cpp 
 		../../ReadyLib/dev/qtawesome/4.7.0/mingw/QtAwesome.h \
 		../../ReadyLib/dev/qtawesome/4.7.0/mingw/QtAwesomeAnim.h \
 		../../ReadyLib/dev/qcustomplot/2.0.1/mingw/qcustomplot.h \
-		../code/GProject/src/include/GStruct.h
+		../code/GProject/src/include/GStruct.h \
+		../code/GProject/src/include/GDebug.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/GWidgetLineEditRun.o ../code/GProject/src/manager/GWidgetLineEditRun.cpp
 
 build/GWidgetLineEditCheck.o: ../code/GProject/src/manager/GWidgetLineEditCheck.cpp ../code/GProject/src/include/GWidgetLineEditCheck.h \
@@ -1583,7 +1634,8 @@ build/GWidgetLineEditCheck.o: ../code/GProject/src/manager/GWidgetLineEditCheck.
 		../../ReadyLib/dev/qtawesome/4.7.0/mingw/QtAwesome.h \
 		../../ReadyLib/dev/qtawesome/4.7.0/mingw/QtAwesomeAnim.h \
 		../../ReadyLib/dev/qcustomplot/2.0.1/mingw/qcustomplot.h \
-		../code/GProject/src/include/GStruct.h
+		../code/GProject/src/include/GStruct.h \
+		../code/GProject/src/include/GDebug.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/GWidgetLineEditCheck.o ../code/GProject/src/manager/GWidgetLineEditCheck.cpp
 
 build/GWidgetTextEdit.o: ../code/GProject/src/manager/GWidgetTextEdit.cpp ../code/GProject/src/include/GWidgetTextEdit.h \
@@ -1621,6 +1673,42 @@ build/GWidgetTextEdit.o: ../code/GProject/src/manager/GWidgetTextEdit.cpp ../cod
 		../code/GProject/src/include/GStruct.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/GWidgetTextEdit.o ../code/GProject/src/manager/GWidgetTextEdit.cpp
 
+build/GWidgetPlot.o: ../code/GProject/src/manager/GWidgetPlot.cpp ../code/GProject/src/include/GWidgetPlot.h \
+		../code/GProject/src/include/GWidget.h \
+		../code/GProject/src/include/GInclude.h \
+		../../ReadyLib/dev/exprtk/1.0.0/mingw/include/GExprTkLib.h \
+		../../ReadyLib/dev/exprtk/1.0.0/mingw/include/exprtk.hpp \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpParser.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpDefines.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpParserBase.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpIOprt.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpICallback.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpIToken.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpTypes.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/suSortPred.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpMatrix.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpMatrixError.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpCompat.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpFwdDecl.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpIPackage.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpIPrecedence.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpIValReader.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpValue.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpIValue.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpTokenReader.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpError.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpParserMessageProvider.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpStack.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpVariable.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpRPN.h \
+		../../ReadyLib/dev/muparserx/4.0.8/unix64/include/muparserx/mpValueCache.h \
+		../../ReadyLib/dev/qtawesome/4.7.0/mingw/QtAwesome.h \
+		../../ReadyLib/dev/qtawesome/4.7.0/mingw/QtAwesomeAnim.h \
+		../../ReadyLib/dev/qcustomplot/2.0.1/mingw/qcustomplot.h \
+		../code/GProject/src/include/GStruct.h \
+		../code/GProject/src/include/GDebug.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/GWidgetPlot.o ../code/GProject/src/manager/GWidgetPlot.cpp
+
 build/GWidgetPushButton.o: ../code/GProject/src/manager/GWidgetPushButton.cpp ../code/GProject/src/include/GWidgetPushButton.h \
 		../code/GProject/src/include/GWidget.h \
 		../code/GProject/src/include/GInclude.h \
@@ -1653,7 +1741,8 @@ build/GWidgetPushButton.o: ../code/GProject/src/manager/GWidgetPushButton.cpp ..
 		../../ReadyLib/dev/qtawesome/4.7.0/mingw/QtAwesome.h \
 		../../ReadyLib/dev/qtawesome/4.7.0/mingw/QtAwesomeAnim.h \
 		../../ReadyLib/dev/qcustomplot/2.0.1/mingw/qcustomplot.h \
-		../code/GProject/src/include/GStruct.h
+		../code/GProject/src/include/GStruct.h \
+		../code/GProject/src/include/GDebug.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/GWidgetPushButton.o ../code/GProject/src/manager/GWidgetPushButton.cpp
 
 build/main.o: ../code/GProject/src/main.cpp ../code/GProject/src/include/GProcess.h \

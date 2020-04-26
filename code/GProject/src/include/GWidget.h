@@ -17,6 +17,7 @@ public:
     virtual QString getText();
     virtual bool getCheck();
     virtual QTextEdit* textEdit();
+    virtual QCustomPlot* plot();
 
 public slots:
     virtual void slotWindowTitleChange(QString text);
@@ -37,6 +38,7 @@ signals:
 
 protected:
     const char* __CLASSNAME__;
+    /*
     QLabel* m_label;
     QLabel* m_icon;
     QLabel* m_title;
@@ -48,6 +50,7 @@ protected:
     QToolButton* m_maximize;
     QToolButton* m_close;
     QCheckBox* m_check;
+    */
 };
 //================================================
 #endif

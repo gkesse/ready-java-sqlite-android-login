@@ -1,25 +1,27 @@
 //================================================
-#ifndef _GWidgetLineEdit_
-#define _GWidgetLineEdit_
+#ifndef _GWindowMathFunc_
+#define _GWindowMathFunc_
 //================================================
-#include "GWidget.h"
+#include "GWindow.h"
 //===============================================
 #if defined(_GUSE_QT_ON_)
 //================================================
-class GWidgetLineEdit : public GWidget {
+class GWindowMathFunc : public GWindow {
 public:
-	GWidgetLineEdit(QWidget* parent = 0);
-	~GWidgetLineEdit();
+    GWindowMathFunc(QWidget* parent = 0);
+    ~GWindowMathFunc();
 
-public:
-	void setLabel(QString label);
-	QString getText();
+protected:
+    void closeEvent(QCloseEvent *event);
+
+public slots:
+    void slotRun();
 
 private:
-	const char* __CLASSNAME__;
-	QLabel* m_label;
-	QLineEdit* m_lineEidt;
-
+    const char* __CLASSNAME__;
+    GWidget* m_expression;
+    GWidget* m_variable;
+    GWidget* m_plot;
 };
 //================================================
 #endif

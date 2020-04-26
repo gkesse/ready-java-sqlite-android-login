@@ -11,8 +11,15 @@ public:
     GWidgetLineEditRun(QWidget* parent = 0);
     ~GWidgetLineEditRun();
 
+public:
+    void setLabel(QString label);
+    QString getText();
+
 private:
     const char* __CLASSNAME__;
+    QLabel* m_label;
+    QLineEdit* m_lineEidt;
+    QPushButton* m_run;
 };
 //================================================
 #endif

@@ -21,10 +21,12 @@ HEADERS += \
     $$PWD/GPicto.h \
     $$PWD/GWindow.h \
     $$PWD/GWindowMath.h \
+    $$PWD/GWindowMathFunc.h \
     $$PWD/GWidget.h \
     $$PWD/GWidgetTitleBar.h \
     $$PWD/GWidgetLineEdit.h \
     $$PWD/GWidgetLineEditRun.h \
     $$PWD/GWidgetLineEditCheck.h \
     $$PWD/GWidgetTextEdit.h \
+    $$PWD/GWidgetPlot.h \
     $$PWD/GWidgetPushButton.h \

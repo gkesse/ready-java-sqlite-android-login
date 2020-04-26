@@ -1,6 +1,7 @@
 //===============================================
 #include "GWindow.h"
 #include "GWindowMath.h"
+#include "GWindowMathFunc.h"
 #include "GPicto.h"
 #include "GDebug.h"
 //===============================================
@@ -11,9 +12,6 @@ QFrame(parent) {
     __CLASSNAME__ = __FUNCTION__;
     setObjectName("GWindow");
     m_tileBar = 0;
-    m_expression = 0;
-    m_variable = 0;
-    m_textEdit = 0;
     m_sizeGrip = 0;
 }
 //===============================================
@@ -22,8 +20,9 @@ GWindow::~GWindow() {
 }
 //===============================================
 GWindow* GWindow::Create(string key) {
-    //GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
+    GDebug::Instance()->write("GWindow", "::", __FUNCTION__, "()", _EOA_);
     if(key == "math") return new GWindowMath;
+    if(key == "math_func") return new GWindowMathFunc;
     return new GWindowMath;
 }
 //===============================================
@@ -33,6 +32,7 @@ void GWindow::initTileBar(QString title, int picto, const char* color) {
     setWindowTitle(title);
     GPicto::Instance()->setColor(color);
     setWindowIcon(GPicto::Instance()->getPicto(picto));
+    resize(640, 480);
 
     connect(m_tileBar, SIGNAL(emitWindowPress(QPoint)), this, SLOT(slotWindowPress(QPoint)));
     connect(m_tileBar, SIGNAL(emitWindowMove(QPoint)), this, SLOT(slotWindowMove(QPoint)));
@@ -73,10 +73,6 @@ void GWindow::resizeEvent(QResizeEvent *event) {
     //GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
     int lSizeGrip = 10;
     m_sizeGrip->setGeometry(width() - lSizeGrip, height() - lSizeGrip, lSizeGrip, lSizeGrip);
-}
-//===============================================
-void GWindow::closeEvent(QCloseEvent *event) {
-    GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
 }
 //===============================================
 void GWindow::slotWindowPress(QPoint position) {
@@ -123,9 +119,6 @@ void GWindow::slotWindowFullScreen() {
 }
 //===============================================
 void GWindow::slotRun() {}
-void GWindow::slotReplace() {}
-void GWindow::slotRegExp() {}
-void GWindow::slotToUpper() {}
 //===============================================
 #endif
 //===============================================

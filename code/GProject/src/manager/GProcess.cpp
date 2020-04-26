@@ -38,12 +38,9 @@ void GProcess::process(int argc, char** argv) {
     string lKey = "";
     for(int i = 1; i < argc;) {
     	string lKey = argv[i++];
-        if(lKey == "test") {
-            test(argc, argv); lRunFlag = 1; break;
-        }
-        if(lKey == "math") {
-            window(argc, argv, lKey.c_str()); lRunFlag = 1; break;
-        }
+        if(lKey == "test") {test(argc, argv); lRunFlag = 1; break;}
+        if(lKey == "math") {window(argc, argv, lKey.c_str()); lRunFlag = 1; break;}
+        if(lKey == "math_func") {window(argc, argv, lKey.c_str()); lRunFlag = 1; break;}
         break;
     }
     if(lRunFlag == 0) help(argc, argv);
@@ -63,10 +60,8 @@ void GProcess::help(int argc, char** argv) {
     printf("\n");
     printf("%s\n", "Utilisation:");
     printf("\t\%s : %s\n", lModule, "afficher aide");
-    printf("\t\%s %s : %s\n", lModule, "math", "operations mathematiques");
-    printf("\t\%s %s : %s\n", lModule, "muparser <expr> <var>", "operations mathematiques muparser");
-    printf("\t\%s %s : %s\n", lModule, "exprtk <expr> <var>", "operations mathematiques exprtk");
-    printf("\t\%s %s : %s\n", lModule, "string", "operations chaines caracteres");
+    printf("\t\%s %s : %s\n", lModule, "math", "mathematiques operations");
+    printf("\t\%s %s : %s\n", lModule, "math_func", "mathematiques tracage fonctions");
     printf("\n");
 }
 //===============================================

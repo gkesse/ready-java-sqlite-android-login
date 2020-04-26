@@ -17,10 +17,12 @@ SOURCES += \
     $$PWD/GPicto.cpp \
     $$PWD/GWindow.cpp \
     $$PWD/GWindowMath.cpp \
+    $$PWD/GWindowMathFunc.cpp \
     $$PWD/GWidget.cpp \
     $$PWD/GWidgetTitleBar.cpp \
     $$PWD/GWidgetLineEdit.cpp \
     $$PWD/GWidgetLineEditRun.cpp \
     $$PWD/GWidgetLineEditCheck.cpp \
     $$PWD/GWidgetTextEdit.cpp \
+    $$PWD/GWidgetPlot.cpp \
     $$PWD/GWidgetPushButton.cpp \
