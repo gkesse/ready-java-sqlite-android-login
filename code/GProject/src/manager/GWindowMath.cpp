@@ -45,7 +45,7 @@ GWindowMath::~GWindowMath() {
 }
 //===============================================
 void GWindowMath::slotRun() {
-    GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
+    GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
     QString lExpression = m_expression->getText();
     if(lExpression == "") return;
 
@@ -61,7 +61,7 @@ void GWindowMath::slotRun() {
     const char* lExpressionIn = lExpression.toStdString().c_str();
     const char* lVariableIn = lVariable.toStdString().c_str();
     sprintf(lCommand, "gp_muparser muparser \"%s\" %s", lExpressionIn, lVariableIn);
-    GShell::Instance()->run(lCommand, lOutput, 255);
+    GShell::Instance()->run(lCommand, lOutput, 255, 0);
 
     m_textEdit->textEdit()->append(QString("> %1").arg(lExpression));
     m_textEdit->textEdit()->append(QString("= %1").arg(lOutput));

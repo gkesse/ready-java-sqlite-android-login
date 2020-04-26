@@ -51,7 +51,7 @@ GWidgetTitleBar::~GWidgetTitleBar() {
 }
 //===============================================
 void GWidgetTitleBar::mousePressEvent(QMouseEvent *event) {
-    //GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
+    //GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
     if(event->button() == Qt::LeftButton) {
         QPoint lPressPosition = event->globalPos();
         emit emitWindowPress(lPressPosition);
@@ -60,7 +60,7 @@ void GWidgetTitleBar::mousePressEvent(QMouseEvent *event) {
 }
 //===============================================
 void GWidgetTitleBar::mouseMoveEvent(QMouseEvent *event) {
-    //GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
+    //GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
     if(event->buttons() & Qt::LeftButton) {
         QPoint lMovePosition = event->globalPos();
         emit emitWindowMove(lMovePosition);
@@ -69,7 +69,7 @@ void GWidgetTitleBar::mouseMoveEvent(QMouseEvent *event) {
 }
 //===============================================
 void GWidgetTitleBar::mouseDoubleClickEvent(QMouseEvent *event) {
-    //GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
+    //GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
     if(event->button() == Qt::LeftButton) {
         emit emitWindowFullScreen();
     }

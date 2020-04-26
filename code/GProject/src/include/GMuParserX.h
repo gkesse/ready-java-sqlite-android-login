@@ -1,23 +1,23 @@
 //================================================
-#ifndef _GExprTk_
-#define _GExprTk_
+#ifndef _GMuParserX_
+#define _GMuParserX_
 //================================================
 #include "GInclude.h"
 //===============================================
-#if defined(_GUSE_EXPRTK_ON_)
+#if defined(_GUSE_MUPARSERX_ON_)
 //================================================
-class GExprTk {
+class GMuParserX {
 private:
-    GExprTk();
+    GMuParserX();
 
 public:
-    ~GExprTk();
-    static GExprTk* Instance();
+    ~GMuParserX();
+    static GMuParserX* Instance();
     void test(int argc, char** argv);
 
 private:
     const char* __CLASSNAME__;
-    static GExprTk* m_instance;
+    static GMuParserX* m_instance;
 };
 //================================================
 #endif

@@ -22,7 +22,7 @@ GStyle* GStyle::Instance() {
 }
 //===============================================
 void GStyle::load(QString filename) {
-    GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
+    GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
     QFile lFile(filename);
     lFile.open(QFile::ReadOnly);
     QString lStyleSheet = QLatin1String(lFile.readAll());

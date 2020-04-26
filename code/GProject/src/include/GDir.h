@@ -14,17 +14,23 @@ public:
     void test(int argc, char** argv);
     string homePath();
     string dataPath();
+    string xdgRuntimeDir();
 
 private:
-    void homePath(char* buffer);
-    void homePathWin(char* buffer);
-    void homePathUnix(char* buffer);
+    void initHomePath();
+    void initXdgRuntimeDir();
+#if defined(__WIN32)
+    void initHomePathWin();
+#elif defined(__unix)
+    void initHomePathUnix();
+#endif
 
 private:
     const char* __CLASSNAME__;
     static GDir* m_instance;
-    char m_homePath[256];
+    string m_homePath;
     string m_dataPath;
+    string m_xdgRuntimeDir;
 };
 //================================================
 #endif

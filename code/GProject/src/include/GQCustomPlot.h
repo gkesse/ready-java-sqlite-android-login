@@ -18,7 +18,6 @@ public:
 private:
     const char* __CLASSNAME__;
     static GQCustomPlot* m_instance;
-    QCustomPlot* m_plot;
 };
 //================================================
 #endif

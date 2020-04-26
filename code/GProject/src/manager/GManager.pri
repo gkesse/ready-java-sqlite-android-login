@@ -1,11 +1,15 @@
 SOURCES += \
     $$PWD/GShell.cpp \
     $$PWD/GDir.cpp \
+    $$PWD/GEnv.cpp \
     $$PWD/GExprTk.cpp \
     $$PWD/GMuParser.cpp \
+    $$PWD/GMuParserX.cpp \
     $$PWD/GGsl.cpp \
     $$PWD/GOpenCV.cpp \
     $$PWD/GOpenGL.cpp \
+    $$PWD/GQt.cpp \
+    $$PWD/GQtDBusInterface.cpp \
     $$PWD/GQCustomPlot.cpp \
     $$PWD/GProcess.cpp \
     $$PWD/GDebug.cpp \
@@ -20,11 +24,3 @@ SOURCES += \
     $$PWD/GWidgetLineEditCheck.cpp \
     $$PWD/GWidgetTextEdit.cpp \
     $$PWD/GWidgetPushButton.cpp \
-
-LIBS += \
-    -lcmocka \
-    -lmuparser \
-    -lgsl -lgslcblas -lm \
-    -lopencv_core2413 -lopencv_highgui2413 -lopencv_imgproc2413 \
-    -lglfw3 -lopengl32 -lgdi32 \
-    

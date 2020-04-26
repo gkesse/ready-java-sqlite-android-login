@@ -4,9 +4,17 @@
 //===============================================
 #if defined(__unix)
 //===============================================
-#define _GPLATEFORME_ "UNIX"
+#define _D_GNU_SOURCE
+#define _USE_MATH_DEFINES
 //===============================================
-#define _GUSE_QT_OFF_
+#define _GUSE_GSL_ON_
+#define _GUSE_MUPARSER_ON_
+#define _GUSE_MUPARSERX_ON_
+#define _GUSE_EXPRTK_ON_
+//===============================================
+#define _GUSE_QT_ON_
+#define _GUSE_QTAWESOME_ON_
+#define _GUSE_QCUSTOMPLOT_ON_
 //===============================================
 #include <iostream>
 #include <cstdio>
@@ -15,12 +23,33 @@
 #include <cstdarg>
 #include <ctime>
 //===============================================
+#if defined(_GUSE_GSL_ON_)
+#include <gsl/gsl_sf.h>
+#endif
+//===============================================
 #if defined(_GUSE_EXPRTK_ON_)
-#include <exprtk.hpp>
+#include <GExprTkLib.h>
 #endif
 //===============================================
 #if defined(_GUSE_MUPARSER_ON_)
 #include <muParser.h>
+#endif
+//===============================================
+#if defined(_GUSE_MUPARSERX_ON_)
+#include <mpParser.h>
+#endif
+//===============================================
+#if defined(_GUSE_QT_ON_)
+#include <QtWidgets>
+#include <QtDBus>
+#endif
+//===============================================
+#if defined(_GUSE_QTAWESOME_ON_)
+#include <QtAwesome.h>
+#endif
+//===============================================
+#if defined(_GUSE_QCUSTOMPLOT_ON_)
+#include <qcustomplot.h>
 #endif
 //===============================================
 using namespace std;

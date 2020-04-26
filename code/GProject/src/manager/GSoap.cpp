@@ -22,7 +22,7 @@ GSoap* GSoap::Instance() {
 }
 //===============================================
 void GSoap::test(int argc, char** argv) {
-    GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
+    GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
     string lDataPath = GDir::Instance()->dataPath();
     string lFilename = lDataPath + "/data/img/fruits.jpg";
     cout << lFilename;

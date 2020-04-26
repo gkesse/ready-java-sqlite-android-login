@@ -5,11 +5,15 @@ HEADERS += \
     $$PWD/GInclude.h \
     $$PWD/GShell.h \
     $$PWD/GDir.h \
+    $$PWD/GEnv.h \
     $$PWD/GExprTk.h \
     $$PWD/GMuParser.h \
+    $$PWD/GMuParserX.h \
     $$PWD/GGsl.h \
     $$PWD/GOpenCV.h \
     $$PWD/GOpenGL.h \
+    $$PWD/GQt.h \
+    $$PWD/GQtDBusInterface.h \
     $$PWD/GQCustomPlot.h \
     $$PWD/GProcess.h \
     $$PWD/GDebug.h \
@@ -24,4 +28,3 @@ HEADERS += \
     $$PWD/GWidgetLineEditCheck.h \
     $$PWD/GWidgetTextEdit.h \
     $$PWD/GWidgetPushButton.h \
-        

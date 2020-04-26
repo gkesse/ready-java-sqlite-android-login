@@ -12,13 +12,11 @@ public:
     ~GProcess();
     static GProcess* Instance();
     void process(int argc, char** argv);
+    void test(int argc, char** argv);
 
 private:
-    void test(int argc, char** argv);
     void help(int argc, char** argv);
     void window(int argc, char** argv, const char* key);
-    void muParser(int argc, char** argv);
-    void exprTk(int argc, char** argv);
 
 private:
     const char* __CLASSNAME__;

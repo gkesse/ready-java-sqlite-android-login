@@ -1,23 +1,24 @@
 //================================================
-#ifndef _GExprTk_
-#define _GExprTk_
+#ifndef _GEnv_
+#define _GEnv_
 //================================================
 #include "GInclude.h"
 //===============================================
-#if defined(_GUSE_EXPRTK_ON_)
+#if defined(_GUSE_GSL_ON_)
 //================================================
-class GExprTk {
+class GEnv {
 private:
-    GExprTk();
+    GEnv();
 
 public:
-    ~GExprTk();
-    static GExprTk* Instance();
+    ~GEnv();
+    static GEnv* Instance();
     void test(int argc, char** argv);
+    void setEnv();
 
 private:
     const char* __CLASSNAME__;
-    static GExprTk* m_instance;
+    static GEnv* m_instance;
 };
 //================================================
 #endif

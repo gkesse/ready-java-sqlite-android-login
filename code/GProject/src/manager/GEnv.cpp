@@ -1,40 +1,40 @@
 //===============================================
-#include "GPicto.h"
+#include "GEnv.h"
+#include "GDir.h"
 #include "GDebug.h"
 //===============================================
-#if defined(_GUSE_QTAWESOME_ON_)
+#if defined(_GUSE_GSL_ON_)
 //===============================================
-GPicto* GPicto::m_instance = 0;
+GEnv* GEnv::m_instance = 0;
 //===============================================
-GPicto::GPicto() {
+GEnv::GEnv() {
     __CLASSNAME__ = __FUNCTION__;
-    m_picto = new QtAwesome(qApp);
-    m_picto->initFontAwesome();
-    m_color = "white";
 }
 //===============================================
-GPicto::~GPicto() {
+GEnv::~GEnv() {
 
 }
 //===============================================
-GPicto* GPicto::Instance() {
+GEnv* GEnv::Instance() {
     if(m_instance == 0) {
-        m_instance = new GPicto;
+        m_instance = new GEnv;
     }
     return m_instance;
 }
 //===============================================
-QIcon GPicto::getPicto(int picto) {
+void GEnv::test(int argc, char** argv) {
     GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
-    m_picto->setDefaultOption("color", m_color);
-    m_picto->setDefaultOption("color-active", m_color);
-    return m_picto->icon(picto);
 }
 //===============================================
-void GPicto::setColor(QColor color) {
+void GEnv::setEnv() {
     GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
-    m_color = color;
+#if defined(__unix)
+    const char* lXdgRuntimeDir = GDir::Instance()->xdgRuntimeDir().c_str();
+    setenv("XDG_RUNTIME_DIR", lXdgRuntimeDir, 1);
+    setenv("NO_AT_BRIDGE", "1", 1);
+    setenv("LIBGL_ALWAYS_INDIRECT", "1", 1);
+#endif
 }
-//===============================================
+//================================================
 #endif
 //===============================================

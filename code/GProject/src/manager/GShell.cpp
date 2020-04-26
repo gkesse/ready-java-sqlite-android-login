@@ -20,7 +20,7 @@ GShell* GShell::Instance() {
 }
 //===============================================
 void GShell::test(int argc, char** argv) {
-    GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
+    GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
 #if defined(__WIN32)
     testWin(argc, argv);
 #elif defined(__unix)
@@ -30,7 +30,7 @@ void GShell::test(int argc, char** argv) {
 //===============================================
 #if defined(__WIN32)
 void GShell::testWin(int argc, char** argv) {
-    GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
+    GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
     char lCommand[256];
     char lOuput[256];
 
@@ -42,7 +42,7 @@ void GShell::testWin(int argc, char** argv) {
 //===============================================
 #if defined(__unix)
 void GShell::testUnix(int argc, char** argv) {
-    GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
+    GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
     char lCommand[256];
     char lOuput[256];
 
@@ -53,7 +53,7 @@ void GShell::testUnix(int argc, char** argv) {
 #endif
 //===============================================
 void GShell::run(const char* command, char* output, int size, int shift) {
-    GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", 0);
+    GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
     FILE* lpFile = popen(command, "r");
     if(output != 0) {
         int lBytes = fread(output, 1, size, lpFile);
