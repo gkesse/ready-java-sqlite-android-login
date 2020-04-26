@@ -11,6 +11,21 @@ GWidget(parent) {
     m_clear = new QPushButton("Clear");
     m_clear->setCursor(Qt::PointingHandCursor);
     m_customPlot = new QCustomPlot;
+    m_customPlot->setBackground(Qt::transparent);
+    //
+    m_customPlot->xAxis->setBasePen(QPen(QColor("#b2cec3")));
+    m_customPlot->xAxis->setLabelColor("#b2cec3");
+    m_customPlot->xAxis->setSubTickPen(QPen(QColor("#b2cec3")));
+    m_customPlot->xAxis->setTickLabelColor("#b2cec3");
+    m_customPlot->xAxis->setTickPen(QPen(QColor("#b2cec3")));
+    m_customPlot->xAxis->grid()->setPen(QPen(QColor("#b2cec3"), 1, Qt::DotLine));
+    //
+    m_customPlot->yAxis->setBasePen(QPen(QColor("#b2cec3")));
+    m_customPlot->yAxis->setLabelColor("#b2cec3");
+    m_customPlot->yAxis->setSubTickPen(QPen(QColor("#b2cec3")));
+    m_customPlot->yAxis->setTickLabelColor("#b2cec3");
+    m_customPlot->yAxis->setTickPen(QPen(QColor("#b2cec3")));
+    m_customPlot->yAxis->grid()->setPen(QPen(QColor("#b2cec3"), 1, Qt::DotLine));
 
     QHBoxLayout* lTopLayout = new QHBoxLayout;
     lTopLayout->setAlignment(Qt::AlignLeft);
