@@ -16,7 +16,7 @@ public:
 
 private:
 #if defined(__WIN32)
-    testWin(argc, argv);
+    void testWin(int argc, char** argv);
 #elif defined(__unix)
     void testUnix(int argc, char** argv);
 #endif

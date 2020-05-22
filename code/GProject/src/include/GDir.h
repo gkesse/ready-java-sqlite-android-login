@@ -4,6 +4,8 @@
 //================================================
 #include "GInclude.h"
 //================================================
+#define GDIR_DATA_PATH "/Programs/ReadyC/unix"
+//================================================
 class GDir {
 private:
     GDir();
@@ -12,25 +14,25 @@ public:
     ~GDir();
     static GDir* Instance();
     void test(int argc, char** argv);
-    string homePath();
-    string dataPath();
-    string xdgRuntimeDir();
+    std::string getPath(std::string path);
 
 private:
     void initHomePath();
     void initXdgRuntimeDir();
-#if defined(__WIN32)
-    void initHomePathWin();
-#elif defined(__unix)
+#if defined(__unix)
     void initHomePathUnix();
+    void initXdgRuntimeDirUnix();
+#elif defined(__WIN32)
+    void initHomePathWin();
+    void initXdgRuntimeDirWin();
 #endif
 
 private:
     const char* __CLASSNAME__;
     static GDir* m_instance;
-    string m_homePath;
-    string m_dataPath;
-    string m_xdgRuntimeDir;
+    std::string m_homePath;
+    std::string m_dataPath;
+    std::string m_xdgRuntimeDir;
 };
 //================================================
 #endif

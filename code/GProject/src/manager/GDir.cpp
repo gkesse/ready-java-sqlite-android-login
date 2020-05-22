@@ -9,7 +9,6 @@ GDir::GDir() {
 	__CLASSNAME__ = __FUNCTION__;
 	initHomePath();
 	initXdgRuntimeDir();
-	m_dataPath = homePath() + "/.readydev/readycpp";
 }
 //===============================================
 GDir::~GDir() {
@@ -25,21 +24,16 @@ GDir* GDir::Instance() {
 //===============================================
 void GDir::test(int argc, char** argv) {
 	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
-	cout << m_homePath << "\n";
-	cout << m_dataPath << "\n";
-	cout << m_xdgRuntimeDir << "\n";
+	std::cout << "m_homePath: " << m_homePath << "\n";
+	std::cout << "m_dataPath: " << m_dataPath << "\n";
+	std::cout << "m_xdgRuntimeDir: " << m_xdgRuntimeDir << "\n";
+	std::cout << "getPath(): " << GDir::Instance()->getPath("Makefile") << "\n";
 }
 //===============================================
-string GDir::homePath() {
-	return string(m_homePath);
-}
-//===============================================
-string GDir::dataPath() {
-	return m_dataPath;
-}
-//===============================================
-string GDir::xdgRuntimeDir() {
-	return m_xdgRuntimeDir;
+std::string GDir::getPath(std::string path) {
+	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
+    std::string lDataPath = m_dataPath + "/" + path;
+	return lDataPath;
 }
 //===============================================
 void GDir::initHomePath() {
@@ -51,17 +45,6 @@ void GDir::initHomePath() {
 #endif
 }
 //===============================================
-void GDir::initXdgRuntimeDir() {
-	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
-#if defined(__unix)
-	char lCommand[256];
-	char lOutput[256];
-	sprintf(lCommand, "%s", "echo $TMP/runtime-$USER");
-	GShell::Instance()->run(lCommand, lOutput, 255, 1);
-	m_xdgRuntimeDir = string(lOutput);
-#endif
-}
-//===============================================
 #if defined(__WIN32)
 void GDir::initHomePathWin() {
 	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
@@ -69,7 +52,8 @@ void GDir::initHomePathWin() {
 	char lOutput[256];
 	sprintf(lCommand, "%s", "echo %HOMEDRIVE%%HOMEPATH%");
 	GShell::Instance()->run(lCommand, lOutput, 255, 1);
-	m_homePath = string(lOutput);
+	m_homePath = std::string(lOutput);
+    m_dataPath = m_homePath + GDIR_DATA_PATH;
 }
 #endif
 //===============================================
@@ -80,7 +64,34 @@ void GDir::initHomePathUnix() {
 	char lOutput[256];
 	sprintf(lCommand, "%s", "echo $HOME");
 	GShell::Instance()->run(lCommand, lOutput, 255, 1);
-	m_homePath = string(lOutput);
+	m_homePath = std::string(lOutput);
+    m_dataPath = m_homePath + GDIR_DATA_PATH;
+}
+#endif
+//===============================================
+void GDir::initXdgRuntimeDir() {
+	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
+#if defined(__unix)
+	initXdgRuntimeDirUnix();
+#elif defined(__WIN32)
+	initXdgRuntimeDirWin();
+#endif
+}
+//===============================================
+#if defined(__unix)
+void GDir::initXdgRuntimeDirUnix() {
+	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
+	char lCommand[256];
+	char lOutput[256];
+	sprintf(lCommand, "%s", "echo $TMP/runtime-$USER");
+	GShell::Instance()->run(lCommand, lOutput, 255, 1);
+	m_xdgRuntimeDir = std::string(lOutput);
+}
+#endif
+//===============================================
+#if defined(__WIN32)
+void GDir::initXdgRuntimeDirWin() {
+	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
 }
 #endif
 //===============================================

@@ -36,7 +36,7 @@ void GShell::testWin(int argc, char** argv) {
 
     sprintf(lCommand, "%s", "echo %HOMEDRIVE%%HOMEPATH%");
     run(lCommand, lOuput, 1023, 1);
-    cout << lOuput << "\n";
+    std::cout << lOuput << "\n";
 }
 #endif
 //===============================================
@@ -48,7 +48,7 @@ void GShell::testUnix(int argc, char** argv) {
 
     sprintf(lCommand, "%s", "echo $HOME");
     run(lCommand, lOuput, 255, 1);
-    cout << lOuput << "\n";
+    std::cout << lOuput << "\n";
 }
 #endif
 //===============================================

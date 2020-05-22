@@ -1,19 +1,8 @@
 //===============================================
 #include "GProcess.h"
-#include "GWindowMath.h"
-#include "GDebug.h"
-#include "GStyle.h"
-#include "GShell.h"
+#include "GFile.h"
 #include "GDir.h"
-#include "GEnv.h"
-#include "GMuParser.h"
-#include "GMuParserX.h"
-#include "GExprTk.h"
-#include "GGsl.h"
-#include "GOpenCV.h"
-#include "GOpenGL.h"
-#include "GQt.h"
-#include "GQCustomPlot.h"
+#include "GDebug.h"
 //===============================================
 GProcess* GProcess::m_instance = 0;
 //===============================================
@@ -35,20 +24,13 @@ GProcess* GProcess::Instance() {
 void GProcess::process(int argc, char** argv) {
     GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
     bool lRunFlag = 0;
-    string lKey = "";
+    std::string lKey = "";
     for(int i = 1; i < argc;) {
-    	string lKey = argv[i++];
+    	std::string lKey = argv[i++];
         if(lKey == "test") {test(argc, argv); lRunFlag = 1; break;}
-        if(lKey == "math") {window(argc, argv, lKey.c_str()); lRunFlag = 1; break;}
-        if(lKey == "math_func") {window(argc, argv, lKey.c_str()); lRunFlag = 1; break;}
         break;
     }
     if(lRunFlag == 0) help(argc, argv);
-}
-//===============================================
-void GProcess::test(int argc, char** argv) {
-    GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
-    GQCustomPlot::Instance()->test(argc, argv);
 }
 //===============================================
 void GProcess::help(int argc, char** argv) {
@@ -60,19 +42,12 @@ void GProcess::help(int argc, char** argv) {
     printf("\n");
     printf("%s\n", "Utilisation:");
     printf("\t\%s : %s\n", lModule, "afficher aide");
-    printf("\t\%s %s : %s\n", lModule, "math", "mathematiques operations");
-    printf("\t\%s %s : %s\n", lModule, "math_func", "mathematiques tracage fonctions");
+    printf("\t\%s %s : %s\n", lModule, "test", "lancer test");
     printf("\n");
 }
 //===============================================
-void GProcess::window(int argc, char** argv, const char* key) {
+void GProcess::test(int argc, char** argv) {
     GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
-    GEnv::Instance()->setEnv();
-#if defined(_GUSE_QT_ON_)
-    QApplication lApp(argc, argv);
-    GStyle::Instance()->load(":/css/style.css");
-    GWindow* lWindow = GWindow::Create(key);
-    lWindow->show();
-    lApp.exec();
-#endif
+    GFile::Instance()->test(argc, argv);
 }
+//===============================================

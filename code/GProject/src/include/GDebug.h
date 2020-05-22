@@ -6,6 +6,12 @@
 //================================================
 #define _EOA_ "_END_OF_ARG_"
 //================================================
+#if defined(__unix)
+#define GDEBUG_DATA_PATH "/Programs/ReadyCpp/unix/data/debug"
+#elif defined(__WIN32)
+#define GDEBUG_DATA_PATH "\\Programs\\ReadyCpp\\unix\\data\\debug"
+#endif
+//================================================
 class GDebug {
 private:
 	GDebug();
@@ -22,6 +28,7 @@ private:
 	void log(const char* data);
 	void clear();
 	void date(char* buffer);
+    void homePath();
 #if defined(__WIN32)
 	void homePathWin();
 #elif defined(__unix)
@@ -31,8 +38,6 @@ private:
 private:
 	const char* __CLASSNAME__;
 	static GDebug* m_instance;
-	char m_homePath[256];
-	char m_debugPath[256];
 	char m_filename[256];
 };
 //================================================

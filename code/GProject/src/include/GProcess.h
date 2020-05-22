@@ -12,11 +12,8 @@ public:
     ~GProcess();
     static GProcess* Instance();
     void process(int argc, char** argv);
-    void test(int argc, char** argv);
-
-private:
     void help(int argc, char** argv);
-    void window(int argc, char** argv, const char* key);
+    void test(int argc, char** argv);
 
 private:
     const char* __CLASSNAME__;

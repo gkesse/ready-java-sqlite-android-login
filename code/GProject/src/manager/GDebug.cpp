@@ -6,13 +6,7 @@ GDebug* GDebug::m_instance = 0;
 //===============================================
 GDebug::GDebug() {
     __CLASSNAME__ = __FUNCTION__;
-    char lCommand[256];
-#if defined(__WIN32)
-    homePathWin();
-#elif defined(__unix)
-    homePathUnix();
-#endif
-    //clear();
+    homePath();
 }
 //===============================================
 GDebug::~GDebug() {
@@ -28,9 +22,7 @@ GDebug* GDebug::Instance() {
 //===============================================
 void GDebug::test(int argc, char** argv) {
     write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
-    cout << m_homePath << "\n";
-    cout << m_debugPath << "\n";
-    cout << m_filename << "\n";
+    std::cout << "filename: " << m_filename << "\n";
 }
 //===============================================
 void GDebug::write(const char* key, ...) {
@@ -45,7 +37,7 @@ void GDebug::write(const char* key, ...) {
     va_start(lArgs, key);
     char* lData = 0;
     while(1) {
-        string lData = va_arg(lArgs, char*);
+        std::string lData = va_arg(lArgs, char*);
         if(lData == _EOA_) break;
         lIndex += sprintf(&lBuffer[lIndex], "%s", lData.c_str());
     }
@@ -91,18 +83,27 @@ void GDebug::date(char* buffer) {
     sprintf(buffer, "%02d/%02d/%04d %02d:%02d:%02d", lDay, lMonth, lYear, lHour, lMin, lSec);
 }
 //===============================================
+void GDebug::homePath() {
+#if defined(__WIN32)
+    homePathWin();
+#elif defined(__unix)
+    homePathUnix();
+#endif
+}
+//===============================================
 #if defined(__WIN32)
 void GDebug::homePathWin() {
     char lCommand[256];
+    char lHomePath[256];
+    char lDebugPath[256];
     sprintf(lCommand, "%s", "echo %HOMEDRIVE%%HOMEPATH%");
     FILE* lpFile = popen(lCommand, "r");
-    int lBytes = fread(m_homePath, 1, 255, lpFile);
-    m_homePath[lBytes - 1] = 0;
+    int lBytes = fread(lHomePath, 1, 255, lpFile);
+    lHomePath[lBytes - 1] = 0;
     pclose(lpFile);
-    sprintf(m_debugPath, "%s%s", m_homePath, "\\.readydev\\readycpp\\data\\debug");
-    sprintf(m_filename, "%s%s", m_debugPath, "\\debug.txt");
-    //
-    sprintf(lCommand, "if not exist %s ( mkdir %s )", m_debugPath, m_debugPath);
+    sprintf(lDebugPath, "%s%s", lHomePath, GDEBUG_DATA_PATH);
+    sprintf(m_filename, "%s%s", lDebugPath, "\\debug.txt");
+    sprintf(lCommand, "if not exist %s ( mkdir %s )", lDebugPath, lDebugPath);
     lpFile = popen(lCommand, "r");
     pclose(lpFile);
 }
@@ -111,14 +112,16 @@ void GDebug::homePathWin() {
 #if defined(__unix)
 void GDebug::homePathUnix() {
     char lCommand[256];
+    char lHomePath[256];
+    char lDebugPath[256];
     sprintf(lCommand, "%s", "echo $HOME");
     FILE* lpFile = popen(lCommand, "r");
-    int lBytes = fread(m_homePath, 1, 255, lpFile);
-    m_homePath[lBytes - 1] = 0;
+    int lBytes = fread(lHomePath, 1, 255, lpFile);
+    lHomePath[lBytes - 1] = 0;
     pclose(lpFile);
-    sprintf(m_debugPath, "%s%s", m_homePath, "/.readydev/readycpp/data/debug");
-    sprintf(m_filename, "%s%s", m_debugPath, "/debug.txt");
-    sprintf(lCommand, "if ! [ -d \"%s\" ] ; then mkdir -p %s ; fi", m_debugPath, m_debugPath);
+    sprintf(lDebugPath, "%s%s", lHomePath, GDEBUG_DATA_PATH);
+    sprintf(m_filename, "%s%s", lDebugPath, "/debug.txt");
+    sprintf(lCommand, "if ! [ -d \"%s\" ] ; then mkdir -p %s ; fi", lDebugPath, lDebugPath);
     lpFile = popen(lCommand, "r");
     pclose(lpFile);
 }
