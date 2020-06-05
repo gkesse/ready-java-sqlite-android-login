@@ -5,8 +5,11 @@ GTARGET = $(GBIN)/gp_cpp
 
 GINCS = \
     -I$(GSRC)/include \
+    -I/usr/include/mysql \
+    -I/usr/include/mysql++ \
     
 GLIBS = \
+    -lmysqlpp -lGL -lglfw -lpthread \
     
 GOBJS = \
     $(patsubst $(GSRC)/%.cpp, $(GBUILD)/%.o, $(wildcard $(GSRC)/*.cpp)) \

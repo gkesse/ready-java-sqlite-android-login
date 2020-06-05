@@ -19,6 +19,17 @@
 #include <vector>
 #include <map>
 //===============================================
+#define _GUSE_MYSQL_ON_
+#define _GUSE_OPENGL_ON_
+//===============================================
+#if defined(_GUSE_MYSQL_ON_)
+#include <mysql++.h>
+#endif
+//===============================================
+#if defined(_GUSE_OPENGL_ON_)
+#include <GLFW/glfw3.h>
+#endif
+//===============================================
 #endif
 //===============================================
 #if defined(__WIN32)

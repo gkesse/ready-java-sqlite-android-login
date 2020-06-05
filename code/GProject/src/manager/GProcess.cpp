@@ -1,6 +1,6 @@
 //===============================================
 #include "GProcess.h"
-#include "GMySQL.h"
+#include "GOpenGL.h"
 #include "GDebug.h"
 //===============================================
 GProcess* GProcess::m_instance = 0;
@@ -47,6 +47,6 @@ void GProcess::help(int argc, char** argv) {
 //===============================================
 void GProcess::test(int argc, char** argv) {
     GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
-    GMySQL::Instance()->test(argc, argv);
+    GOpenGL::Instance()->test(argc, argv);
 }
 //===============================================
