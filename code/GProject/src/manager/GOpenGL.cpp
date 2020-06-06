@@ -5,6 +5,7 @@
 #if defined(_GUSE_OPENGL_ON_)
 //===============================================
 GOpenGL* GOpenGL::m_instance = 0;
+std::map<std::string, std::string> GOpenGL::m_dataMap; 
 //===============================================
 struct _sGParams {
     GLFWwindow* windowId;
@@ -40,7 +41,7 @@ void GOpenGL::test(int argc, char** argv) {
 	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
     std::string lWindow = "lWindow";
     GOpenGL::Instance()->init(lWindow, 400, 400, "OpenGL | ReadyDev");
-    GOpenGL::Instance()->createThread(lWindow, "drawPoint");
+    GOpenGL::Instance()->createThread(lWindow, "drawGrid");
     GOpenGL::Instance()->joinThread();
 }
 //===============================================
@@ -86,11 +87,23 @@ void* GOpenGL::onThread(void* params) {
 	GDebug::Instance()->write("GOpenGL", "::", __FUNCTION__, "()", _EOA_);
     sGParams* lParams = (sGParams*)params;
     GLFWwindow* lWindow = lParams->windowId;
+    
     glfwMakeContextCurrent(lWindow);
+    
     glEnable(GL_POINT_SMOOTH);
 	glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
 	glEnable(GL_BLEND);
+    glEnable(GL_LINE_SMOOTH);
+	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    
+    setData("xmin", "-5");
+    setData("xmax", "5");
+    setData("ymin", "-1");
+    setData("ymax", "1");
+    setData("div", "0.1");
+    setData("div_width", "1");
+    
     while(!glfwWindowShouldClose(lWindow)) {
         lParams->draw(lWindow, lParams->drawId);
         glfwSwapBuffers(lWindow);
@@ -100,10 +113,101 @@ void* GOpenGL::onThread(void* params) {
     return 0;
 }
 //===============================================
+void GOpenGL::setData(std::string key, std::string value) {
+	//GDebug::Instance()->write("GOpenGL", "::", __FUNCTION__, "()", _EOA_);
+    m_dataMap[key] = value;
+}
+//===============================================
+std::string GOpenGL::getData(std::string key) {
+	//GDebug::Instance()->write("GOpenGL", "::", __FUNCTION__, "()", _EOA_);
+    return m_dataMap[key];
+}
+//===============================================
+double GOpenGL::getDataDouble(std::string key) {
+	//GDebug::Instance()->write("GOpenGL", "::", __FUNCTION__, "()", _EOA_);
+    return atof(m_dataMap[key].c_str());
+}
+//===============================================
+sGColor GOpenGL::getDataColor(std::string key) {
+	//GDebug::Instance()->write("GOpenGL", "::", __FUNCTION__, "()", _EOA_);
+    sGColor lColor = {1.0, 0.0, 0.0, 1.0};
+    return lColor;
+}
+//===============================================
 void GOpenGL::draw(GLFWwindow* window, std::string drawId) {
 	//GDebug::Instance()->write("GOpenGL", "::", __FUNCTION__, "()", _EOA_);
     if(drawId == "drawPoint") {drawPoint(window); return;} 
+    if(drawId == "drawLine") {drawLine(window); return;} 
     if(drawId == "drawTriangle") {drawTriangle(window); return;}
+    if(drawId == "drawGrid") {drawGrid(window); return;}
+}
+//===============================================
+void GOpenGL::drawPoint(GLFWwindow* window) {
+	//GDebug::Instance()->write("GOpenGL", "::", __FUNCTION__, "()", _EOA_);
+    int lWidth, lHeight;
+    glfwGetFramebufferSize(window, &lWidth, &lHeight);
+    float lRatio = (float) lWidth / (float)lHeight;
+    glViewport(0, 0, lWidth, lHeight);
+    glClear(GL_COLOR_BUFFER_BIT);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glOrtho(-lRatio, lRatio, -1.f, 1.f, 1.f, -1.f);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    
+    sGVertex lVertex = {
+        0.0, 0.0, 0.0
+    };
+    sGColor lColor = {
+        1.0, 0.0, 0.0, 1.0
+    };
+    drawPoint(lVertex, lColor, 10);
+}
+//===============================================
+void GOpenGL::drawPoint(sGVertex vertex, sGColor color, double size) {
+	//GDebug::Instance()->write("GOpenGL", "::", __FUNCTION__, "()", _EOA_);
+	glPointSize(size);
+	glBegin(GL_POINTS);
+	glColor4f(color.r, color.g, color.b, color.a); 
+	glVertex3f(vertex.x, vertex.y, vertex.z);
+	glEnd(); 
+}
+//===============================================
+void GOpenGL::drawLine(GLFWwindow* window) {
+	//GDebug::Instance()->write("GOpenGL", "::", __FUNCTION__, "()", _EOA_);
+    int lWidth, lHeight;
+    glfwGetFramebufferSize(window, &lWidth, &lHeight);
+    float lRatio = (float) lWidth / (float)lHeight;
+    glViewport(0, 0, lWidth, lHeight);
+    glClear(GL_COLOR_BUFFER_BIT);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glOrtho(-lRatio, lRatio, -1.f, 1.f, 1.f, -1.f);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    
+    sGVertex lVertex[] = {
+        {0.0, 0.0, 0.0},
+        {1.0, 1.0, 0.0}
+    };
+    sGColor lColor = {
+        1.0, 0.0, 0.0, 1.0
+    };
+    drawLine(lVertex, lColor, 10);
+}
+//===============================================
+void GOpenGL::drawLine(sGVertex* vertex, sGColor color, double width) {
+	//GDebug::Instance()->write("GOpenGL", "::", __FUNCTION__, "()", _EOA_);
+    glLineWidth(width);
+    glBegin(GL_LINES);
+	for(int i = 0; i < 2; i++) {
+        sGVertex lVertex = vertex[i];
+        glColor4f(color.r, color.g, color.b, color.a);
+        glVertex3f(lVertex.x, lVertex.y, lVertex.z);
+    }
+	glEnd();
 }
 //===============================================
 void GOpenGL::drawTriangle(GLFWwindow* window) {
@@ -142,11 +246,11 @@ void GOpenGL::drawTriangle(sGVertex* vertex, sGColor color) {
     glEnd();
 }
 //===============================================
-void GOpenGL::drawPoint(GLFWwindow* window) {
+void GOpenGL::drawGrid(GLFWwindow* window) {
 	//GDebug::Instance()->write("GOpenGL", "::", __FUNCTION__, "()", _EOA_);
     int lWidth, lHeight;
     glfwGetFramebufferSize(window, &lWidth, &lHeight);
-    float lRatio = (float) lWidth / (float)lHeight;
+    float lRatio = (float)lWidth/(float)lHeight;
     glViewport(0, 0, lWidth, lHeight);
     glClear(GL_COLOR_BUFFER_BIT);
     glMatrixMode(GL_PROJECTION);
@@ -154,24 +258,49 @@ void GOpenGL::drawPoint(GLFWwindow* window) {
     glOrtho(-lRatio, lRatio, -1.f, 1.f, 1.f, -1.f);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
-    sGVertex lVertex = {
-        0.0, 0.0, 0.0
-    };
-    sGColor lColor = {
-        1.0, 0.0, 0.0, 1.0
-    };
-    drawPoint(lVertex, lColor, 10);
+    drawGrid();
 }
 //===============================================
-void GOpenGL::drawPoint(sGVertex vertex, sGColor color, int size) {
+void GOpenGL::drawGrid() {
 	//GDebug::Instance()->write("GOpenGL", "::", __FUNCTION__, "()", _EOA_);
-	glPointSize(size);
-	glBegin(GL_POINTS);
-	glColor4f(color.r, color.g, color.b, color.a); 
-	glVertex3f(vertex.x, vertex.y, vertex.z);
-	glEnd(); 
+    double xMin = getDataDouble("xmin");
+    double xMax = getDataDouble("xmax");
+    double yMin = getDataDouble("ymin");
+    double yMax = getDataDouble("ymax");
+    double div = getDataDouble("div");
+    double divWidth = getDataDouble("div_width");;
+    sGColor divColor = {0.5, 0.5, 0.5, 1.0};
+    double axisWidth = 2.0;
+    sGColor axisColor = {1.0, 0.5, 0.5, 1.0};
+    for(double x = xMin; x <= xMax; x += div) {
+        sGVertex lVertex[] = {
+            {x, yMin, 0.0},
+            {x, yMax, 0.0}
+        };
+        drawLine(lVertex, divColor, divWidth);
+    }
+    for(double y = yMin; y <= yMax; y += div) {
+        sGVertex lVertex[] = {
+            {xMin, y, 0.0},
+            {xMax, y, 0.0}
+        };
+        drawLine(lVertex, divColor, divWidth);
+    }
+    if(1) {
+        sGVertex lVertex[] = {
+            {xMin, 0.0, 0.0},
+            {xMax, 0.0, 0.0}
+        };
+        drawLine(lVertex, axisColor, axisWidth);
+    }
+    if(1) {
+        sGVertex lVertex[] = {
+            {0.0, yMin, 0.0},
+            {0.0, yMax, 0.0}
+        };
+        drawLine(lVertex, axisColor, axisWidth);
+    }
 }
 //===============================================
 #endif

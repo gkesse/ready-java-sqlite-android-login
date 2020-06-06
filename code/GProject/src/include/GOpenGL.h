@@ -25,16 +25,25 @@ public:
     void createThread(std::string windowId, std::string drawId);
     void joinThread();
     static void* onThread(void* params);
+    static void setData(std::string key, std::string value);
+    static std::string getData(std::string key);
+    static double getDataDouble(std::string key);
+    static sGColor getDataColor(std::string key);
     static void draw(GLFWwindow* window, std::string drawId);
     static void drawPoint(GLFWwindow* window);
-    static void drawPoint(sGVertex vertex, sGColor color, int size);
+    static void drawPoint(sGVertex vertex, sGColor color, double size);
+    static void drawLine(GLFWwindow* window);
+    static void drawLine(sGVertex* vertex, sGColor color, double width);
     static void drawTriangle(GLFWwindow* window);
     static void drawTriangle(sGVertex* vertex, sGColor color);
+    static void drawGrid(GLFWwindow* window);
+    static void drawGrid();
     
 private:
     const char* __CLASSNAME__;
     static GOpenGL* m_instance;
     std::map<std::string, sGParams*> m_paramsMap;
+    static std::map<std::string, std::string> m_dataMap;
 };
 //================================================
 #endif
