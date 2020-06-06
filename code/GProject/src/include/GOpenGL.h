@@ -7,7 +7,9 @@
 #if defined(_GUSE_OPENGL_ON_)
 //===============================================
 typedef struct _sGParams sGParams;
-typedef void* (*GOPENGL_THREAD)(void* params);
+//===============================================
+typedef void* (*GOPENGL_PARAMS)(void* params);
+typedef void (*GOPENGL_DRAW)(GLFWwindow* window, std::string drawId);
 //================================================
 class GOpenGL {
 private:
@@ -18,10 +20,11 @@ public:
     static GOpenGL* Instance();
     void test(int argc, char** argv);
     void initGlfw(std::string windowId, int width, int height, std::string title);
-    void createThreadGlfw(std::string windowId, GOPENGL_THREAD onThread);
+    void createThreadGlfw(std::string windowId, std::string drawId);
     void joinThreadGlfw();
     static void* onThreadGlfw(void* params);
-    static void* onThreadGlfw2(void* params);
+    static void drawGlfw(GLFWwindow* window, std::string drawId);
+    static void drawTriangleGlfw(GLFWwindow* window);
     
 private:
     const char* __CLASSNAME__;

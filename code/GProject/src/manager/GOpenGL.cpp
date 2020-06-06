@@ -9,6 +9,8 @@ GOpenGL* GOpenGL::m_instance = 0;
 struct _sGParams {
     GLFWwindow* windowId;
     pthread_t* threadId;
+    GOPENGL_DRAW draw;
+    std::string drawId;
 };
 //===============================================
 GOpenGL::GOpenGL() {
@@ -30,10 +32,13 @@ void GOpenGL::test(int argc, char** argv) {
 	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
     std::string lWindow = "lWindow";
     std::string lWindow2 = "lWindow2";
+    std::string lWindow3 = "lWindow3";
     GOpenGL::Instance()->initGlfw(lWindow, 400, 400, "OpenGL | ReadyDev");
     GOpenGL::Instance()->initGlfw(lWindow2, 400, 400, "OpenGL | ReadyDev");
-    GOpenGL::Instance()->createThreadGlfw(lWindow, onThreadGlfw);
-    GOpenGL::Instance()->createThreadGlfw(lWindow2, onThreadGlfw2);
+    GOpenGL::Instance()->initGlfw(lWindow3, 400, 400, "OpenGL | ReadyDev");
+    GOpenGL::Instance()->createThreadGlfw(lWindow, "drawTriangleGlfw");
+    GOpenGL::Instance()->createThreadGlfw(lWindow2, "drawTriangleGlfw");
+    GOpenGL::Instance()->createThreadGlfw(lWindow3, "drawTriangleGlfw");
     GOpenGL::Instance()->joinThreadGlfw();
 }
 //===============================================
@@ -48,11 +53,13 @@ void GOpenGL::initGlfw(std::string windowId, int width, int height, std::string 
     m_paramsMap[windowId] = lParams;
 }
 //===============================================
-void GOpenGL::createThreadGlfw(std::string windowId, GOPENGL_THREAD onThread) {
+void GOpenGL::createThreadGlfw(std::string windowId, std::string drawId) {
 	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
     sGParams* lParams = m_paramsMap[windowId];
     pthread_t* lThread = lParams->threadId;
-    pthread_create(lThread, NULL, onThread, lParams);
+    lParams->draw = drawGlfw;
+    lParams->drawId = drawId;
+    pthread_create(lThread, NULL, onThreadGlfw, lParams);
 }
 //===============================================
 void GOpenGL::joinThreadGlfw() {
@@ -79,29 +86,7 @@ void* GOpenGL::onThreadGlfw(void* params) {
     GLFWwindow* lWindow = lParams->windowId;
     glfwMakeContextCurrent(lWindow);
     while(!glfwWindowShouldClose(lWindow)) {
-        float ratio;
-        int width, height;
-        glfwGetFramebufferSize(lWindow, &width, &height);
-        ratio = (float) width / (float) height;
-        glViewport(0, 0, width, height);
-        glClear(GL_COLOR_BUFFER_BIT);
-
-        glMatrixMode(GL_PROJECTION);
-        glLoadIdentity();
-        glOrtho(-ratio, ratio, -1.f, 1.f, 1.f, -1.f);
-        glMatrixMode(GL_MODELVIEW);
-        glLoadIdentity();
-
-        glRotatef((float)glfwGetTime() * 50.f, 0.f, 0.f, 1.f);
-        glBegin(GL_TRIANGLES);
-        glColor3f(0.f, 0.f, 1.f);
-        glVertex3f(-0.6f, -0.4f, 0.f);
-        glColor3f(0.f, 0.f, 1.f);
-        glVertex3f(0.6f, -0.4f, 0.f);
-        glColor3f(0.f, 0.f, 1.f);
-        glVertex3f(0.f, 0.6f, 0.f);
-        glEnd();
-
+        lParams->draw(lWindow, lParams->drawId);
         glfwSwapBuffers(lWindow);
         glfwPollEvents();
     }
@@ -109,40 +94,34 @@ void* GOpenGL::onThreadGlfw(void* params) {
     return 0;
 }
 //===============================================
-void* GOpenGL::onThreadGlfw2(void* params) {
-	GDebug::Instance()->write("GOpenGL", "::", __FUNCTION__, "()", _EOA_);
-    sGParams* lParams = (sGParams*)params;
-    GLFWwindow* lWindow = lParams->windowId;
-    glfwMakeContextCurrent(lWindow);
-    while(!glfwWindowShouldClose(lWindow)) {
-        float ratio;
-        int width, height;
-        glfwGetFramebufferSize(lWindow, &width, &height);
-        ratio = (float) width / (float) height;
-        glViewport(0, 0, width, height);
-        glClear(GL_COLOR_BUFFER_BIT);
+void GOpenGL::drawGlfw(GLFWwindow* window, std::string drawId) {
+	//GDebug::Instance()->write("GOpenGL", "::", __FUNCTION__, "()", _EOA_);
+    if(drawId == "drawTriangleGlfw") {drawTriangleGlfw(window); return;}
+}
+//===============================================
+void GOpenGL::drawTriangleGlfw(GLFWwindow* window) {
+	//GDebug::Instance()->write("GOpenGL", "::", __FUNCTION__, "()", _EOA_);
+    int lWidth, lHeight;
+    glfwGetFramebufferSize(window, &lWidth, &lHeight);
+    float lRatio = (float)lWidth/(float)lHeight;
+    glViewport(0, 0, lWidth, lHeight);
+    glClear(GL_COLOR_BUFFER_BIT);
 
-        glMatrixMode(GL_PROJECTION);
-        glLoadIdentity();
-        glOrtho(-ratio, ratio, -1.f, 1.f, 1.f, -1.f);
-        glMatrixMode(GL_MODELVIEW);
-        glLoadIdentity();
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glOrtho(-lRatio, lRatio, -1.f, 1.f, 1.f, -1.f);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
 
-        glRotatef((float)glfwGetTime() * 50.f, 0.f, 0.f, 1.f);
-        glBegin(GL_TRIANGLES);
-        glColor3f(1.f, 0.f, 0.f);
-        glVertex3f(-0.6f, -0.4f, 0.f);
-        glColor3f(1.f, 0.f, 0.f);
-        glVertex3f(0.6f, -0.4f, 0.f);
-        glColor3f(1.f, 0.f, 0.f);
-        glVertex3f(0.f, 0.6f, 0.f);
-        glEnd();
-
-        glfwSwapBuffers(lWindow);
-        glfwPollEvents();
-    }
-    glfwDestroyWindow(lWindow);
-    return 0;
+    glRotatef((float)glfwGetTime() * 50.f, 0.f, 0.f, 1.f);
+    glBegin(GL_TRIANGLES);
+    glColor3f(1.f, 0.f, 0.f);
+    glVertex3f(-0.6f, -0.4f, 0.f);
+    glColor3f(0.f, 1.f, 0.f);
+    glVertex3f(0.6f, -0.4f, 0.f);
+    glColor3f(0.f, 0.f, 1.f);
+    glVertex3f(0.f, 0.6f, 0.f);
+    glEnd();
 }
 //===============================================
 #endif
