@@ -42,7 +42,7 @@ void GOpenGL::test(int argc, char** argv) {
 	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
     std::string lWindow = "lWindow";
     GOpenGL::Instance()->init(lWindow, 400, 400, "OpenGL | ReadyDev");
-    GOpenGL::Instance()->createThread(lWindow, "drawGrid");
+    GOpenGL::Instance()->createThread(lWindow, "drawPoint");
     GOpenGL::Instance()->joinThread();
 }
 //===============================================
@@ -179,6 +179,7 @@ void GOpenGL::drawPoint(GLFWwindow* window) {
     glLoadIdentity();
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
+    drawGrid();
     sGVertex lVertex = {0, 0, 0};
     drawPoint(lVertex);
 }
