@@ -32,8 +32,10 @@ public:
     static void draw(GLFWwindow* window, std::string drawId);
     static void drawPoint(GLFWwindow* window);
     static void drawPoint(sGVertex vertex, sGColor color, double size);
+    static void drawPoint(sGVertex vertex);
     static void drawLine(GLFWwindow* window);
     static void drawLine(sGVertex* vertex, sGColor color, double width);
+    static void drawLine(sGVertex* vertex);
     static void drawTriangle(GLFWwindow* window);
     static void drawTriangle(sGVertex* vertex, sGColor color);
     static void drawGrid(GLFWwindow* window);
