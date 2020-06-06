@@ -26,26 +26,26 @@ void GString::test(int argc, char** argv) {
 // string
 //===============================================
 std::string GString::trim(std::string str) {
-    GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
+    //GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
     return ltrim(rtrim(str));
 }
 //===============================================
 std::string GString::ltrim(std::string str) {
-    GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
+    //GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
     std::string lString = str;
     lString.erase(lString.begin(), std::find_if(lString.begin(), lString.end(), std::not1(std::ptr_fun<int, int>(std::isspace))));
     return lString;
 }
 //===============================================
 std::string GString::rtrim(std::string str) {
-    GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
+    //GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
     std::string lString = str;
     lString.erase(std::find_if(lString.rbegin(), lString.rend(), std::not1(std::ptr_fun<int, int>(std::isspace))).base(), lString.end());
     return lString;
 }
 //===============================================
 std::vector<std::string> GString::split(std::string str, char sep) {
-    GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
+    //GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
     std::istringstream lStream(str);
     std::string lString;    
     std::vector<std::string> lStringMap;
@@ -57,7 +57,7 @@ std::vector<std::string> GString::split(std::string str, char sep) {
 }
 //===============================================
 std::string GString::getFilename(std::string path) {
-    GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
+    //GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
     if(path.empty()) {return {};}
     
     int lLength = path.length();

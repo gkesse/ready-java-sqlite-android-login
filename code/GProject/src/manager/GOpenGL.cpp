@@ -1,5 +1,6 @@
 //===============================================
 #include "GOpenGL.h"
+#include "GString.h"
 #include "GDebug.h"
 //===============================================
 #if defined(_GUSE_OPENGL_ON_)
@@ -103,12 +104,19 @@ void* GOpenGL::onThread(void* params) {
     setData("ymax", "1");
     setData("div", "0.1");
     setData("div_width", "1");
-    
+    setData("div_color", "0.5;0.5;0.5;1");
+    setData("axis_width", "2");
+    setData("axis_color", "1;0.5;0.5;1");
+    setData("org_color", "0.52;0.52;0.52;1");
+    setData("x0", "-5");
+    setData("y0", "-5");
+
     while(!glfwWindowShouldClose(lWindow)) {
         lParams->draw(lWindow, lParams->drawId);
         glfwSwapBuffers(lWindow);
         glfwPollEvents();
     }
+    
     glfwDestroyWindow(lWindow);
     return 0;
 }
@@ -130,7 +138,9 @@ double GOpenGL::getDataDouble(std::string key) {
 //===============================================
 sGColor GOpenGL::getDataColor(std::string key) {
 	//GDebug::Instance()->write("GOpenGL", "::", __FUNCTION__, "()", _EOA_);
-    sGColor lColor = {1.0, 0.0, 0.0, 1.0};
+    std::string lData = m_dataMap[key];
+    std::vector<std::string> lDataMap = GString::Instance()->split(lData, ';');
+    sGColor lColor = {atof(lDataMap[0].c_str()), atof(lDataMap[1].c_str()), atof(lDataMap[2].c_str()), atof(lDataMap[3].c_str())};
     return lColor;
 }
 //===============================================
@@ -151,16 +161,16 @@ void GOpenGL::drawPoint(GLFWwindow* window) {
     glClear(GL_COLOR_BUFFER_BIT);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    glOrtho(-lRatio, lRatio, -1.f, 1.f, 1.f, -1.f);
+    glOrtho(-lRatio, lRatio, -1, 1, 1, -1);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
     sGVertex lVertex = {
-        0.0, 0.0, 0.0
+        0, 0, 0
     };
     sGColor lColor = {
-        1.0, 0.0, 0.0, 1.0
+        1, 0, 0, 1
     };
     drawPoint(lVertex, lColor, 10);
 }
@@ -183,17 +193,17 @@ void GOpenGL::drawLine(GLFWwindow* window) {
     glClear(GL_COLOR_BUFFER_BIT);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    glOrtho(-lRatio, lRatio, -1.f, 1.f, 1.f, -1.f);
+    glOrtho(-lRatio, lRatio, -1, 1, 1, -1);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
     sGVertex lVertex[] = {
-        {0.0, 0.0, 0.0},
-        {1.0, 1.0, 0.0}
+        {0, 0, 0},
+        {1, 1, 0}
     };
     sGColor lColor = {
-        1.0, 0.0, 0.0, 1.0
+        1, 0, 0, 1
     };
     drawLine(lVertex, lColor, 10);
 }
@@ -219,18 +229,18 @@ void GOpenGL::drawTriangle(GLFWwindow* window) {
     glClear(GL_COLOR_BUFFER_BIT);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    glOrtho(-lRatio, lRatio, -1.f, 1.f, 1.f, -1.f);
+    glOrtho(-lRatio, lRatio, -1, 1, 1, -1);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    glRotatef((float)glfwGetTime() * 50.f, 0.f, 0.f, 1.f);
+    glRotatef((float)glfwGetTime() * 50, 0, 0, 1);
     
     sGVertex lVertex[] = {
-        {-0.6f, -0.4f, 0.f},
-        {0.6f, -0.4f, 0.f},
-        {0.f, 0.6f, 0.f}
+        {-0.6f, -0.4f, 0},
+        {0.6f, -0.4f, 0},
+        {0, 0.6f, 0}
     };
     sGColor lColor = {
-        1.f, 0.f, 0.f, 1.f
+        1, 0, 0, 1
     };
     drawTriangle(lVertex, lColor);
 }
@@ -255,7 +265,7 @@ void GOpenGL::drawGrid(GLFWwindow* window) {
     glClear(GL_COLOR_BUFFER_BIT);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    glOrtho(-lRatio, lRatio, -1.f, 1.f, 1.f, -1.f);
+    glOrtho(-lRatio, lRatio, -1, 1, 1, -1);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     
@@ -269,37 +279,55 @@ void GOpenGL::drawGrid() {
     double lYmin = getDataDouble("ymin");
     double lYmax = getDataDouble("ymax");
     double lDiv = getDataDouble("div");
-    double lDivWidth = getDataDouble("div_width");;
-    sGColor lDivColor = {0.5, 0.5, 0.5, 1.0};
-    double axisWidth = 2.0;
-    sGColor axisColor = {1.0, 0.5, 0.5, 1.0};
+    double lDivWidth = getDataDouble("div_width");
+    sGColor lDivColor = getDataColor("div_color");
+    double lAxisWidth = getDataDouble("axis_width");
+    sGColor lAxisColor = getDataColor("axis_color");
+    sGColor lOrgColor = getDataColor("org_color");
+    double lX0 = getDataDouble("x0");
+    double lY0 = getDataDouble("y0");
+    
     for(double x = lXmin; x <= lXmax; x += lDiv) {
         sGVertex lVertex[] = {
-            {x, lYmin, 0.0},
-            {x, lYmax, 0.0}
+            {x, lYmin, 0},
+            {x, lYmax, 0}
         };
         drawLine(lVertex, lDivColor, lDivWidth);
     }
     for(double y = lYmin; y <= lYmax; y += lDiv) {
         sGVertex lVertex[] = {
-            {lXmin, y, 0.0},
-            {lXmax, y, 0.0}
+            {lXmin, y, 0},
+            {lXmax, y, 0}
         };
         drawLine(lVertex, lDivColor, lDivWidth);
     }
     if(1) {
         sGVertex lVertex[] = {
-            {lXmin, 0.0, 0.0},
-            {lXmax, 0.0, 0.0}
+            {lXmin, 0, 0},
+            {lXmax, 0, 0}
         };
-        drawLine(lVertex, axisColor, axisWidth);
+        drawLine(lVertex, lOrgColor, lDivWidth);
     }
     if(1) {
         sGVertex lVertex[] = {
-            {0.0, lYmin, 0.0},
-            {0.0, lYmax, 0.0}
+            {0, lYmin, 0},
+            {0, lYmax, 0}
         };
-        drawLine(lVertex, axisColor, axisWidth);
+        drawLine(lVertex, lOrgColor, lDivWidth);
+    }
+    if(1) {
+        sGVertex lVertex[] = {
+            {lXmin, lY0*lDiv, 0},
+            {lXmax, lY0*lDiv, 0}
+        };
+        drawLine(lVertex, lAxisColor, lAxisWidth);
+    }
+    if(1) {
+        sGVertex lVertex[] = {
+            {lX0*lDiv, lYmin, 0},
+            {lX0*lDiv, lYmax, 0}
+        };
+        drawLine(lVertex, lAxisColor, lAxisWidth);
     }
 }
 //===============================================
