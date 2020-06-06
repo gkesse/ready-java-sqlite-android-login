@@ -42,7 +42,7 @@ void GOpenGL::test(int argc, char** argv) {
 	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
     std::string lWindow = "lWindow";
     GOpenGL::Instance()->init(lWindow, 400, 400, "OpenGL | ReadyDev");
-    GOpenGL::Instance()->createThread(lWindow, "drawPoint");
+    GOpenGL::Instance()->createThread(lWindow, "drawGrid");
     GOpenGL::Instance()->joinThread();
 }
 //===============================================
@@ -180,7 +180,7 @@ void GOpenGL::drawPoint(GLFWwindow* window) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
     drawGrid();
-    sGVertex lVertex = {0, 0, 0};
+    sGVertex lVertex = {5, 5, 0};
     drawPoint(lVertex);
 }
 //===============================================
@@ -204,9 +204,28 @@ void GOpenGL::drawPoint(sGVertex vertex) {
     
 	glPointSize(lPointSize);
 	glBegin(GL_POINTS);
-	glColor4f(lPointColor.r, lPointColor.g, lPointColor.b, lPointColor.a); 
-	glVertex3f(vertex.x*lGridDiv/lGridXdivVal, vertex.y*lGridDiv/lGridYdivVal, vertex.z*lGridDiv/lGridZdivVal);
-	glEnd(); 
+    glColor4f(lPointColor.r, lPointColor.g, lPointColor.b, lPointColor.a); 
+    glVertex3f(vertex.x*lGridDiv/lGridXdivVal, vertex.y*lGridDiv/lGridYdivVal, vertex.z*lGridDiv/lGridZdivVal);
+	glEnd();
+}
+//===============================================
+void GOpenGL::drawPoints(sGVertex* vertex, int count) {
+	//GDebug::Instance()->write("GOpenGL", "::", __FUNCTION__, "()", _EOA_);
+	sGColor lPointColor = getDataColor("point_color");
+	double lPointSize = getDataDouble("point_size");
+	double lGridDiv = getDataDouble("grid_div");
+	double lGridXdivVal = getDataDouble("grid_xdiv_val");
+	double lGridYdivVal = getDataDouble("grid_ydiv_val");
+	double lGridZdivVal = getDataDouble("grid_zdiv_val");
+    
+	glPointSize(lPointSize);
+	glBegin(GL_POINTS);
+    for(int i = 0; i < count; i++) {
+        sGVertex lVertex = vertex[i];
+        glColor4f(lPointColor.r, lPointColor.g, lPointColor.b, lPointColor.a); 
+        glVertex3f(lVertex.x*lGridDiv/lGridXdivVal, lVertex.y*lGridDiv/lGridYdivVal, lVertex.z*lGridDiv/lGridZdivVal);
+    }    
+	glEnd();
 }
 //===============================================
 void GOpenGL::drawLine(GLFWwindow* window) {
@@ -223,7 +242,8 @@ void GOpenGL::drawLine(GLFWwindow* window) {
     glLoadIdentity();
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
-    sGVertex lVertex[] = {{0, 0, 0}, {1, 1, 0}};
+    drawGrid();
+    sGVertex lVertex[] = {{0, 0, 0}, {5, 5, 0}};
     drawLine(lVertex);
 }
 //===============================================
@@ -251,6 +271,25 @@ void GOpenGL::drawLine(sGVertex* vertex) {
     glLineWidth(lLineWidth);
     glBegin(GL_LINES);
 	for(int i = 0; i < 2; i++) {
+        sGVertex lVertex = vertex[i];
+        glColor4f(lLineColor.r, lLineColor.g, lLineColor.b, lLineColor.a);
+        glVertex3f(lVertex.x*lGridDiv/lGridXdivVal, lVertex.y*lGridDiv/lGridYdivVal, lVertex.z*lGridDiv/lGridZdivVal);
+    }
+	glEnd();
+}
+//===============================================
+void GOpenGL::drawLines(sGVertex* vertex, int count) {
+	//GDebug::Instance()->write("GOpenGL", "::", __FUNCTION__, "()", _EOA_);
+	sGColor lLineColor = getDataColor("line_color");
+	double lLineWidth = getDataDouble("line_width");
+	double lGridDiv = getDataDouble("grid_div");
+	double lGridXdivVal = getDataDouble("grid_xdiv_val");
+	double lGridYdivVal = getDataDouble("grid_ydiv_val");
+	double lGridZdivVal = getDataDouble("grid_zdiv_val");
+
+    glLineWidth(lLineWidth);
+    glBegin(GL_LINE_STRIP);
+	for(int i = 0; i < count; i++) {
         sGVertex lVertex = vertex[i];
         glColor4f(lLineColor.r, lLineColor.g, lLineColor.b, lLineColor.a);
         glVertex3f(lVertex.x*lGridDiv/lGridXdivVal, lVertex.y*lGridDiv/lGridYdivVal, lVertex.z*lGridDiv/lGridZdivVal);
@@ -309,12 +348,9 @@ void GOpenGL::drawGrid(GLFWwindow* window) {
     
     drawGrid();
     if(1) {
-        sGVertex lVertex = {3, 5, 0};
-        drawPoint(lVertex);
-    }
-    if(1) {
-        sGVertex lVertex[] = {{0, 0, 0}, {3, 5, 0}};
-        drawLine(lVertex);
+        sGVertex lVertex[] = {{-4, 0, 0}, {-2, 5, 0}, {0, 0, 0}, {2, 5, 0}, {4, 0, 0}};
+        drawPoints(lVertex, 5);
+        drawLines(lVertex, 5);
     }
 }
 //===============================================

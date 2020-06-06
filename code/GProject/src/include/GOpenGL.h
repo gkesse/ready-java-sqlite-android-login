@@ -33,9 +33,11 @@ public:
     static void drawPoint(GLFWwindow* window);
     static void drawPoint(sGVertex vertex, sGColor color, double size);
     static void drawPoint(sGVertex vertex);
+    static void drawPoints(sGVertex* vertex, int count);
     static void drawLine(GLFWwindow* window);
     static void drawLine(sGVertex* vertex, sGColor color, double width);
     static void drawLine(sGVertex* vertex);
+    static void drawLines(sGVertex* vertex, int count);
     static void drawTriangle(GLFWwindow* window);
     static void drawTriangle(sGVertex* vertex, sGColor color);
     static void drawGrid(GLFWwindow* window);
