@@ -264,40 +264,40 @@ void GOpenGL::drawGrid(GLFWwindow* window) {
 //===============================================
 void GOpenGL::drawGrid() {
 	//GDebug::Instance()->write("GOpenGL", "::", __FUNCTION__, "()", _EOA_);
-    double xMin = getDataDouble("xmin");
-    double xMax = getDataDouble("xmax");
-    double yMin = getDataDouble("ymin");
-    double yMax = getDataDouble("ymax");
-    double div = getDataDouble("div");
-    double divWidth = getDataDouble("div_width");;
-    sGColor divColor = {0.5, 0.5, 0.5, 1.0};
+    double lXmin = getDataDouble("xmin");
+    double lXmax = getDataDouble("xmax");
+    double lYmin = getDataDouble("ymin");
+    double lYmax = getDataDouble("ymax");
+    double lDiv = getDataDouble("div");
+    double lDivWidth = getDataDouble("div_width");;
+    sGColor lDivColor = {0.5, 0.5, 0.5, 1.0};
     double axisWidth = 2.0;
     sGColor axisColor = {1.0, 0.5, 0.5, 1.0};
-    for(double x = xMin; x <= xMax; x += div) {
+    for(double x = lXmin; x <= lXmax; x += lDiv) {
         sGVertex lVertex[] = {
-            {x, yMin, 0.0},
-            {x, yMax, 0.0}
+            {x, lYmin, 0.0},
+            {x, lYmax, 0.0}
         };
-        drawLine(lVertex, divColor, divWidth);
+        drawLine(lVertex, lDivColor, lDivWidth);
     }
-    for(double y = yMin; y <= yMax; y += div) {
+    for(double y = lYmin; y <= lYmax; y += lDiv) {
         sGVertex lVertex[] = {
-            {xMin, y, 0.0},
-            {xMax, y, 0.0}
+            {lXmin, y, 0.0},
+            {lXmax, y, 0.0}
         };
-        drawLine(lVertex, divColor, divWidth);
+        drawLine(lVertex, lDivColor, lDivWidth);
     }
     if(1) {
         sGVertex lVertex[] = {
-            {xMin, 0.0, 0.0},
-            {xMax, 0.0, 0.0}
+            {lXmin, 0.0, 0.0},
+            {lXmax, 0.0, 0.0}
         };
         drawLine(lVertex, axisColor, axisWidth);
     }
     if(1) {
         sGVertex lVertex[] = {
-            {0.0, yMin, 0.0},
-            {0.0, yMax, 0.0}
+            {0.0, lYmin, 0.0},
+            {0.0, lYmax, 0.0}
         };
         drawLine(lVertex, axisColor, axisWidth);
     }
