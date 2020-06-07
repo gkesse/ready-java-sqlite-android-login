@@ -23,7 +23,6 @@ GProcess* GProcess::Instance() {
 void GProcess::process(int argc, char** argv) {
     GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
     bool lRunFlag = 0;
-    std::string lKey = "";
     for(int i = 1; i < argc;) {
     	std::string lKey = argv[i++];
         if(lKey == "test") {test(argc, argv); lRunFlag = 1; break;}

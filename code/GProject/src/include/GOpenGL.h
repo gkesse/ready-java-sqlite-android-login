@@ -21,6 +21,8 @@ public:
     ~GOpenGL();
     static GOpenGL* Instance();
     void test(int argc, char** argv);
+    void testRun(std::string key);
+    static void help();
     void init(std::string windowId, int width, int height, std::string title);
     void createThread(std::string windowId, std::string drawId);
     void joinThread();
@@ -40,6 +42,8 @@ public:
     static void drawLines(sGVertex* vertex, int count);
     static void drawTriangle(GLFWwindow* window);
     static void drawTriangle(sGVertex* vertex, sGColor color);
+    static void drawTriangle(sGVertex* vertex);
+    static void drawTriangleFill(sGVertex* vertex);
     static void drawGrid(GLFWwindow* window);
     static void drawGrid();
     

@@ -2,7 +2,7 @@
 #include "GOpenGL.h"
 #include "GString.h"
 #include "GDebug.h"
-//===============================================
+ //===============================================
 #if defined(_GUSE_OPENGL_ON_)
 //===============================================
 GOpenGL* GOpenGL::m_instance = 0;
@@ -39,11 +39,34 @@ GOpenGL* GOpenGL::Instance() {
 }
 //===============================================
 void GOpenGL::test(int argc, char** argv) {
+    GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
+    bool lRunFlag = 0;
+    for(int i = 2; i < argc;) {
+    	std::string lKey = argv[i++];
+        testRun(lKey);
+        break;
+    }
+    if(lRunFlag == 0) help();
+}
+//===============================================
+void GOpenGL::testRun(std::string key) {
 	GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
     std::string lWindow = "lWindow";
     GOpenGL::Instance()->init(lWindow, 400, 400, "OpenGL | ReadyDev");
-    GOpenGL::Instance()->createThread(lWindow, "drawGrid");
+    GOpenGL::Instance()->createThread(lWindow, key);
     GOpenGL::Instance()->joinThread();
+}
+//===============================================
+void GOpenGL::help() {
+	GDebug::Instance()->write("GOpenGL", "::", __FUNCTION__, "()", _EOA_);
+    const char* lTestMap[] = {
+        "drawPoint", "drawLine", "drawTriangle", "drawGrid"
+    };
+    int lTestCount = sizeof(lTestMap)/sizeof(char*);
+    printf("%s:\n", "Selectionner un test");
+    for(int i = 0; i < lTestCount; i++) {
+        printf("\t- %s\n", lTestMap[i]);
+    }
 }
 //===============================================
 void GOpenGL::init(std::string windowId, int width, int height, std::string title) {
@@ -163,6 +186,7 @@ void GOpenGL::draw(GLFWwindow* window, std::string drawId) {
     if(drawId == "drawLine") {drawLine(window); return;} 
     if(drawId == "drawTriangle") {drawTriangle(window); return;}
     if(drawId == "drawGrid") {drawGrid(window); return;}
+    help(); exit(0);
 }
 //===============================================
 void GOpenGL::drawPoint(GLFWwindow* window) {
@@ -309,17 +333,14 @@ void GOpenGL::drawTriangle(GLFWwindow* window) {
     glOrtho(-lRatio, lRatio, -1, 1, 1, -1);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    glRotatef((float)glfwGetTime() * 50, 0, 0, 1);
     
+    drawGrid();
     sGVertex lVertex[] = {
-        {-0.6, -0.4, 0},
-        {0.6, -0.4, 0},
-        {0, 0.6, 0}
+        {1, 1, 0},
+        {5, 1, 0},
+        {3, 5, 0}
     };
-    sGColor lColor = {
-        1, 0, 0, 1
-    };
-    drawTriangle(lVertex, lColor);
+    drawTriangle(lVertex);
 }
 //===============================================
 void GOpenGL::drawTriangle(sGVertex* vertex, sGColor color) {
@@ -329,6 +350,40 @@ void GOpenGL::drawTriangle(sGVertex* vertex, sGColor color) {
         sGVertex lVertex = vertex[i];
         glColor4f(color.r, color.g, color.b, color.a);
         glVertex3f(lVertex.x, lVertex.y, lVertex.z);
+    }
+    glEnd();
+}
+//===============================================
+void GOpenGL::drawTriangle(sGVertex* vertex) {
+	//GDebug::Instance()->write("GOpenGL", "::", __FUNCTION__, "()", _EOA_);
+    sGColor lTriangleColor = getDataColor("line_color");
+	double lGridDiv = getDataDouble("grid_div");
+	double lGridXdivVal = getDataDouble("grid_xdiv_val");
+	double lGridYdivVal = getDataDouble("grid_ydiv_val");
+	double lGridZdivVal = getDataDouble("grid_zdiv_val");
+
+    glBegin(GL_LINE_LOOP);
+    for(int i = 0; i < 3; i++) {
+        sGVertex lVertex = vertex[i];
+        glColor4f(lTriangleColor.r, lTriangleColor.g, lTriangleColor.b, lTriangleColor.a);
+        glVertex3f(lVertex.x*lGridDiv/lGridXdivVal, lVertex.y*lGridDiv/lGridYdivVal, lVertex.z*lGridDiv/lGridZdivVal);
+    }
+    glEnd();
+}
+//===============================================
+void GOpenGL::drawTriangleFill(sGVertex* vertex) {
+	//GDebug::Instance()->write("GOpenGL", "::", __FUNCTION__, "()", _EOA_);
+    sGColor lTriangleColor = getDataColor("line_color");
+	double lGridDiv = getDataDouble("grid_div");
+	double lGridXdivVal = getDataDouble("grid_xdiv_val");
+	double lGridYdivVal = getDataDouble("grid_ydiv_val");
+	double lGridZdivVal = getDataDouble("grid_zdiv_val");
+
+    glBegin(GL_TRIANGLES);
+    for(int i = 0; i < 3; i++) {
+        sGVertex lVertex = vertex[i];
+        glColor4f(lTriangleColor.r, lTriangleColor.g, lTriangleColor.b, lTriangleColor.a);
+        glVertex3f(lVertex.x*lGridDiv/lGridXdivVal, lVertex.y*lGridDiv/lGridYdivVal, lVertex.z*lGridDiv/lGridZdivVal);
     }
     glEnd();
 }
