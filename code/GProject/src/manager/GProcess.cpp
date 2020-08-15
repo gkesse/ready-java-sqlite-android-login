@@ -1,16 +1,17 @@
 //===============================================
 #include "GProcess.h"
-#include "GOpenGL.h"
-#include "GDebug.h"
+#include "GConfig.h"
+#include "GSQLite.h"
+#include "GOpenCV.h"
 //===============================================
 GProcess* GProcess::m_instance = 0;
 //===============================================
 GProcess::GProcess() {
-    __CLASSNAME__ = __FUNCTION__;
+    
 }
 //===============================================
 GProcess::~GProcess() {
-
+    
 }
 //===============================================
 GProcess* GProcess::Instance() {
@@ -20,32 +21,74 @@ GProcess* GProcess::Instance() {
     return m_instance;
 }
 //===============================================
-void GProcess::process(int argc, char** argv) {
-    GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
-    bool lRunFlag = 0;
-    for(int i = 1; i < argc;) {
-    	std::string lKey = argv[i++];
-        if(lKey == "test") {test(argc, argv); lRunFlag = 1; break;}
-        break;
+void GProcess::run(int argc, char** argv) {
+    G_STATE = "S_INIT";
+    while(1) {
+        if(G_STATE == "S_ADMIN") run_ADMIN(argc, argv);
+        else if(G_STATE == "S_INIT") run_INIT(argc, argv);
+        else if(G_STATE == "S_METHOD") run_METHOD(argc, argv);
+        else if(G_STATE == "S_CHOICE") run_CHOICE(argc, argv);
+        //
+        else if(G_STATE == "S_SQLITE") run_SQLITE(argc, argv);
+        else if(G_STATE == "S_OPENCV") run_OPENCV(argc, argv);
+        //
+        else if(G_STATE == "S_SAVE") run_SAVE(argc, argv);
+        else if(G_STATE == "S_LOAD") run_LOAD(argc, argv);
+        else if(G_STATE == "S_QUIT") run_QUIT(argc, argv);
+        else break;
     }
-    if(lRunFlag == 0) help(argc, argv);
 }
 //===============================================
-void GProcess::help(int argc, char** argv) {
-    GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
-    const char* lModule = "gp_cpp";
-    printf("\n");
-    printf("%s\n", "Description:");
-    printf("\t%s\n", "Operations sur le module gp_cpp.");
-    printf("\n");
-    printf("%s\n", "Utilisation:");
-    printf("\t\%s : %s\n", lModule, "afficher aide");
-    printf("\t\%s %s : %s\n", lModule, "test", "lancer test");
-    printf("\n");
+void GProcess::run_ADMIN(int argc, char** argv) {
+    G_STATE = "S_END";
 }
 //===============================================
-void GProcess::test(int argc, char** argv) {
-    GDebug::Instance()->write(__CLASSNAME__, "::", __FUNCTION__, "()", _EOA_);
-    GOpenGL::Instance()->test(argc, argv);
+void GProcess::run_INIT(int argc, char** argv) {
+    printf("\n");
+    printf("%s\n", "CPP_ADMIN !!!");
+    printf("\t%-2s : %s\n", "-q", "quitter l'application");
+    printf("\n");
+    G_STATE = "S_LOAD";
+}
+//===============================================
+void GProcess::run_METHOD(int argc, char** argv) {
+    printf("%s\n", "CPP_ADMIN :");
+    printf("\t%-2s : %s\n", "1", "S_SQLITE");
+    printf("\t%-2s : %s\n", "2", "S_OPENCV");
+    printf("\n");
+    G_STATE = "S_CHOICE";
+}
+//===============================================
+void GProcess::run_CHOICE(int argc, char** argv) {
+    std::string lLast = "1";
+    printf("CPP_ADMIN_ID (%s) ? : ", lLast.c_str());
+    std::string lAnswer; std::getline(std::cin, lAnswer);
+    if(lAnswer == "") lAnswer = lLast;
+    if(lAnswer == "-q") G_STATE = "S_END";
+    //
+    else if(lAnswer == "1") G_STATE = "S_SQLITE";
+    else if(lAnswer == "2") G_STATE = "S_OPENCV";
+}
+//===============================================
+void GProcess::run_SQLITE(int argc, char** argv) {
+    GSQLite::Instance()->run(argc, argv);
+    G_STATE = "S_SAVE";
+}
+//===============================================
+void GProcess::run_OPENCV(int argc, char** argv) {
+    GOpenCV::Instance()->run(argc, argv);
+    G_STATE = "S_SAVE";
+}
+//===============================================
+void GProcess::run_SAVE(int argc, char** argv) {
+    G_STATE = "S_QUIT";
+}
+//===============================================
+void GProcess::run_LOAD(int argc, char** argv) {
+    G_STATE = "S_METHOD";
+}
+//===============================================
+void GProcess::run_QUIT(int argc, char** argv) {
+    G_STATE = "S_END";
 }
 //===============================================
