@@ -60,14 +60,14 @@ void GProcess::run_METHOD(int argc, char** argv) {
 }
 //===============================================
 void GProcess::run_CHOICE(int argc, char** argv) {
-    std::string lLast = "1";
+    std::string lLast = GConfig::Instance()->getData("CPP_ADMIN_ID");
     printf("CPP_ADMIN_ID (%s) ? : ", lLast.c_str());
     std::string lAnswer; std::getline(std::cin, lAnswer);
     if(lAnswer == "") lAnswer = lLast;
     if(lAnswer == "-q") G_STATE = "S_END";
     //
-    else if(lAnswer == "1") G_STATE = "S_SQLITE";
-    else if(lAnswer == "2") G_STATE = "S_OPENCV";
+    else if(lAnswer == "1") {G_STATE = "S_SQLITE"; GConfig::Instance()->setData("CPP_ADMIN_ID", lAnswer);} 
+    else if(lAnswer == "2") {G_STATE = "S_OPENCV"; GConfig::Instance()->setData("CPP_ADMIN_ID", lAnswer);}
 }
 //===============================================
 void GProcess::run_SQLITE(int argc, char** argv) {

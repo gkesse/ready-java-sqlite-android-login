@@ -1,6 +1,7 @@
 //===============================================
 #include "GSQLite.h"
 #include "GProcess.h"
+#include "GConfig.h"
 //===============================================
 GSQLite* GSQLite::m_instance = 0;
 //===============================================
@@ -59,7 +60,7 @@ void GSQLite::run_METHOD(int argc, char** argv) {
 }
 //===============================================
 void GSQLite::run_CHOICE(int argc, char** argv) {
-    std::string lLast = "1";
+    std::string lLast = GConfig::Instance()->getData("CPP_SQLITE_ID");
     printf("CPP_SQLITE_ID (%s) ? : ", lLast.c_str());
     std::string lAnswer; std::getline(std::cin, lAnswer);
     if(lAnswer == "") lAnswer = lLast;
@@ -67,7 +68,7 @@ void GSQLite::run_CHOICE(int argc, char** argv) {
     else if(lAnswer == "-i") G_STATE = "S_INIT";
     else if(lAnswer == "-a") G_STATE = "S_ADMIN";
     //
-    else if(lAnswer == "1") G_STATE = "S_CONFIG_LOAD";
+    else if(lAnswer == "1") {G_STATE = "S_CONFIG_LOAD"; GConfig::Instance()->setData("CPP_SQLITE_ID", lAnswer);}
 }
 //===============================================
 void GSQLite::run_CONFIG_LOAD(int argc, char** argv) {
