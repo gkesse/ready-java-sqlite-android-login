@@ -53,6 +53,7 @@ void GOpenCV::run_INIT(int argc, char** argv) {
     printf("\t%-2s : %s\n", "-q", "quitter l'application");
     printf("\t%-2s : %s\n", "-i", "reinitialiser l'application");
     printf("\t%-2s : %s\n", "-a", "redemarrer l'application");
+    printf("\t%-2s : %s\n", "-v", "valider les configurations");
     printf("\n");
     G_STATE = "S_LOAD";
 }
@@ -86,6 +87,7 @@ void GOpenCV::run_IMAGE_LOAD_IMAGE_PATH(int argc, char** argv) {
     if(lAnswer == "-q") G_STATE = "S_END";
     else if(lAnswer == "-i") G_STATE = "S_INIT";
     else if(lAnswer == "-a") G_STATE = "S_ADMIN";
+    else if(lAnswer == "-v") G_STATE = "S_IMAGE_LOAD";
     else if(lAnswer != "") {G_STATE = "S_IMAGE_LOAD_IMAGE_NAME"; GConfig::Instance()->setData("CPP_IMAGE_PATH", lAnswer);}
 }
 //===============================================
@@ -95,8 +97,9 @@ void GOpenCV::run_IMAGE_LOAD_IMAGE_NAME(int argc, char** argv) {
     std::string lAnswer; std::getline(std::cin, lAnswer);
     if(lAnswer == "") lAnswer = lLast;
     if(lAnswer == "-q") G_STATE = "S_END";
-    else if(lAnswer == "-i") G_STATE = "S_INIT";
+    else if(lAnswer == "-i") G_STATE = "S_INIT"; 
     else if(lAnswer == "-a") G_STATE = "S_ADMIN";
+    else if(lAnswer == "-v") G_STATE = "S_IMAGE_LOAD";
     else if(lAnswer != "") {G_STATE = "S_IMAGE_LOAD"; GConfig::Instance()->setData("CPP_IMAGE_NAME", lAnswer);}
 }
 //===============================================
@@ -117,10 +120,16 @@ void GOpenCV::run_VIDEO_LOAD(int argc, char** argv) {
 }
 //===============================================
 void GOpenCV::run_SAVE(int argc, char** argv) {
+    GConfig::Instance()->saveData("CPP_OPENCV_ID");
+    GConfig::Instance()->saveData("CPP_IMAGE_PATH");
+    GConfig::Instance()->saveData("CPP_IMAGE_NAME");
     G_STATE = "S_QUIT";
 }
 //===============================================
 void GOpenCV::run_LOAD(int argc, char** argv) {
+    GConfig::Instance()->loadData("CPP_OPENCV_ID");
+    GConfig::Instance()->loadData("CPP_IMAGE_PATH");
+    GConfig::Instance()->loadData("CPP_IMAGE_NAME");
     G_STATE = "S_METHOD";
 }
 //===============================================

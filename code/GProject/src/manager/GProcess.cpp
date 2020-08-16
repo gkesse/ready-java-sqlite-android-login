@@ -81,10 +81,12 @@ void GProcess::run_OPENCV(int argc, char** argv) {
 }
 //===============================================
 void GProcess::run_SAVE(int argc, char** argv) {
+    GConfig::Instance()->saveData("CPP_ADMIN_ID");
     G_STATE = "S_QUIT";
 }
 //===============================================
 void GProcess::run_LOAD(int argc, char** argv) {
+    GConfig::Instance()->loadData("CPP_ADMIN_ID");
     G_STATE = "S_METHOD";
 }
 //===============================================

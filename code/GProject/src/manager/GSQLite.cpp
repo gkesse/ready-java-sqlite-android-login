@@ -2,6 +2,7 @@
 #include "GSQLite.h"
 #include "GProcess.h"
 #include "GConfig.h"
+#include "GSQLiteMgr.h"
 //===============================================
 GSQLite* GSQLite::m_instance = 0;
 //===============================================
@@ -48,6 +49,7 @@ void GSQLite::run_INIT(int argc, char** argv) {
     printf("\t%-2s : %s\n", "-q", "quitter l'application");
     printf("\t%-2s : %s\n", "-i", "reinitialiser l'application");
     printf("\t%-2s : %s\n", "-a", "redemarrer l'application");
+    printf("\t%-2s : %s\n", "-v", "valider les configurations");
     printf("\n");
     G_STATE = "S_LOAD";
 }
@@ -73,14 +75,22 @@ void GSQLite::run_CHOICE(int argc, char** argv) {
 //===============================================
 void GSQLite::run_CONFIG_LOAD(int argc, char** argv) {
     printf("\n");
+    GSQLiteMgr::Instance()->queryShow("", ""
+    "select *\n"
+    "from CONFIG_DATA\n"
+    "order by CONFIG_KEY\n"
+    "", 1, "20, 50", "20");
+    printf("\n");
     G_STATE = "S_SAVE";
 }
 //===============================================
 void GSQLite::run_SAVE(int argc, char** argv) {
+    GConfig::Instance()->saveData("CPP_SQLITE_ID");
     G_STATE = "S_QUIT";
 }
 //===============================================
 void GSQLite::run_LOAD(int argc, char** argv) {
+    GConfig::Instance()->loadData("CPP_SQLITE_ID");
     G_STATE = "S_METHOD";
 }
 //===============================================
