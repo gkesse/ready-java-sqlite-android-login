@@ -104,7 +104,7 @@ void GOpenCV::run_IMAGE_LOAD(int argc, char** argv) {
     printf("\n");
     std::string lImagePath = "";
     lImagePath += GConfig::Instance()->getData("CPP_IMAGE_PATH");
-    lImagePath += GManager::Instance()->getSeparator();
+    lImagePath += GManager::Instance()->separatorGet();
     lImagePath += GConfig::Instance()->getData("CPP_IMAGE_NAME");
     printf("%s\n", lImagePath.c_str());
     printf("\n");

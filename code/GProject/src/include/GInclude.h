@@ -7,6 +7,10 @@
 #include <iostream>
 #include <string>
 #include <map>
+#include <vector>
+#include <sstream>
+//===============================================
+#include <sqlite3.h>
 //===============================================
 #endif
 //===============================================

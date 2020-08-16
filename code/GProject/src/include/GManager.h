@@ -11,8 +11,11 @@ private:
 public:
     ~GManager();
     static GManager* Instance();
-    std::string getSeparator();
-
+    std::string separatorGet();
+    std::vector<std::string> split(std::string strIn, char sepIn);
+    int splitCount(std::string strIn, char sepIn);
+    std::string splitGet(std::string strIn, char sepIn, int indexIn, std::string defaultIn);
+    
 public:
     static GManager* m_instance;
 };

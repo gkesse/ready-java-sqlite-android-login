@@ -5,8 +5,11 @@ GTARGET = $(GBIN)\gp_cpp.exe
 
 GINCS = \
     -I$(GSRC)\include \
+    -IC:\Users\Admin\Downloads\Programs\ReadyLib\dev\sqlite\3.29.0\mingw\include \
 
 GLIBS = \
+    -LC:\Users\Admin\Downloads\Programs\ReadyLib\dev\sqlite\3.29.0\mingw\lib \
+    -lsqlite3 \
     
 GOBJS = \
     $(patsubst $(GSRC)/%.cpp, $(GBUILD)/%.o, $(wildcard $(GSRC)/*.cpp)) \
