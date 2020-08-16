@@ -6,11 +6,13 @@ GTARGET = $(GBIN)\gp_cpp.exe
 GINCS = \
     -I$(GSRC)\include \
     -IC:\Users\Admin\Downloads\Programs\ReadyLib\dev\sqlite\3.29.0\mingw\include \
-
+    -IC:\Users\Admin\Downloads\Programs\ReadyLib\dev\opencv\2.4.13\mingw\include \
+    
 GLIBS = \
     -LC:\Users\Admin\Downloads\Programs\ReadyLib\dev\sqlite\3.29.0\mingw\lib \
-    -lsqlite3 \
-    
+    -LC:\Users\Admin\Downloads\Programs\ReadyLib\dev\opencv\2.4.13\mingw\lib \
+    -lsqlite3 -lopencv_core2413 -lopencv_imgproc2413 -lopencv_highgui2413 \
+
 GOBJS = \
     $(patsubst $(GSRC)/%.cpp, $(GBUILD)/%.o, $(wildcard $(GSRC)/*.cpp)) \
     $(patsubst $(GSRC)/manager/%.cpp, $(GBUILD)/%.o, $(wildcard $(GSRC)/manager/*.cpp)) \
@@ -18,7 +20,7 @@ GOBJS = \
 GCFLAGS = \
     -std=gnu++11 \
     
-all: clean compile run
+all: clean_exe compile run
 
 compile: $(GOBJS)
 	@if not exist $(GBIN) ( mkdir $(GBIN) )
@@ -32,5 +34,7 @@ $(GBUILD)/%.o: $(GSRC)/manager/%.cpp
 	g++ $(GCFLAGS) -c $< -o $@ $(GINCS)
 run:
 	@$(GTARGET)
+clean_exe: 
+	del /q $(GBIN)\*
 clean: 
 	del /q $(GBUILD)\* $(GBIN)\*
