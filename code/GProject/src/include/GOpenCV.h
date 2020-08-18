@@ -26,7 +26,18 @@ private:
     void run_IMAGE_LOAD_IMAGE_PATH(int argc, char** argv);
     void run_IMAGE_LOAD_IMAGE_NAME(int argc, char** argv);
     void run_IMAGE_LOAD(int argc, char** argv);
+    //
+    void run_IMAGE_INVERT_IMAGE_PATH(int argc, char** argv);
+    void run_IMAGE_INVERT_IMAGE_NAME(int argc, char** argv);
+    void run_IMAGE_INVERT(int argc, char** argv);
+    //
+    void run_VIDEO_LOAD_VIDEO_PATH(int argc, char** argv);
+    void run_VIDEO_LOAD_VIDEO_NAME(int argc, char** argv);
     void run_VIDEO_LOAD(int argc, char** argv);
+    //
+    void run_VIDEO_TRACKBAR_VIDEO_PATH(int argc, char** argv);
+    void run_VIDEO_TRACKBAR_VIDEO_NAME(int argc, char** argv);
+    void run_VIDEO_TRACKBAR(int argc, char** argv);
 
 public:
     static GOpenCV* m_instance;
