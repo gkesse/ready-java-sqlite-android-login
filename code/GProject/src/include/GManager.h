@@ -16,6 +16,8 @@ public:
     int splitCount(std::string strIn, char sepIn);
     std::string splitGet(std::string strIn, char sepIn, int indexIn, std::string defaultIn);
     std::string dataPath();
+    void shell(const char* command, char* output, int size, int shift);
+    void system(const char* command);
     
 public:
     static GManager* m_instance;
