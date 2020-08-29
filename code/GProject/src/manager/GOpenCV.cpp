@@ -127,6 +127,7 @@ void GOpenCV::run_IMAGE_LOAD(int argc, char** argv) {
     lImagePath += GConfig::Instance()->getData("CPP_IMAGE_PATH");
     lImagePath += GManager::Instance()->separatorGet();
     lImagePath += GConfig::Instance()->getData("CPP_IMAGE_NAME");
+    printf("%s\n", lImagePath.c_str());
     GOpenCVMgr::Instance()->imageLoad(lImagePath);
     printf("\n");
     G_STATE = "S_SAVE";
