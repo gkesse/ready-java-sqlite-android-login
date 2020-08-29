@@ -46,6 +46,10 @@ void GOpenCV::run(int argc, char** argv) {
         else if(G_STATE == "S_VIDEO_TRACKBAR_VIDEO_NAME") run_VIDEO_TRACKBAR_VIDEO_NAME(argc, argv);
         else if(G_STATE == "S_VIDEO_TRACKBAR") run_VIDEO_TRACKBAR(argc, argv);
         //
+        else if(G_STATE == "S_BASIS") run_BASIS(argc, argv);
+        else if(G_STATE == "S_BASIS_POINT") run_BASIS_POINT(argc, argv);
+        else if(G_STATE == "S_BASIS_FUNCTION") run_BASIS_FUNCTION(argc, argv);
+        //
         else if(G_STATE == "S_SAVE") run_SAVE(argc, argv);
         else if(G_STATE == "S_LOAD") run_LOAD(argc, argv);
         else if(G_STATE == "S_QUIT") run_QUIT(argc, argv);
@@ -77,6 +81,10 @@ void GOpenCV::run_METHOD(int argc, char** argv) {
     printf("\t%-2s : %s\n", "10", "S_VIDEO_LOAD");
     printf("\t%-2s : %s\n", "11", "S_VIDEO_TRACKBAR");
     printf("\n");
+    printf("\t%-2s : %s\n", "20", "S_BASIS");
+    printf("\t%-2s : %s\n", "21", "S_BASIS_POINT");
+    printf("\t%-2s : %s\n", "22", "S_BASIS_FUNCTION");
+    printf("\n");
     G_STATE = "S_CHOICE";
 }
 //===============================================
@@ -94,6 +102,32 @@ void GOpenCV::run_CHOICE(int argc, char** argv) {
     //
     else if(lAnswer == "10") {G_STATE = "S_VIDEO_LOAD_VIDEO_PATH"; GConfig::Instance()->setData("CPP_OPENCV_ID", lAnswer);}
     else if(lAnswer == "11") {G_STATE = "S_VIDEO_TRACKBAR_VIDEO_PATH"; GConfig::Instance()->setData("CPP_OPENCV_ID", lAnswer);}
+    //
+    else if(lAnswer == "20") {G_STATE = "S_BASIS"; GConfig::Instance()->setData("CPP_OPENCV_ID", lAnswer);}
+    else if(lAnswer == "21") {G_STATE = "S_BASIS_POINT"; GConfig::Instance()->setData("CPP_OPENCV_ID", lAnswer);}
+    else if(lAnswer == "22") {G_STATE = "S_BASIS_FUNCTION"; GConfig::Instance()->setData("CPP_OPENCV_ID", lAnswer);}
+    //
+}
+//===============================================
+void GOpenCV::run_BASIS(int argc, char** argv) {
+    printf("\n");
+    printf("%s\n", __FUNCTION__);
+    GOpenCVMgr::Instance()->basis();
+    G_STATE = "S_SAVE";
+}
+//===============================================
+void GOpenCV::run_BASIS_POINT(int argc, char** argv) {
+    printf("\n");
+    printf("%s\n", __FUNCTION__);
+    GOpenCVMgr::Instance()->basisPoint();
+    G_STATE = "S_SAVE";
+}
+//===============================================
+void GOpenCV::run_BASIS_FUNCTION(int argc, char** argv) {
+    printf("\n");
+    printf("%s\n", __FUNCTION__);
+    GOpenCVMgr::Instance()->basisFunction();
+    G_STATE = "S_SAVE";
 }
 //===============================================
 void GOpenCV::run_IMAGE_LOAD_IMAGE_PATH(int argc, char** argv) {
@@ -260,6 +294,7 @@ void GOpenCV::run_LOAD(int argc, char** argv) {
 }
 //===============================================
 void GOpenCV::run_QUIT(int argc, char** argv) {
+    printf("\n");
     printf("CPP_QUIT (Oui/[N]on) ? : ");
     std::string lAnswer; std::getline(std::cin, lAnswer);
     if(lAnswer == "-q") G_STATE = "S_END";

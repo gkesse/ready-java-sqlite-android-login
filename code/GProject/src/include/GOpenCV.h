@@ -38,6 +38,10 @@ private:
     void run_VIDEO_TRACKBAR_VIDEO_PATH(int argc, char** argv);
     void run_VIDEO_TRACKBAR_VIDEO_NAME(int argc, char** argv);
     void run_VIDEO_TRACKBAR(int argc, char** argv);
+    //
+    void run_BASIS(int argc, char** argv);
+    void run_BASIS_POINT(int argc, char** argv);
+    void run_BASIS_FUNCTION(int argc, char** argv);
 
 public:
     static GOpenCV* m_instance;
