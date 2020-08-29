@@ -59,3 +59,7 @@ std::string GManager::splitGet(std::string strIn, char sepIn, int indexIn, std::
     return lData;
 }
 //===============================================
+std::string GManager::dataPath() {
+    return std::string(getenv("GPATH"));
+}
+//===============================================

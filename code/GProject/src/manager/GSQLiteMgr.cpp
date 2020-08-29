@@ -3,12 +3,6 @@
 #include "GConfig.h"
 #include "GManager.h"
 //===============================================
-#if defined (__WIN32) 
-#define CPP_SQLITE_PATH "C:\\Users\\Admin\\Downloads\\Programs\\ReadyBin\\win"
-#elif defined (__WIN32) 
-#define CPP_SQLITE_PATH "C:\\Users\\Admin\\Downloads\\Programs\\ReadyBin\\win"
-#endif
-//===============================================
 GSQLiteMgr* GSQLiteMgr::m_instance = 0;
 //===============================================
 typedef int (*GSQLITE_EXEC)(void* paramsIn, int colCountIn, char** colValueIn, char** colNameIn);
@@ -33,8 +27,8 @@ struct _sGSQLiteList {
 };
 //===============================================
 GSQLiteMgr::GSQLiteMgr() {
-    GConfig::Instance()->setData("CPP_SQLITE_PATH", CPP_SQLITE_PATH);
-    GConfig::Instance()->setData("CPP_SQLITE_NAME", ".config.dat");
+    GConfig::Instance()->setData("CPP_SQLITE_PATH", GManager::Instance()->dataPath());
+    GConfig::Instance()->setData("CPP_SQLITE_NAME", ".CONFIG_O.dat");
     std::string lDbPath = "";
     lDbPath += GConfig::Instance()->getData("CPP_SQLITE_PATH");
     lDbPath += GManager::Instance()->separatorGet();

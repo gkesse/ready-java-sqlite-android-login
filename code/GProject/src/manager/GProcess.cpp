@@ -61,7 +61,7 @@ void GProcess::run_METHOD(int argc, char** argv) {
 //===============================================
 void GProcess::run_CHOICE(int argc, char** argv) {
     std::string lLast = GConfig::Instance()->getData("CPP_ADMIN_ID");
-    printf("CPP_ADMIN_ID (%s) ? : ", lLast.c_str());
+    printf("CPP_ADMIN (%s) ? : ", lLast.c_str());
     std::string lAnswer; std::getline(std::cin, lAnswer);
     if(lAnswer == "") lAnswer = lLast;
     if(lAnswer == "-q") G_STATE = "S_END";
@@ -82,7 +82,7 @@ void GProcess::run_OPENCV(int argc, char** argv) {
 //===============================================
 void GProcess::run_SAVE(int argc, char** argv) {
     GConfig::Instance()->saveData("CPP_ADMIN_ID");
-    G_STATE = "S_QUIT";
+    G_STATE = "S_END";
 }
 //===============================================
 void GProcess::run_LOAD(int argc, char** argv) {

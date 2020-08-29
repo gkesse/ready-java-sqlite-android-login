@@ -40,7 +40,7 @@ void GConfig::loadData(std::string keyIn) {
     sprintf(lSql, ""
     "select CONFIG_VALUE\n"
     "from CONFIG_DATA\n"
-    "where CONFIG_KEY=\"%s\"\n"
+    "where CONFIG_KEY='%s'\n"
     "", keyIn.c_str());
     std::string lData = GSQLiteMgr::Instance()->queryValue("", lSql);
     m_dataMap[keyIn] = lData;
@@ -51,7 +51,7 @@ int GConfig::checkData(std::string keyIn) {
     sprintf(lSql, ""
     "select count(*)\n"
     "from CONFIG_DATA\n"
-    "where CONFIG_KEY=\"%s\"\n"
+    "where CONFIG_KEY='%s'\n"
     "", keyIn.c_str());
     std::string lCount = GSQLiteMgr::Instance()->queryValue("", lSql);
     return std::stoi(lCount);
@@ -61,7 +61,7 @@ void GConfig::insertData(std::string keyIn, std::string valueIn) {
     char lSql[B_QUERY+1];
     sprintf(lSql, ""
     "insert into CONFIG_DATA(CONFIG_KEY, CONFIG_VALUE)\n"
-    "values(\"%s\", \"%s\")\n"
+    "values('%s', '%s')\n"
     "", keyIn.c_str(), valueIn.c_str());
     GSQLiteMgr::Instance()->queryWrite("", lSql);
 }
@@ -70,8 +70,8 @@ void GConfig::updateData(std::string keyIn, std::string valueIn) {
     char lSql[B_QUERY+1];
     sprintf(lSql, ""
     "update CONFIG_DATA\n"
-    "set CONFIG_VALUE=\"%s\"\n"
-    "where CONFIG_KEY=\"%s\"\n"
+    "set CONFIG_VALUE='%s'\n"
+    "where CONFIG_KEY='%s'\n"
     "", valueIn.c_str(), keyIn.c_str());
     GSQLiteMgr::Instance()->queryWrite("", lSql);
 }

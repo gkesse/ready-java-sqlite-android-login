@@ -82,7 +82,7 @@ void GOpenCV::run_METHOD(int argc, char** argv) {
 //===============================================
 void GOpenCV::run_CHOICE(int argc, char** argv) {
     std::string lLast = GConfig::Instance()->getData("CPP_OPENCV_ID");
-    printf("CPP_OPENCV_ID (%s) ? : ", lLast.c_str());
+    printf("CPP_OPENCV (%s) ? : ", lLast.c_str());
     std::string lAnswer; std::getline(std::cin, lAnswer);
     if(lAnswer == "") lAnswer = lLast;
     if(lAnswer == "-q") G_STATE = "S_END";

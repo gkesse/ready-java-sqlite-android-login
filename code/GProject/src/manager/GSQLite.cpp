@@ -63,7 +63,7 @@ void GSQLite::run_METHOD(int argc, char** argv) {
 //===============================================
 void GSQLite::run_CHOICE(int argc, char** argv) {
     std::string lLast = GConfig::Instance()->getData("CPP_SQLITE_ID");
-    printf("CPP_SQLITE_ID (%s) ? : ", lLast.c_str());
+    printf("CPP_SQLITE (%s) ? : ", lLast.c_str());
     std::string lAnswer; std::getline(std::cin, lAnswer);
     if(lAnswer == "") lAnswer = lLast;
     if(lAnswer == "-q") G_STATE = "S_END";
