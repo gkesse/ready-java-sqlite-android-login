@@ -3,8 +3,7 @@
 #include "GGslTest.h"
 //===============================================
 int main(int argc, char** argv) {
-    GGslTest::Instance()->matrix();
-    exit(0);
+    //GGslTest::Instance()->polynomial();
     GProcess::Instance()->run(argc, argv);
     return 0;
 }

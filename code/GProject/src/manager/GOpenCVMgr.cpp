@@ -1,7 +1,10 @@
 //===============================================
 #include "GOpenCVMgr.h"
 #include "GConfig.h"
+#include "GFunction.h"
 #include "GManager.h"
+//===============================================
+typedef double (*GFUNC_CB)(double x, void* params);
 //===============================================
 GOpenCVMgr* GOpenCVMgr::m_instance = 0;
 //===============================================
@@ -116,15 +119,24 @@ void GOpenCVMgr::basisFunction() {
     m_bgColor = cv::Scalar(255, 255, 255);
     m_gridColor = cv::Scalar(127, 127, 127);
     m_axisColor = cv::Scalar(0, 0, 0);
-    m_pointColor = cv::Scalar(255, 0, 0, 0.2);
+    m_pointColor = cv::Scalar(255, 0, 0);
+    m_lineColor = cv::Scalar(0, 0, 255);
     m_gridDiv = 20;
     m_x0 = m_width/2;
     m_y0 = m_height/2;
+    m_xMin = -m_x0/m_gridDiv;
+    m_xMax = +m_x0/m_gridDiv;
+    m_yMin = -m_y0/m_gridDiv;
+    m_yMax = +m_y0/m_gridDiv;
+    m_xTick = 0.01;
     
     basisDraw();
-    basisPointDraw(0, 0);
+    basisPointDraw(0, 0); 
     basisPointDraw(5, 3);
-
+    double lCoef[] = {0, 0, 1};
+    sGPoly lParams = {lCoef, 3};
+    basisFunctionDraw((void*)GFunction::onPoly, &lParams);
+    
     cv::namedWindow(m_title, cv::WINDOW_AUTOSIZE);
     cv::imshow(m_title, m_basis);
     cv::waitKey(0);
@@ -158,12 +170,25 @@ void GOpenCVMgr::basisDraw() {
     cv::line(m_basis, lPoint1, lPoint2, m_axisColor, 2);
 }
 //===============================================
-void GOpenCVMgr::basisPointDraw(int x, int y) {
+void GOpenCVMgr::basisPointDraw(double x, double y) {
     cv::Point lPoint(m_x0 + x*m_gridDiv, m_y0 - y*m_gridDiv);
     cv::circle(m_basis, lPoint, 6, m_pointColor, -1);
 }
 //===============================================
-void GOpenCVMgr::basisFunctionDraw() {
-
+void GOpenCVMgr::basisLineDraw(double x1, double y1, double x2, double y2) {
+    cv::Point lPoint1(m_x0 + x1*m_gridDiv, m_y0 - y1*m_gridDiv);
+    cv::Point lPoint2(m_x0 + x2*m_gridDiv, m_y0 - y2*m_gridDiv);
+    cv::line(m_basis, lPoint1, lPoint2, m_lineColor, 2);
+}
+//===============================================
+void GOpenCVMgr::basisFunctionDraw(void* func, void* params) {
+    for(double lX = m_xMin; lX <= m_xMax; lX += m_xTick) {
+        double lX2 = lX + m_xTick;
+        GFUNC_CB onFunc = (GFUNC_CB)func;
+        double lY = onFunc(lX, params);
+        double lY2 = onFunc(lX2, params);
+        if(lY < m_yMin - 1 || lY > m_yMax + 1) continue;
+        basisLineDraw(lX, lY, lX2, lY2);
+    }
 }
 //===============================================

@@ -66,6 +66,55 @@ void GGslTest::matrix() {
     gsl_spmatrix_free(lCopy);
     gsl_spmatrix_free(lTranspose);
     gsl_spmatrix_free(lLoad);
+    
+    exit(0);
+}
+//===============================================
+void GGslTest::polynomial() {
+    double lPoly[] = {0, 0, 1};
+    int lPolyDegree = 2;
+    int lPolyDegreeTab = lPolyDegree + 1;
+    double lXmin = -3;
+    double lXmax = 3;
+    double lRoot[] = {1, -4, 1};
+    int lRootDegree = 2;
+    int lRootDegreeTab = lRootDegree + 1;
+    const int lRootSize = lRootDegree*2;
+    double lRootZ[lRootSize];
+    
+    // calcul
+    printf("### calcul\n\n");
+    for(double lX = lXmin; lX <= lXmax; lX += 1) {
+        double lData = gsl_poly_eval(lPoly, lPolyDegreeTab, lX);
+        printf("%-3.0f : %-3.0f\n", lX, lData);
+    }
+    printf("\n");
+    
+    // racine
+    printf("### racine\n\n");
+    gsl_poly_complex_workspace* lRootComplex = gsl_poly_complex_workspace_alloc(lRootDegreeTab);
+    gsl_poly_complex_solve (lRoot, lRootDegreeTab, lRootComplex, lRootZ);
+    polynomialComplexShow(lRootZ, lRootDegree);
+    
+    // liberation
+    gsl_poly_complex_workspace_free(lRootComplex);
+    
+    exit(0);
+}
+//===============================================
+void GGslTest::polynomialComplexShow(double* data, int size) {
+    for (int i = 0; i < size; i++) {
+        double lA = data[2*i];
+        double lB = data[2*i + 1];
+        if(lA == 0 && lB == 0) {printf ("z[%d] = 0\n", i);}
+        else if(lA == 0 && lB == 1) {printf ("z[%d] = i\n", i);}
+        else if(lA == 0 && lB == -1) {printf ("z[%d] = -i\n", i);}
+        else if(lA == 0) {printf ("z[%d] = %.0f i\n", i, lB);}
+        else if(lB == 0) {printf ("z[%d] = %.0f\n", i, lA);}
+        else if(lB == 1) {printf ("z[%d] = %.0f + i\n", i, lA);}
+        else if(lB == -1) {printf ("z[%d] = %.0f - i\n", i, lA);}
+        else {printf ("z[%d] = %.0f + %.0f i\n", i, lA, lB);}
+    }
 }
 //===============================================
 void GGslTest::matrixShow(gsl_spmatrix* mat) {

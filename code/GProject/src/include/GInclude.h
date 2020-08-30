@@ -24,6 +24,7 @@
 #include <sqlite3.h>
 #include <opencv2/opencv.hpp>
 #include <gsl/gsl_spmatrix.h>
+#include <gsl/gsl_poly.h>
 //===============================================
 #endif
 //===============================================
