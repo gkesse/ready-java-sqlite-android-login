@@ -1,6 +1,13 @@
 //===============================================
 #include "GFunction.h"
 //===============================================
+typedef struct _sGPoly sGPoly;
+//===============================================
+struct _sGPoly {
+    double* coef;
+    int size;
+};
+//===============================================
 GFunction* GFunction::m_instance = 0;
 //===============================================
 GFunction::GFunction() {
@@ -16,20 +23,6 @@ GFunction* GFunction::Instance() {
         m_instance = new GFunction;
     }
     return m_instance;
-}
-//===============================================
-double GFunction::onConstant(double x, void* params) {
-    sGParams1* lParams = (sGParams1*)params;
-    double lY0 = lParams->param1;
-    return lY0;
-}
-//===============================================
-double GFunction::onLine(double x, void* params) {
-    sGParams2* lParams = (sGParams2*)params;
-    double lA = lParams->param1;
-    double lB = lParams->param2;
-    double lY = lA*x + lB;
-    return lY;
 }
 //===============================================
 double GFunction::onPoly(double x, void* params) {

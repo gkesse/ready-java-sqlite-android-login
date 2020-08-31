@@ -1,22 +1,20 @@
 //===============================================
-#ifndef _GFunction_
-#define _GFunction_
+#ifndef _GOpenCVTest_
+#define _GOpenCVTest_
 //===============================================
 #include "GInclude.h"
 //===============================================
-class GFunction {
+class GOpenCVTest {
 private:
-    GFunction();
+    GOpenCVTest();
     
 public:
-    ~GFunction();
-    static GFunction* Instance();
-    static double onConstant(double x, void* params);
-    static double onLine(double x, void* params);
-    static double onPoly(double x, void* params);
+    ~GOpenCVTest();
+    static GOpenCVTest* Instance();
+    void text();
     
 public:
-    static GFunction* m_instance;
+    static GOpenCVTest* m_instance;
 };
 //===============================================
 #endif
