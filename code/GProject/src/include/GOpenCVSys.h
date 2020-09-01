@@ -46,6 +46,7 @@ private:
 public:
     static GOpenCVSys* m_instance;
     std::string G_STATE;
+    std::string G_SYSTEM;
 };
 //===============================================
 #endif

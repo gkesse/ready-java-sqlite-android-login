@@ -12,7 +12,7 @@ GOpenCVSys::GOpenCVSys() {
 }
 //===============================================
 GOpenCVSys::~GOpenCVSys() {
-    
+    G_SYSTEM = "H_CLOSE";
 }
 //===============================================
 GOpenCVSys* GOpenCVSys::Instance() {
@@ -50,6 +50,9 @@ void GOpenCVSys::run(int argc, char** argv) {
         else if(G_STATE == "S_BASIS_POINT") run_BASIS_POINT(argc, argv);
         else if(G_STATE == "S_BASIS_FUNCTION") run_BASIS_FUNCTION(argc, argv);
         //
+        else if(G_STATE == "S_SYSTEM_OPEN") run_SYSTEM_OPEN(argc, argv);
+        else if(G_STATE == "S_SYSTEM_CLOSE") run_SYSTEM_CLOSE(argc, argv);
+        //
         else if(G_STATE == "S_SAVE") run_SAVE(argc, argv);
         else if(G_STATE == "S_LOAD") run_LOAD(argc, argv);
         else if(G_STATE == "S_QUIT") run_QUIT(argc, argv);
@@ -85,6 +88,9 @@ void GOpenCVSys::run_METHOD(int argc, char** argv) {
     printf("\t%-2s : %s\n", "21", "S_BASIS_POINT");
     printf("\t%-2s : %s\n", "22", "S_BASIS_FUNCTION");
     printf("\n");
+    printf("\t%-2s : %s\n", "30", "S_SYSTEM_OPEN");
+    printf("\t%-2s : %s\n", "31", "S_SYSTEM_CLOSE");
+    printf("\n");
     G_STATE = "S_CHOICE";
 }
 //===============================================
@@ -107,6 +113,29 @@ void GOpenCVSys::run_CHOICE(int argc, char** argv) {
     else if(lAnswer == "21") {G_STATE = "S_BASIS_POINT"; GConfig::Instance()->setData("CPP_OPENCV_ID", lAnswer);}
     else if(lAnswer == "22") {G_STATE = "S_BASIS_FUNCTION"; GConfig::Instance()->setData("CPP_OPENCV_ID", lAnswer);}
     //
+    else if(lAnswer == "30") {G_STATE = "S_SYSTEM_OPEN"; GConfig::Instance()->setData("CPP_OPENCV_ID", lAnswer);}
+    else if(lAnswer == "31") {G_STATE = "S_SYSTEM_CLOSE"; GConfig::Instance()->setData("CPP_OPENCV_ID", lAnswer);}
+    //
+}
+//===============================================
+void GOpenCVSys::run_SYSTEM_OPEN(int argc, char** argv) {
+    printf("\n");
+    printf("%s\n", __FUNCTION__);
+    if(G_SYSTEM == "H_CLOSE") {
+        GOpenCVMgr::Instance()->systemOpen();
+        G_SYSTEM = "H_OPEN";
+    }
+    G_STATE = "S_SAVE";
+}
+//===============================================
+void GOpenCVSys::run_SYSTEM_CLOSE(int argc, char** argv) {
+    printf("\n");
+    printf("%s\n", __FUNCTION__);
+    if(G_SYSTEM == "H_OPEN") {
+        GOpenCVMgr::Instance()->systemClose();
+        G_SYSTEM = "H_CLOSE";
+    }
+    G_STATE = "S_SAVE";
 }
 //===============================================
 void GOpenCVSys::run_BASIS(int argc, char** argv) {
