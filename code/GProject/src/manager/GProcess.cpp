@@ -3,6 +3,7 @@
 #include "GConfig.h"
 #include "GSQLite.h"
 #include "GOpenCV.h"
+#include "GOpenCVSys.h"
 //===============================================
 GProcess* GProcess::m_instance = 0;
 //===============================================
@@ -31,6 +32,7 @@ void GProcess::run(int argc, char** argv) {
         //
         else if(G_STATE == "S_SQLITE") run_SQLITE(argc, argv);
         else if(G_STATE == "S_OPENCV") run_OPENCV(argc, argv);
+        else if(G_STATE == "S_OPENCV_SYS") run_OPENCV_SYS(argc, argv);
         //
         else if(G_STATE == "S_SAVE") run_SAVE(argc, argv);
         else if(G_STATE == "S_LOAD") run_LOAD(argc, argv);
@@ -55,6 +57,7 @@ void GProcess::run_METHOD(int argc, char** argv) {
     printf("%s\n", "CPP_ADMIN :");
     printf("\t%-2s : %s\n", "1", "S_SQLITE");
     printf("\t%-2s : %s\n", "2", "S_OPENCV");
+    printf("\t%-2s : %s\n", "3", "S_OPENCV_SYS");
     printf("\n");
     G_STATE = "S_CHOICE";
 }
@@ -68,6 +71,8 @@ void GProcess::run_CHOICE(int argc, char** argv) {
     //
     else if(lAnswer == "1") {G_STATE = "S_SQLITE"; GConfig::Instance()->setData("CPP_ADMIN_ID", lAnswer);} 
     else if(lAnswer == "2") {G_STATE = "S_OPENCV"; GConfig::Instance()->setData("CPP_ADMIN_ID", lAnswer);}
+    else if(lAnswer == "3") {G_STATE = "S_OPENCV_SYS"; GConfig::Instance()->setData("CPP_ADMIN_ID", lAnswer);}
+    //
 }
 //===============================================
 void GProcess::run_SQLITE(int argc, char** argv) {
@@ -77,6 +82,11 @@ void GProcess::run_SQLITE(int argc, char** argv) {
 //===============================================
 void GProcess::run_OPENCV(int argc, char** argv) {
     GOpenCV::Instance()->run(argc, argv);
+    G_STATE = "S_SAVE";
+}
+//===============================================
+void GProcess::run_OPENCV_SYS(int argc, char** argv) {
+    GOpenCVSys::Instance()->run(argc, argv);
     G_STATE = "S_SAVE";
 }
 //===============================================

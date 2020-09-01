@@ -25,6 +25,7 @@ private:
 private:
     void run_SQLITE(int argc, char** argv);
     void run_OPENCV(int argc, char** argv);
+    void run_OPENCV_SYS(int argc, char** argv);
 
 public:
     static GProcess* m_instance;

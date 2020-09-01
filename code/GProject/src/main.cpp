@@ -4,7 +4,7 @@
 #include "GOpenCVTest.h"
 //===============================================
 int main(int argc, char** argv) {
-    GOpenCVTest::Instance()->text();
+    GOpenCVTest::Instance()->mouse();
     GProcess::Instance()->run(argc, argv);
     return 0;
 }
