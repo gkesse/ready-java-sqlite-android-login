@@ -1,0 +1,14 @@
+build/main.o
+build/GProcess.o
+build/GManager.o
+build/GConfig.o
+build/GSQLite.o
+build/GSQLiteMgr.o
+build/GOpenCV.o
+build/GOpenCVMgr.o
+build/GOpenCVSys.o
+build/GOpenCVSysMgr.o
+build/GQtUi.o
+build/GQtMgr.o
+build/GFunction.o
+build/qrc_resources.o

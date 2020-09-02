@@ -4,6 +4,9 @@
 //===============================================
 #include "GInclude.h"
 //===============================================
+typedef struct _sGManager sGManager;
+typedef struct _sGWindow sGWindow;
+//===============================================
 class GManager {
 private:
     GManager();
@@ -11,6 +14,8 @@ private:
 public:
     ~GManager();
     static GManager* Instance();
+    sGManager* dataGet();
+    void dataClear();
     std::string separatorGet();
     std::vector<std::string> split(std::string strIn, char sepIn);
     int splitCount(std::string strIn, char sepIn);
@@ -21,6 +26,22 @@ public:
     
 public:
     static GManager* m_instance;
+    sGManager* m_mgr;
+};
+//===============================================
+struct _sGManager {
+    sGWindow* win;
+};
+//===============================================
+struct _sGWindow {
+    std::string title;
+    double width;
+    double height;
+    pthread_t threadId;
+    cv::Scalar bgColor;
+    cv::Mat img;
+    double delay;
+    int runMe;
 };
 //===============================================
 #endif

@@ -1,30 +1,24 @@
 //===============================================
-#ifndef _GOpenCVSysMgr_
-#define _GOpenCVSysMgr_
+#ifndef _GQtMgr_
+#define _GQtMgr_
 //===============================================
 #include "GInclude.h"
 //===============================================
-class GOpenCVSysMgr {
+class GQtMgr {
 private:
-    GOpenCVSysMgr();
+    GQtMgr();
     
 public:
-    ~GOpenCVSysMgr();
-    static GOpenCVSysMgr* Instance();
-    //
+    ~GQtMgr();
+    static GQtMgr* Instance();
     void systemOpen();
     void systemClose();
-    //
-    void imageLoad(std::string imgFile);
     
-private:
-    void imageRatioKeep(cv::Mat img, cv::Mat& out, double refW, double refH, double& outW, double &outH);
-
 private:
     static void* onSystemOpen(void* params);
     
 public:
-    static GOpenCVSysMgr* m_instance;
+    static GQtMgr* m_instance;
 };
 //===============================================
 #endif

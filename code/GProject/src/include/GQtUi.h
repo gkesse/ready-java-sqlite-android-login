@@ -1,16 +1,16 @@
 //===============================================
-#ifndef _GOpenCVSys_
-#define _GOpenCVSys_
+#ifndef _GQtUi_
+#define _GQtUi_
 //===============================================
 #include "GInclude.h"
 //===============================================
-class GOpenCVSys {
+class GQtUi {
 private:
-    GOpenCVSys();
+    GQtUi();
     
 public:
-    ~GOpenCVSys();
-    static GOpenCVSys* Instance();
+    ~GQtUi();
+    static GQtUi* Instance();
     void run(int argc, char** argv);
     
 private:
@@ -25,14 +25,9 @@ private:
 private:
     void run_SYSTEM_OPEN(int argc, char** argv);
     void run_SYSTEM_CLOSE(int argc, char** argv);
-    //
-    void run_IMAGE_LOAD_IMAGE_PATH(int argc, char** argv);
-    void run_IMAGE_LOAD_IMAGE_NAME(int argc, char** argv);
-    void run_IMAGE_LOAD(int argc, char** argv);
-    //
     
 public:
-    static GOpenCVSys* m_instance;
+    static GQtUi* m_instance;
     std::string G_STATE;
     std::string G_SYSTEM;
 };

@@ -4,7 +4,9 @@
 GManager* GManager::m_instance = 0;
 //===============================================
 GManager::GManager() {
-    
+    printf("[info] allocation de la memoire des donnees\n");
+    m_mgr = new sGManager;
+    m_mgr->win = new sGWindow;
 }
 //===============================================
 GManager::~GManager() {
@@ -16,6 +18,16 @@ GManager* GManager::Instance() {
         m_instance = new GManager;
     }
     return m_instance;
+}
+//===============================================
+sGManager* GManager::dataGet() {
+    return m_mgr;
+}
+//===============================================
+void GManager::dataClear() {
+    printf("[info] liberation de la memoire des donnees\n");
+    delete m_mgr->win;
+    delete m_mgr;
 }
 //===============================================
 std::string GManager::separatorGet() {
