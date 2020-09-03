@@ -14,6 +14,7 @@ public:
     void test();
     int dataCount(const char* key, ...);
     QStringList dataCol(const char* key, ...);
+    QStringList dataRow(const char* key, ...);
     
 public:
     static GJson* m_instance;
