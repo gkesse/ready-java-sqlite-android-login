@@ -20,6 +20,7 @@ GManager::GManager() {
     m_mgr->qt->title = "MainWindow | Qt";
     m_mgr->qt->width = 640;
     m_mgr->qt->height = 480;
+    m_mgr->qt->pageC = 0;
     // json
     m_mgr->json = new sGJson;
     m_mgr->json->file = ":/json/menu.json";

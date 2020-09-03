@@ -10,6 +10,9 @@ class GAdminQt : public QFrame {
 public:
     GAdminQt(QWidget* parent = 0);
     ~GAdminQt();
+    
+public slots:
+    void slotMenuClick();
 };
 //===============================================
 #endif

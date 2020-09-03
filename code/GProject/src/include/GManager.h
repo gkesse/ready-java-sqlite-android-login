@@ -52,9 +52,9 @@ struct _sGOpenCV {
 struct _sGQt {
     GWindow* win;
     QStackedWidget* page;
+    QMap<QString, int> pageId;
+    int pageC;
     pthread_t threadId;
-    QHBoxLayout* addrL;
-    QHBoxLayout* bodyL;
     QString title;
     int width;
     int height;
