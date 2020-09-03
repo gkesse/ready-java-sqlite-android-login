@@ -264,6 +264,7 @@ build/GQtMgr.o: ../code/GProject/src/manager/GQtMgr.cpp ../code/GProject/src/inc
 
 build/GWindow.o: ../code/GProject/src/manager/GWindow.cpp ../code/GProject/src/include/GWindow.h \
 		../code/GProject/src/include/GInclude.h \
+		../code/GProject/src/include/GJson.h \
 		../code/GProject/src/include/GManager.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/GWindow.o ../code/GProject/src/manager/GWindow.cpp
 

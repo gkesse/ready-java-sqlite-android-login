@@ -26,8 +26,7 @@ GProcess* GProcess::Instance() {
 void GProcess::run(int argc, char** argv) {
     G_STATE = "S_INIT";
     while(1) {
-        if(G_STATE == "S_ADMIN") run_ADMIN(argc, argv);
-        else if(G_STATE == "S_INIT") run_INIT(argc, argv);
+        if(G_STATE == "S_INIT") run_INIT(argc, argv);
         else if(G_STATE == "S_METHOD") run_METHOD(argc, argv);
         else if(G_STATE == "S_CHOICE") run_CHOICE(argc, argv);
         //
@@ -38,13 +37,8 @@ void GProcess::run(int argc, char** argv) {
         //
         else if(G_STATE == "S_SAVE") run_SAVE(argc, argv);
         else if(G_STATE == "S_LOAD") run_LOAD(argc, argv);
-        else if(G_STATE == "S_QUIT") run_QUIT(argc, argv);
         else break;
     }
-}
-//===============================================
-void GProcess::run_ADMIN(int argc, char** argv) {
-    G_STATE = "S_END";
 }
 //===============================================
 void GProcess::run_INIT(int argc, char** argv) {
@@ -107,9 +101,5 @@ void GProcess::run_SAVE(int argc, char** argv) {
 void GProcess::run_LOAD(int argc, char** argv) {
     GConfig::Instance()->loadData("CPP_ADMIN_ID");
     G_STATE = "S_METHOD";
-}
-//===============================================
-void GProcess::run_QUIT(int argc, char** argv) {
-    G_STATE = "S_END";
 }
 //===============================================

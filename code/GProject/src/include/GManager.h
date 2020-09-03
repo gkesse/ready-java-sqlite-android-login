@@ -52,16 +52,17 @@ struct _sGOpenCV {
 struct _sGQt {
     GWindow* win;
     pthread_t threadId;
-    int argc;
-    char** argv;
-    char* title;
+    QHBoxLayout* addrL;
+    QHBoxLayout* bodyL;
+    std::string title;
     int width;
     int height;
-    char* jsonFile;
+    int argc;
+    char** argv;
 };
 //===============================================
 struct _sGJson {
-    char* file;
+    std::string file;
 };
 //===============================================
 #endif

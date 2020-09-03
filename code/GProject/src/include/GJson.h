@@ -12,9 +12,10 @@ public:
     ~GJson();
     static GJson* Instance();
     void test();
-    int dataCount(const char* key, ...);
-    QStringList dataCol(const char* key, ...);
-    QStringList dataRow(const char* key, ...);
+    QJsonValue open();
+    int dataCount(std::string key);
+    QStringList dataCol(std::string key);
+    QStringList dataRow(std::string key);
     
 public:
     static GJson* m_instance;

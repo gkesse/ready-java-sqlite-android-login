@@ -20,31 +20,38 @@ GJson* GJson::Instance() {
 }
 //===============================================
 void GJson::test() {
-    qDebug() << "dataCount :\n" << dataCount("admin", _EOA_) << "\n";
-    qDebug() << "dataCount :\n" << dataCount("admin", "0", _EOA_) << "\n";
-    qDebug() << "dataCol :\n" << dataCol("admin", "name", _EOA_) << "\n";
-    qDebug() << "dataRow :\n" << dataRow("admin", "0", _EOA_) << "\n";
+    qDebug() << "dataCount :\n" << dataCount("admin") << "\n";
+    qDebug() << "dataCount :\n" << dataCount("admin/0") << "\n";
+    qDebug() << "dataCol :\n" << dataCol("admin/name") << "\n";
+    qDebug() << "dataRow :\n" << dataRow("admin/0") << "\n";
 }
 //===============================================
-int GJson::dataCount(const char* key, ...) {
+QJsonValue GJson::open() {
     sGManager* lMgr = GManager::Instance()->dataGet();
     sGJson* lJson = lMgr->json;
-    QFile lJsonF(lJson->file);
+    QFile lJsonF(lJson->file.c_str());
+    QJsonValue lJsonV;
+
     if(!lJsonF.open(QIODevice::ReadOnly)) {
         printf("[erreur] erreur ouverture fichier");
-        return -1;
+        return lJsonV;
     }
+    
     QByteArray lJsonT = lJsonF.readAll();
     QJsonDocument lJsonD(QJsonDocument::fromJson(lJsonT));
-    QJsonObject lJsonO = lJsonD.object();
-    QJsonValue lJsonV = lJsonO;
+    if(lJsonD.isObject()) {lJsonV = lJsonD.object();}
+    else {lJsonV = lJsonD.array();}
+    return lJsonV;
+}
+//===============================================
+int GJson::dataCount(std::string key) {
+    QJsonValue lJsonV = open();
     int lDataC = 0;
     
-    va_list lArgs;
-    va_start(lArgs, key);
-    QString lKey = key;
-    while(1) {
-        if(lKey == _EOA_) break;
+    QStringList lKeyL = QString(key.c_str()).split("/");
+    
+    for(int i = 0; i < lKeyL.size(); i++) {
+        QString lKey = lKeyL[i];
         if(lJsonV.isObject()) {
             lJsonV = lJsonV[lKey];
         }
@@ -52,9 +59,8 @@ int GJson::dataCount(const char* key, ...) {
             lJsonV = lJsonV[lKey.toInt()];
         }
         else {break;}
-        lKey = va_arg(lArgs, char*);
     }
-    va_end(lArgs);
+    
     if(lJsonV.isObject()) {
         lDataC = lJsonV.toObject().size();
     }
@@ -64,27 +70,17 @@ int GJson::dataCount(const char* key, ...) {
     return lDataC;
 }
 //===============================================
-QStringList GJson::dataCol(const char* key, ...) {
-    sGManager* lMgr = GManager::Instance()->dataGet();
-    sGJson* lJson = lMgr->json;
-    QFile lJsonF(lJson->file);
-    if(!lJsonF.open(QIODevice::ReadOnly)) {
-        printf("[erreur] erreur ouverture fichier");
-        return QStringList();
-    }
-    QByteArray lJsonT = lJsonF.readAll();
-    QJsonDocument lJsonD(QJsonDocument::fromJson(lJsonT));
-    QJsonObject lJsonO = lJsonD.object();
-    QJsonValue lJsonV = lJsonO;
+QStringList GJson::dataCol(std::string key) {
+    QJsonValue lJsonV = open();
+    QJsonObject lJsonO;
     QJsonArray lJsonA;
     QStringList lDataL;
     int lDataC;
     
-    va_list lArgs;
-    va_start(lArgs, key);
-    QString lKey = key;
-    while(1) {
-        if(lKey == _EOA_) break;
+    QStringList lKeyL = QString(key.c_str()).split("/");
+    
+    for(int i = 0; i < lKeyL.size(); i++) {
+        QString lKey = lKeyL[i];
         if(lJsonV.isObject()) {
             lJsonV = lJsonV[lKey];
         }
@@ -97,8 +93,8 @@ QStringList GJson::dataCol(const char* key, ...) {
             else {
                 lJsonA = lJsonV.toArray();
                 lDataC = lJsonA.size();
-                for(int i = 0; i < lDataC; i++) {
-                    QJsonValue lJsonV2 = lJsonA[i];
+                for(int j = 0; j < lDataC; j++) {
+                    QJsonValue lJsonV2 = lJsonA[j];
                     if(lJsonV2.isObject()) {
                         lJsonO = lJsonV2.toObject();
                         lDataL << lJsonO[lKey].toString();
@@ -110,31 +106,20 @@ QStringList GJson::dataCol(const char* key, ...) {
             }
         }
         else {break;}
-        lKey = va_arg(lArgs, char*);
     }
-    va_end(lArgs);
+
     return lDataL;
 }
 //===============================================
-QStringList GJson::dataRow(const char* key, ...) {
-    sGManager* lMgr = GManager::Instance()->dataGet();
-    sGJson* lJson = lMgr->json;
-    QFile lJsonF(lJson->file);
-    if(!lJsonF.open(QIODevice::ReadOnly)) {
-        printf("[erreur] erreur ouverture fichier");
-        return QStringList();
-    }
-    QByteArray lJsonT = lJsonF.readAll();
-    QJsonDocument lJsonD(QJsonDocument::fromJson(lJsonT));
-    QJsonObject lJsonO = lJsonD.object();
-    QJsonValue lJsonV = lJsonO;
+QStringList GJson::dataRow(std::string key) {
+    QJsonValue lJsonV = open();
+    QJsonObject lJsonO;
     QStringList lDataL;
     
-    va_list lArgs;
-    va_start(lArgs, key);
-    QString lKey = key;
-    while(1) {
-        if(lKey == _EOA_) break;
+    QStringList lKeyL = QString(key.c_str()).split("/");
+    
+    for(int i = 0; i < lKeyL.size(); i++) {
+        QString lKey = lKeyL[i];
         if(lJsonV.isObject()) {
             lJsonV = lJsonV[lKey];
         }
@@ -142,13 +127,14 @@ QStringList GJson::dataRow(const char* key, ...) {
             lJsonV = lJsonV[lKey.toInt()];
         }
         else {break;}
-        lKey = va_arg(lArgs, char*);
     }
-    va_end(lArgs);
+
     if(lJsonV.isObject()) {
         lJsonO = lJsonV.toObject();
-        foreach(const QString& lDataK, lJsonO.keys()) {
-            lJsonV = lJsonO.value(key);
+        QStringList lKeys = lJsonO.keys();
+        for(int i = 0; i < lKeys.size(); i++) {
+            QString lDataK = lKeys[i];
+            lJsonV = lJsonO.value(lDataK);
             lDataL << lJsonV.toString();
         }    
     }

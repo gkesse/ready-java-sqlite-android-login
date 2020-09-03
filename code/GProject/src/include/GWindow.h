@@ -5,11 +5,14 @@
 #include "GInclude.h"
 //===============================================
 class GWindow : public QFrame {
+    Q_OBJECT
+    
 public:
     GWindow(QWidget* parent = 0);
     ~GWindow();
 
-public:
+public slots:
+    void slotMenuClick();
     
 private:
 

@@ -14,13 +14,11 @@ public:
     void run(int argc, char** argv);
     
 private:
-    void run_ADMIN(int argc, char** argv);
     void run_INIT(int argc, char** argv);
     void run_METHOD(int argc, char** argv);
     void run_CHOICE(int argc, char** argv);
     void run_SAVE(int argc, char** argv);
     void run_LOAD(int argc, char** argv);
-    void run_QUIT(int argc, char** argv);
     
 private:
     void run_SQLITE(int argc, char** argv);

@@ -1,5 +1,6 @@
 //===============================================
 #include "GWindow.h"
+#include "GJson.h"
 #include "GManager.h"
 //===============================================
 GWindow::GWindow(QWidget* parent) : 
@@ -8,34 +9,41 @@ QFrame(parent) {
     sGQt* lQt = lMgr->qt;
     // button create
     QVBoxLayout* lMainL = new QVBoxLayout;
-    QHBoxLayout* lAddressL = new QHBoxLayout;
-    QHBoxLayout* lBodyL = new QHBoxLayout;
+    lMgr->qt->addrL = new QHBoxLayout;
+    lMgr->qt->bodyL = new QHBoxLayout;
     
     lMainL->setAlignment(Qt::AlignTop);
-    lAddressL->setAlignment(Qt::AlignLeft);
-    lBodyL->setAlignment(Qt::AlignLeft);
+    lMgr->qt->addrL->setAlignment(Qt::AlignLeft);
+    lMgr->qt->bodyL->setAlignment(Qt::AlignLeft);
     
-    for(int i = 0; i < 5; i++) {
-        QPushButton* lButton = new QPushButton;
-        QString lButtonT = tr("Button %1").arg(i);
-        lButton->setText(lButtonT);
+    QStringList lDataL = GJson::Instance()->dataCol("admin/name");
+    
+    for(int i = 0; i < lDataL.size(); i++) {
+        QPushButton* lMenuB = new QPushButton;
+        connect(lMenuB, SIGNAL(clicked()), this, SLOT(slotMenuClick()));
+        QString lMenuT = lDataL[i];
+        lMenuB->setText(lMenuT);
         if(i == 0) {
-            lAddressL->addWidget(lButton);
+            lMgr->qt->addrL->addWidget(lMenuB);
             continue;
         }
-        lBodyL->addWidget(lButton);
+        lMgr->qt->bodyL->addWidget(lMenuB);
     }
     
-    lMainL->addLayout(lAddressL, 0);
-    lMainL->addLayout(lBodyL, 1);
+    lMainL->addLayout(lMgr->qt->addrL, 0);
+    lMainL->addLayout(lMgr->qt->bodyL, 1);
     setLayout(lMainL);
     // systeme config
-    setWindowTitle(lQt->title);
+    setWindowTitle(lQt->title.c_str());
     resize(lQt->width, lQt->height);
     setWindowFlags(Qt::FramelessWindowHint | Qt::WindowSystemMenuHint);
 }
 //===============================================
 GWindow::~GWindow() {
     
+}
+//===============================================
+void GWindow::slotMenuClick() {
+    qDebug() << "[info] slotMenuClick" << "\n";
 }
 //===============================================
