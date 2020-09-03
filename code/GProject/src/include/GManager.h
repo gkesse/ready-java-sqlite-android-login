@@ -3,9 +3,12 @@
 #define _GManager_
 //===============================================
 #include "GInclude.h"
+#include "GWindow.h"
 //===============================================
 typedef struct _sGManager sGManager;
-typedef struct _sGWindow sGWindow;
+typedef struct _sGOpenCV sGOpenCV;
+typedef struct _sGQt sGQt;
+typedef struct _sGJson sGJson;
 //===============================================
 class GManager {
 private:
@@ -30,10 +33,12 @@ public:
 };
 //===============================================
 struct _sGManager {
-    sGWindow* win;
+    sGOpenCV* opencv;
+    sGQt* qt;
+    sGJson* json;
 };
 //===============================================
-struct _sGWindow {
+struct _sGOpenCV {
     std::string title;
     double width;
     double height;
@@ -42,6 +47,21 @@ struct _sGWindow {
     cv::Mat img;
     double delay;
     int runMe;
+};
+//===============================================
+struct _sGQt {
+    GWindow* win;
+    pthread_t threadId;
+    int argc;
+    char** argv;
+    char* title;
+    int width;
+    int height;
+    char* jsonFile;
+};
+//===============================================
+struct _sGJson {
+    char* file;
 };
 //===============================================
 #endif

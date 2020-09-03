@@ -5,8 +5,24 @@ GManager* GManager::m_instance = 0;
 //===============================================
 GManager::GManager() {
     printf("[info] allocation de la memoire des donnees\n");
+    // manager
     m_mgr = new sGManager;
-    m_mgr->win = new sGWindow;
+    // opencv
+    m_mgr->opencv = new sGOpenCV;
+    m_mgr->opencv->title = "MainWindow | OpenCV";
+    m_mgr->opencv->width = 640;
+    m_mgr->opencv->height = 480;
+    m_mgr->opencv->bgColor = cv::Scalar(50, 100, 150);
+    m_mgr->opencv->delay = 30;
+    m_mgr->opencv->runMe = 1;
+    // qt
+    m_mgr->qt = new sGQt;
+    m_mgr->qt->title = "MainWindow | Qt";
+    m_mgr->qt->width = 640;
+    m_mgr->qt->height = 480;
+    // json
+    m_mgr->json = new sGJson;
+    m_mgr->json->file = ":/json/menu.json";
 }
 //===============================================
 GManager::~GManager() {
@@ -26,7 +42,9 @@ sGManager* GManager::dataGet() {
 //===============================================
 void GManager::dataClear() {
     printf("[info] liberation de la memoire des donnees\n");
-    delete m_mgr->win;
+    delete m_mgr->opencv;
+    delete m_mgr->qt;
+    delete m_mgr->json;
     delete m_mgr;
 }
 //===============================================

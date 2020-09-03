@@ -1,10 +1,9 @@
 //===============================================
 #include "GProcess.h"
-#include "GGslTest.h"
-#include "GOpenCVTest.h"
+#include "GJson.h"
 //===============================================
 int main(int argc, char** argv) {
-    //GOpenCVTest::Instance()->mouse();
+    GJson::Instance()->test();
     GProcess::Instance()->run(argc, argv);
     return 0;
 }

@@ -82,7 +82,7 @@ void GQtUi::run_SYSTEM_OPEN(int argc, char** argv) {
     printf("\n");
     if(G_SYSTEM == "H_CLOSE") {
         printf("[info] ouverture du systeme\n");
-        GQtMgr::Instance()->systemOpen();
+        GQtMgr::Instance()->systemOpen(argc, argv);
         G_SYSTEM = "H_OPEN";
     }
     else {

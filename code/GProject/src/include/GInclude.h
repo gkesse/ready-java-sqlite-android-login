@@ -26,8 +26,11 @@
 #include <opencv2/opencv.hpp>
 #include <gsl/gsl_spmatrix.h>
 #include <gsl/gsl_poly.h>
+#include <QtWidgets>
 //===============================================
 #endif
+//===============================================
+#define _EOA_ "_END_OF_ARGUMENT_"
 //===============================================
 #endif
 //===============================================

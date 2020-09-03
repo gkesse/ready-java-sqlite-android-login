@@ -8,7 +8,9 @@ build/GOpenCV.o
 build/GOpenCVMgr.o
 build/GOpenCVSys.o
 build/GOpenCVSysMgr.o
+build/GFunction.o
 build/GQtUi.o
 build/GQtMgr.o
-build/GFunction.o
+build/GWindow.o
+build/GJson.o
 build/qrc_resources.o

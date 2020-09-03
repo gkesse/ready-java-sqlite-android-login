@@ -1,0 +1,10 @@
+{
+    "admin":
+    [
+        {"name":"Admin", "link":"admin"},
+        {"name":"OpenCV", "link":"admin/opencv"},
+        {"name":"Qt", "link":"admin/qt"},
+        {"name":"GSL", "link":"admin/gsl"},
+        {"name":"SQLIte", "link":"admin/sqlite"}
+    ]
+}

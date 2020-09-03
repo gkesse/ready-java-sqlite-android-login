@@ -1,24 +1,18 @@
 //===============================================
-#ifndef _GQtMgr_
-#define _GQtMgr_
+#ifndef _GWindow_
+#define _GWindow_
 //===============================================
 #include "GInclude.h"
 //===============================================
-class GQtMgr {
-private:
-    GQtMgr();
-    
+class GWindow : public QFrame {
 public:
-    ~GQtMgr();
-    static GQtMgr* Instance();
-    void systemOpen(int argc, char** argv);
-    void systemClose();
+    GWindow(QWidget* parent = 0);
+    ~GWindow();
+
+public:
     
 private:
-    static void* onSystemOpen(void* params);
-    
-public:
-    static GQtMgr* m_instance;
+
 };
 //===============================================
 #endif

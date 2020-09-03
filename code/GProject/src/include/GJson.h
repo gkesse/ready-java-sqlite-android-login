@@ -1,24 +1,22 @@
 //===============================================
-#ifndef _GQtMgr_
-#define _GQtMgr_
+#ifndef _GJson_
+#define _GJson_
 //===============================================
 #include "GInclude.h"
 //===============================================
-class GQtMgr {
+class GJson {
 private:
-    GQtMgr();
+    GJson();
     
 public:
-    ~GQtMgr();
-    static GQtMgr* Instance();
-    void systemOpen(int argc, char** argv);
-    void systemClose();
-    
-private:
-    static void* onSystemOpen(void* params);
+    ~GJson();
+    static GJson* Instance();
+    void test();
+    int dataCount(const char* key, ...);
+    QStringList dataCol(const char* key, ...);
     
 public:
-    static GQtMgr* m_instance;
+    static GJson* m_instance;
 };
 //===============================================
 #endif
