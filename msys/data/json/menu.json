@@ -1,10 +1,16 @@
 {
-    "admin":
+    "ADMIN":
     [
-        {"name":"Admin", "link":"admin"},
-        {"name":"OpenCV", "link":"admin/opencv"},
-        {"name":"Qt", "link":"admin/qt"},
-        {"name":"GSL", "link":"admin/gsl"},
-        {"name":"SQLIte", "link":"admin/sqlite"}
-    ]
+        {"name":"ADMIN", "link":"ADMIN"},
+        {"name":"OPENCV", "link":"ADMIN/OPENCV"},
+        {"name":"QT", "link":"ADMIN/QT"},
+        {"name":"GSL", "link":"ADMIN/GSL"},
+        {"name":"SQLITE", "link":"ADMIN/SQLITE"}
+    ],
+    "OPENCV":
+    [
+        {"name":"OPENCV", "link":"ADMIN/OPENCV"},
+        {"name":"IMAGE_LOAD", "link":"ADMIN/OPENCV/IMAGE_LOAD"},
+        {"name":"VIDEO_LOAD", "link":"ADMIN/OPENCV/IMAGE_LOAD"}
+    ],
 }

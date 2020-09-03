@@ -51,10 +51,11 @@ struct _sGOpenCV {
 //===============================================
 struct _sGQt {
     GWindow* win;
+    QStackedWidget* page;
     pthread_t threadId;
     QHBoxLayout* addrL;
     QHBoxLayout* bodyL;
-    std::string title;
+    QString title;
     int width;
     int height;
     int argc;

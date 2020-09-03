@@ -1,18 +1,15 @@
 //===============================================
-#ifndef _GWindow_
-#define _GWindow_
+#ifndef _GSQLiteQt_
+#define _GSQLiteQt_
 //===============================================
 #include "GInclude.h"
 //===============================================
-class GWindow : public QFrame { 
+class GSQLiteQt : public QFrame { 
     Q_OBJECT
     
 public:
-    GWindow(QWidget* parent = 0);
-    ~GWindow();
-    
-private:
-    void createPage();
+    GSQLiteQt(QWidget* parent = 0);
+    ~GSQLiteQt();
 };
 //===============================================
 #endif

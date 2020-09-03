@@ -1,18 +1,15 @@
 //===============================================
-#ifndef _GWindow_
-#define _GWindow_
+#ifndef _GOpenCVQt_
+#define _GOpenCVQt_
 //===============================================
 #include "GInclude.h"
 //===============================================
-class GWindow : public QFrame { 
+class GOpenCVQt : public QFrame { 
     Q_OBJECT
     
 public:
-    GWindow(QWidget* parent = 0);
-    ~GWindow();
-    
-private:
-    void createPage();
+    GOpenCVQt(QWidget* parent = 0);
+    ~GOpenCVQt();
 };
 //===============================================
 #endif

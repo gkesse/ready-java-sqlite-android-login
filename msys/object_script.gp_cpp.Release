@@ -11,6 +11,13 @@ build/GOpenCVSysMgr.o
 build/GFunction.o
 build/GQtUi.o
 build/GQtMgr.o
-build/GWindow.o
 build/GJson.o
+build/GWindow.o
+build/GAdminQt.o
+build/GSQLiteQt.o
+build/GOpenCVQt.o
 build/qrc_resources.o
+build/moc_GWindow.o
+build/moc_GAdminQt.o
+build/moc_GSQLiteQt.o
+build/moc_GOpenCVQt.o
