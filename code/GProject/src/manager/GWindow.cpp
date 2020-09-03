@@ -19,15 +19,14 @@ QFrame(parent) {
     QStringList lDataL = GJson::Instance()->dataCol("admin/name");
     
     for(int i = 0; i < lDataL.size(); i++) {
-        QPushButton* lMenuB = new QPushButton;
-        connect(lMenuB, SIGNAL(clicked()), this, SLOT(slotMenuClick()));
-        QString lMenuT = lDataL[i];
-        lMenuB->setText(lMenuT);
+        QPushButton* lButton = new QPushButton;
+        QString lButtonT = lDataL[i];
+        lButton->setText(lButtonT);
         if(i == 0) {
-            lMgr->qt->addrL->addWidget(lMenuB);
+            lMgr->qt->addrL->addWidget(lButton);
             continue;
         }
-        lMgr->qt->bodyL->addWidget(lMenuB);
+        lMgr->qt->bodyL->addWidget(lButton);
     }
     
     lMainL->addLayout(lMgr->qt->addrL, 0);
@@ -41,9 +40,5 @@ QFrame(parent) {
 //===============================================
 GWindow::~GWindow() {
     
-}
-//===============================================
-void GWindow::slotMenuClick() {
-    qDebug() << "[info] slotMenuClick" << "\n";
 }
 //===============================================
