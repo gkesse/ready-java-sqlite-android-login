@@ -5,15 +5,18 @@
 //===============================================
 GAdminQt::GAdminQt(QWidget* parent) : 
 QFrame(parent) {
+    m_name = "ADMIN";
+
     QVBoxLayout* lMainL = new QVBoxLayout;
     QHBoxLayout* lAddrL = new QHBoxLayout;
-    QHBoxLayout* lBodyL = new QHBoxLayout;
+    QHBoxLayout* lBodyL = new QHBoxLayout;   
     
     lMainL->setAlignment(Qt::AlignTop);
     lAddrL->setAlignment(Qt::AlignLeft);
     lBodyL->setAlignment(Qt::AlignLeft);
     
-    QStringList lMenu = GJson::Instance()->dataCol("ADMIN/name");
+    QString lNameK = m_name + QString("/name");
+    QStringList lMenu = GJson::Instance()->dataCol(lNameK);
     
     for(int i = 0; i < lMenu.size(); i++) {
         QString lMenuT = lMenu[i];
@@ -42,7 +45,9 @@ void GAdminQt::slotMenuClick() {
     sGQt* lQt = lMgr->qt;
     QPushButton* lMenuB = qobject_cast<QPushButton*>(sender());
     QString lMenuT = lMenuB->text().toUpper();
-    int lPageId = lQt->pageId[lMenuT];
+    QString lPageK = m_name + lMenuT;
+    if(!lQt->pageId.contains(lPageK)) return;
+    int lPageId = lQt->pageId[lPageK];
     lQt->page->setCurrentIndex(lPageId);
 }
 //===============================================

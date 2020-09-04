@@ -13,6 +13,9 @@ public:
     
 public slots:
     void slotMenuClick();
+    
+private:
+    QString m_name;
 };
 //===============================================
 #endif

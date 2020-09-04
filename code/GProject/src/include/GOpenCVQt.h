@@ -10,6 +10,12 @@ class GOpenCVQt : public QFrame {
 public:
     GOpenCVQt(QWidget* parent = 0);
     ~GOpenCVQt();
+    
+public slots:
+    void slotMenuClick();
+    
+private:
+    QString m_name;
 };
 //===============================================
 #endif

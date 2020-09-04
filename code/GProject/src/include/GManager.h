@@ -55,6 +55,7 @@ struct _sGQt {
     QMap<QString, int> pageId;
     int pageC;
     pthread_t threadId;
+    QString state;
     QString title;
     int width;
     int height;

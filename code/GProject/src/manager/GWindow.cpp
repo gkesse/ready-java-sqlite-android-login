@@ -29,8 +29,8 @@ void GWindow::createPage() {
     GSQLiteQt* lSQLite = new GSQLiteQt;
     GOpenCVQt* lOpenCV = new GOpenCVQt;
     lQt->page->addWidget(lAdmin); lQt->pageId["ADMIN"] = lQt->pageC++;
-    lQt->page->addWidget(lSQLite); lQt->pageId["SQLITE"] = lQt->pageC++;
-    lQt->page->addWidget(lOpenCV); lQt->pageId["OPENCV"] = lQt->pageC++;
+    lQt->page->addWidget(lSQLite); lQt->pageId["ADMIN.SQLITE"] = lQt->pageC++;
+    lQt->page->addWidget(lOpenCV); lQt->pageId["ADMIN.OPENCV"] = lQt->pageC++;
     lMainL->addWidget(lQt->page);
     setLayout(lMainL);
 }

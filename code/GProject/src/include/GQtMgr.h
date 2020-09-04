@@ -13,7 +13,7 @@ public:
     static GQtMgr* Instance();
     void systemOpen(int argc, char** argv);
     void systemClose();
-    
+        
 private:
     static void* onSystemOpen(void* params);
     

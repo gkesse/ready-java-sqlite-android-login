@@ -13,9 +13,9 @@ public:
     static GJson* Instance();
     void test();
     QJsonValue open();
-    int dataCount(std::string key);
-    QStringList dataCol(std::string key);
-    QStringList dataRow(std::string key);
+    int dataCount(QString key);
+    QStringList dataCol(QString key);
+    QStringList dataRow(QString key);
     
 public:
     static GJson* m_instance;

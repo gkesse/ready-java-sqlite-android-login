@@ -23,14 +23,17 @@ GQtMgr* GQtMgr::Instance() {
 void GQtMgr::systemOpen(int argc, char** argv) {
     sGManager* lMgr = GManager::Instance()->dataGet();
     sGQt* lQt = lMgr->qt;
-    // thread create
-    pthread_create(&lQt->threadId, 0, onSystemOpen, 0);
+    if(lQt->win == 0) {
+        pthread_create(&lQt->threadId, 0, onSystemOpen, 0);
+    }
+    else {
+        lQt->win->show();
+    }
 }
 //===============================================
 void* GQtMgr::onSystemOpen(void* params) {
     sGManager* lMgr = GManager::Instance()->dataGet();
     sGQt* lQt = lMgr->qt;
-    // window create
     QApplication lApp(lQt->argc, lQt->argv);
     lQt->win = new GWindow;
     lQt->win->show();
@@ -41,7 +44,6 @@ void* GQtMgr::onSystemOpen(void* params) {
 void GQtMgr::systemClose() {
     sGManager* lMgr = GManager::Instance()->dataGet();
     sGQt* lQt = lMgr->qt;
-    // window close
-    lQt->win->close();
+    lQt->win->hide();
 }
 //===============================================

@@ -44,11 +44,11 @@ QJsonValue GJson::open() {
     return lJsonV;
 }
 //===============================================
-int GJson::dataCount(std::string key) {
+int GJson::dataCount(QString key) {
     QJsonValue lJsonV = open();
     int lDataC = 0;
     
-    QStringList lKeyL = QString(key.c_str()).split("/");
+    QStringList lKeyL = key.split("/");
     
     for(int i = 0; i < lKeyL.size(); i++) {
         QString lKey = lKeyL[i];
@@ -70,14 +70,14 @@ int GJson::dataCount(std::string key) {
     return lDataC;
 }
 //===============================================
-QStringList GJson::dataCol(std::string key) {
+QStringList GJson::dataCol(QString key) {
     QJsonValue lJsonV = open();
     QJsonObject lJsonO;
     QJsonArray lJsonA;
     QStringList lDataL;
     int lDataC;
     
-    QStringList lKeyL = QString(key.c_str()).split("/");
+    QStringList lKeyL = key.split("/");
     
     for(int i = 0; i < lKeyL.size(); i++) {
         QString lKey = lKeyL[i];
@@ -111,12 +111,12 @@ QStringList GJson::dataCol(std::string key) {
     return lDataL;
 }
 //===============================================
-QStringList GJson::dataRow(std::string key) {
+QStringList GJson::dataRow(QString key) {
     QJsonValue lJsonV = open();
     QJsonObject lJsonO;
     QStringList lDataL;
     
-    QStringList lKeyL = QString(key.c_str()).split("/");
+    QStringList lKeyL = key.split("/");
     
     for(int i = 0; i < lKeyL.size(); i++) {
         QString lKey = lKeyL[i];

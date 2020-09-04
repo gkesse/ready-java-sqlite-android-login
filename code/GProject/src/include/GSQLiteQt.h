@@ -10,6 +10,12 @@ class GSQLiteQt : public QFrame {
 public:
     GSQLiteQt(QWidget* parent = 0);
     ~GSQLiteQt();
+    
+public slots:
+    void slotMenuClick();
+    
+private:
+    QString m_name;
 };
 //===============================================
 #endif

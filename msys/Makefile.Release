@@ -227,7 +227,9 @@ build/GProcess.o: ../code/GProject/src/manager/GProcess.cpp ../code/GProject/src
 		../code/GProject/src/include/GSQLite.h \
 		../code/GProject/src/include/GOpenCV.h \
 		../code/GProject/src/include/GOpenCVSys.h \
-		../code/GProject/src/include/GQtUi.h
+		../code/GProject/src/include/GQtUi.h \
+		../code/GProject/src/include/GManager.h \
+		../code/GProject/src/include/GWindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/GProcess.o ../code/GProject/src/manager/GProcess.cpp
 
 build/GManager.o: ../code/GProject/src/manager/GManager.cpp ../code/GProject/src/include/GManager.h \

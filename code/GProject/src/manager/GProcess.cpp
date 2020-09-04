@@ -5,6 +5,7 @@
 #include "GOpenCV.h"
 #include "GOpenCVSys.h"
 #include "GQtUi.h"
+#include "GManager.h"
 //===============================================
 GProcess* GProcess::m_instance = 0;
 //===============================================
@@ -39,6 +40,9 @@ void GProcess::run(int argc, char** argv) {
         else if(G_STATE == "S_LOAD") run_LOAD(argc, argv);
         else break;
     }
+    sGManager* lMgr = GManager::Instance()->dataGet();
+    sGQt* lQt = lMgr->qt;
+    lQt->win->close();
 }
 //===============================================
 void GProcess::run_INIT(int argc, char** argv) {

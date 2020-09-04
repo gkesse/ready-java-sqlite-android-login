@@ -1,16 +1,21 @@
 {
     "ADMIN":
     [
-        {"name":"ADMIN", "link":"ADMIN"},
-        {"name":"OPENCV", "link":"ADMIN/OPENCV"},
-        {"name":"QT", "link":"ADMIN/QT"},
-        {"name":"GSL", "link":"ADMIN/GSL"},
-        {"name":"SQLITE", "link":"ADMIN/SQLITE"}
+        {"name":"ADMIN"},
+        {"name":"SQLITE"},
+        {"name":"OPENCV"}
     ],
-    "OPENCV":
+    "ADMIN.OPENCV":
     [
-        {"name":"OPENCV", "link":"ADMIN/OPENCV"},
-        {"name":"IMAGE_LOAD", "link":"ADMIN/OPENCV/IMAGE_LOAD"},
-        {"name":"VIDEO_LOAD", "link":"ADMIN/OPENCV/IMAGE_LOAD"}
+        {"name":"ADMIN.OPENCV"},
+        {"name":"IMAGE_LOAD"},
+        {"name":"VIDEO_LOAD"}
+    ],
+    "ADMIN.SQLITE":
+    [
+        {"name":"ADMIN.SQLITE"},
+        {"name":"CONFIG_CREATE"},
+        {"name":"CONFIG_DROP"},
+        {"name":"CONFIG_SHOW"}
     ]
 }

@@ -80,10 +80,12 @@ void GQtUi::run_CHOICE(int argc, char** argv) {
 //===============================================
 void GQtUi::run_SYSTEM_OPEN(int argc, char** argv) {
     printf("\n");
-    if(G_SYSTEM == "H_CLOSE") {
+    sGManager* lMgr = GManager::Instance()->dataGet();
+    sGQt* lQt = lMgr->qt;
+    if(lQt->state == "H_CLOSE") {
         printf("[info] ouverture du systeme\n");
+        lQt->state = "H_OPEN";
         GQtMgr::Instance()->systemOpen(argc, argv);
-        G_SYSTEM = "H_OPEN";
     }
     else {
         printf("[attention] impossible d'ouvrir le systeme\n");
@@ -94,10 +96,12 @@ void GQtUi::run_SYSTEM_OPEN(int argc, char** argv) {
 //===============================================
 void GQtUi::run_SYSTEM_CLOSE(int argc, char** argv) {
     printf("\n");
-    if(G_SYSTEM == "H_OPEN") {
+    sGManager* lMgr = GManager::Instance()->dataGet();
+    sGQt* lQt = lMgr->qt;
+    if(lQt->state == "H_OPEN") {
         printf("[info] fermeture du systeme\n");
+        lQt->state = "H_CLOSE";
         GQtMgr::Instance()->systemClose();
-        G_SYSTEM = "H_CLOSE";
     }
     else {
         printf("[attention] impossible de fermer le systeme\n");
