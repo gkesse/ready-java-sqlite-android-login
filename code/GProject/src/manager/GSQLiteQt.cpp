@@ -5,6 +5,8 @@
 //===============================================
 GSQLiteQt::GSQLiteQt(QWidget* parent) : 
 QFrame(parent) {
+    m_name = "ADMIN.SQLITE";
+    
     QVBoxLayout* lMainL = new QVBoxLayout;
     QHBoxLayout* lAddrL = new QHBoxLayout;
     QHBoxLayout* lBodyL = new QHBoxLayout;
@@ -21,12 +23,15 @@ QFrame(parent) {
         
         if(i == 0) {
             QStringList lMenuAL = lMenuT.split(".");
-            
+            QString lMenuAC = "";
             for(int j = 0; j < lMenuAL.size(); j++) {
                 QString lMenuAT = lMenuAL[j];
+                if(j != 0) lMenuAC += ".";
+                lMenuAC += lMenuAT;
+                m_addressK[lMenuAT] = lMenuAC;
                 lMenuB = new QPushButton;
                 lMenuB->setText(lMenuAT);
-                connect(lMenuB, SIGNAL(clicked()), this, SLOT(slotMenuClick()));
+                connect(lMenuB, SIGNAL(clicked()), this, SLOT(slotAdressClick()));
                 lAddrL->addWidget(lMenuB);
             }
             
@@ -45,7 +50,19 @@ QFrame(parent) {
 }
 //===============================================
 GSQLiteQt::~GSQLiteQt() {
-    
+
+}
+//===============================================
+void GSQLiteQt::slotAdressClick() {
+    sGManager* lMgr = GManager::Instance()->dataGet();
+    sGQt* lQt = lMgr->qt;
+    QPushButton* lMenuB = qobject_cast<QPushButton*>(sender());
+    QString lMenuT = lMenuB->text().toUpper();
+    QString lPageK = m_addressK[lMenuT];
+    if(!lQt->pageId.contains(lPageK)) return;
+    int lPageId = lQt->pageId[lPageK];
+    if(lPageId == lQt->page->currentIndex()) return;
+    lQt->page->setCurrentIndex(lPageId);
 }
 //===============================================
 void GSQLiteQt::slotMenuClick() {
@@ -53,7 +70,10 @@ void GSQLiteQt::slotMenuClick() {
     sGQt* lQt = lMgr->qt;
     QPushButton* lMenuB = qobject_cast<QPushButton*>(sender());
     QString lMenuT = lMenuB->text().toUpper();
-    int lPageId = lQt->pageId[lMenuT];
+    QString lPageK = QString("%1.%2").arg(m_name).arg(lMenuT);
+    if(!lQt->pageId.contains(lPageK)) return;
+    int lPageId = lQt->pageId[lPageK];
+    if(lPageId == lQt->page->currentIndex()) return;
     lQt->page->setCurrentIndex(lPageId);
 }
 //===============================================

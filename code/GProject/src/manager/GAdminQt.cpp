@@ -45,9 +45,10 @@ void GAdminQt::slotMenuClick() {
     sGQt* lQt = lMgr->qt;
     QPushButton* lMenuB = qobject_cast<QPushButton*>(sender());
     QString lMenuT = lMenuB->text().toUpper();
-    QString lPageK = m_name + lMenuT;
+    QString lPageK = QString("%1.%2").arg(m_name).arg(lMenuT);
     if(!lQt->pageId.contains(lPageK)) return;
     int lPageId = lQt->pageId[lPageK];
+    if(lPageId == lQt->page->currentIndex()) return;
     lQt->page->setCurrentIndex(lPageId);
 }
 //===============================================

@@ -12,10 +12,12 @@ public:
     ~GSQLiteQt();
     
 public slots:
+    void slotAdressClick();
     void slotMenuClick();
     
 private:
     QString m_name;
+    QMap<QString, QString> m_addressK;
 };
 //===============================================
 #endif

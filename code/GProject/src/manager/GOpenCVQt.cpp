@@ -5,6 +5,8 @@
 //===============================================
 GOpenCVQt::GOpenCVQt(QWidget* parent) : 
 QFrame(parent) {
+    m_name = "ADMIN.OPENCV";
+
     QVBoxLayout* lMainL = new QVBoxLayout;
     QHBoxLayout* lAddrL = new QHBoxLayout;
     QHBoxLayout* lBodyL = new QHBoxLayout;
@@ -42,7 +44,10 @@ void GOpenCVQt::slotMenuClick() {
     sGQt* lQt = lMgr->qt;
     QPushButton* lMenuB = qobject_cast<QPushButton*>(sender());
     QString lMenuT = lMenuB->text().toUpper();
-    int lPageId = lQt->pageId[lMenuT];
+    QString lPageK = QString("%1.%2").arg(m_name).arg(lMenuT);
+    if(!lQt->pageId.contains(lPageK)) return;
+    int lPageId = lQt->pageId[lPageK];
+    if(lPageId == lQt->page->currentIndex()) return;
     lQt->page->setCurrentIndex(lPageId);
 }
 //===============================================
