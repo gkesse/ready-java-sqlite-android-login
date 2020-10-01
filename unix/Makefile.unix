@@ -30,6 +30,10 @@ $(GBUILD)/%.o: $(GSRC)/manager/%.cpp
 	@if ! [ -d $(GBUILD) ] ; then mkdir -p $(GBUILD) ; fi
 	g++ $(GCFLAGS) -c $< -o $@ $(GINCS)
 run:
-	@$(GTARGET) $(args)
+	@echo
+	@$(GTARGET)
+	@echo
+clean_exe: 
+	rm -f $(GBIN)/*
 clean: 
 	rm -f $(GBUILD)/* $(GBIN)/*

@@ -1,5 +1,0 @@
-C++ est un langage de programmation compilé 
-permettant la programmation sous de multiples paradigmes. 
-Ses bonnes performances, et sa compatibilité avec le C 
-en font un des langages de programmation les plus utilisés 
-dans les applications où la performance est critique.

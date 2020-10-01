@@ -1,6 +1,7 @@
 GBIN = bin
 GBUILD = build
-GTARGET = $(GBIN)/gp_cpp.exe
+GTARGET = $(GBIN)/gp_cpp
+GRES = resources.qrc
 
 all: clean_exe qmake compile run
 
@@ -13,5 +14,5 @@ run:
 clean_exe: 
 	rm -f $(GBIN)/*
 clean: 
-	rm -f $(GBUILD)/* $(GBIN)/*
 	make clean
+	rm -f $(GBUILD)/* $(GBIN)/*
