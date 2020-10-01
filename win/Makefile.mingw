@@ -14,8 +14,8 @@ GLIBS = \
     -lsqlite3 -lopencv_core2413 -lopencv_imgproc2413 -lopencv_highgui2413 \
 
 GOBJS = \
-    $(patsubst $(GSRC)/%.cpp, $(GBUILD)/%.o, $(wildcard $(GSRC)/*.cpp)) \
-    $(patsubst $(GSRC)/manager/%.cpp, $(GBUILD)/%.o, $(wildcard $(GSRC)/manager/*.cpp)) \
+    $(patsubst $(GSRC)/%.cpp, $(GBUILD)/%.o, $(wildcard $(GSRC)/*.cpp)) 
+    #$(patsubst $(GSRC)/manager/%.cpp, $(GBUILD)/%.o, $(wildcard $(GSRC)/manager/*.cpp)) \
 
 GCFLAGS = \
     -std=gnu++11 \
