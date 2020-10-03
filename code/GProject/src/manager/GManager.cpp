@@ -4,7 +4,6 @@
 GManager* GManager::m_instance = 0;
 //===============================================
 GManager::GManager() {
-    printf("[info] allocation de la memoire des donnees\n");
     // manager
     m_mgr = new sGManager;
     // opencv
@@ -110,5 +109,11 @@ void GManager::shell(const char* command, char* output, int size, int shift) {
 //===============================================
 void GManager::system(const char* command) {
     system(command);
+}
+//===============================================
+void GManager::qtClose() {
+    if(m_mgr->qt->win != 0) {
+        m_mgr->qt->win->close();
+    }
 }
 //===============================================

@@ -40,9 +40,7 @@ void GProcess::run(int argc, char** argv) {
         else if(G_STATE == "S_LOAD") run_LOAD(argc, argv);
         else break;
     }
-    sGManager* lMgr = GManager::Instance()->dataGet();
-    sGQt* lQt = lMgr->qt;
-    lQt->win->close();
+    GManager::Instance()->qtClose();
 }
 //===============================================
 void GProcess::run_INIT(int argc, char** argv) {

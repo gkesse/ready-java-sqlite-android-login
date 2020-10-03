@@ -7,6 +7,7 @@ UI_DIR = build
 RCC_DIR = build
 CONFIG += console release gnu++11
 QT += widgets script printsupport dbus
+QMAKE_CXXFLAGS += -Wno-unused-parameter
 
 include(../code/GProject/src/GMain.pri)
 

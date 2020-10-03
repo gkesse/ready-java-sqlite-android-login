@@ -26,8 +26,9 @@ public:
     std::string dataPath();
     void shell(const char* command, char* output, int size, int shift);
     void system(const char* command);
+    void qtClose();
     
-public:
+private:
     static GManager* m_instance;
     sGManager* m_mgr;
 };
