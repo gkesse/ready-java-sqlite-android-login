@@ -4,48 +4,57 @@
 //===============================================
 #include "GInclude.h"
 //===============================================
-class GOpenCV {
-private:
+class GOpenCV { 
+protected:
     GOpenCV();
-    
+   
 public:
-    ~GOpenCV();
+    virtual ~GOpenCV();
     static GOpenCV* Instance();
-    void run(int argc, char** argv);
-    
-private:
-    void run_ADMIN(int argc, char** argv);
-    void run_INIT(int argc, char** argv);
-    void run_METHOD(int argc, char** argv);
-    void run_CHOICE(int argc, char** argv);
-    void run_SAVE(int argc, char** argv);
-    void run_LOAD(int argc, char** argv);
-    void run_QUIT(int argc, char** argv);
-    
-private:
-    void run_IMAGE_LOAD_IMAGE_PATH(int argc, char** argv);
-    void run_IMAGE_LOAD_IMAGE_NAME(int argc, char** argv);
-    void run_IMAGE_LOAD(int argc, char** argv);
-    //
-    void run_IMAGE_INVERT_IMAGE_PATH(int argc, char** argv);
-    void run_IMAGE_INVERT_IMAGE_NAME(int argc, char** argv);
-    void run_IMAGE_INVERT(int argc, char** argv);
-    //
-    void run_VIDEO_LOAD_VIDEO_PATH(int argc, char** argv);
-    void run_VIDEO_LOAD_VIDEO_NAME(int argc, char** argv);
-    void run_VIDEO_LOAD(int argc, char** argv);
-    //
-    void run_VIDEO_TRACKBAR_VIDEO_PATH(int argc, char** argv);
-    void run_VIDEO_TRACKBAR_VIDEO_NAME(int argc, char** argv);
-    void run_VIDEO_TRACKBAR(int argc, char** argv);
-    //
-    void run_BASIS(int argc, char** argv);
-    void run_BASIS_POINT(int argc, char** argv);
-    void run_BASIS_FUNCTION(int argc, char** argv);
 
 public:
+    virtual void open() = 0;
+    void imageLoad(std::string imageFileIn);
+    void imageInvert(std::string imageFileIn);
+    //
+    void videoLoad(std::string videoFileIn);
+    void videoTrackbar(std::string videoFileIn);
+    //
+    void basis();
+    void basisPoint();
+    void basisFunction();
+
+private:
+    void basisDraw();
+    void basisPointDraw(double x, double y);
+    void basisLineDraw(double x1, double y1, double x2, double y2);
+    void basisFunctionDraw(void* func, void* params);
+
+protected:
+    static void onOpen();
+    
+public:
     static GOpenCV* m_instance;
-    std::string G_STATE;
+    //
+    cv::Mat m_basis;
+    std::string m_title;
+    cv::Scalar m_bg_color;
+    cv::Scalar m_gridColor;
+    cv::Scalar m_axisColor;
+    cv::Scalar m_pointColor;
+    cv::Scalar m_lineColor;
+    double m_pointSize;
+    double m_lineWidth;
+    double m_width;
+    double m_height;
+    double m_gridDiv;
+    double m_x0;
+    double m_y0;
+    double m_xMin;
+    double m_xMax;
+    double m_yMin;
+    double m_yMax;
+    double m_xTick;
 };
 //===============================================
 #endif

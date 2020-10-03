@@ -8,23 +8,20 @@ GManager::GManager() {
     m_mgr = new sGManager;
     // opencv
     m_mgr->opencv = new sGOpenCV;
-    m_mgr->opencv->title = "MainWindow | OpenCV";
+    m_mgr->opencv->app_name = "ReadyApp";
+    m_mgr->opencv->title = m_mgr->opencv->app_name;
+    m_mgr->opencv->state = "close";
     m_mgr->opencv->width = 640;
     m_mgr->opencv->height = 480;
-    m_mgr->opencv->bgColor = cv::Scalar(50, 100, 150);
+    m_mgr->opencv->bg_color = cv::Scalar(20, 20, 50);
     m_mgr->opencv->delay = 30;
-    m_mgr->opencv->runMe = 1;
-    // qt
-    m_mgr->qt = new sGQt;
-    m_mgr->qt->title = "MainWindow | Qt";
-    m_mgr->qt->state = "H_CLOSE";
-    m_mgr->qt->width = 640;
-    m_mgr->qt->height = 480;
-    m_mgr->qt->pageC = 0;
-    m_mgr->qt->win = 0;    
+    m_mgr->opencv->run_me = 1;
     // json
     m_mgr->json = new sGJson;
     m_mgr->json->file = ":/json/menu.json";
+    // sqlite
+    m_mgr->sqlite = new sGSQLite;
+    m_mgr->sqlite->db_path = "C:/Users/Admin/Downloads/Programs/ReadyBin/win/.CONFIG_O.dat";
 }
 //===============================================
 GManager::~GManager() {
@@ -43,9 +40,7 @@ sGManager* GManager::dataGet() {
 }
 //===============================================
 void GManager::dataClear() {
-    printf("[info] liberation de la memoire des donnees\n");
     delete m_mgr->opencv;
-    delete m_mgr->qt;
     delete m_mgr->json;
     delete m_mgr;
 }
@@ -111,9 +106,34 @@ void GManager::system(const char* command) {
     system(command);
 }
 //===============================================
+<<<<<<< HEAD
 void GManager::qtClose() {
     if(m_mgr->qt->win != 0) {
         m_mgr->qt->win->close();
+=======
+void GManager::dataShow(std::string data) {
+    printf("%s\n", data.c_str());
+}
+//===============================================
+void GManager::dataShow(std::vector<std::string> data) {
+    for(int i = 0; i < data.size(); i++) {
+        if(i != 0) printf(" ; ");
+        std::string lData = data.at(i);
+        printf("%s", lData.c_str());
+    }
+    printf("\n");
+}
+//===============================================
+void GManager::dataShow(std::vector<std::vector<std::string>> data) {
+    for(int i = 0; i < data.size(); i++) {
+        std::vector<std::string> lDataMap = data.at(i);
+        for(int j = 0; j < lDataMap.size(); j++) {
+            if(j != 0) printf(" ; ");
+            std::string lData = lDataMap.at(j);
+            printf("%s", lData.c_str());
+        }
+        printf("\n");
+>>>>>>> 81daa55e0c0df146cdf3dbdfd8b4ee2e4cf327c5
     }
 }
 //===============================================
