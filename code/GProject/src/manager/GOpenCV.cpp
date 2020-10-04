@@ -34,17 +34,17 @@ GOpenCV* GOpenCV::Instance() {
 void GOpenCV::onOpen() {
     sGOpenCV* lOpenCV = GManager::Instance()->dataGet()->opencv;
 
-    lOpenCV->img.release();
     lOpenCV->img = cv::Mat(lOpenCV->height, lOpenCV->width, CV_8UC3, lOpenCV->bg_color);
+    
     cv::namedWindow(lOpenCV->title, cv::WINDOW_AUTOSIZE);
 
-    lOpenCV->state = "open";
-    
+    lOpenCV->run_me = 1;
+
     while(1) {
         if(lOpenCV->run_me == 0) break;
         cv::imshow(lOpenCV->title, lOpenCV->img);
         cv::waitKey(lOpenCV->delay);
-    }
+    } 
     
     cv::destroyAllWindows();
 }

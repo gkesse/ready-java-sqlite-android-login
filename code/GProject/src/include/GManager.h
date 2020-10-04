@@ -49,6 +49,9 @@ struct _sGOpenCV {
     cv::Mat img;
     double delay;
     int run_me;
+#if defined(__unix)
+    pthread_t thread_id;
+#endif
 };
 //===============================================
 struct _sGJson {

@@ -9,6 +9,8 @@
 #include <map>
 #include <vector>
 #include <sstream>
+#include <unistd.h>
+#include <signal.h>
 //===============================================
 #include <sqlite3.h>
 #include <opencv2/opencv.hpp>

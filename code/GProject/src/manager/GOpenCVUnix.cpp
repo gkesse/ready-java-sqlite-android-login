@@ -22,10 +22,13 @@ GOpenCVUnix* GOpenCVUnix::Instance() {
 }
 //===============================================
 void GOpenCVUnix::open() {
-	pthread_t lThreadId;
-    int lAns = pthread_create(&lThreadId, 0, onOpen, 0);
+    sGOpenCV* lOpenCV = GManager::Instance()->dataGet()->opencv;
+        
+    int lAns = pthread_create(&lOpenCV->thread_id, 0, onOpen, 0);
+    printf("[info] lOpenCV->thread_id : %p\n", lOpenCV->thread_id);
+    
     if(lAns) {
-        printf("[GOpenCVUnix] error open() : %d\n", lAns);
+        printf("[error] GOpenCVUnix::open : pthread_create\n");
         exit(0);
     }
 }

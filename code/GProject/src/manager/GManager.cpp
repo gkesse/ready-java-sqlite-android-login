@@ -15,7 +15,6 @@ GManager::GManager() {
     m_mgr->opencv->height = 480;
     m_mgr->opencv->bg_color = cv::Scalar(20, 20, 50);
     m_mgr->opencv->delay = 30;
-    m_mgr->opencv->run_me = 1;
     // json
     m_mgr->json = new sGJson;
     m_mgr->json->file = ":/json/menu.json";

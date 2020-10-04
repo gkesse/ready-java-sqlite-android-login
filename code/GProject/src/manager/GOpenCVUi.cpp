@@ -131,8 +131,10 @@ void GOpenCVUi::run_OPEN(int argc, char** argv) {
     printf("\n");
     sGOpenCV* lOpenCV = GManager::Instance()->dataGet()->opencv;
     if(lOpenCV->state == "close") {
-        printf("[info] ouverture de l'application\n");
+        lOpenCV->run_me = 1;
         GOpenCV::Instance()->open();
+        lOpenCV->state = "open";
+        printf("[info] ouverture de l'application\n");
     }
     else {
         printf("[error] l'application est deja ouverte\n");
@@ -144,9 +146,9 @@ void GOpenCVUi::run_CLOSE(int argc, char** argv) {
     printf("\n");
     sGOpenCV* lOpenCV = GManager::Instance()->dataGet()->opencv;
     if(lOpenCV->state == "open") {
-        printf("[info] fermeture de l'application\n");
         lOpenCV->run_me = 0;
         lOpenCV->state = "close";
+        printf("[info] fermeture de l'application\n");
     }
     else {
         printf("[error] l'application est deja fermee\n");
