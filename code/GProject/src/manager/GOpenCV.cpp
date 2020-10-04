@@ -1,6 +1,7 @@
 //===============================================
 #include "GOpenCV.h"
 #include "GOpenCVWin.h"
+#include "GOpenCVUnix.h"
 #include "GFunction.h"
 #include "GManager.h"
 //===============================================
@@ -22,7 +23,9 @@ GOpenCV::~GOpenCV() {
 }
 //===============================================
 GOpenCV* GOpenCV::Instance() {
-#if defined(__WIN32) 
+#if defined(__unix) 
+    return GOpenCVUnix::Instance();
+#elif defined(__WIN32) 
     return GOpenCVWin::Instance();
 #endif
     return 0;

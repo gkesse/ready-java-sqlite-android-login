@@ -36,10 +36,6 @@ void GProcess::run(int argc, char** argv) {
         else if(G_STATE == "S_LOAD") run_LOAD(argc, argv);
         else break;
     }
-<<<<<<< HEAD
-    GManager::Instance()->qtClose();
-=======
->>>>>>> 81daa55e0c0df146cdf3dbdfd8b4ee2e4cf327c5
 }
 //===============================================
 void GProcess::run_INIT(int argc, char** argv) {

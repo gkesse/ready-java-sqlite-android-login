@@ -1,32 +1,36 @@
 //===============================================
-#include "GOpenCVWin.h"
+#include "GOpenCVUnix.h"
 #include "GManager.h"
 //===============================================
-#if defined (__WIN32)
+#if defined (__unix)
 //===============================================
-GOpenCVWin* GOpenCVWin::m_instance = 0;
+GOpenCVUnix* GOpenCVUnix::m_instance = 0;
 //===============================================
-GOpenCVWin::GOpenCVWin() {
+GOpenCVUnix::GOpenCVUnix() {
 
 }
 //===============================================
-GOpenCVWin::~GOpenCVWin() {
+GOpenCVUnix::~GOpenCVUnix() {
     
 }
 //===============================================
-GOpenCVWin* GOpenCVWin::Instance() {
+GOpenCVUnix* GOpenCVUnix::Instance() {
     if(m_instance == 0) {
-        m_instance = new GOpenCVWin;
+        m_instance = new GOpenCVUnix;
     }
     return m_instance;
 }
 //===============================================
-void GOpenCVWin::open() {
-	DWORD lThreadId;
-	HANDLE lThreadH = CreateThread(0, 0, onOpen, 0, 0, &lThreadId);
+void GOpenCVUnix::open() {
+	pthread_t lThreadId;
+    int lAns = pthread_create(&lThreadId, 0, onOpen, 0);
+    if(lAns) {
+        printf("[GOpenCVUnix] error open() : %d\n", lAns);
+        exit(0);
+    }
 }
 //===============================================
-DWORD WINAPI GOpenCVWin::onOpen(LPVOID params) {
+void* GOpenCVUnix::onOpen(void* params) {
     GOpenCV::onOpen();
     return 0;
 }

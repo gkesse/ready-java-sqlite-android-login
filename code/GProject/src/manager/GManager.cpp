@@ -1,7 +1,7 @@
 //===============================================
 #include "GManager.h"
-//===============================================
-GManager* GManager::m_instance = 0;
+#include "GManagerUnix.h"
+#include "GManagerWin.h"
 //===============================================
 GManager::GManager() {
     // manager
@@ -21,7 +21,6 @@ GManager::GManager() {
     m_mgr->json->file = ":/json/menu.json";
     // sqlite
     m_mgr->sqlite = new sGSQLite;
-    m_mgr->sqlite->db_path = "C:/Users/Admin/Downloads/Programs/ReadyBin/win/.CONFIG_O.dat";
 }
 //===============================================
 GManager::~GManager() {
@@ -29,10 +28,12 @@ GManager::~GManager() {
 }
 //===============================================
 GManager* GManager::Instance() {
-    if(m_instance == 0) {
-        m_instance = new GManager;
-    }
-    return m_instance;
+#if defined(__unix)
+    return GManagerUnix::Instance();
+#elif defined(__WIN32)
+    return GManagerWin::Instance();
+#endif
+    return 0;
 }
 //===============================================
 sGManager* GManager::dataGet() {
@@ -106,11 +107,6 @@ void GManager::system(const char* command) {
     system(command);
 }
 //===============================================
-<<<<<<< HEAD
-void GManager::qtClose() {
-    if(m_mgr->qt->win != 0) {
-        m_mgr->qt->win->close();
-=======
 void GManager::dataShow(std::string data) {
     printf("%s\n", data.c_str());
 }
@@ -133,7 +129,6 @@ void GManager::dataShow(std::vector<std::vector<std::string>> data) {
             printf("%s", lData.c_str());
         }
         printf("\n");
->>>>>>> 81daa55e0c0df146cdf3dbdfd8b4ee2e4cf327c5
     }
 }
 //===============================================

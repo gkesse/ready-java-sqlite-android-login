@@ -10,11 +10,11 @@ typedef struct _sGJson sGJson;
 typedef struct _sGSQLite sGSQLite;
 //===============================================
 class GManager {
-private:
+protected:
     GManager();
     
 public:
-    ~GManager();
+    virtual ~GManager();
     static GManager* Instance();
     sGManager* dataGet();
     void dataClear();
@@ -25,16 +25,11 @@ public:
     std::string dataPath();
     void shell(const char* command, char* output, int size, int shift);
     void system(const char* command);
-<<<<<<< HEAD
-    void qtClose();
-=======
     void dataShow(std::string data);
     void dataShow(std::vector<std::string> data);
     void dataShow(std::vector<std::vector<std::string>> data);
->>>>>>> 81daa55e0c0df146cdf3dbdfd8b4ee2e4cf327c5
     
-private:
-    static GManager* m_instance;
+protected:
     sGManager* m_mgr;
 };
 //===============================================
@@ -54,9 +49,6 @@ struct _sGOpenCV {
     cv::Mat img;
     double delay;
     int run_me;
-#if defined(__WIN32)
-    
-#endif
 };
 //===============================================
 struct _sGJson {

@@ -1,26 +1,26 @@
 //===============================================
-#ifndef _GOpenCVWin_
-#define _GOpenCVWin_
+#ifndef _GOpenCVUnix_
+#define _GOpenCVUnix_
 //===============================================
 #include "GInclude.h"
 #include "GOpenCV.h"
 //===============================================
-#if defined (__WIN32)
+#if defined (__unix)
 //===============================================
-class GOpenCVWin : public GOpenCV {
+class GOpenCVUnix : public GOpenCV {
 private:
-    GOpenCVWin();
+    GOpenCVUnix();
     
 public:
-    ~GOpenCVWin();
-    static GOpenCVWin* Instance();
+    ~GOpenCVUnix();
+    static GOpenCVUnix* Instance();
     void open();
     
 private:
-    static DWORD WINAPI onOpen(LPVOID params);
+    static void* onOpen(void* params);
 
 public:
-    static GOpenCVWin* m_instance;
+    static GOpenCVUnix* m_instance;
 };
 //===============================================
 #endif

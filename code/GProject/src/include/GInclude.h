@@ -10,7 +10,6 @@
 #include <vector>
 #include <sstream>
 //===============================================
-#include <QtWidgets>
 #include <sqlite3.h>
 #include <opencv2/opencv.hpp>
 #include <gsl/gsl_spmatrix.h>
