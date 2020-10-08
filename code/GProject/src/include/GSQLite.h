@@ -11,23 +11,23 @@ private:
 public:
     ~GSQLite();
     static GSQLite* Instance();
-    void run(int argc, char** argv);
-    
+    sqlite3* connect();
+    void queryWrite(std::string sql);
+    void queryShow(std::string sql, int onHeader, std::string widthMap, std::string widthDefault);
+    std::string queryValue(std::string sql);
+    std::vector<std::string> queryCol(std::string sql);
+    std::vector<std::string> queryRow(std::string sql);
+    std::vector<std::vector<std::string>> queryMap(std::string sql);
+
 private:
-    void run_ADMIN(int argc, char** argv);
-    void run_INIT(int argc, char** argv);
-    void run_METHOD(int argc, char** argv);
-    void run_CHOICE(int argc, char** argv);
-    void run_SAVE(int argc, char** argv);
-    void run_LOAD(int argc, char** argv);
-    void run_QUIT(int argc, char** argv);
-    
-private:
-    void run_CONFIG_LOAD(int argc, char** argv);
+    static int onShow(void* params, int colCount, char** colValue, char** colNameIn);
+    static int onValue(void* params, int colCount, char** colValue, char** colNameIn);
+    static int onCol(void* params, int colCount, char** colValue, char** colNameIn);
+    static int onRow(void* params, int colCount, char** colValue, char** colNameIn);
+    static int onMap(void* params, int colCount, char** colValue, char** colNameIn);
 
 public:
     static GSQLite* m_instance;
-    std::string G_STATE;
 };
 //===============================================
 #endif

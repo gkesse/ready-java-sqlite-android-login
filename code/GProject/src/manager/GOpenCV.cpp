@@ -1,14 +1,20 @@
 //===============================================
 #include "GOpenCV.h"
-#include "GProcess.h"
-#include "GConfig.h"
+#include "GOpenCVWin.h"
+#include "GFunction.h"
 #include "GManager.h"
-#include "GOpenCVMgr.h"
 //===============================================
-GOpenCV* GOpenCV::m_instance = 0;
+typedef double (*GFUNC_CB)(double x, void* params);
+//===============================================
+typedef struct _sGPoly sGPoly;
+//===============================================
+struct _sGPoly {
+    double* coef;
+    int size;
+};
 //===============================================
 GOpenCV::GOpenCV() {
-    
+
 }
 //===============================================
 GOpenCV::~GOpenCV() {
@@ -16,292 +22,200 @@ GOpenCV::~GOpenCV() {
 }
 //===============================================
 GOpenCV* GOpenCV::Instance() {
-    if(m_instance == 0) {
-        m_instance = new GOpenCV;
-    }
-    return m_instance;
+#if defined(__WIN32) 
+    return GOpenCVWin::Instance();
+#endif
+    return 0;
 }
 //===============================================
-void GOpenCV::run(int argc, char** argv) {
-    G_STATE = "S_INIT";
+void GOpenCV::onOpen() {
+    sGOpenCV* lOpenCV = GManager::Instance()->dataGet()->opencv;
+
+    lOpenCV->img.release();
+    lOpenCV->img = cv::Mat(lOpenCV->height, lOpenCV->width, CV_8UC3, lOpenCV->bg_color);
+    cv::namedWindow(lOpenCV->title, cv::WINDOW_AUTOSIZE);
+
+    lOpenCV->state = "open";
+    
     while(1) {
-        if(G_STATE == "S_ADMIN") run_ADMIN(argc, argv);
-        else if(G_STATE == "S_INIT") run_INIT(argc, argv);
-        else if(G_STATE == "S_METHOD") run_METHOD(argc, argv);
-        else if(G_STATE == "S_CHOICE") run_CHOICE(argc, argv);
-        //
-        else if(G_STATE == "S_IMAGE_LOAD_IMAGE_PATH") run_IMAGE_LOAD_IMAGE_PATH(argc, argv);
-        else if(G_STATE == "S_IMAGE_LOAD_IMAGE_NAME") run_IMAGE_LOAD_IMAGE_NAME(argc, argv);
-        else if(G_STATE == "S_IMAGE_LOAD") run_IMAGE_LOAD(argc, argv);
-        //
-        else if(G_STATE == "S_IMAGE_INVERT_IMAGE_PATH") run_IMAGE_INVERT_IMAGE_PATH(argc, argv);
-        else if(G_STATE == "S_IMAGE_INVERT_IMAGE_NAME") run_IMAGE_INVERT_IMAGE_NAME(argc, argv);
-        else if(G_STATE == "S_IMAGE_INVERT") run_IMAGE_INVERT(argc, argv);
-        //
-        else if(G_STATE == "S_VIDEO_LOAD_VIDEO_PATH") run_VIDEO_LOAD_VIDEO_PATH(argc, argv);
-        else if(G_STATE == "S_VIDEO_LOAD_VIDEO_NAME") run_VIDEO_LOAD_VIDEO_NAME(argc, argv);
-        else if(G_STATE == "S_VIDEO_LOAD") run_VIDEO_LOAD(argc, argv);
-        //
-        else if(G_STATE == "S_VIDEO_TRACKBAR_VIDEO_PATH") run_VIDEO_TRACKBAR_VIDEO_PATH(argc, argv);
-        else if(G_STATE == "S_VIDEO_TRACKBAR_VIDEO_NAME") run_VIDEO_TRACKBAR_VIDEO_NAME(argc, argv);
-        else if(G_STATE == "S_VIDEO_TRACKBAR") run_VIDEO_TRACKBAR(argc, argv);
-        //
-        else if(G_STATE == "S_BASIS") run_BASIS(argc, argv);
-        else if(G_STATE == "S_BASIS_POINT") run_BASIS_POINT(argc, argv);
-        else if(G_STATE == "S_BASIS_FUNCTION") run_BASIS_FUNCTION(argc, argv);
-        //
-        else if(G_STATE == "S_SAVE") run_SAVE(argc, argv);
-        else if(G_STATE == "S_LOAD") run_LOAD(argc, argv);
-        else if(G_STATE == "S_QUIT") run_QUIT(argc, argv);
-        else break;
+        if(lOpenCV->run_me == 0) break;
+        cv::imshow(lOpenCV->title, lOpenCV->img);
+        cv::waitKey(lOpenCV->delay);
     }
+    
+    cv::destroyAllWindows();
 }
 //===============================================
-void GOpenCV::run_ADMIN(int argc, char** argv) {
-    GProcess::Instance()->run(argc, argv);
-    G_STATE = "S_END";
+void GOpenCV::imageLoad(std::string imageFileIn) {
+    sGOpenCV* lOpenCV = GManager::Instance()->dataGet()->opencv;
+    cv::Mat lImg = cv::imread(imageFileIn);
+    cv::namedWindow("original", cv::WINDOW_AUTOSIZE);
+    cv::imshow("original", lImg);
+    cv::waitKey(0);
+    cv::destroyAllWindows();
 }
 //===============================================
-void GOpenCV::run_INIT(int argc, char** argv) {
-    printf("\n");
-    printf("%s\n", "CPP_OPENCV !!!");
-    printf("\t%-2s : %s\n", "-q", "quitter l'application");
-    printf("\t%-2s : %s\n", "-i", "reinitialiser l'application");
-    printf("\t%-2s : %s\n", "-a", "redemarrer l'application");
-    printf("\t%-2s : %s\n", "-v", "valider les configurations");
-    printf("\n");
-    G_STATE = "S_LOAD";
+void GOpenCV::imageInvert(std::string imageFileIn) {
+    cv::Mat lImg = cv::imread(imageFileIn);
+    cv::Mat lInvert;
+    cv::bitwise_not(lImg, lInvert);
+    cv::namedWindow("original", cv::WINDOW_AUTOSIZE);
+    cv::namedWindow("invert", cv::WINDOW_AUTOSIZE);
+    cv::imshow("original", lImg);
+    cv::imshow("invert", lInvert);
+    cv::waitKey(0);
+    cv::destroyAllWindows();
 }
 //===============================================
-void GOpenCV::run_METHOD(int argc, char** argv) {
-    printf("%s\n", "CPP_OPENCV :");
-    printf("\t%-2s : %s\n", "1", "S_IMAGE_LOAD");
-    printf("\t%-2s : %s\n", "2", "S_IMAGE_INVERT");
-    printf("\n");
-    printf("\t%-2s : %s\n", "10", "S_VIDEO_LOAD");
-    printf("\t%-2s : %s\n", "11", "S_VIDEO_TRACKBAR");
-    printf("\n");
-    printf("\t%-2s : %s\n", "20", "S_BASIS");
-    printf("\t%-2s : %s\n", "21", "S_BASIS_POINT");
-    printf("\t%-2s : %s\n", "22", "S_BASIS_FUNCTION");
-    printf("\n");
-    G_STATE = "S_CHOICE";
+void GOpenCV::videoLoad(std::string videoFileIn) {
+    cv::VideoCapture lVideo;
+    lVideo.open(videoFileIn);
+    cv::Mat lImg;
+    cv::namedWindow("original", cv::WINDOW_AUTOSIZE);
+    while(1) {
+        lVideo >> lImg;
+        if(lImg.empty()) break;
+        cv::imshow("original", lImg);
+        if((char)cv::waitKey(30) >= 0) break;
+    }
+    cv::destroyAllWindows();
 }
 //===============================================
-void GOpenCV::run_CHOICE(int argc, char** argv) {
-    std::string lLast = GConfig::Instance()->getData("CPP_OPENCV_ID");
-    printf("CPP_OPENCV (%s) ? : ", lLast.c_str());
-    std::string lAnswer; std::getline(std::cin, lAnswer);
-    if(lAnswer == "") lAnswer = lLast;
-    if(lAnswer == "-q") G_STATE = "S_END";
-    else if(lAnswer == "-i") G_STATE = "S_INIT";
-    else if(lAnswer == "-a") G_STATE = "S_ADMIN";
-    //
-    else if(lAnswer == "1") {G_STATE = "S_IMAGE_LOAD_IMAGE_PATH"; GConfig::Instance()->setData("CPP_OPENCV_ID", lAnswer);}
-    else if(lAnswer == "2") {G_STATE = "S_IMAGE_INVERT_IMAGE_PATH"; GConfig::Instance()->setData("CPP_OPENCV_ID", lAnswer);}
-    //
-    else if(lAnswer == "10") {G_STATE = "S_VIDEO_LOAD_VIDEO_PATH"; GConfig::Instance()->setData("CPP_OPENCV_ID", lAnswer);}
-    else if(lAnswer == "11") {G_STATE = "S_VIDEO_TRACKBAR_VIDEO_PATH"; GConfig::Instance()->setData("CPP_OPENCV_ID", lAnswer);}
-    //
-    else if(lAnswer == "20") {G_STATE = "S_BASIS"; GConfig::Instance()->setData("CPP_OPENCV_ID", lAnswer);}
-    else if(lAnswer == "21") {G_STATE = "S_BASIS_POINT"; GConfig::Instance()->setData("CPP_OPENCV_ID", lAnswer);}
-    else if(lAnswer == "22") {G_STATE = "S_BASIS_FUNCTION"; GConfig::Instance()->setData("CPP_OPENCV_ID", lAnswer);}
-    //
+void GOpenCV::videoTrackbar(std::string videoFileIn) {
+    cv::VideoCapture lVideo;
+    lVideo.open(videoFileIn);
+    cv::Mat lImg;
+    cv::namedWindow("original", cv::WINDOW_AUTOSIZE);
+    while(1) {
+        lVideo >> lImg;
+        if(lImg.empty()) break;
+        cv::imshow("original", lImg);
+        if((char)cv::waitKey(30) >= 0) break;
+    }
+    cv::destroyAllWindows();
 }
 //===============================================
-void GOpenCV::run_BASIS(int argc, char** argv) {
-    printf("\n");
-    printf("%s\n", __FUNCTION__);
-    GOpenCVMgr::Instance()->basis();
-    G_STATE = "S_SAVE";
+void GOpenCV::basis() {
+    m_title = "Graphique 2D | OpenCV";
+    m_width = 640;
+    m_height = 480;
+    m_bg_color = cv::Scalar(255, 255, 255);
+    m_gridColor = cv::Scalar(127, 127, 127);
+    m_axisColor = cv::Scalar(0, 0, 0);
+    m_gridDiv = 20;
+    m_x0 = m_width/2;
+    m_y0 = m_height/2;
+    
+    basisDraw();
+
+    cv::namedWindow(m_title, cv::WINDOW_AUTOSIZE);
+    cv::imshow(m_title, m_basis);
+    cv::waitKey(0);
+    cv::destroyAllWindows();
 }
 //===============================================
-void GOpenCV::run_BASIS_POINT(int argc, char** argv) {
-    printf("\n");
-    printf("%s\n", __FUNCTION__);
-    GOpenCVMgr::Instance()->basisPoint();
-    G_STATE = "S_SAVE";
+void GOpenCV::basisPoint() {
+    m_title = "Graphique 2D | OpenCV";
+    m_width = 640;
+    m_height = 480;
+    m_bg_color = cv::Scalar(255, 255, 255);
+    m_gridColor = cv::Scalar(127, 127, 127);
+    m_axisColor = cv::Scalar(0, 0, 0);
+    m_pointColor = cv::Scalar(255, 0, 0, 0.2);
+    m_gridDiv = 20;
+    m_pointSize = 5;
+    m_x0 = m_width/2;
+    m_y0 = m_height/2;
+    
+    basisDraw();
+    basisPointDraw(0, 0);
+    basisPointDraw(5, 3);
+
+    cv::namedWindow(m_title, cv::WINDOW_AUTOSIZE);
+    cv::imshow(m_title, m_basis);
+    cv::waitKey(0);
+    cv::destroyAllWindows();
 }
 //===============================================
-void GOpenCV::run_BASIS_FUNCTION(int argc, char** argv) {
-    printf("\n");
-    printf("%s\n", __FUNCTION__);
-    GOpenCVMgr::Instance()->basisFunction();
-    G_STATE = "S_SAVE";
+void GOpenCV::basisFunction() {
+    m_title = "Graphique 2D | OpenCV";
+    m_width = 640;
+    m_height = 480;
+    m_bg_color = cv::Scalar(255, 255, 255);
+    m_gridColor = cv::Scalar(127, 127, 127);
+    m_axisColor = cv::Scalar(0, 0, 0);
+    m_pointColor = cv::Scalar(255, 0, 0);
+    m_lineColor = cv::Scalar(0, 0, 255);
+    m_gridDiv = 20;
+    m_pointSize = 6;
+    m_lineWidth = 2;
+    m_x0 = m_width/2;
+    m_y0 = m_height/2;
+    m_xMin = -m_x0/m_gridDiv;
+    m_xMax = +m_x0/m_gridDiv;
+    m_yMin = -m_y0/m_gridDiv;
+    m_yMax = +m_y0/m_gridDiv;
+    m_xTick = 0.1;
+    
+    basisDraw();
+    basisPointDraw(0, 0); 
+    basisPointDraw(5, 3);
+    double lCoef[] = {-4, 0, 1};
+    sGPoly lParams = {lCoef, 3};
+    basisFunctionDraw((void*)GFunction::onPoly, &lParams);
+    
+    cv::namedWindow(m_title, cv::WINDOW_AUTOSIZE);
+    cv::imshow(m_title, m_basis);
+    cv::waitKey(0);
+    cv::destroyAllWindows();
 }
 //===============================================
-void GOpenCV::run_IMAGE_LOAD_IMAGE_PATH(int argc, char** argv) {
-    std::string lLast = GConfig::Instance()->getData("CPP_IMAGE_PATH");
-    printf("CPP_IMAGE_PATH (%s) ? : ", lLast.c_str());
-    std::string lAnswer; std::getline(std::cin, lAnswer);
-    if(lAnswer == "") lAnswer = lLast;
-    if(lAnswer == "-q") G_STATE = "S_END";
-    else if(lAnswer == "-i") G_STATE = "S_INIT";
-    else if(lAnswer == "-a") G_STATE = "S_ADMIN";
-    else if(lAnswer == "-v") G_STATE = "S_IMAGE_LOAD";
-    else if(lAnswer != "") {G_STATE = "S_IMAGE_LOAD_IMAGE_NAME"; GConfig::Instance()->setData("CPP_IMAGE_PATH", lAnswer);}
+void GOpenCV::basisDraw() {
+    m_basis = cv::Mat(m_height, m_width, CV_8UC3, m_bg_color);
+
+    cv::Point lPoint1;
+    cv::Point lPoint2;
+    
+    for(int lX = 0; lX <= m_width; lX += m_gridDiv) {
+        lPoint1 = cv::Point(lX, 0);
+        lPoint2 = cv::Point(lX, m_height);
+        cv::line(m_basis, lPoint1, lPoint2, m_gridColor, 1);
+    }
+    
+    for(int lY = 0; lY <= m_height; lY += m_gridDiv) {
+        lPoint1 = cv::Point(0, lY);
+        lPoint2 = cv::Point(m_width, lY);
+        cv::line(m_basis, lPoint1, lPoint2, m_gridColor, 1);
+    }
+
+    lPoint1 = cv::Point(m_x0, 0);
+    lPoint2 = cv::Point(m_x0, m_height);
+    cv::line(m_basis, lPoint1, lPoint2, m_axisColor, 2);
+    
+    lPoint1 = cv::Point(0, m_y0);
+    lPoint2 = cv::Point(m_width, m_y0);
+    cv::line(m_basis, lPoint1, lPoint2, m_axisColor, 2);
 }
 //===============================================
-void GOpenCV::run_IMAGE_LOAD_IMAGE_NAME(int argc, char** argv) {
-    std::string lLast = GConfig::Instance()->getData("CPP_IMAGE_NAME");
-    printf("CPP_IMAGE_NAME (%s) ? : ", lLast.c_str());
-    std::string lAnswer; std::getline(std::cin, lAnswer);
-    if(lAnswer == "") lAnswer = lLast;
-    if(lAnswer == "-q") G_STATE = "S_END";
-    else if(lAnswer == "-i") G_STATE = "S_INIT"; 
-    else if(lAnswer == "-a") G_STATE = "S_ADMIN";
-    else if(lAnswer == "-v") G_STATE = "S_IMAGE_LOAD";
-    else if(lAnswer != "") {G_STATE = "S_IMAGE_LOAD"; GConfig::Instance()->setData("CPP_IMAGE_NAME", lAnswer);}
+void GOpenCV::basisPointDraw(double x, double y) {
+    cv::Point lPoint(m_x0 + x*m_gridDiv, m_y0 - y*m_gridDiv);
+    cv::circle(m_basis, lPoint, m_pointSize, m_pointColor, -1);
 }
 //===============================================
-void GOpenCV::run_IMAGE_LOAD(int argc, char** argv) {
-    printf("\n");
-    printf("%s\n", __FUNCTION__);
-    std::string lImagePath = "";
-    lImagePath += GConfig::Instance()->getData("CPP_IMAGE_PATH");
-    lImagePath += GManager::Instance()->separatorGet();
-    lImagePath += GConfig::Instance()->getData("CPP_IMAGE_NAME");
-    printf("%s\n", lImagePath.c_str());
-    GOpenCVMgr::Instance()->imageLoad(lImagePath);
-    printf("\n");
-    G_STATE = "S_SAVE";
+void GOpenCV::basisLineDraw(double x1, double y1, double x2, double y2) {
+    cv::Point lPoint1(m_x0 + x1*m_gridDiv, m_y0 - y1*m_gridDiv);
+    cv::Point lPoint2(m_x0 + x2*m_gridDiv, m_y0 - y2*m_gridDiv);
+    cv::line(m_basis, lPoint1, lPoint2, m_lineColor, m_lineWidth);
 }
 //===============================================
-void GOpenCV::run_IMAGE_INVERT_IMAGE_PATH(int argc, char** argv) {
-    std::string lLast = GConfig::Instance()->getData("CPP_IMAGE_PATH");
-    printf("CPP_IMAGE_PATH (%s) ? : ", lLast.c_str());
-    std::string lAnswer; std::getline(std::cin, lAnswer);
-    if(lAnswer == "") lAnswer = lLast;
-    if(lAnswer == "-q") G_STATE = "S_END";
-    else if(lAnswer == "-i") G_STATE = "S_INIT";
-    else if(lAnswer == "-a") G_STATE = "S_ADMIN";
-    else if(lAnswer == "-v") G_STATE = "S_IMAGE_INVERT";
-    else if(lAnswer != "") {G_STATE = "S_IMAGE_INVERT_IMAGE_NAME"; GConfig::Instance()->setData("CPP_IMAGE_PATH", lAnswer);}
-}
-//===============================================
-void GOpenCV::run_IMAGE_INVERT_IMAGE_NAME(int argc, char** argv) {
-    std::string lLast = GConfig::Instance()->getData("CPP_IMAGE_NAME");
-    printf("CPP_IMAGE_NAME (%s) ? : ", lLast.c_str());
-    std::string lAnswer; std::getline(std::cin, lAnswer);
-    if(lAnswer == "") lAnswer = lLast;
-    if(lAnswer == "-q") G_STATE = "S_END";
-    else if(lAnswer == "-i") G_STATE = "S_INIT"; 
-    else if(lAnswer == "-a") G_STATE = "S_ADMIN";
-    else if(lAnswer == "-v") G_STATE = "S_IMAGE_INVERT";
-    else if(lAnswer != "") {G_STATE = "S_IMAGE_INVERT"; GConfig::Instance()->setData("CPP_IMAGE_NAME", lAnswer);}
-}
-//===============================================
-void GOpenCV::run_IMAGE_INVERT(int argc, char** argv) {
-    printf("\n");
-    printf("%s\n", __FUNCTION__);
-    std::string lImagePath = "";
-    lImagePath += GConfig::Instance()->getData("CPP_IMAGE_PATH");
-    lImagePath += GManager::Instance()->separatorGet();
-    lImagePath += GConfig::Instance()->getData("CPP_IMAGE_NAME");
-    GOpenCVMgr::Instance()->imageInvert(lImagePath);
-    printf("\n");
-    G_STATE = "S_SAVE";
-}
-//===============================================
-void GOpenCV::run_VIDEO_LOAD_VIDEO_PATH(int argc, char** argv) {
-    std::string lLast = GConfig::Instance()->getData("CPP_VIDEO_PATH");
-    printf("CPP_VIDEO_PATH (%s) ? : ", lLast.c_str());
-    std::string lAnswer; std::getline(std::cin, lAnswer);
-    if(lAnswer == "") lAnswer = lLast;
-    if(lAnswer == "-q") G_STATE = "S_END";
-    else if(lAnswer == "-i") G_STATE = "S_INIT";
-    else if(lAnswer == "-a") G_STATE = "S_ADMIN";
-    else if(lAnswer == "-v") G_STATE = "S_VIDEO_LOAD";
-    else if(lAnswer != "") {G_STATE = "S_VIDEO_LOAD_VIDEO_NAME"; GConfig::Instance()->setData("CPP_VIDEO_PATH", lAnswer);}
-}
-//===============================================
-void GOpenCV::run_VIDEO_LOAD_VIDEO_NAME(int argc, char** argv) {
-    std::string lLast = GConfig::Instance()->getData("CPP_VIDEO_NAME");
-    printf("CPP_VIDEO_NAME (%s) ? : ", lLast.c_str());
-    std::string lAnswer; std::getline(std::cin, lAnswer);
-    if(lAnswer == "") lAnswer = lLast;
-    if(lAnswer == "-q") G_STATE = "S_END";
-    else if(lAnswer == "-i") G_STATE = "S_INIT"; 
-    else if(lAnswer == "-a") G_STATE = "S_ADMIN";
-    else if(lAnswer == "-v") G_STATE = "S_VIDEO_LOAD";
-    else if(lAnswer != "") {G_STATE = "S_VIDEO_LOAD"; GConfig::Instance()->setData("CPP_VIDEO_NAME", lAnswer);}
-}
-//===============================================
-void GOpenCV::run_VIDEO_LOAD(int argc, char** argv) {
-    printf("\n");
-    printf("%s\n", __FUNCTION__);
-    std::string lVideoPath = "";
-    lVideoPath += GConfig::Instance()->getData("CPP_VIDEO_PATH");
-    lVideoPath += GManager::Instance()->separatorGet();
-    lVideoPath += GConfig::Instance()->getData("CPP_VIDEO_NAME");
-    GOpenCVMgr::Instance()->videoLoad(lVideoPath);
-    printf("\n");
-    G_STATE = "S_SAVE";
-}
-//===============================================
-void GOpenCV::run_VIDEO_TRACKBAR_VIDEO_PATH(int argc, char** argv) {
-    std::string lLast = GConfig::Instance()->getData("CPP_VIDEO_PATH");
-    printf("CPP_VIDEO_PATH (%s) ? : ", lLast.c_str());
-    std::string lAnswer; std::getline(std::cin, lAnswer);
-    if(lAnswer == "") lAnswer = lLast;
-    if(lAnswer == "-q") G_STATE = "S_END";
-    else if(lAnswer == "-i") G_STATE = "S_INIT";
-    else if(lAnswer == "-a") G_STATE = "S_ADMIN";
-    else if(lAnswer == "-v") G_STATE = "S_VIDEO_TRACKBAR";
-    else if(lAnswer != "") {G_STATE = "S_VIDEO_TRACKBAR_VIDEO_NAME"; GConfig::Instance()->setData("CPP_VIDEO_PATH", lAnswer);}
-}
-//===============================================
-void GOpenCV::run_VIDEO_TRACKBAR_VIDEO_NAME(int argc, char** argv) {
-    std::string lLast = GConfig::Instance()->getData("CPP_VIDEO_NAME");
-    printf("CPP_VIDEO_NAME (%s) ? : ", lLast.c_str());
-    std::string lAnswer; std::getline(std::cin, lAnswer);
-    if(lAnswer == "") lAnswer = lLast;
-    if(lAnswer == "-q") G_STATE = "S_END";
-    else if(lAnswer == "-i") G_STATE = "S_INIT"; 
-    else if(lAnswer == "-a") G_STATE = "S_ADMIN";
-    else if(lAnswer == "-v") G_STATE = "S_VIDEO_TRACKBAR";
-    else if(lAnswer != "") {G_STATE = "S_VIDEO_TRACKBAR"; GConfig::Instance()->setData("CPP_VIDEO_NAME", lAnswer);}
-}
-//===============================================
-void GOpenCV::run_VIDEO_TRACKBAR(int argc, char** argv) {
-    printf("\n");
-    printf("%s\n", __FUNCTION__);
-    std::string lVideoPath = "";
-    lVideoPath += GConfig::Instance()->getData("CPP_VIDEO_PATH");
-    lVideoPath += GManager::Instance()->separatorGet();
-    lVideoPath += GConfig::Instance()->getData("CPP_VIDEO_NAME");
-    GOpenCVMgr::Instance()->videoTrackbar("https://www.youtube.com/watch?v=eg1C32wlEbU");
-    printf("\n");
-    G_STATE = "S_SAVE";
-}
-//===============================================
-void GOpenCV::run_SAVE(int argc, char** argv) {
-    GConfig::Instance()->saveData("CPP_OPENCV_ID");
-    GConfig::Instance()->saveData("CPP_IMAGE_PATH");
-    GConfig::Instance()->saveData("CPP_IMAGE_NAME");
-    GConfig::Instance()->saveData("CPP_VIDEO_PATH");
-    GConfig::Instance()->saveData("CPP_VIDEO_NAME");
-    G_STATE = "S_QUIT";
-}
-//===============================================
-void GOpenCV::run_LOAD(int argc, char** argv) {
-    GConfig::Instance()->loadData("CPP_OPENCV_ID");
-    GConfig::Instance()->loadData("CPP_IMAGE_PATH");
-    GConfig::Instance()->loadData("CPP_IMAGE_NAME");
-    GConfig::Instance()->loadData("CPP_VIDEO_PATH");
-    GConfig::Instance()->loadData("CPP_VIDEO_NAME");
-    G_STATE = "S_METHOD";
-}
-//===============================================
-void GOpenCV::run_QUIT(int argc, char** argv) {
-    printf("\n");
-    printf("CPP_QUIT (Oui/[N]on) ? : ");
-    std::string lAnswer; std::getline(std::cin, lAnswer);
-    if(lAnswer == "-q") G_STATE = "S_END";
-    else if(lAnswer == "-i") G_STATE = "S_INIT";
-    else if(lAnswer == "-a") G_STATE = "S_ADMIN";
-    else if(lAnswer == "o") G_STATE = "S_END";
-    else if(lAnswer == "n") G_STATE = "S_INIT";
-    else if(lAnswer == "") G_STATE = "S_INIT";
+void GOpenCV::basisFunctionDraw(void* func, void* params) {
+    for(double lX = m_xMin; lX <= m_xMax; lX += m_xTick) {
+        double lX2 = lX + m_xTick;
+        GFUNC_CB onFunc = (GFUNC_CB)func;
+        double lY = onFunc(lX, params);
+        double lY2 = onFunc(lX2, params);
+        if(lY < m_yMin - 1 || lY > m_yMax + 1) continue;
+        basisLineDraw(lX, lY, lX2, lY2);
+    }
 }
 //===============================================
