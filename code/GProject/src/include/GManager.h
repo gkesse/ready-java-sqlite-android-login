@@ -51,6 +51,8 @@ struct _sGOpenCV {
     int run_me;
 #if defined(__unix)
     pthread_t thread_id;
+#elif defined(__WIN32)
+    DWORD thread_id;
 #endif
 };
 //===============================================

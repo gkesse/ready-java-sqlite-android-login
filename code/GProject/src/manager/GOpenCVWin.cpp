@@ -22,8 +22,17 @@ GOpenCVWin* GOpenCVWin::Instance() {
 }
 //===============================================
 void GOpenCVWin::open() {
-	DWORD lThreadId;
-	HANDLE lThreadH = CreateThread(0, 0, onOpen, 0, 0, &lThreadId);
+    sGOpenCV* lOpenCV = GManager::Instance()->dataGet()->opencv;
+
+	HANDLE lAns = CreateThread(0, 0, onOpen, 0, 0, &lOpenCV->thread_id);
+    
+    printf("[info] lOpenCV->thread_id : %p\n", lOpenCV->thread_id);
+    printf("[info] lAns : %p\n", lAns);
+    
+    if(!lAns) {
+        printf("[error] GOpenCVWin::open : CreateThread\n");
+        exit(0);
+    }
 }
 //===============================================
 DWORD WINAPI GOpenCVWin::onOpen(LPVOID params) {

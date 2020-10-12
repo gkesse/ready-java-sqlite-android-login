@@ -25,7 +25,9 @@ void GOpenCVUnix::open() {
     sGOpenCV* lOpenCV = GManager::Instance()->dataGet()->opencv;
         
     int lAns = pthread_create(&lOpenCV->thread_id, 0, onOpen, 0);
+    
     printf("[info] lOpenCV->thread_id : %p\n", lOpenCV->thread_id);
+    printf("[info] lAns : %d\n", lAns);
     
     if(lAns) {
         printf("[error] GOpenCVUnix::open : pthread_create\n");
