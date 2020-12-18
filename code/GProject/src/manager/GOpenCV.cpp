@@ -51,6 +51,7 @@ void GOpenCV::onOpen() {
 //===============================================
 void GOpenCV::imageLoad(std::string imageFileIn) {
     sGOpenCV* lOpenCV = GManager::Instance()->dataGet()->opencv;
+    sGOpenCV* lImgs = GManager::Instance()->dataGet()->opencv;
     cv::Mat lImg = cv::imread(imageFileIn);
     cv::namedWindow("original", cv::WINDOW_AUTOSIZE);
     cv::imshow("original", lImg);

@@ -1,9 +1,9 @@
 //===============================================
 #include "GOpenCVUi.h"
+#include "GOpenCV.h"
 #include "GProcess.h"
 #include "GConfig.h"
 #include "GManager.h"
-#include "GOpenCV.h"
 //===============================================
 GOpenCVUi* GOpenCVUi::m_instance = 0;
 //===============================================
@@ -84,8 +84,8 @@ void GOpenCVUi::run_METHOD(int argc, char** argv) {
     printf("\n");
     printf("\t%-2s : %s\n", "1", "ouvrir l'application");
     printf("\t%-2s : %s\n", "2", "fermer l'application");
-    printf("\t%-2s : %s\n", "3", "S_IMAGE_LOAD");
-    printf("\t%-2s : %s\n", "4", "S_IMAGE_INVERT");
+    printf("\t%-2s : %s\n", "3", "charger une image");
+    printf("\t%-2s : %s\n", "4", "inverser une image");
     printf("\n");
     printf("\t%-2s : %s\n", "10", "S_VIDEO_LOAD");
     printf("\t%-2s : %s\n", "11", "S_VIDEO_TRACKBAR");

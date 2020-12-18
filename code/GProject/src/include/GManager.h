@@ -8,6 +8,7 @@ typedef struct _sGManager sGManager;
 typedef struct _sGOpenCV sGOpenCV;
 typedef struct _sGJson sGJson;
 typedef struct _sGSQLite sGSQLite;
+typedef struct _sGImage sGImage;
 //===============================================
 class GManager {
 protected:
@@ -35,6 +36,7 @@ protected:
 //===============================================
 struct _sGManager {
     sGOpenCV* opencv;
+    sGImage* img;
     sGJson* json;
     sGSQLite* sqlite;
 };
@@ -43,17 +45,21 @@ struct _sGOpenCV {
     std::string app_name;
     std::string title;
     std::string state;
-    double width;
-    double height;
+    int width;
+    int height;
     cv::Scalar bg_color;
     cv::Mat img;
-    double delay;
+    int delay;
     int run_me;
 #if defined(__unix)
     pthread_t thread_id;
 #elif defined(__WIN32)
     DWORD thread_id;
 #endif
+};
+//===============================================
+struct _sGImage {
+    std::string img_file;
 };
 //===============================================
 struct _sGJson {
