@@ -27,11 +27,11 @@ $(GBUILD)/%.o: $(GSRC)/manager/%.cpp
 	@if not exist $(GBUILD) ( mkdir $(GBUILD) )
 	g++ $(GCFLAGS) -c $< -o $@ $(GINCS)
 run:
-	$(GTARGET) $(argv)
+	@$(GTARGET) $(argv)
 clean_exe: 
 	@if not exist $(GBIN) ( mkdir $(GBIN) )
-	del /s /q $(GTARGET)
+	@del /s /q $(GTARGET)
 clean:
 	@if not exist $(GBIN) ( mkdir $(GBIN) )
 	@if not exist $(GBUILD) ( mkdir $(GBUILD) )
-	del /s /q $(GBUILD)\*.o $(GTARGET)
+	@del /s /q $(GBUILD)\*.o $(GTARGET)

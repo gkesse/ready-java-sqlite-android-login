@@ -1,0 +1,19 @@
+[Sat Dec 19 19:23:41.067983 2020] [cgi:error] [pid 16992:tid 1244] [client 127.0.0.1:51901] End of script output before headers: index.cgi
+[Sat Dec 19 19:29:00.080376 2020] [cgi:error] [pid 16992:tid 1244] [client 127.0.0.1:52217] End of script output before headers: index.cgi
+[Sat Dec 19 19:31:29.273111 2020] [cgi:error] [pid 16992:tid 1244] [client 127.0.0.1:52361] End of script output before headers: index.cgi
+[Sat Dec 19 19:35:00.110411 2020] [cgi:error] [pid 16992:tid 1244] [client 127.0.0.1:52553] End of script output before headers: index.cgi
+[Sat Dec 19 19:36:20.596974 2020] [cgi:error] [pid 16992:tid 1244] [client 127.0.0.1:52639] End of script output before headers: index.cgi
+[Sat Dec 19 19:36:22.472218 2020] [cgi:error] [pid 16992:tid 1244] [client 127.0.0.1:52642] End of script output before headers: index.cgi
+[Sat Dec 19 19:49:55.563055 2020] [cgi:error] [pid 16992:tid 1244] [client 127.0.0.1:53447] End of script output before headers: index.cgi
+[Sat Dec 19 19:49:56.920821 2020] [cgi:error] [pid 16992:tid 1244] [client 127.0.0.1:53448] End of script output before headers: index.cgi
+[Sat Dec 19 19:49:57.993130 2020] [cgi:error] [pid 16992:tid 1244] [client 127.0.0.1:53450] End of script output before headers: index.cgi
+[Sat Dec 19 19:57:58.711251 2020] [cgi:error] [pid 16992:tid 1244] [client 127.0.0.1:53975] End of script output before headers: index.cgi
+[Sat Dec 19 19:58:00.053413 2020] [cgi:error] [pid 16992:tid 1244] [client 127.0.0.1:53976] End of script output before headers: index.cgi
+[Sat Dec 19 22:48:44.736567 2020] [cgi:error] [pid 16992:tid 1244] [client 127.0.0.1:55524] End of script output before headers: index.cgi
+[Sat Dec 19 22:48:45.924269 2020] [cgi:error] [pid 16992:tid 1244] [client 127.0.0.1:55525] End of script output before headers: index.cgi
+[Sat Dec 19 22:48:47.042999 2020] [cgi:error] [pid 16992:tid 1244] [client 127.0.0.1:55533] End of script output before headers: index.cgi
+[Sat Dec 19 22:48:48.694821 2020] [cgi:error] [pid 16992:tid 1244] [client 127.0.0.1:55537] End of script output before headers: index.cgi
+[Sat Dec 19 23:20:20.712687 2020] [core:error] [pid 18480:tid 1248] [client 127.0.0.1:57404] AH00124: Request exceeded the limit of 10 internal redirects due to probable configuration error. Use 'LimitInternalRecursion' to increase the limit if necessary. Use 'LogLevel debug' to get a backtrace.
+[Sat Dec 19 23:20:51.385171 2020] [core:error] [pid 18480:tid 1248] [client 127.0.0.1:57436] AH00124: Request exceeded the limit of 10 internal redirects due to probable configuration error. Use 'LimitInternalRecursion' to increase the limit if necessary. Use 'LogLevel debug' to get a backtrace.
+[Sat Dec 19 23:22:48.108372 2020] [core:error] [pid 13056:tid 1256] [client 127.0.0.1:57556] AH00124: Request exceeded the limit of 10 internal redirects due to probable configuration error. Use 'LimitInternalRecursion' to increase the limit if necessary. Use 'LogLevel debug' to get a backtrace.
+[Sat Dec 19 23:22:49.042480 2020] [core:error] [pid 13056:tid 1256] [client 127.0.0.1:57559] AH00124: Request exceeded the limit of 10 internal redirects due to probable configuration error. Use 'LimitInternalRecursion' to increase the limit if necessary. Use 'LogLevel debug' to get a backtrace.

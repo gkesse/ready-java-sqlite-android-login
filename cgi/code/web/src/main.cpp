@@ -1,9 +1,9 @@
 //===============================================
-#include <iostream>
+#include "GWidget.h"
 //===============================================
 int main(int argc, char** argv) {
     printf("Content-type: text/html\n\n");
-    printf("<h1>Bonjour tout le monde</h1>\n");
+    GWidget::Create("header")->print();
     return 0;
 }
 //===============================================

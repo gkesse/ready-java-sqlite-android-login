@@ -1,6 +1,6 @@
 @echo off
 ::===============================================
-set "PATH=C:\MinGW\bin;%PATH%" 
+set "PATH=C:\mingw-w64\i686-8.1.0-posix-sjlj-rt_v6-rev0\mingw32\bin;%PATH%" 
 ::===============================================
 set "GPROJECT_ROOT=C:\Users\Admin\Downloads\Programs"
 set "GPROJECT_PATH=%GPROJECT_ROOT%\ReadyCpp"
