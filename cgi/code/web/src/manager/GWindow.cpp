@@ -1,24 +1,19 @@
 //===============================================
-#include "GHome.h"
-#include "GWidget.h"
+#include "GWindow.h"
 //===============================================
 // constructor
 //===============================================
-GHome::GHome() {
+GWindow::GWindow() {
 
 }
 //===============================================
-GHome::~GHome() {
+GWindow::~GWindow() {
     
 }
 //===============================================
 // method
 //===============================================
-void GHome::print() {    
-    GWidget* lListBox = GWidget::Create("listbox");
-    lListBox->start();
-    lListBox->addItem("SQLite", "book");
-    lListBox->addItem("OpenCV", "book");
-    lListBox->end();    
+void GWindow::print() {
+    printf("<h1>GWindow</h1>\n");
 }
 //===============================================

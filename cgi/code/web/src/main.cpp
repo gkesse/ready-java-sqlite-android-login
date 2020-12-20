@@ -1,9 +1,8 @@
 //===============================================
-#include "GWidget.h"
+#include "GWeb.h"
 //===============================================
 int main(int argc, char** argv) {
-    printf("Content-type: text/html\n\n");
-    GWidget::Create("home")->print();
+    GWeb::Instance()->run(argc, argv);
     return 0;
 }
 //===============================================
