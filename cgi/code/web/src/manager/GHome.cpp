@@ -19,8 +19,8 @@ void GHome::print() {
     
     GWidget* lListBox = GWidget::Create("listbox");
     lListBox->start();
-    lListBox->addItem("SQLite");
-    lListBox->addItem("OpenCV");
+    lListBox->addItem("SQLite", "book");
+    lListBox->addItem("OpenCV", "book");
     lListBox->end();
     
     GWidget::Create("footer")->print();

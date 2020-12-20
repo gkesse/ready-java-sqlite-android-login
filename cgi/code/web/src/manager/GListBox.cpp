@@ -22,6 +22,10 @@ void GListBox::end() {
 }
 //===============================================
 void GListBox::addItem(std::string text) {
-    printf("<div>%s</div>\n", text.c_str());
+    printf("<div class='item'>%s</div>\n", text.c_str());
+}
+//===============================================
+void GListBox::addItem(std::string text, std::string icon) {
+    printf("<div class='item'><i class='fa fa-%s'></i> %s</div>\n", icon.c_str(), text.c_str());
 }
 //===============================================

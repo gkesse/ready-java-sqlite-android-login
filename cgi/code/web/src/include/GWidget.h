@@ -14,6 +14,7 @@ public:
     virtual void start();
     virtual void end();
     virtual void addItem(std::string text);
+    virtual void addItem(std::string text, std::string icon);
 };
 //===============================================
 #endif

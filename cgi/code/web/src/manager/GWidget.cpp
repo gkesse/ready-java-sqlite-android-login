@@ -34,4 +34,5 @@ void GWidget::print() {}
 void GWidget::start() {}
 void GWidget::end() {}
 void GWidget::addItem(std::string text) {}
+void GWidget::addItem(std::string text, std::string icon) {}
 //===============================================
