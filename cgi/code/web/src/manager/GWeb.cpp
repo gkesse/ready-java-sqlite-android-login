@@ -36,7 +36,7 @@ void GWeb::loadPage(int argc, char** argv) {
     sGApp* lApp = GManager::Instance()->getData()->app;
     if(lApp->page_id == "") {GWidget::Create("home")->print(); return;}
     if(lApp->page_id == "home") {GWidget::Create("home")->print(); return;}
-    GWidget::Create("window")->print();
+    GWidget::Create("error")->print();
     printf("%s.........\n", lApp->page_id.c_str());
 }
 //===============================================

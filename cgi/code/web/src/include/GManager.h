@@ -22,6 +22,7 @@ public:
     // string
     std::vector<std::string> split(std::string str, char sep);
     std::map<std::string, std::string> splitMap(std::string str, char sepRow, char sepCol);
+    std::string removeLast(std::string str, char remove) ;
     // map
     std::string getValue(std::map<std::string, std::string> mapId, std::string key, std::string defaultValue);
     

@@ -29,6 +29,6 @@ void GHeader::print() {
     printf("<link rel='stylesheet' href='%s'/>\n", lApp->style_path.c_str());
     printf("</head>\n");
     printf("<body>\n");
-    printf("<div class='HtmlPage'>\n");
+    printf("<div class='htmlpage'>\n");
 }
 //===============================================

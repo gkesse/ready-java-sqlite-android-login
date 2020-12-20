@@ -4,7 +4,7 @@
 #include "GHeader.h"
 #include "GFooter.h"
 #include "GListBox.h"
-#include "GWindow.h"
+#include "GError.h"
 // page
 #include "GHome.h"
 //===============================================
@@ -24,9 +24,10 @@ GWidget* GWidget::Create(std::string key) {
     if(key =="header") {return new GHeader;}
     if(key =="footer") {return new GFooter;}
     if(key =="listbox") {return new GListBox;}
-    if(key =="window") {return new GWindow;}
     // page
     if(key =="home") {return new GHome;}
+    if(key =="error") {return new GError;}
+    // default
     return new GWidget;
 }
 //===============================================

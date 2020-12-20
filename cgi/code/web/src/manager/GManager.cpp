@@ -47,6 +47,7 @@ void GManager::loadEnv() {
     mgr->app->query_string = getEnv("QUERY_STRING");
     mgr->app->query_map = splitMap(mgr->app->query_string, '&', '=');
     mgr->app->page_id = getValue(mgr->app->query_map, "pageId", "");
+    mgr->app->page_id = removeLast(mgr->app->page_id, '/');
 }
 //===============================================
 // string
@@ -72,6 +73,12 @@ std::map<std::string, std::string> GManager::splitMap(std::string str, char sepR
         lDataMap[lKey] = lValue;
     }
     return lDataMap;
+}
+//===============================================
+std::string GManager::removeLast(std::string str, char remove) {
+    std::string lData = str;
+    if(lData.back() == remove) lData.pop_back();
+    return lData;
 }
 //===============================================
 // map

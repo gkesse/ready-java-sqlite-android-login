@@ -1,13 +1,13 @@
 //===============================================
-#ifndef _GWindow_
-#define _GWindow_
+#ifndef _GError_
+#define _GError_
 //===============================================
 #include "GWidget.h"
 //===============================================
-class GWindow : public GWidget {
+class GError : public GWidget {
 public:
-    GWindow();
-    ~GWindow();
+    GError();
+    ~GError();
     // method
     void print();
 };
