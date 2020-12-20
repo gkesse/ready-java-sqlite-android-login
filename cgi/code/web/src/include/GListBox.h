@@ -1,19 +1,17 @@
 //===============================================
-#ifndef _GWidget_
-#define _GWidget_
+#ifndef _GListBox_
+#define _GListBox_
 //===============================================
-#include "GInclude.h"
+#include "GWidget.h"
 //===============================================
-class GWidget {
+class GListBox : public GWidget {
 public:
-    GWidget();
-    virtual ~GWidget();
-    static GWidget* Create(std::string key);
+    GListBox();
+    ~GListBox();
     // method
-    virtual void print();
-    virtual void start();
-    virtual void end();
-    virtual void addItem(std::string text);
+    void start();
+    void end();
+    void addItem(std::string text);
 };
 //===============================================
 #endif

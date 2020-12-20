@@ -29,6 +29,8 @@ struct _sGManager {
 struct _sGApp {
     // app
     std::string app_name;
+    std::string app_logo;
+    std::string app_style;
 };
 //===============================================
 #endif

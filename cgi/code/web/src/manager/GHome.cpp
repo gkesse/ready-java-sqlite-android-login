@@ -1,21 +1,28 @@
 //===============================================
-#include "GFooter.h"
+#include "GHome.h"
+#include "GWidget.h"
 //===============================================
 // constructor
 //===============================================
-GFooter::GFooter() {
+GHome::GHome() {
 
 }
 //===============================================
-GFooter::~GFooter() {
+GHome::~GHome() {
     
 }
 //===============================================
 // method
 //===============================================
-void GFooter::print() {
-    printf("</div>\n");
-    printf("</body>\n");
-    printf("</html>\n");
+void GHome::print() {
+    GWidget::Create("header")->print();
+    
+    GWidget* lListBox = GWidget::Create("listbox");
+    lListBox->start();
+    lListBox->addItem("SQLite");
+    lListBox->addItem("OpenCV");
+    lListBox->end();
+    
+    GWidget::Create("footer")->print();
 }
 //===============================================

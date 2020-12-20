@@ -3,7 +3,7 @@
 //===============================================
 int main(int argc, char** argv) {
     printf("Content-type: text/html\n\n");
-    GWidget::Create("footer")->print();
+    GWidget::Create("home")->print();
     return 0;
 }
 //===============================================

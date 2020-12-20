@@ -1,21 +1,27 @@
 //===============================================
-#include "GFooter.h"
+#include "GListBox.h"
 //===============================================
 // constructor
 //===============================================
-GFooter::GFooter() {
+GListBox::GListBox() {
 
 }
 //===============================================
-GFooter::~GFooter() {
+GListBox::~GListBox() {
     
 }
 //===============================================
 // method
 //===============================================
-void GFooter::print() {
+void GListBox::start() {
+    printf("<div class='listbox'>\n");
+}
+//===============================================
+void GListBox::end() {
     printf("</div>\n");
-    printf("</body>\n");
-    printf("</html>\n");
+}
+//===============================================
+void GListBox::addItem(std::string text) {
+    printf("<div>%s</div>\n", text.c_str());
 }
 //===============================================

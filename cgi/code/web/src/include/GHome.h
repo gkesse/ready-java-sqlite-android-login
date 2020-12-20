@@ -1,19 +1,15 @@
 //===============================================
-#ifndef _GWidget_
-#define _GWidget_
+#ifndef _GHome_
+#define _GHome_
 //===============================================
-#include "GInclude.h"
+#include "GWidget.h"
 //===============================================
-class GWidget {
+class GHome : public GWidget {
 public:
-    GWidget();
-    virtual ~GWidget();
-    static GWidget* Create(std::string key);
+    GHome();
+    ~GHome();
     // method
-    virtual void print();
-    virtual void start();
-    virtual void end();
-    virtual void addItem(std::string text);
+    void print();
 };
 //===============================================
 #endif
