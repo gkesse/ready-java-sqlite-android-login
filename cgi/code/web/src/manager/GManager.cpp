@@ -11,8 +11,10 @@ GManager::GManager() {
     // app
     mgr->app = new sGApp;
     mgr->app->app_name = "ReadyApp";
-    mgr->app->app_logo = "/data/img/logo.png";
-    mgr->app->app_style = "/data/css/style.css";
+    mgr->app->logo_path = "/data/img/logo.png";
+    mgr->app->style_path = "/data/css/style.css";
+    mgr->app->font_path = "/libs/font_awesome/4.7.0/css/font-awesome.min.css";
+    mgr->app->icon_path = "/libs/google_fonts/1.0.0";
 }
 //===============================================
 GManager::~GManager() {
