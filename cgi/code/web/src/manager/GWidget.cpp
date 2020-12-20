@@ -4,9 +4,12 @@
 #include "GHeader.h"
 #include "GFooter.h"
 #include "GListBox.h"
-#include "GError.h"
 // page
 #include "GHome.h"
+#include "GLogin.h"
+#include "GSQLiteUi.h"
+#include "GOpenCVUi.h"
+#include "GError.h"
 //===============================================
 // constructor
 //===============================================
@@ -26,6 +29,10 @@ GWidget* GWidget::Create(std::string key) {
     if(key =="listbox") {return new GListBox;}
     // page
     if(key =="home") {return new GHome;}
+    if(key =="login") {return new GLogin;}
+    if(key =="sqlite") {return new GSQLiteUi;}
+    if(key =="opencv") {return new GOpenCVUi;}
+    // error
     if(key =="error") {return new GError;}
     // default
     return new GWidget;

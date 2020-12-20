@@ -16,6 +16,7 @@ GManager::GManager() {
     mgr->app->style_path = "/data/css/style.css";
     mgr->app->font_path = "/libs/font_awesome/4.7.0/css/font-awesome.min.css";
     mgr->app->icon_path = "/libs/google_fonts/1.0.0";
+    mgr->app->page_last = "home";
 }
 //===============================================
 GManager::~GManager() {

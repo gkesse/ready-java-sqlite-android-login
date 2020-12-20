@@ -49,6 +49,7 @@ struct _sGApp {
     std::string icon_path;
     // page
     std::string page_id;
+    std::string page_last;
     // query
     std::string query_string;
     std::map<std::string, std::string> query_map;
