@@ -1,0 +1,17 @@
+GBIN = bin
+GBUILD = build
+GTARGET = $(GBIN)/gp_cpp.exe
+
+all: clean_exe qmake compile run
+
+qmake:
+	@qmake
+compile:
+	@make
+run:
+	@$(GTARGET)
+clean_exe: 
+	rm -f $(GBIN)/*
+clean: 
+	rm -f $(GBUILD)/* $(GBIN)/*
+	make clean
