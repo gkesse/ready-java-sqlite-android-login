@@ -53,6 +53,9 @@ struct _sGApp {
     // query
     std::string query_string;
     std::map<std::string, std::string> query_map;
+    // query
+    std::string cookie_string;
+    std::map<std::string, std::string> cookie_map;
 };
 //===============================================
 #endif

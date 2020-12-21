@@ -45,10 +45,15 @@ std::string GManager::getEnv(std::string key) {
 }
 //===============================================
 void GManager::loadEnv() {
+    // page_id
     mgr->app->query_string = getEnv("QUERY_STRING");
     mgr->app->query_map = splitMap(mgr->app->query_string, '&', '=');
     mgr->app->page_id = getValue(mgr->app->query_map, "pageId", "");
     mgr->app->page_id = removeLast(mgr->app->page_id, '/');
+    // page_last
+    mgr->app->cookie_string = getEnv("HTTP_COOKIE");
+    mgr->app->cookie_map = splitMap(mgr->app->cookie_string, ';', '=');
+    mgr->app->page_last = getValue(mgr->app->cookie_map, "page_last", "");
 }
 //===============================================
 // string
