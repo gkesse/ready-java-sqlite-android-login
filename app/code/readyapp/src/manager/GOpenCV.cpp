@@ -41,3 +41,20 @@ void GOpenCV::invertImage(QString imgPath) {
     cv::destroyAllWindows();
 }
 //===============================================
+// video
+//===============================================
+void GOpenCV::loadVideo(QString videoPath) {
+    std::string lFilename = GManager::Instance()->getFilename(videoPath).toStdString();
+    cv::VideoCapture lVideo;
+    lVideo.open(videoPath.toStdString());
+    cv::Mat lImg;
+    cv::namedWindow(lFilename, cv::WINDOW_AUTOSIZE);
+    while(1) {
+        lVideo >> lImg;
+        if(lImg.empty()) break;
+        cv::imshow(lFilename, lImg);
+        if((char)cv::waitKey(30) >= 0) break;
+    }
+    cv::destroyAllWindows();
+}
+//===============================================

@@ -29,7 +29,7 @@ void GOpenCVUi::run(int argc, char** argv) {
         else if(G_STATE == "S_INIT") run_INIT(argc, argv);
         else if(G_STATE == "S_METHOD") run_METHOD(argc, argv);
         else if(G_STATE == "S_CHOICE") run_CHOICE(argc, argv);
-        //
+        // image
         else if(G_STATE == "S_IMAGE_LOAD_IMAGE_PATH") run_IMAGE_LOAD_IMAGE_PATH(argc, argv);
         else if(G_STATE == "S_IMAGE_LOAD_IMAGE_NAME") run_IMAGE_LOAD_IMAGE_NAME(argc, argv);
         else if(G_STATE == "S_IMAGE_LOAD") run_IMAGE_LOAD(argc, argv);
@@ -37,6 +37,10 @@ void GOpenCVUi::run(int argc, char** argv) {
         else if(G_STATE == "S_IMAGE_INVERT_IMAGE_PATH") run_IMAGE_INVERT_IMAGE_PATH(argc, argv);
         else if(G_STATE == "S_IMAGE_INVERT_IMAGE_NAME") run_IMAGE_INVERT_IMAGE_NAME(argc, argv);
         else if(G_STATE == "S_IMAGE_INVERT") run_IMAGE_INVERT(argc, argv);
+        // video
+        else if(G_STATE == "S_VIDEO_LOAD_VIDEO_PATH") run_VIDEO_LOAD_VIDEO_PATH(argc, argv);
+        else if(G_STATE == "S_VIDEO_LOAD_VIDEO_NAME") run_VIDEO_LOAD_VIDEO_NAME(argc, argv);
+        else if(G_STATE == "S_VIDEO_LOAD") run_VIDEO_LOAD(argc, argv);
         //
         else if(G_STATE == "S_SAVE") run_SAVE(argc, argv);
         else if(G_STATE == "S_LOAD") run_LOAD(argc, argv);
@@ -66,6 +70,8 @@ void GOpenCVUi::run_METHOD(int argc, char** argv) {
     printf("\t%-2s : %s\n", "1", "charger une image");
     printf("\t%-2s : %s\n", "2", "inverser une image");
     printf("\n");
+    printf("\t%-2s : %s\n", "10", "charger une video");
+    printf("\n");
     G_STATE = "S_CHOICE";
 }
 //===============================================
@@ -80,6 +86,8 @@ void GOpenCVUi::run_CHOICE(int argc, char** argv) {
     //
     else if(lAnswer == "1") {G_STATE = "S_IMAGE_LOAD_IMAGE_PATH"; GConfig::Instance()->setData("G_OPENCV_ID", lAnswer.c_str());}
     else if(lAnswer == "2") {G_STATE = "S_IMAGE_INVERT_IMAGE_PATH"; GConfig::Instance()->setData("G_OPENCV_ID", lAnswer.c_str());}
+    //
+    else if(lAnswer == "10") {G_STATE = "S_VIDEO_LOAD_VIDEO_PATH"; GConfig::Instance()->setData("G_OPENCV_ID", lAnswer.c_str());}
     //
 }
 //===============================================
@@ -154,6 +162,43 @@ void GOpenCVUi::run_IMAGE_INVERT(int argc, char** argv) {
     lImagePath += GConfig::Instance()->getData("G_IMAGE_NAME");
     printf("%s\n", lImagePath.toStdString().c_str());
     GOpenCV::Instance()->invertImage(lImagePath);
+    G_STATE = "S_SAVE";
+}
+//===============================================
+void GOpenCVUi::run_VIDEO_LOAD_VIDEO_PATH(int argc, char** argv) {
+    std::string lLast = GConfig::Instance()->getData("G_VIDEO_PATH").toStdString();
+    printf("G_VIDEO_PATH (%s) ? : ", lLast.c_str());
+    std::string lAnswer; std::getline(std::cin, lAnswer);
+    if(lAnswer == "") lAnswer = lLast;
+    if(lAnswer == "-q") G_STATE = "S_END";
+    else if(lAnswer == "-i") G_STATE = "S_INIT";
+    else if(lAnswer == "-a") G_STATE = "S_ADMIN";
+    else if(lAnswer == "-v") G_STATE = "S_VIDEO_LOAD";
+    else if(lAnswer != "") {G_STATE = "S_VIDEO_LOAD_VIDEO_NAME"; GConfig::Instance()->setData("G_VIDEO_PATH", lAnswer.c_str());}
+}
+//===============================================
+void GOpenCVUi::run_VIDEO_LOAD_VIDEO_NAME(int argc, char** argv) {
+    std::string lLast = GConfig::Instance()->getData("G_VIDEO_NAME").toStdString();
+    printf("G_VIDEO_NAME (%s) ? : ", lLast.c_str());
+    std::string lAnswer; std::getline(std::cin, lAnswer);
+    if(lAnswer == "") lAnswer = lLast;
+    if(lAnswer == "-q") G_STATE = "S_END";
+    else if(lAnswer == "-i") G_STATE = "S_INIT"; 
+    else if(lAnswer == "-a") G_STATE = "S_ADMIN";
+    else if(lAnswer == "-v") G_STATE = "S_VIDEO_LOAD";
+    else if(lAnswer != "") {G_STATE = "S_VIDEO_LOAD"; GConfig::Instance()->setData("G_VIDEO_NAME", lAnswer.c_str());}
+}
+//===============================================
+void GOpenCVUi::run_VIDEO_LOAD(int argc, char** argv) {
+    sGApp* lApp = GManager::Instance()->getData()->app;
+    printf("\n");
+    printf("%s\n", __FUNCTION__);
+    QString lVideoPath = "";
+    lVideoPath += GConfig::Instance()->getData("G_VIDEO_PATH");
+    lVideoPath += lApp->path_sep;
+    lVideoPath += GConfig::Instance()->getData("G_VIDEO_NAME");
+    printf("%s\n", lVideoPath.toStdString().c_str());
+    GOpenCV::Instance()->loadVideo(lVideoPath);
     G_STATE = "S_SAVE";
 }
 //===============================================

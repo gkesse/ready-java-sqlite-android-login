@@ -23,9 +23,7 @@ private:
     void run_QUIT(int argc, char** argv);
     
 private:
-    void run_OPEN(int argc, char** argv);
-    void run_CLOSE(int argc, char** argv);
-    //
+    // image
     void run_IMAGE_LOAD_IMAGE_PATH(int argc, char** argv);
     void run_IMAGE_LOAD_IMAGE_NAME(int argc, char** argv);
     void run_IMAGE_LOAD(int argc, char** argv);
@@ -33,6 +31,10 @@ private:
     void run_IMAGE_INVERT_IMAGE_PATH(int argc, char** argv);
     void run_IMAGE_INVERT_IMAGE_NAME(int argc, char** argv);
     void run_IMAGE_INVERT(int argc, char** argv);
+    // video
+    void run_VIDEO_LOAD_VIDEO_PATH(int argc, char** argv);
+    void run_VIDEO_LOAD_VIDEO_NAME(int argc, char** argv);
+    void run_VIDEO_LOAD(int argc, char** argv);
 
 public:
     static GOpenCVUi* m_instance;

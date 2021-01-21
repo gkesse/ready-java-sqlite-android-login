@@ -109,7 +109,7 @@ void GSQLiteUi::run_CONFIG_DATA_SHOW(int argc, char** argv) {
     GSQLite::Instance()->queryShow("\
     select * from config_data\n\
     order by config_key\n\
-    ", "20;50", 20);
+    ", "20;60", 20);
     G_STATE = "S_SAVE";
 }
 //===============================================

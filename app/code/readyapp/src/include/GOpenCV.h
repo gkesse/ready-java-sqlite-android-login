@@ -14,6 +14,8 @@ public:
     // image
     void loadImage(QString imgPath);
     void invertImage(QString imgPath);
+    // video
+    void loadVideo(QString videoPath);
 
 private:
     static GOpenCV* m_instance;
