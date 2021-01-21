@@ -25,7 +25,9 @@ void GQt::run(int argc, char** argv) {
     QApplication lApp(argc, argv);
     GSQLite::Instance();
     GManager::Instance()->initData();
+    qDebug() << "debug 1";
     GManager::Instance()->loadFont();
+    qDebug() << "debug 2";
     GManager::Instance()->loadImg();
     GManager::Instance()->loadStyle();
     GWidget* lWindow = GWidget::Create("window");

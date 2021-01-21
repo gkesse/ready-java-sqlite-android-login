@@ -8,6 +8,7 @@ export "GDATA_PATH=${GPROJECT_PATH}/data"
 export "GSTYLE_PATH=${GDATA_PATH}/css/qt/style.css"
 export "GIMG_PATH=${GDATA_PATH}/img"
 export "GSQLITE_DB_PATH=${GDATA_PATH}/sqlite/config.dat"
+export "GFONT_PATH=${GDATA_PATH}/font"
 #================================================
 export "GPACMAN_PACKAGE_INSTALL=mingw-w64-i686-gtk3"
 export "GPACMAN_PACKAGE_SEARCH=opencv"

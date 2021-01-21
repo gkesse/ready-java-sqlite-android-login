@@ -37,12 +37,14 @@ GLogin::GLogin(QWidget* parent) : GWidget(parent) {
     QPushButton* lCancel = new QPushButton;
     lCancel->setObjectName("cancel");
     lCancel->setText("Annuler");
+    lCancel->setIcon(GManager::Instance()->loadPicto(fa::times, lApp->picto_color));
     lCancel->setCursor(Qt::PointingHandCursor);
     m_widgetId[lCancel] = "cancel";
         
     QPushButton* lLogin = new QPushButton;
     lLogin->setObjectName("login");
     lLogin->setText("Se Connecter");
+    lLogin->setIcon(GManager::Instance()->loadPicto(fa::signin, lApp->picto_color));
     lLogin->setCursor(Qt::PointingHandCursor);
     m_widgetId[lLogin] = "login";
         

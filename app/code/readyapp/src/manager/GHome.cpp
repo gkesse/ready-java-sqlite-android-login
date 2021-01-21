@@ -12,11 +12,10 @@ GHome::GHome(QWidget* parent) : GWidget(parent) {
     
     GWidget* lListBox = GWidget::Create("listbox");
     
-    lListBox->addItem("home/login", "Connexion", fa::book); lApp->login_home = qobject_cast<QPushButton*>(lApp->widget);
-    lListBox->addItem("home/profil", "Profil", fa::book);
-    lListBox->addItem("home/sqlite", "SQLite", fa::book);
-    lListBox->addItem("home/pdf", "Pdf", fa::book);
-    lListBox->addItem("home/builder", "Builder", fa::book);
+    lListBox->addItem("home/login", "Connexion", fa::signin); lApp->login_home = qobject_cast<QPushButton*>(lApp->widget);
+    lListBox->addItem("home/profil", "Profil", fa::user);
+    lListBox->addItem("home/sqlite", "SQLite", fa::database);
+    lListBox->addItem("home/pdf", "Pdf", fa::filepdfo);
     
     QVBoxLayout* lMainLayout = new QVBoxLayout;
     lMainLayout->addWidget(lListBox);
