@@ -1,8 +1,8 @@
 //================================================
-#include <iostream>
+#include "GProcess.h"
 //================================================
 int main(int argc, char** argv) {
-    std::cout << "Bonjour tout le monde\n";
+    GProcess::Instance()->run(argc, argv);
     return 0;
 }
 //================================================
