@@ -6,11 +6,11 @@ all: clean_exe qmake compile run
 #================================================
 # cpp
 qmake:
-	@qmake
+	qmake
 compile:
-	@make
+	make
 run:
-	@$(GTARGET) $(argv)
+	$(GTARGET) $(argv)
 clean_exe: 
 	@if ! [ -d $(GBIN) ] ; then mkdir -p $(GBIN) ; fi
 	rm -f $(GBIN)/*

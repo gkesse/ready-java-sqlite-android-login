@@ -5,7 +5,7 @@ export "GPROJECT_SRC=${GPROJECT_PATH}/app/code/readyapp/src"
 #================================================
 export "GPATH_SEP=\\"
 export "GDATA_PATH=${GPROJECT_PATH}/data"
-export "GSTYLE_PATH=${GDATA_PATH}/css/gtk/style.css"
+export "GSTYLE_PATH=${GDATA_PATH}/css/qt/style.css"
 export "GIMG_PATH=${GDATA_PATH}/img"
 export "GSQLITE_DB_PATH=${GDATA_PATH}/sqlite/config.dat"
 #================================================

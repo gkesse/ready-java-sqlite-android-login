@@ -1,0 +1,262 @@
+/*===============================================*/
+/* common */
+/*===============================================*/
+/* QWidget */
+QWidget, QWidget * {
+    background-color: #201010;
+    font-family: "Allan";
+    font-size: 20px;
+    color: white;
+    border: none;
+    outline: none
+}
+/*===============================================*/
+/* QSizeGrip */
+QWidget QSizeGrip {
+    background-color: #503030;
+}
+/*===============================================*/
+/* QToolTip */
+QWidget QToolTip {
+    background-color: #305030;
+    border-radius: 5px;
+}
+/*===============================================*/
+/* QMessageBox */
+QMessageBox {
+    border: 1px solid #ffffff;
+}
+QMessageBox QPushButton {
+    background-color: #503030;
+    border-radius: 5px;
+    padding: 2px 10px;
+}
+QMessageBox QPushButton:hover {
+    background-color: #303050;
+}
+QMessageBox QPushButton:pressed {
+    background-color: transparent;
+}
+/*===============================================*/
+/* custom */
+/*===============================================*/
+/* GTitleBar */
+GTitleBar QPushButton#login {
+    background-color: #503030;
+    border-radius: 5px;
+    padding: 2px 10px;
+}
+/*===============================================*/
+/* GProfil */
+GProfil QPushButton#profil_label {
+    background-color: #503030;
+    border-radius: 5px;
+    padding: 2px 10px;
+    text-align: left;
+}
+GProfil QPushButton#profil_photo {
+    background-color: #503030;
+    border-radius: 100px;
+    min-width: 200px;
+    min-height: 200px;
+    margin: 20px 0px 0px 0px;
+}
+/*===============================================*/
+/* GAddressBar */
+GAddressBar * {
+    background-color: transparent;
+}
+GAddressBar {
+    background-color: #503030;
+    border-radius: 5px;
+    padding: 2px 5px;
+}
+/*===============================================*/
+/* GLineEdit */
+GLineEdit * {
+    background-color: transparent;
+}
+GLineEdit[mode="normal"] QLineEdit#edit {
+    background-color: #503030;
+    border-radius: 5px;
+    padding: 2px 5px;
+}
+GLineEdit[mode="field"] QFrame#field {
+    background-color: #503030;
+    border-radius: 5px;
+    padding: 2px 5px;
+}
+GLineEdit[mode="label"] QPushButton#label {
+    background-color: #503030;
+    padding: 2px 10px;
+}
+/*===============================================*/
+/* GListBox */
+GListBox * {
+    background-color: transparent;
+}
+GListBox QPushButton#item,
+GListBox QFrame#item {
+    padding: 5px 10px;
+    text-align: left;
+}
+GListBox QPushButton#item:hover,
+GListBox QFrame#item:hover {
+    background-color: #503030;
+}
+GListBox QPushButton#item:pressed,
+GListBox QFrame#item:pressed {
+    background-color: transparent;
+}
+GListBox QPushButton#key {
+    text-align: left;
+}
+/*===============================================*/
+/* GLogin */
+GLogin * {
+    background-color: transparent;
+}
+GLogin QFrame#content {
+    border: 1px solid #ffffff;
+    border-radius: 10px;
+    max-width: 500px;
+    padding: 10px;
+}
+GLogin QPushButton#profil {
+    background-color: #503030;
+    border-radius: 100px;
+    min-width: 200px;
+    min-height: 200px;
+    margin: 20px 0px 0px 0px;
+}
+GLogin QLabel#message {
+    color: #ff0000;
+}
+GLogin QFrame#username,
+GLogin QFrame#password {
+    background-color: #503030;
+    border-radius: 5px;
+    padding: 2px 5px;
+}
+GLogin QPushButton#cancel,
+GLogin QPushButton#login {
+    background-color: #503030;
+    border-radius: 5px;
+    padding: 2px 10px;
+}
+GLogin QPushButton#cancel:hover,
+GLogin QPushButton#login:hover {
+    background-color: #303050;
+}
+GLogin QPushButton#cancel:pressed,
+GLogin QPushButton#login:pressed {
+    background-color: transparent;
+}
+/*===============================================*/
+/* GUserAdd */
+GUserAdd * {
+    background-color: transparent;
+}
+GUserAdd QFrame#content {
+    border: 1px solid #ffffff;
+    border-radius: 10px;
+    max-width: 500px;
+    padding: 10px;
+}
+GUserAdd QPushButton#profil {
+    background-color: #503030;
+    border-radius: 100px;
+    min-width: 200px;
+    min-height: 200px;
+    margin: 20px 0px 0px 0px;
+}
+GUserAdd QLabel#message {
+    color: #ff0000;
+}
+GUserAdd QFrame#username,
+GUserAdd QFrame#password,
+GUserAdd QFrame#confirm {
+    background-color: #503030;
+    border-radius: 5px;
+    padding: 2px 5px;
+}
+GUserAdd QPushButton#cancel,
+GUserAdd QPushButton#add {
+    background-color: #503030;
+    border-radius: 5px;
+    padding: 2px 10px;
+}
+GUserAdd QPushButton#cancel:hover,
+GUserAdd QPushButton#add:hover {
+    background-color: #303050;
+}
+GUserAdd QPushButton#cancel:pressed,
+GUserAdd QPushButton#add:pressed {
+    background-color: transparent;
+}
+/*===============================================*/
+/* GSchema */
+GSchema {
+    border: 1px solid #ffffff;
+}
+GSchema QTextEdit#text {
+    padding: 10px;
+}
+/*===============================================*/
+/* GSQLiteTables */
+GSQLiteTables {
+    border: 1px solid #ffffff;
+}
+GSQLiteTables QPushButton#title {
+    text-align: left;
+}
+GSQLiteTables QPushButton#show {
+    background-color: #303050;
+    border-radius: 5px;
+    font-size: 12px;
+    text-align: center;
+    padding: 2px 10px;
+}
+/*===============================================*/
+/* GUserMap */
+GUserMap {
+    border: 1px solid #ffffff;
+}
+GUserMap QPushButton#title {
+    text-align: left;
+}
+/*===============================================*/
+/* GPdfUi */
+GPdfUi {
+    border: 1px solid #ffffff;
+    padding: 10px;
+}
+GPdfUi QPushButton#edit,
+GPdfUi QPushButton#preview {
+    background-color: #503030;
+    border-radius: 5px;
+    padding: 2px 10px;
+}
+GPdfUi QPushButton#edit:hover,
+GPdfUi QPushButton#preview:hover {
+    background-color: #303050;
+}
+GPdfUi QPushButton#edit:pressed,
+GPdfUi QPushButton#preview:pressed {
+    background-color: transparent;
+}
+GPdfUi QTextEdit {
+    background-color: #503030;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: "Courier New";
+}
+/*===============================================*/
+/* property */
+/*===============================================*/
+/* border */
+GHome, GBuilder {
+    border: 1px solid #ffffff;
+}
+/*===============================================*/
+ 

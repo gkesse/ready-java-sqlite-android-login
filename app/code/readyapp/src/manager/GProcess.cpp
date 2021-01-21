@@ -1,6 +1,7 @@
 //===============================================
 #include "GProcess.h"
 #include "GProcessUi.h"
+#include "GQt.h"
 #include "GManager.h"
 //===============================================
 GProcess* GProcess::m_instance = 0;
@@ -38,6 +39,6 @@ void GProcess::runUi(int argc, char** argv) {
 }
 //===============================================
 void GProcess::runQt(int argc, char** argv) {
-    printf("runQt\n");
+    GQt::Instance()->run(argc, argv);
 }
 //===============================================

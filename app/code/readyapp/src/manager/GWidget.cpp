@@ -1,11 +1,11 @@
 //===============================================
 // widget
 #include "GWidget.h"
-/*#include "GLineEdit.h"
+#include "GLineEdit.h"
 #include "GListBox.h"
 #include "GListWidget.h"
 #include "GTableWidget.h"
-// window
+// page
 #include "GWindow.h"
 #include "GTitleBar.h"
 #include "GAddressBar.h"
@@ -23,7 +23,7 @@
 // html
 #include "GPdfUi.h"
 #include "GHtmlEdit.h"
-#include "GHtmlView.h"*/
+#include "GHtmlView.h"
 //===============================================
 // constructor
 //===============================================
@@ -38,15 +38,15 @@ GWidget::~GWidget() {
 GWidget* GWidget::Create(QString key, QWidget* parent) {
     // widget
     if(key == "widget") return new GWidget(parent);
-    /*if(key == "lineedit") return new GLineEdit(parent);
+    if(key == "lineedit") return new GLineEdit(parent);
     if(key == "listbox") return new GListBox(parent);
     if(key == "listwidget") return new GListWidget(parent);
     if(key == "tablewidget") return new GTableWidget(parent);
-    // window
-    if(key == "window") return new GWindow(parent);
     if(key == "titlebar") return new GTitleBar(parent);
     if(key == "addressbar") return new GAddressBar(parent);
     if(key == "addresskey") return new GAddressKey(parent);
+    // page
+    if(key == "window") return new GWindow(parent);
     if(key == "home") return new GHome(parent);
     // login
     if(key == "login") return new GLogin(parent);
@@ -60,7 +60,7 @@ GWidget* GWidget::Create(QString key, QWidget* parent) {
     // pdf
     if(key == "pdfui") return new GPdfUi(parent);
     if(key == "htmledit") return new GHtmlEdit(parent);
-    if(key == "htmlview") return new GHtmlView(parent);*/
+    if(key == "htmlview") return new GHtmlView(parent);
     // widget
     return new GWidget(parent);
 }

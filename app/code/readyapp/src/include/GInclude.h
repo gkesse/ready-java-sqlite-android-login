@@ -32,6 +32,7 @@
 #include <gsl/gsl_poly.h>
 #include <QtWidgets>
 #include <QtSql>
+#include <QPrinter>
 #include <QtAwesome.h>
 //===============================================
 #elif defined(__WIN32)

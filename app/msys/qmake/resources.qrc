@@ -1,9 +1,0 @@
-<!DOCTYPE RCC>
-<RCC version="1.0">
-    <qresource prefix="/css">
-        <file alias="style.css">data/css/style.css</file>
-    </qresource>
-    <qresource prefix="/json">
-        <file alias="menu.json">data/json/menu.json</file>
-    </qresource>
-</RCC>
