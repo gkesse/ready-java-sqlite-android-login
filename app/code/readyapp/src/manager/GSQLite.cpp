@@ -77,9 +77,9 @@ void GSQLite::queryShow(QString sqlQuery, QString widthMap, int defaultWidth) {
     printf("| ");
     for(int i = 0; i < lCount; i++) {
         if(i != 0) printf(" | ");
-        const char* lField = lSqlQuery.record().field(i).name().toStdString().c_str();
+        QString lField = lSqlQuery.record().field(i).name();
         int lWidth = GManager::Instance()->getWidth(widthMap, i, defaultWidth);
-        printf("%*s", -lWidth, lField);
+        printf("%*s", -lWidth, lField.toStdString().c_str());
     }
     printf(" |");
     printf("\n");
@@ -99,9 +99,9 @@ void GSQLite::queryShow(QString sqlQuery, QString widthMap, int defaultWidth) {
         printf("| ");
         for(int i = 0; i < lCount; i++) {
             if(i != 0) printf(" | ");
-            const char* lValue = lSqlQuery.value(i).toString().toStdString().c_str();
+            QString lValue = lSqlQuery.value(i).toString();
             int lWidth = GManager::Instance()->getWidth(widthMap, i, defaultWidth);
-            printf("%*s", -lWidth, lValue);
+            printf("%*s", -lWidth, lValue.toStdString().c_str());
         }
         printf(" |");
         printf("\n");
