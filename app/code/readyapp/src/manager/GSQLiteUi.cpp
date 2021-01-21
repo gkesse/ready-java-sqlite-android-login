@@ -62,7 +62,6 @@ void GSQLiteUi::run_INIT(int argc, char** argv) {
 void GSQLiteUi::run_METHOD(int argc, char** argv) {
     printf("\n");
     printf("%s\n", "CPP_SQLITE :");
-    printf("\t%-2s : %s\n", "0", "executer un test");
     printf("\t%-2s : %s\n", "1", "afficher les tables");
     printf("\t%-2s : %s\n", "2", "creer la table config_data");
     printf("\t%-2s : %s\n", "3", "afficher la table config_data");
@@ -98,7 +97,7 @@ void GSQLiteUi::run_TABLES_SHOW(int argc, char** argv) {
 void GSQLiteUi::run_CONFIG_DATA_CREATE(int argc, char** argv) {
     printf("\n");
     GSQLite::Instance()->queryWrite("\
-    create table config_data (\n\
+    create table if not exists config_data (\n\
     config_key text,\n\
     config_value text\
     )");
@@ -110,7 +109,7 @@ void GSQLiteUi::run_CONFIG_DATA_SHOW(int argc, char** argv) {
     GSQLite::Instance()->queryShow("\
     select * from config_data\n\
     order by config_key\n\
-    ");
+    ", "20;50", 20);
     G_STATE = "S_SAVE";
 }
 //===============================================
@@ -130,7 +129,7 @@ void GSQLiteUi::run_CONFIG_DATA_DELETE(int argc, char** argv) {
     QString lConfigKey = GConfig::Instance()->getData("G_CONFIG_KEY");
     QString lQuery = QString("\
     delete from config_data\n\
-    where config_key = '%s'\n\
+    where config_key = '%1'\n\
     ").arg(lConfigKey);
     GSQLite::Instance()->queryWrite(lQuery);
     G_STATE = "S_CONFIG_DATA_SHOW";

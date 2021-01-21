@@ -6,5 +6,5 @@ set "lArgs=%*"
 set "lArgs=!lArgs:*%1 =!"  
 endlocal && ( set "args=%lArgs%" )
 ::===============================================
-mingw32-make -f Makefile.cpp.mak %1 argv=%args%
+mingw32-make -f Makefile.cmd.mak %1 argv=%args%
 ::===============================================

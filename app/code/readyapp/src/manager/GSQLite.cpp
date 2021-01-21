@@ -54,7 +54,7 @@ void GSQLite::createTables() {
     queryWrite(lQuery);
 }
 //===============================================
-void GSQLite::queryShow(QString sqlQuery) {
+void GSQLite::queryShow(QString sqlQuery, QString widthMap, int defaultWidth) {
     QSqlQuery lSqlQuery;
     bool lOk = lSqlQuery.exec(sqlQuery);
     if(lOk == false) {
@@ -62,51 +62,55 @@ void GSQLite::queryShow(QString sqlQuery) {
         qDebug() << "[error] " << lSqlQuery.lastError();
     }
     int lCount = lSqlQuery.record().count();
-    int lWidth = 20;
-    //
+    // sep
     printf("+-");
     for(int i = 0; i < lCount; i++) {
         if(i != 0) printf("-+-");
+        int lWidth = GManager::Instance()->getWidth(widthMap, i, defaultWidth);
         for(int j = 0; j < lWidth; j++) {
             printf("-");
         }
     }
     printf("-+");
     printf("\n");
-    //
+    // header
     printf("| ");
     for(int i = 0; i < lCount; i++) {
         if(i != 0) printf(" | ");
         const char* lField = lSqlQuery.record().field(i).name().toStdString().c_str();
+        int lWidth = GManager::Instance()->getWidth(widthMap, i, defaultWidth);
         printf("%*s", -lWidth, lField);
     }
     printf(" |");
     printf("\n");
-    //
+    // sep
     printf("+-");
     for(int i = 0; i < lCount; i++) {
         if(i != 0) printf("-+-");
+        int lWidth = GManager::Instance()->getWidth(widthMap, i, defaultWidth);
         for(int j = 0; j < lWidth; j++) {
             printf("-");
         }
     }
     printf("-+");
     printf("\n");
-    //
+    // data
     while(lSqlQuery.next()) {
         printf("| ");
         for(int i = 0; i < lCount; i++) {
             if(i != 0) printf(" | ");
             const char* lValue = lSqlQuery.value(i).toString().toStdString().c_str();
+            int lWidth = GManager::Instance()->getWidth(widthMap, i, defaultWidth);
             printf("%*s", -lWidth, lValue);
         }
         printf(" |");
         printf("\n");
     }
-    //
+    // sep
     printf("+-");
     for(int i = 0; i < lCount; i++) {
         if(i != 0) printf("-+-");
+        int lWidth = GManager::Instance()->getWidth(widthMap, i, defaultWidth);
         for(int j = 0; j < lWidth; j++) {
             printf("-");
         }

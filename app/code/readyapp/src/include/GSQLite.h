@@ -13,8 +13,7 @@ public:
     static GSQLite* Instance();
     void open();
     void createTables();
-    void queryShow(QString sqlQuery);
-    void queryShow(QString sqlQuery, QString widthMap, int defaultWidth);
+    void queryShow(QString sqlQuery, QString widthMap = "", int defaultWidth = 20);
     void queryWrite(QString sqlQuery);
     QString queryValue(QString sqlQuery);
     QVector<QString> queryCol(QString sqlQuery);

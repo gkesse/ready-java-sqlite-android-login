@@ -1,5 +1,7 @@
 //===============================================
 #include "GProcessUi.h"
+#include "GSQLiteUi.h"
+#include "GOpenCVUi.h"
 #include "GConfig.h"
 #include "GManager.h"
 //===============================================
@@ -65,12 +67,12 @@ void GProcessUi::run_CHOICE(int argc, char** argv) {
 }
 //===============================================
 void GProcessUi::run_SQLITE(int argc, char** argv) {
-    printf("GSQLiteUi::Instance()->run(argc, argv);\n");
+    GSQLiteUi::Instance()->run(argc, argv);
     G_STATE = "S_SAVE";
 }
 //===============================================
 void GProcessUi::run_OPENCV(int argc, char** argv) {
-    printf("GOpenCVUi::Instance()->run(argc, argv);\n");
+    GOpenCVUi::Instance()->run(argc, argv);
     G_STATE = "S_SAVE";
 }
 //===============================================

@@ -11,6 +11,9 @@ private:
 public:
     virtual ~GOpenCV();
     static GOpenCV* Instance();
+    // image
+    void loadImage(QString imgPath);
+    void invertImage(QString imgPath);
 
 private:
     static GOpenCV* m_instance;

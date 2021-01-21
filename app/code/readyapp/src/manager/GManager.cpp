@@ -73,6 +73,26 @@ void GManager::loadStyle() {
     qApp->setStyleSheet(lStyleSheet);
 }
 //===============================================
+// string
+//===============================================
+int GManager::getWidth(QString widthMap, int index, int defaultWidth) {
+    QStringList lWidthMap = widthMap.split(";");
+    int lLength = lWidthMap.size();
+    if(index >= lLength) {return defaultWidth;}
+    QString lWidthId = lWidthMap.at(index);
+    bool lOk; lWidthId.toInt(&lOk);
+    if(lOk == false) {return defaultWidth;}
+    int lWidth = lWidthId.toInt();
+    return lWidth;
+}
+//===============================================
+// file
+//===============================================
+QString GManager::getFilename(QString fullpath) {
+    QString lFilename = QFileInfo(fullpath).fileName();
+    return lFilename;
+}
+//===============================================
 // property
 //===============================================
 void GManager::setProperty(QWidget* widget, QString key, QVariant data) {

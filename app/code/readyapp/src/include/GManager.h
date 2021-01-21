@@ -28,6 +28,10 @@ public:
     QString getEnv(QString key);
     // style
     void loadStyle();
+    // string
+    int getWidth(QString widthMap, int index, int defaultWidth);
+    // file
+    QString getFilename(QString fullpath);
     // property
     void setProperty(QWidget* widget, QString key, QVariant data);
     // picto
