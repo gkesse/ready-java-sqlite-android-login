@@ -21,57 +21,53 @@ GConfig* GConfig::Instance() {
     return m_instance;
 }
 //===============================================
-void GConfig::setData(std::string keyIn, std::string valueIn) {
-    m_dataMap[keyIn] = valueIn;
+void GConfig::setData(QString key, QString value) {
+    m_dataMap[key] = value;
 }
 //===============================================
-std::string GConfig::getData(std::string keyIn) {
-    return m_dataMap[keyIn];
+QString GConfig::getData(QString key) {
+    return m_dataMap[key];
 }
 //===============================================
-void GConfig::saveData(std::string keyIn, std::string valueIn) {
-    if(valueIn == "") valueIn = m_dataMap[keyIn];
-    if(checkData(keyIn) == 0) {insertData(keyIn, valueIn);}
-    else {updateData(keyIn, valueIn);}
+void GConfig::saveData(QString key, QString value) {
+    if(value == "") value = m_dataMap[key];
+    if(countData(key) == 0) {insertData(key, value);}
+    else {updateData(key, value);}
 }
 //===============================================
-void GConfig::loadData(std::string keyIn) {
-    char lSql[B_QUERY+1];
-    sprintf(lSql, "\
-    select CONFIG_VALUE \
-    from CONFIG_CPP \
-    where CONFIG_KEY='%s' \
-    ", keyIn.c_str());
-    std::string lData = GSQLite::Instance()->queryValue(lSql);
-    m_dataMap[keyIn] = lData;
+void GConfig::loadData(QString key) {
+    QString lSql = QString("\
+    select config_value\n\
+    from config_data\n\
+    where config_key='%1'\n\
+    ").arg(key);
+    QString lData = GSQLite::Instance()->queryValue(QString(lSql));
+    m_dataMap[key] = lData;
 }
 //===============================================
-int GConfig::checkData(std::string keyIn) {
-    char lSql[B_QUERY+1];
-    sprintf(lSql, "\
-    select count(*) from CONFIG_CPP \
-    where CONFIG_KEY='%s' \
-    ", keyIn.c_str());
-    std::string lCount = GSQLite::Instance()->queryValue(lSql);
-    return std::stoi(lCount);
+int GConfig::countData(QString key) {
+    QString lSql = QString("\
+    select count(*) from config_data\n\
+    where config_key='%1'\n\
+    ").arg(key);
+    QString lCount = GSQLite::Instance()->queryValue(lSql);
+    return std::stoi(lCount.toStdString());
 }
 //===============================================
-void GConfig::insertData(std::string keyIn, std::string valueIn) {
-    char lSql[B_QUERY+1];
-    sprintf(lSql, "\
-    insert into CONFIG_CPP(CONFIG_KEY, CONFIG_VALUE) \
-    values('%s', '%s') \
-    ", keyIn.c_str(), valueIn.c_str());
+void GConfig::insertData(QString key, QString value) {
+    QString lSql = QString("\
+    insert into config_data(config_key, config_value)\n\
+    values('%1', '%2')\n\
+    ").arg(key).arg(value);
     GSQLite::Instance()->queryWrite(lSql);
 }
 //===============================================
-void GConfig::updateData(std::string keyIn, std::string valueIn) {
-    char lSql[B_QUERY+1];
-    sprintf(lSql, "\
-    update CONFIG_CPP \
-    set CONFIG_VALUE='%s' \
-    where CONFIG_KEY='%s' \
-    ", valueIn.c_str(), keyIn.c_str());
+void GConfig::updateData(QString key, QString value) {
+    QString lSql = QString("\
+    update config_data\n\
+    set config_value='%2'\n\
+    where config_key='%1'\n\
+    ").arg(key).arg(value);
     GSQLite::Instance()->queryWrite(lSql);
 }
 //===============================================

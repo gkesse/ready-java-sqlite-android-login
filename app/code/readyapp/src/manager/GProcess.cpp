@@ -1,8 +1,6 @@
 //===============================================
 #include "GProcess.h"
-#include "GConfig.h"
-#include "GSQLiteUi.h"
-#include "GOpenCVUi.h"
+#include "GProcessUi.h"
 #include "GManager.h"
 //===============================================
 GProcess* GProcess::m_instance = 0;
@@ -23,67 +21,23 @@ GProcess* GProcess::Instance() {
 }
 //===============================================
 void GProcess::run(int argc, char** argv) {
-    G_STATE = "S_INIT";
-    while(1) {
-        if(G_STATE == "S_INIT") run_INIT(argc, argv);
-        else if(G_STATE == "S_METHOD") run_METHOD(argc, argv);
-        else if(G_STATE == "S_CHOICE") run_CHOICE(argc, argv);
-        //
-        else if(G_STATE == "S_SQLITE") run_SQLITE(argc, argv);
-        else if(G_STATE == "S_OPENCV") run_OPENCV(argc, argv);
-        //
-        else if(G_STATE == "S_SAVE") run_SAVE(argc, argv);
-        else if(G_STATE == "S_LOAD") run_LOAD(argc, argv);
-        else break;
-    }
+    std::string lKey = "test";
+    if(argc > 1) {lKey = argv[1];}
+    if(lKey == "test") {runTest(argc, argv); return;}
+    if(lKey == "ui") {runUi(argc, argv); return;}
+    if(lKey == "qt") {runQt(argc, argv); return;}
+    runTest(argc, argv);
 }
 //===============================================
-void GProcess::run_INIT(int argc, char** argv) {
-    printf("\n");
-    printf("%s\n", "CPP_ADMIN !!!");
-    printf("\t%-2s : %s\n", "-q", "quitter l'application");
-    printf("\n");
-    G_STATE = "S_LOAD";
+void GProcess::runTest(int argc, char** argv) {
+    printf("runTest\n");
 }
 //===============================================
-void GProcess::run_METHOD(int argc, char** argv) {
-    printf("%s\n", "CPP_ADMIN :");
-    printf("\t%-2s : %s\n", "1", "S_SQLITE");
-    printf("\t%-2s : %s\n", "2", "S_OPENCV");
-
-    printf("\n");
-    G_STATE = "S_CHOICE";
+void GProcess::runUi(int argc, char** argv) {
+    GProcessUi::Instance()->run(argc, argv);
 }
 //===============================================
-void GProcess::run_CHOICE(int argc, char** argv) {
-    std::string lLast = GConfig::Instance()->getData("G_ADMIN_ID");
-    printf("CPP_ADMIN (%s) ? : ", lLast.c_str());
-    std::string lAnswer; std::getline(std::cin, lAnswer);
-    if(lAnswer == "") lAnswer = lLast;
-    if(lAnswer == "-q") G_STATE = "S_END";
-    //
-    else if(lAnswer == "1") {G_STATE = "S_SQLITE"; GConfig::Instance()->setData("G_ADMIN_ID", lAnswer);} 
-    else if(lAnswer == "2") {G_STATE = "S_OPENCV"; GConfig::Instance()->setData("G_ADMIN_ID", lAnswer);}
-    //
-}
-//===============================================
-void GProcess::run_SQLITE(int argc, char** argv) {
-    GSQLiteUi::Instance()->run(argc, argv);
-    G_STATE = "S_SAVE";
-}
-//===============================================
-void GProcess::run_OPENCV(int argc, char** argv) {
-    GOpenCVUi::Instance()->run(argc, argv);
-    G_STATE = "S_SAVE";
-}
-//===============================================
-void GProcess::run_SAVE(int argc, char** argv) {
-    GConfig::Instance()->saveData("G_ADMIN_ID");
-    G_STATE = "S_END";
-}
-//===============================================
-void GProcess::run_LOAD(int argc, char** argv) {
-    GConfig::Instance()->loadData("G_ADMIN_ID");
-    G_STATE = "S_METHOD";
+void GProcess::runQt(int argc, char** argv) {
+    printf("runQt\n");
 }
 //===============================================

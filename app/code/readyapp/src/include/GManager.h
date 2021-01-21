@@ -3,71 +3,126 @@
 #define _GManager_
 //===============================================
 #include "GInclude.h"
+#include "GWidget.h"
+//===============================================
+// struct
 //===============================================
 typedef struct _sGManager sGManager;
-typedef struct _sGOpenCV sGOpenCV;
-typedef struct _sGJson sGJson;
-typedef struct _sGSQLite sGSQLite;
-typedef struct _sGImage sGImage;
+typedef struct _sGApp sGApp;
 //===============================================
-class GManager {
-protected:
-    GManager();
+// manager
+//===============================================
+class GManager : public QObject {
+    Q_OBJECT
+    
+private:
+    GManager(QObject* parent = 0);
     
 public:
-    virtual ~GManager();
-    static GManager* Instance();
-    sGManager* dataGet();
-    void dataClear();
-    std::string separatorGet();
-    std::vector<std::string> split(std::string strIn, char sepIn);
-    int splitCount(std::string strIn, char sepIn);
-    std::string splitGet(std::string strIn, char sepIn, int indexIn, std::string defaultIn);
-    std::string dataPath();
-    void shell(const char* command, char* output, int size, int shift);
-    void system(const char* command);
-    void dataShow(std::string data);
-    void dataShow(std::vector<std::string> data);
-    void dataShow(std::vector<std::vector<std::string>> data);
-    
-protected:
-    sGManager* m_mgr;
+    ~GManager();
+    static GManager* Instance(QObject* parent = 0);
+    // data
+    sGManager* getData();
+    void initData();
+    // env
+    QString getEnv(QString key);
+    // style
+    void loadStyle();
+    // property
+    void setProperty(QWidget* widget, QString key, QVariant data);
+    // picto
+    QIcon loadPicto(int picto, QColor color);
+    // font
+    void loadFont();
+    // img
+    void loadImg();
+    // page
+    void setPage(QString address);
+    // layout
+    void clearLayout(QLayout *layout);
+    // crypto
+    QString getCrypto(QString text);
+    // message
+    int showQuestion(QString text);
+    int showInfo(QString text);
+    // login
+    int isLogin();
+    // table
+    QVector<QString> getTables();
+    int countTable(QString table);
+    void deleteTable(QString table);
+    // config_data
+    void saveData(QString key, QString value);
+    QString loadData(QString key);
+    int countData(QString key);
+    void updateData(QString key, QString value);
+    void insertData(QString key, QString value);
+    // users
+    int countUser(QString username);
+    int countUser(QString username, QString password);
+    void addUser(QString username, QString password);
+    QVector<QVector<QString>> getUser();
+    void deleteUser(QString username);
+
+private:
+    static GManager* m_instance;
+    sGManager* mgr;
+    QtAwesome* m_QtAwesome;
 };
+//===============================================
+// struct
 //===============================================
 struct _sGManager {
-    sGOpenCV* opencv;
-    sGImage* img;
-    sGJson* json;
-    sGSQLite* sqlite;
+    sGApp* app;
 };
 //===============================================
-struct _sGOpenCV {
-    std::string app_name;
-    std::string title;
-    std::string state;
-    int width;
-    int height;
-    cv::Scalar bg_color;
-    cv::Mat img;
-    int delay;
-    int run_me;
-#if defined(__unix)
-    pthread_t thread_id;
-#elif defined(__WIN32)
-    DWORD thread_id;
-#endif
-};
-//===============================================
-struct _sGImage {
-    std::string img_file;
-};
-//===============================================
-struct _sGJson {
-    std::string file;
-};
-//===============================================
-struct _sGSQLite {
-    std::string db_path;
+struct _sGApp {
+    // app
+    QString app_name;
+    // style
+    QString style_path;
+    // win
+    GWidget* win;
+    int win_width;
+    int win_height;
+    // page
+    QStackedWidget* page_map;
+    QMap<QString, int> page_id;
+    // widget
+    QWidget* widget;
+    QString widget_id;
+    // font
+    QString font_path;
+    // img
+    QString img_path;
+    QMap<QString, QString> img_map;
+    // picto
+    QColor picto_color;
+    // address
+    QLineEdit* address;
+    QString address_url;
+    QString address_new;
+    GWidget* address_key;
+    // title
+    QLabel* title;
+    QMap<QString, QString> title_map;
+    // profil
+    int profil_size;
+    // grip
+    int grip_size;
+    // login
+    QString login_on;
+    QPushButton* login_titlebar;
+    QPushButton* login_home;
+    // sqlite
+    QString sqlite_db_path;
+    // root
+    QString root_user;
+    QString root_pass;
+    // pdf
+    QString pdf_path;
+    // path
+    QString path_sep;
 };
 //===============================================
 #endif

@@ -23,13 +23,12 @@ private:
     void run_QUIT(int argc, char** argv);
     
 private:
-    void run_TEST(int argc, char** argv);
     void run_TABLES_SHOW(int argc, char** argv);
-    void run_CONFIG_CPP_CREATE(int argc, char** argv);
-    void run_CONFIG_CPP_SHOW(int argc, char** argv);
+    void run_CONFIG_DATA_CREATE(int argc, char** argv);
+    void run_CONFIG_DATA_SHOW(int argc, char** argv);
     //
-    void run_CONFIG_CPP_DELETE_CONFIG_KEY(int argc, char** argv);
-    void run_CONFIG_CPP_DELETE(int argc, char** argv);
+    void run_CONFIG_DATA_DELETE_CONFIG_KEY(int argc, char** argv);
+    void run_CONFIG_DATA_DELETE(int argc, char** argv);
     //
 
 public:

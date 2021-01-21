@@ -17,7 +17,7 @@
 #include <gsl/gsl_spmatrix.h>
 #include <gsl/gsl_poly.h>
 //===============================================
-#elif defined(__MSYS__)
+#elif defined(__GNUC__) && defined(__MINGW32__)
 //===============================================
 #include <iostream>
 #include <string>
@@ -31,6 +31,8 @@
 #include <gsl/gsl_spmatrix.h>
 #include <gsl/gsl_poly.h>
 #include <QtWidgets>
+#include <QtSql>
+#include <QtAwesome.h>
 //===============================================
 #elif defined(__WIN32)
 //===============================================

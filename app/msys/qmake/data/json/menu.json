@@ -1,0 +1,21 @@
+{
+    "ADMIN":
+    [
+        {"name":"ADMIN"},
+        {"name":"SQLITE"},
+        {"name":"OPENCV"}
+    ],
+    "ADMIN.OPENCV":
+    [
+        {"name":"ADMIN.OPENCV"},
+        {"name":"IMAGE_LOAD"},
+        {"name":"VIDEO_LOAD"}
+    ],
+    "ADMIN.SQLITE":
+    [
+        {"name":"ADMIN.SQLITE"},
+        {"name":"CONFIG_CREATE"},
+        {"name":"CONFIG_DROP"},
+        {"name":"CONFIG_SHOW"}
+    ]
+}

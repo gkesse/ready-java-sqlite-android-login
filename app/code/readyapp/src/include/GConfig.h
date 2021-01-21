@@ -11,17 +11,17 @@ private:
 public:
     ~GConfig();
     static GConfig* Instance();
-    void setData(std::string keyIn, std::string valueIn);
-    std::string getData(std::string keyIn);
-    void saveData(std::string keyIn, std::string valueIn = "");
-    void loadData(std::string keyIn);
-    int checkData(std::string keyIn);
-    void insertData(std::string keyIn, std::string valueIn);
-    void updateData(std::string keyIn, std::string valueIn);
+    void setData(QString key, QString value);
+    QString getData(QString key);
+    void saveData(QString key, QString value = "");
+    void loadData(QString key);
+    int countData(QString key);
+    void insertData(QString key, QString value);
+    void updateData(QString key, QString value);
     
 public:
     static GConfig* m_instance;
-    std::map<std::string, std::string> m_dataMap;
+    std::map<QString, QString> m_dataMap;
 };
 //===============================================
 #endif
