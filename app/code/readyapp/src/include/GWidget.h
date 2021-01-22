@@ -41,6 +41,7 @@ public:
     
 public slots:
     virtual void slotItemClick();
+    virtual void slotItemClick(QAction* action);
     virtual void slotPageOpen();
     
 signals:

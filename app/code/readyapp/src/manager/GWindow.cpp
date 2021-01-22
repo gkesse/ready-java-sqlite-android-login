@@ -36,15 +36,18 @@ GWindow::GWindow(QWidget* parent) : GWidget(parent) {
     addPage("home/profil", "Profil", GWidget::Create("profil"));
     // sqlite
     addPage("home/sqlite", "Tables", GWidget::Create("sqlitetables"));
-    addPage("home/sqlite/users", "Afficher le schéma", GWidget::Create("usermap"));
-    addPage("home/sqlite/users/show", "Afficher le schéma", GWidget::Create("usershow"));
-    addPage("home/sqlite/users/schema", "Afficher le schéma", GWidget::Create("schema"));
+    addPage("home/sqlite/users", "Table USERS", GWidget::Create("usermap"));
+    addPage("home/sqlite/users/show", "Données d'un utilisateur", GWidget::Create("usershow"));
+    addPage("home/sqlite/users/schema", "Schéma de la table USER", GWidget::Create("schema"));
     addPage("home/sqlite/users/add", "Ajouter un utilisateur", GWidget::Create("useradd"));
+    addPage("home/sqlite/config_data", "Table CONFIG_DATA", GWidget::Create("config_data"));
     addPage("home/sqlite/config_data/schema", "Afficher le schéma", GWidget::Create("schema"));
     // pdf
     addPage("home/pdf", "Pdf", GWidget::Create("pdfui"));
-    // builder
-    addPage("home/builder", "Builder", GWidget::Create("builder"));
+    // timesheet
+    addPage("home/timesheet", "Timesheet", GWidget::Create("timesheet"));
+    // error
+    addPage("home/error", "Erreur", GWidget::Create("error"));
         
     QVBoxLayout* lMainLayout = new QVBoxLayout;
     lMainLayout->addWidget(lTitleBar);

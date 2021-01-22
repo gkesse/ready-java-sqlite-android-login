@@ -24,6 +24,10 @@
 #include "GPdfUi.h"
 #include "GHtmlEdit.h"
 #include "GHtmlView.h"
+// timesheet
+#include "GTimesheet.h"
+//
+#include "GError.h"
 //===============================================
 // constructor
 //===============================================
@@ -61,8 +65,10 @@ GWidget* GWidget::Create(QString key, QWidget* parent) {
     if(key == "pdfui") return new GPdfUi(parent);
     if(key == "htmledit") return new GHtmlEdit(parent);
     if(key == "htmlview") return new GHtmlView(parent);
+    // timesheet
+    if(key == "timesheet") return new GTimesheet(parent);
     // widget
-    return new GWidget(parent);
+    return new GError(parent);
 }
 //===============================================
 // method
@@ -97,5 +103,6 @@ void GWidget::fillContent() {}
 // slot
 //===============================================
 void GWidget::slotItemClick() {}
+void GWidget::slotItemClick(QAction* action) {}
 void GWidget::slotPageOpen() {}
 //===============================================

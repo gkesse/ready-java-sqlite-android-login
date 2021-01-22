@@ -13,6 +13,11 @@ QWidget, QWidget * {
 /*===============================================*/
 /* global */
 /*===============================================*/
+/* QMenu */
+QMenu {
+    border: 1px solid #ffffff;
+}
+/*===============================================*/
 /* QMessageBox */
 QMessageBox {
     border: 1px solid #ffffff;
@@ -30,12 +35,19 @@ QMessageBox QPushButton:pressed {
 }
 /*===============================================*/
 /* QSizeGrip */
-QWidget QSizeGrip {
+QSizeGrip {
     background-color: #503030;
 }
 /*===============================================*/
+/* QTextEdit */
+QTextEdit#debug {
+    background-color: #503030;
+    border-radius: 5px;
+    padding: 10px;
+}
+/*===============================================*/
 /* QToolTip */
-QWidget QToolTip {
+QToolTip {
     background-color: #305030;
     border-radius: 5px;
 }
@@ -185,9 +197,6 @@ GProfil QPushButton#profil_photo {
 }
 /*===============================================*/
 /* GSchema */
-GSchema {
-    border: 1px solid #ffffff;
-}
 GSchema QTextEdit#text {
     padding: 10px;
 }
@@ -205,6 +214,13 @@ GSQLiteTables QPushButton#show {
     font-size: 12px;
     text-align: center;
     padding: 2px 10px;
+}
+/*===============================================*/
+/* GTimesheet */
+GTimesheet QPushButton#item {
+    background-color: #503030;
+    border-radius: 5px;
+    padding: 2px 5px;
 }
 /*===============================================*/
 /* GTitleBar */

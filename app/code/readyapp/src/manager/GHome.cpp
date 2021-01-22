@@ -16,6 +16,7 @@ GHome::GHome(QWidget* parent) : GWidget(parent) {
     lListBox->addItem("home/profil", "Profil", fa::user);
     lListBox->addItem("home/sqlite", "SQLite", fa::database);
     lListBox->addItem("home/pdf", "Pdf", fa::filepdfo);
+    lListBox->addItem("home/timesheet", "Timesheet", fa::calendar);
     
     QVBoxLayout* lMainLayout = new QVBoxLayout;
     lMainLayout->addWidget(lListBox);

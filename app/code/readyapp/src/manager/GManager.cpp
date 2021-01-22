@@ -141,7 +141,9 @@ void GManager::setPage(QString address)  {
     sGApp* lApp = GManager::Instance()->getData()->app;
     int lPageId = lApp->page_id.value(address, -1);
     if(lPageId == -1) {
-        lApp->address->setText(lApp->address_url);
+        setPage("home/error");
+        lApp->address->setText(address);
+        lApp->address_key->setContent(address);
         return;
     }
     GWidget* lPage = qobject_cast<GWidget*>(lApp->page_map->widget(lPageId));
