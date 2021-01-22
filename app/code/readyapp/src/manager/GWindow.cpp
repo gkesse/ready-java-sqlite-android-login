@@ -1,6 +1,7 @@
 //===============================================
 #include "GWindow.h"
 #include "GWidget.h"
+#include "GStackWidget.h"
 #include "GManager.h"
 //===============================================
 // constructor
@@ -20,9 +21,14 @@ GWindow::GWindow(QWidget* parent) : GWidget(parent) {
     GWidget* lAddressKey = GWidget::Create("addresskey");
     lApp->address_key = lAddressKey;
     
-    QStackedWidget* lWorkspace = new QStackedWidget;
+    GStackWidget* lWorkspace = new GStackWidget;
     lApp->page_map = lWorkspace;
-    
+
+    QScrollArea* lScrollArea = new QScrollArea;
+    lScrollArea->setObjectName("workspace");
+    lScrollArea->setWidget(lWorkspace);
+    lScrollArea->setWidgetResizable(true);
+
     // home
     addPage("home", "Accueil", GWidget::Create("home"), 1);
     // login
@@ -44,7 +50,7 @@ GWindow::GWindow(QWidget* parent) : GWidget(parent) {
     lMainLayout->addWidget(lTitleBar);
     lMainLayout->addWidget(lAddressBar);
     lMainLayout->addWidget(lAddressKey);
-    lMainLayout->addWidget(lWorkspace, 1);
+    lMainLayout->addWidget(lScrollArea, 1);
     lMainLayout->setMargin(10);
     lMainLayout->setSpacing(10);
     

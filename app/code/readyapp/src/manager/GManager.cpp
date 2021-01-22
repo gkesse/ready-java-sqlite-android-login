@@ -50,10 +50,11 @@ sGManager* GManager::getData() {
 }
 //===============================================
 void GManager::initData() {
+    sGApp* lApp = GManager::Instance()->getData()->app;
     // root
-    int lCount = countUser(mgr->app->root_user);
+    int lCount = countUser(lApp->root_user);
     if(lCount == 0) {
-        addUser(mgr->app->root_user, mgr->app->root_pass);
+        addUser(lApp->root_user, lApp->root_pass);
     }
 }
 //===============================================
@@ -67,7 +68,8 @@ QString GManager::getEnv(QString key) {
 // style
 //===============================================
 void GManager::loadStyle() {
-    QFile lFile(mgr->app->style_path);
+    sGApp* lApp = GManager::Instance()->getData()->app;
+    QFile lFile(lApp->style_path);
     lFile.open(QFile::ReadOnly);
     QString lStyleSheet = QLatin1String(lFile.readAll());
     qApp->setStyleSheet(lStyleSheet);
@@ -113,7 +115,8 @@ QIcon GManager::loadPicto(int picto, QColor color) {
 // font
 //===============================================
 void GManager::loadFont()  {
-    QDirIterator lDirIterator(mgr->app->font_path, QDir::Files, QDirIterator::NoIteratorFlags);
+    sGApp* lApp = GManager::Instance()->getData()->app;
+    QDirIterator lDirIterator(lApp->font_path, QDir::Files, QDirIterator::NoIteratorFlags);
     while (lDirIterator.hasNext()) {
         QString lFile = lDirIterator.next();
         QFontDatabase::addApplicationFont(lFile);
@@ -123,33 +126,35 @@ void GManager::loadFont()  {
 // img
 //===============================================
 void GManager::loadImg()  {
-    QDirIterator lDirIterator(mgr->app->img_path, QDir::Files, QDirIterator::NoIteratorFlags);
+    sGApp* lApp = GManager::Instance()->getData()->app;
+    QDirIterator lDirIterator(lApp->img_path, QDir::Files, QDirIterator::NoIteratorFlags);
     while (lDirIterator.hasNext()) {
         QString lFile = lDirIterator.next();
         QString lKey = QFileInfo(lFile).baseName();
-        mgr->app->img_map[lKey] = lFile;
+        lApp->img_map[lKey] = lFile;
     }
 }
 //===============================================
 // page
 //===============================================
 void GManager::setPage(QString address)  {
-    int lPageId = mgr->app->page_id.value(address, -1);
+    sGApp* lApp = GManager::Instance()->getData()->app;
+    int lPageId = lApp->page_id.value(address, -1);
     if(lPageId == -1) {
-        mgr->app->address->setText(mgr->app->address_url);
+        lApp->address->setText(lApp->address_url);
         return;
     }
-    GWidget* lPage = qobject_cast<GWidget*>(mgr->app->page_map->widget(lPageId));
-    mgr->app->address_new = address;
+    GWidget* lPage = qobject_cast<GWidget*>(lApp->page_map->widget(lPageId));
+    lApp->address_new = address;
     if(lPage->loadPage() == 0) {
-        mgr->app->address->setText(mgr->app->address_url);
+        lApp->address->setText(lApp->address_url);
         return;
     }
-    mgr->app->page_map->setCurrentIndex(lPageId);
-    mgr->app->address->setText(address);
-    mgr->app->address_url = address;
-    mgr->app->address_key->setContent(address);
-    mgr->app->title->setText(mgr->app->title_map[address]);
+    lApp->page_map->setCurrentIndex(lPageId);
+    lApp->address->setText(address);
+    lApp->address_url = address;
+    lApp->address_key->setContent(address);
+    lApp->title->setText(lApp->title_map[address]);
 }
 //===============================================
 // layout
@@ -175,10 +180,11 @@ QString GManager::getCrypto(QString text) {
 // message
 //===============================================
 int GManager::showQuestion(QString text) {
-    GMessageBox lMsgBox(mgr->app->win);
+    sGApp* lApp = GManager::Instance()->getData()->app;
+    GMessageBox lMsgBox(lApp->win);
     lMsgBox.setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint);
     lMsgBox.setText(text);
-    lMsgBox.setIconPixmap(QPixmap(mgr->app->img_map["logo"]));
+    lMsgBox.setIconPixmap(QPixmap(lApp->img_map["logo"]));
     QPushButton* lOk = lMsgBox.addButton("Ok", QMessageBox::YesRole);
     QPushButton* lCancel = lMsgBox.addButton("Annuler", QMessageBox::NoRole);
     lMsgBox.setDefaultButton(lCancel);
@@ -191,10 +197,11 @@ int GManager::showQuestion(QString text) {
 }
 //===============================================
 int GManager::showInfo(QString text) {
-    GMessageBox lMsgBox(mgr->app->win);
+    sGApp* lApp = GManager::Instance()->getData()->app;
+    GMessageBox lMsgBox(lApp->win);
     lMsgBox.setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint);
     lMsgBox.setText(text);
-    lMsgBox.setIconPixmap(QPixmap(mgr->app->img_map["logo"]));
+    lMsgBox.setIconPixmap(QPixmap(lApp->img_map["logo"]));
     QPushButton* lOk = lMsgBox.addButton("Ok", QMessageBox::YesRole);
     lMsgBox.setDefaultButton(lOk);
     lMsgBox.setEscapeButton(lOk);
@@ -206,7 +213,8 @@ int GManager::showInfo(QString text) {
 // login
 //===============================================
 int GManager::isLogin() {
-    if(mgr->app->login_on == "on") return 1;
+    sGApp* lApp = GManager::Instance()->getData()->app;
+    if(lApp->login_on == "on") return 1;
     QString lMessage = QString("Vous n'êtes pas connectés !");
     showInfo(lMessage);
     return 0;

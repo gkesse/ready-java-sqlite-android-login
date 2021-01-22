@@ -45,3 +45,19 @@ pkgconfig_libs:
 pkgconfig_flags:
 	pkg-config --cflags $(GPKGCONFIG_PACKAGE_CFLAGS)
 #================================================    
+# tmp
+tmp_download:
+	cd $(GTMP_PATH) && git clone $(GTMP_URL) $(GTMP_NAME)
+tmp_compile:
+	cd $(GTMP_PATH)/$(GTMP_NAME)$(GTMP_ROOT) && qmake && make
+tmp_run:
+	cd $(GTMP_PATH)/$(GTMP_NAME)$(GTMP_ROOT) && release/$(GTMP_EXE)
+#================================================    
+# qt_examples
+qte_all: qte_compile qte_run
+
+qte_compile:
+	cd $(GQTE_PATH) && qmake && make
+qte_run:
+	cd $(GQTE_PATH) && release/$(GQTE_EXE)
+#================================================    

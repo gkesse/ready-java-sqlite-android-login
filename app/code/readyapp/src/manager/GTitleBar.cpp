@@ -68,7 +68,7 @@ GTitleBar::GTitleBar(QWidget* parent) : GWidget(parent) {
     lMainLayout->addWidget(lMaximize);
     lMainLayout->addWidget(lClose);
     lMainLayout->setMargin(0);
-    lMainLayout->setSpacing(2);
+    lMainLayout->setSpacing(5);
 
     setLayout(lMainLayout);
     

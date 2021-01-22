@@ -3,12 +3,24 @@ export "GPROJECT_ROOT=/c/Users/Admin/Downloads/Programs"
 export "GPROJECT_PATH=${GPROJECT_ROOT}/ReadyCpp"
 export "GPROJECT_SRC=${GPROJECT_PATH}/app/code/readyapp/src"
 #================================================
-export "GPATH_SEP=\\"
+export "GPATH_SEP=//"
 export "GDATA_PATH=${GPROJECT_PATH}/data"
 export "GSTYLE_PATH=${GDATA_PATH}/css/qt/style.css"
 export "GIMG_PATH=${GDATA_PATH}/img"
 export "GSQLITE_DB_PATH=${GDATA_PATH}/sqlite/config.dat"
 export "GFONT_PATH=${GDATA_PATH}/font"
+#================================================
+export "GTMP_PATH=/c/Users/Admin/Downloads/Programs/ReadyTmp"
+export "GTMP_URL=https://github.com/HugoJH/SpreadSheet.git"
+export "GTMP_URL=https://github.com/faalbers/spreadsheet.git"
+export "GTMP_URL=https://github.com/dbzhang800/QtXlsxWriter.git"
+export "GTMP_NAME=QtXlsxWriter"
+export "GTMP_ROOT=/examples/xlsx/calendar"
+export "GTMP_EXE=examples"
+#================================================
+# qt_examples
+export "GQTE_PATH=/c/Qt/Qt5.8.0/Examples/Qt-5.8/widgets/dialogs/findfiles"
+export "GQTE_EXE=findfiles"
 #================================================
 export "GPACMAN_PACKAGE_INSTALL=mingw-w64-i686-gtk3"
 export "GPACMAN_PACKAGE_SEARCH=opencv"
