@@ -10,13 +10,13 @@ GHtmlEdit::GHtmlEdit(QWidget* parent) : GWidget(parent) {
     
     QTextEdit* lTextEdit = new QTextEdit;
     
-    QVBoxLayout* lMainLatout = new QVBoxLayout;
-    lMainLatout->addWidget(lTextEdit);
-    lMainLatout->setAlignment(Qt::AlignTop);
-    lMainLatout->setMargin(0);
-    lMainLatout->setSpacing(0);
+    QVBoxLayout* lMainLayout = new QVBoxLayout;
+    lMainLayout->addWidget(lTextEdit);
+    lMainLayout->setAlignment(Qt::AlignTop);
+    lMainLayout->setMargin(0);
+    lMainLayout->setSpacing(0);
     
-    setLayout(lMainLatout);
+    setLayout(lMainLayout);
 }
 //===============================================
 GHtmlEdit::~GHtmlEdit() {

@@ -47,14 +47,14 @@ GPdfUi::GPdfUi(QWidget* parent) : GWidget(parent) {
     addPage("edit", "Editeur", lTextEdit, 1);
     addPage("preview", "Aperçu", lTextBrowser);
     
-    QVBoxLayout* lMainLatout = new QVBoxLayout;
-    lMainLatout->addLayout(lActionLatout);
-    lMainLatout->addWidget(lPageMap, 1);
-    lMainLatout->setAlignment(Qt::AlignTop);
-    lMainLatout->setMargin(0);
-    lMainLatout->setSpacing(10);
+    QVBoxLayout* lMainLayout = new QVBoxLayout;
+    lMainLayout->addLayout(lActionLatout);
+    lMainLayout->addWidget(lPageMap, 1);
+    lMainLayout->setAlignment(Qt::AlignTop);
+    lMainLayout->setMargin(0);
+    lMainLayout->setSpacing(10);
     
-    setLayout(lMainLatout);
+    setLayout(lMainLayout);
     
     lTextEdit->setPlainText(GManager::Instance()->loadData("pdf_text"));
     

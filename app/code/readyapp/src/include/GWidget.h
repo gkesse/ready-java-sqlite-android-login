@@ -28,8 +28,8 @@ public:
     virtual void setContent(QString key, int icon, QColor color);
     virtual void setContent(QString key, int data);
     //
-    virtual void setOption(QString key, int data);
-    virtual void setOption(QString key, QString data);
+    virtual void setOption(QString key, QVariant data);
+    virtual void setOption(QString key);
     //
     virtual void getData(QString key, QString& data);
     //
@@ -46,6 +46,9 @@ public slots:
     
 signals:
     void emitItemClick();
+    
+protected:
+    bool m_oneOnly;
 };
 //===============================================
 #endif

@@ -33,6 +33,7 @@
 //===============================================
 GWidget::GWidget(QWidget* parent) : QFrame(parent) {
     setObjectName("GWidget");
+    m_oneOnly = true;
 }
 //===============================================
 GWidget::~GWidget() {
@@ -89,8 +90,8 @@ void GWidget::setContent(QString key, QString text) {}
 void GWidget::setContent(QString key, int icon, QColor color) {}
 void GWidget::setContent(QString key, int data) {}
 //
-void GWidget::setOption(QString key, int data) {}
-void GWidget::setOption(QString key, QString data) {}
+void GWidget::setOption(QString key, QVariant data) {}
+void GWidget::setOption(QString key) {}
 //
 void GWidget::getData(QString key, QString& data) {}
 //

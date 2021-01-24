@@ -14,12 +14,12 @@ GSchema::GSchema(QWidget* parent) : GWidget(parent) {
     lTextEdit->setObjectName("text");
     lTextEdit->setReadOnly(true);
     
-    QVBoxLayout* lMainLatout = new QVBoxLayout;
-    lMainLatout->addWidget(lTextEdit);
-    lMainLatout->setMargin(0);
-    lMainLatout->setSpacing(0);
+    QVBoxLayout* lMainLayout = new QVBoxLayout;
+    lMainLayout->addWidget(lTextEdit);
+    lMainLayout->setMargin(0);
+    lMainLayout->setSpacing(0);
     
-    setLayout(lMainLatout);
+    setLayout(lMainLayout);
 }
 //===============================================
 GSchema::~GSchema() {

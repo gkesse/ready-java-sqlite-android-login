@@ -11,12 +11,12 @@ GError::GError(QWidget* parent) : GWidget(parent) {
     lLabel->setText("Page non trouvée");
     lLabel->setAlignment(Qt::AlignCenter);
     
-    QVBoxLayout* lMainLatout = new QVBoxLayout;
-    lMainLatout->addWidget(lLabel);
-    lMainLatout->setMargin(0);
-    lMainLatout->setSpacing(0);
+    QVBoxLayout* lMainLayout = new QVBoxLayout;
+    lMainLayout->addWidget(lLabel);
+    lMainLayout->setMargin(0);
+    lMainLayout->setSpacing(0);
     
-    setLayout(lMainLatout);
+    setLayout(lMainLayout);
 }
 //===============================================
 GError::~GError() {

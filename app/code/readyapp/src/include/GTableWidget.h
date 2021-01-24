@@ -13,7 +13,7 @@ public:
     ~GTableWidget();
 
 public:
-    void setOption(QString key, int data);
+    void setOption(QString key, QVariant data);
     void setOption(QString key);
     void addItem(int row, int col, QString text);
     void addItem(QString key, QString text, int icon);
@@ -28,6 +28,8 @@ private:
     QMap<QWidget*, QString> m_widgetId;
     QMap<int, QListWidgetItem*> m_rowId;
     int m_index;
+    QDate m_currentDate;
+    QLabel* m_monthLabel;
 };
 //===============================================
 #endif

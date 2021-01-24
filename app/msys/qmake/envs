@@ -19,8 +19,8 @@ export "GTMP_ROOT=/examples/xlsx/calendar"
 export "GTMP_EXE=examples"
 #================================================
 # qt_examples
-export "GQTE_PATH=/c/Qt/Qt5.8.0/Examples/Qt-5.8/widgets/dialogs/findfiles"
-export "GQTE_EXE=findfiles"
+export "GQTE_PATH=/c/Qt/Qt5.8.0/Examples/Qt-5.8/widgets/itemviews/basicsortfiltermodel"
+export "GQTE_EXE=basicsortfiltermodel"
 #================================================
 export "GPACMAN_PACKAGE_INSTALL=mingw-w64-i686-gtk3"
 export "GPACMAN_PACKAGE_SEARCH=opencv"

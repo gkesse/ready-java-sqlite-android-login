@@ -13,13 +13,13 @@ GListWidget::GListWidget(QWidget* parent) : GWidget(parent) {
     lListWidget->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
     lListWidget->setCursor(Qt::PointingHandCursor);
     
-    QVBoxLayout* lMainLatout = new QVBoxLayout;
-    lMainLatout->addWidget(lListWidget);
-    lMainLatout->setAlignment(Qt::AlignTop);
-    lMainLatout->setMargin(0);
-    lMainLatout->setSpacing(0);
+    QVBoxLayout* lMainLayout = new QVBoxLayout;
+    lMainLayout->addWidget(lListWidget);
+    lMainLayout->setAlignment(Qt::AlignTop);
+    lMainLayout->setMargin(0);
+    lMainLayout->setSpacing(0);
     
-    setLayout(lMainLatout);
+    setLayout(lMainLayout);
 }
 //===============================================
 GListWidget::~GListWidget() {

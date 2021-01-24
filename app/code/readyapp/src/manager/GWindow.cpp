@@ -45,7 +45,7 @@ GWindow::GWindow(QWidget* parent) : GWidget(parent) {
     // pdf
     addPage("home/pdf", "Pdf", GWidget::Create("pdfui"));
     // timesheet
-    addPage("home/timesheet", "Timesheet", GWidget::Create("timesheet"));
+    addPage("home/timesheet", "Timesheet", GWidget::Create("timesheet"), 1);
     // error
     addPage("home/error", "Erreur", GWidget::Create("error"));
         

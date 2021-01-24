@@ -13,9 +13,26 @@ QWidget, QWidget * {
 /*===============================================*/
 /* global */
 /*===============================================*/
+/* QHeaderView */
+QHeaderView::section {
+    background-color: #501010;
+    color: white;
+    padding: 0px 4px;
+    border: 1px solid #501010;
+}
+QHeaderView::section:checked {
+    background-color: #803010;
+}
+QHeaderView::section:hover {
+    background-color: #f38000;
+}
+/*===============================================*/
 /* QMenu */
 QMenu {
     border: 1px solid #ffffff;
+}
+QMenu::item:selected { 
+    background-color: #503030;
 }
 /*===============================================*/
 /* QMessageBox */
@@ -37,6 +54,23 @@ QMessageBox QPushButton:pressed {
 /* QSizeGrip */
 QSizeGrip {
     background-color: #503030;
+}
+/*===============================================*/
+/* QTableWidget */
+QTableWidget {
+    alternate-background-color: #705050;
+    background-color: #503030;
+}
+QTableWidget::item:selected { 
+    background-color: #d07050;
+}
+QTableWidget::item:hover { 
+    /* background-color: #a06040; */
+}
+/*===============================================*/
+/* QTableCornerButton */
+QTableCornerButton::section {
+    background-color: #201010;
 }
 /*===============================================*/
 /* QTextEdit */
@@ -231,6 +265,18 @@ GTitleBar QPushButton#login {
 }
 GTitleBar QLabel#title {
     padding: 0px 20px;
+}
+/*===============================================*/
+/* GTableWidget */
+GTableWidget QFrame#title * {
+    background-color: transparent;
+}
+GTableWidget QFrame#title {
+    background-color: #305050;
+}
+GTableWidget QFrame#title QPushButton#arrow,
+GTableWidget QFrame#title QPushButton#label {
+    padding: 7px 5px;
 }
 /*===============================================*/
 /* GUserAdd */
