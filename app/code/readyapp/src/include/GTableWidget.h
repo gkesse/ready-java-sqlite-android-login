@@ -30,6 +30,8 @@ private:
     int m_index;
     QDate m_currentDate;
     QLabel* m_monthLabel;
+    int m_rowCount;
+    int m_colCount;
 };
 //===============================================
 #endif

@@ -11,6 +11,7 @@
 #include "GAddressBar.h"
 #include "GAddressKey.h"
 #include "GHome.h"
+#include "GOpenCVQt.h"
 // login
 #include "GLogin.h"
 #include "GProfil.h"
@@ -53,6 +54,7 @@ GWidget* GWidget::Create(QString key, QWidget* parent) {
     // page
     if(key == "window") return new GWindow(parent);
     if(key == "home") return new GHome(parent);
+    if(key == "opencv") return new GOpenCVQt(parent);
     // login
     if(key == "login") return new GLogin(parent);
     if(key == "profil") return new GProfil(parent);

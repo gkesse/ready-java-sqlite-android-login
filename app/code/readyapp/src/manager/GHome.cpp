@@ -17,6 +17,8 @@ GHome::GHome(QWidget* parent) : GWidget(parent) {
     lListBox->addItem("home/sqlite", "SQLite", fa::database);
     lListBox->addItem("home/pdf", "Pdf", fa::filepdfo);
     lListBox->addItem("home/timesheet", "Timesheet", fa::calendar);
+    lListBox->addItem("home/opencv", "OpenCV", fa::camera);
+    lListBox->addItem("home/debug", "Debug", fa::file-text-o);
     
     QVBoxLayout* lMainLayout = new QVBoxLayout;
     lMainLayout->addWidget(lListBox);

@@ -16,6 +16,9 @@ GTableWidget::GTableWidget(QWidget* parent) : GWidget(parent) {
     int lRowCount = 5;
     int lColCount = 7;
     
+    m_rowCount = lRowCount;
+    m_colCount = lColCount;
+    
     QDate lCurrentDate = QDate::currentDate();
     int lCurrentMonth = lCurrentDate.month();
     int lCurrentYear = lCurrentDate.year();
@@ -39,7 +42,7 @@ GTableWidget::GTableWidget(QWidget* parent) : GWidget(parent) {
     
     QLabel* lMonthLabel = new QLabel;
     m_monthLabel = lMonthLabel;
-    lMonthLabel->setObjectName("label");
+    lMonthLabel->setObjectName("month");
     lMonthLabel->setText(lMonthText);
     lMonthLabel->setAlignment(Qt::AlignCenter);
     
@@ -58,6 +61,7 @@ GTableWidget::GTableWidget(QWidget* parent) : GWidget(parent) {
     m_tableWidget = lTableWidget;
     lTableWidget->setObjectName("table");
     QLabel* lCorner = new QLabel("Sem", lTableWidget);
+    lCorner->setObjectName("corner");
     lCorner->move(5, 5);
     lTableWidget->setRowCount(lRowCount);
     lTableWidget->setColumnCount(lColCount);
@@ -188,6 +192,26 @@ void GTableWidget::slotItemClick() {
         QString lMonthName = G_MONTHS_OF_YEAR[lCurrentMonth - 1];
         QString lMonthText = QString("%1 %2").arg(lMonthName).arg(lCurrentYear);
         m_monthLabel->setText(lMonthText);
+
+        int lDayOfWeek = m_currentDate.dayOfWeek();
+        int lDaysInMonth = m_currentDate.daysInMonth();
+            
+        int lDayCount = 1;
+        int lLastDay = lDaysInMonth;
+        int lFirstDay = lDayOfWeek - 1;
+        
+        lDayCount = lDayCount - lFirstDay;
+        
+        for(int i = 0; i < m_rowCount; i++) {
+            for(int j = 0; j < m_colCount; j++) {
+                QString lData = "";
+                if(lDayCount >= 1 && lDayCount <= lLastDay) {
+                    lData = QString("%1").arg(lDayCount);
+                }
+                m_tableWidget->item(i, j)->setText(lData);
+                lDayCount++;
+            }
+        }
     }
     else if(lApp->widget_id == "next_month") {
         m_currentDate = m_currentDate.addMonths(1);
@@ -196,6 +220,26 @@ void GTableWidget::slotItemClick() {
         QString lMonthName = G_MONTHS_OF_YEAR[lCurrentMonth - 1];
         QString lMonthText = QString("%1 %2").arg(lMonthName).arg(lCurrentYear);
         m_monthLabel->setText(lMonthText);
+        
+        int lDayOfWeek = m_currentDate.dayOfWeek();
+        int lDaysInMonth = m_currentDate.daysInMonth();
+            
+        int lDayCount = 1;
+        int lLastDay = lDaysInMonth;
+        int lFirstDay = lDayOfWeek - 1;
+        
+        lDayCount = lDayCount - lFirstDay;
+        
+        for(int i = 0; i < m_rowCount; i++) {
+            for(int j = 0; j < m_colCount; j++) {
+                QString lData = "";
+                if(lDayCount >= 1 && lDayCount <= lLastDay) {
+                    lData = QString("%1").arg(lDayCount);
+                }
+                m_tableWidget->item(i, j)->setText(lData);
+                lDayCount++;
+            }
+        }
     }
 }
 //===============================================

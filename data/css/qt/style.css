@@ -70,7 +70,7 @@ QTableWidget::item:hover {
 /*===============================================*/
 /* QTableCornerButton */
 QTableCornerButton::section {
-    background-color: #201010;
+    background-color: #501010;
 }
 /*===============================================*/
 /* QTextEdit */
@@ -182,6 +182,11 @@ GLogin QPushButton#login:pressed {
     background-color: transparent;
 }
 /*===============================================*/
+/* GOpenCVQt */
+GOpenCVQt QLabel#workspace{
+    background-color: #010101;
+}
+/*===============================================*/
 /* GPdfUi */
 GPdfUi {
     padding: 10px;
@@ -274,9 +279,15 @@ GTableWidget QFrame#title * {
 GTableWidget QFrame#title {
     background-color: #305050;
 }
-GTableWidget QFrame#title QPushButton#arrow,
-GTableWidget QFrame#title QPushButton#label {
-    padding: 7px 5px;
+GTableWidget QFrame#title QPushButton#arrow {
+    padding: 5px 5px;
+}
+GTableWidget QFrame#title QLabel#month {
+    padding: 5px 5px;
+}
+GTableWidget QLabel#corner {
+    background-color: transparent;
+    color: #808080;
 }
 /*===============================================*/
 /* GUserAdd */
