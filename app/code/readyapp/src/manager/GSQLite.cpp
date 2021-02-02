@@ -33,16 +33,24 @@ void GSQLite::open() {
 }
 //===============================================
 void GSQLite::createTables() {
-    QString lQuery;
+    // drop
+    queryWrite(QString("\
+    drop table if exists users0\n\
+    "));
     // config_data
-    lQuery = QString("\
+    queryWrite(QString("\
     create table if not exists config_data (\n\
     config_key text,\n\
     config_value text\n\
-    )");
-    queryWrite(lQuery);
+    )"));
+    // qt_data
+    queryWrite(QString("\
+    create table if not exists qt_data (\n\
+    config_key text,\n\
+    config_value text\n\
+    )"));
     // users
-    lQuery = QString("\
+    queryWrite(QString("\
     create table if not exists users (\n\
     username text unique not null,\n\
     password text,\n\
@@ -50,8 +58,7 @@ void GSQLite::createTables() {
     groups text default 'user',\n\
     date_create datetime default current_timestamp,\n\
     date_update datetime default current_timestamp\n\
-    )");
-    queryWrite(lQuery);
+    )"));
 }
 //===============================================
 void GSQLite::queryShow(QString sqlQuery, QString widthMap, int defaultWidth) {

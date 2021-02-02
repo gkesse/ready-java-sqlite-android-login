@@ -17,6 +17,7 @@ public:
 
 protected:
     void resizeEvent(QResizeEvent *event);
+    void closeEvent(QCloseEvent *event);
     
 private:
     QMap<QWidget*, QString> m_widgetId;

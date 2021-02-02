@@ -2,6 +2,7 @@
 #include "GWindow.h"
 #include "GWidget.h"
 #include "GStackWidget.h"
+#include "GData.h"
 #include "GManager.h"
 //===============================================
 // constructor
@@ -92,5 +93,10 @@ void GWindow::resizeEvent(QResizeEvent *event) {
     sGApp* lApp = GManager::Instance()->getData()->app;
     m_sizeGrip->move(width() - lApp->grip_size, height() - lApp->grip_size);
     m_sizeGrip->resize(lApp->grip_size, lApp->grip_size);
+}
+//===============================================
+void GWindow::closeEvent(QCloseEvent *event) {
+    GData::Instance()->save();
+    event->accept();
 }
 //===============================================
