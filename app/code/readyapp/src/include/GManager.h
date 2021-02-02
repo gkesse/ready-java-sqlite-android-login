@@ -34,6 +34,7 @@ public:
     QString getFilename(QString fullpath);
     QString getDirname(QString fullpath);
     QString openFile(QString title, QString filters);
+    QString saveFile(QString title, QString filters);
     QString nextFile(QString filename, QStringList filters, QString message);
     QString previousFile(QString filename, QStringList filters, QString message);
     // property

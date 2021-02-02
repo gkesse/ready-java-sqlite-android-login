@@ -26,6 +26,8 @@ private:
     QGraphicsScene* m_scene;
     QGraphicsView* m_workspace;
     QString m_filename;
+    QGraphicsPixmapItem* m_pixmap;
+    QString m_state;
 };
 //===============================================
 #endif

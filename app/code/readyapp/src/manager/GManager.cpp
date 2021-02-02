@@ -30,8 +30,8 @@ GManager::GManager(QObject* parent) {
     mgr->app->pdf_path = getEnv("GPDF_PATH");
     mgr->app->path_sep = getEnv("GPATH_SEP");
     mgr->app->dir_path = ".";
-    mgr->app->img_filter = "Fichiers Images (*.bmp, *.png, *.jpg *.jpeg)";
-    mgr->app->img_filters = QStringList() << "*.bmp" << "*.png" << "*.jpg" << "*.jpeg";
+    mgr->app->img_filter = "Fichiers Images (*.png *.bmp *.jpg *.jpeg)";
+    mgr->app->img_filters = QStringList() << "*.png" << "*.bmp" << "*.jpg" << "*.jpeg";
     // picto
     m_QtAwesome = new QtAwesome(qApp);
 }
@@ -107,6 +107,16 @@ QString GManager::getDirname(QString fullpath) {
 QString GManager::openFile(QString title, QString filters) {
     sGApp* lApp = GManager::Instance()->getData()->app;
     QString lFilename = QFileDialog::getOpenFileName(
+    lApp->win, title, lApp->dir_path, filters);
+    if(lFilename != "") {
+        lApp->dir_path = getDirname(lFilename);
+    }
+    return lFilename;
+}
+//===============================================
+QString GManager::saveFile(QString title, QString filters) {
+    sGApp* lApp = GManager::Instance()->getData()->app;
+    QString lFilename = QFileDialog::getSaveFileName(
     lApp->win, title, lApp->dir_path, filters);
     if(lFilename != "") {
         lApp->dir_path = getDirname(lFilename);
