@@ -31,6 +31,7 @@ GManager::GManager(QObject* parent) {
     mgr->app->path_sep = getEnv("GPATH_SEP");
     mgr->app->dir_path = ".";
     mgr->app->img_filter = "Fichiers Images (*.bmp, *.png, *.jpg *.jpeg)";
+    mgr->app->img_filters = QStringList() << "*.bmp" << "*.png" << "*.jpg" << "*.jpeg";
     // picto
     m_QtAwesome = new QtAwesome(qApp);
 }
@@ -103,12 +104,40 @@ QString GManager::getDirname(QString fullpath) {
     return lDirname;
 }
 //===============================================
-QString GManager::openFile(QString title, QString filter) {
+QString GManager::openFile(QString title, QString filters) {
     sGApp* lApp = GManager::Instance()->getData()->app;
     QString lFilename = QFileDialog::getOpenFileName(
-    lApp->win, title, lApp->dir_path, filter);
+    lApp->win, title, lApp->dir_path, filters);
     if(lFilename != "") {
         lApp->dir_path = getDirname(lFilename);
+    }
+    return lFilename;
+}
+//===============================================
+QString GManager::nextFile(QString filename, QStringList filters, QString message) {
+    QString lFilename = filename;
+    QFileInfo lFileInfo(filename);
+    QDir lDir = lFileInfo.absoluteDir();
+    QStringList lFileNames = lDir.entryList(filters, QDir::Files, QDir::Name);
+    int lIndex = lFileNames.indexOf(QRegExp(QRegExp::escape(lFileInfo.fileName())));
+    if(lIndex < lFileNames.size() - 1) {
+        lFilename = lDir.absoluteFilePath(lFileNames.at(lIndex + 1));
+    } else {
+        showInfo(message);
+    }
+    return lFilename;
+}
+//===============================================
+QString GManager::previousFile(QString filename, QStringList filters, QString message) {
+    QString lFilename = filename;
+    QFileInfo lFileInfo(filename);
+    QDir lDir = lFileInfo.absoluteDir();
+    QStringList lFileNames = lDir.entryList(filters, QDir::Files, QDir::Name);
+    int lIndex = lFileNames.indexOf(QRegExp(QRegExp::escape(lFileInfo.fileName())));
+    if(lIndex > 0) {
+        lFilename = lDir.absoluteFilePath(lFileNames.at(lIndex - 1));
+    } else {
+        showInfo(message);
     }
     return lFilename;
 }

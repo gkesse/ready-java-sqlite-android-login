@@ -126,7 +126,7 @@ QFrame#GDebug QTextEdit#workspace {
 }
 /*===============================================*/
 /* GGraphicsView */
-QFrame#GGraphicsView QGraphicsView#workspace{
+QFrame#GGraphicsView QGraphicsView#workspace {
     background-color: #503030;
     border-radius: 5px;
 }

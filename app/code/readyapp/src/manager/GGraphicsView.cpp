@@ -26,6 +26,10 @@ GGraphicsView::GGraphicsView(QWidget* parent) : GWidget(parent) {
     QMenu* lSettingMenu = new QMenu(this);
     m_settingMenu = lSettingMenu;
     lSettingMenu->addAction(GManager::Instance()->loadPicto(fa::book, lApp->picto_color), "Ouvrir une image")->setData("open_image");
+    lSettingMenu->addAction(GManager::Instance()->loadPicto(fa::book, lApp->picto_color), "Zoomer en avant (+)")->setData("zoom_in");
+    lSettingMenu->addAction(GManager::Instance()->loadPicto(fa::book, lApp->picto_color), "Zoomer en arrière (-)")->setData("zoom_out");
+    lSettingMenu->addAction(GManager::Instance()->loadPicto(fa::book, lApp->picto_color), "Image suivante")->setData("next_image");
+    lSettingMenu->addAction(GManager::Instance()->loadPicto(fa::book, lApp->picto_color), "Image précédente")->setData("previous_image");
     lSettingMenu->setCursor(Qt::PointingHandCursor);
     
     QGraphicsScene* lScene = new QGraphicsScene(this);
@@ -33,7 +37,7 @@ GGraphicsView::GGraphicsView(QWidget* parent) : GWidget(parent) {
     
     QGraphicsView* lWorkspace = new QGraphicsView(lScene);
     m_workspace = lWorkspace;
-    lWorkspace->setBackgroundBrush(QBrush(Qt::red, Qt::SolidPattern));
+    lWorkspace->setObjectName("workspace");
     
     QVBoxLayout* lMainLayout = new QVBoxLayout;
     lMainLayout->addLayout(lHeaderLayout);
@@ -49,6 +53,19 @@ GGraphicsView::GGraphicsView(QWidget* parent) : GWidget(parent) {
 //===============================================
 GGraphicsView::~GGraphicsView() {
 
+}
+//===============================================
+// method
+//===============================================
+void GGraphicsView::showImage(QString filename) {
+    if(filename == "") return;
+    m_scene->clear();
+    m_workspace->resetMatrix();
+    QPixmap lImage(filename);
+    m_scene->addPixmap(lImage);
+    m_scene->update();
+    m_workspace->setSceneRect(lImage.rect());
+    m_filename = filename;
 }
 //===============================================
 // slot
@@ -69,12 +86,23 @@ void GGraphicsView::slotItemClick(QAction* action) {
 
     if(lApp->widget_id == "open_image") {
         QString lFilename = GManager::Instance()->openFile("Ouvrir une image", lApp->img_filter);
-        m_scene->clear();
-        m_workspace->resetMatrix();
-        QPixmap lImage(lFilename);
-        m_scene->addPixmap(lImage);
-        m_scene->update();
-        m_workspace->setSceneRect(lImage.rect());
+        showImage(lFilename);
+    }
+    else if(lApp->widget_id == "zoom_in") {
+        m_workspace->scale(1.2, 1.2);
+    }
+    else if(lApp->widget_id == "zoom_out") {
+        m_workspace->scale(1/1.2, 1/1.2);
+    }
+    else if(lApp->widget_id == "next_image") {
+        QString lFilename = GManager::Instance()->nextFile(
+        m_filename, lApp->img_filters, "Cette image est la dernière");
+        showImage(lFilename);
+    }
+    else if(lApp->widget_id == "previous_image") {
+        QString lFilename = GManager::Instance()->previousFile(
+        m_filename, lApp->img_filters, "Cette image est la première");
+        showImage(lFilename);
     }
 }
 //===============================================

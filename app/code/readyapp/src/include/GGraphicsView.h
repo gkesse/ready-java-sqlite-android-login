@@ -12,6 +12,9 @@ public:
     GGraphicsView(QWidget* parent = 0);
     ~GGraphicsView();
     
+public:
+    void showImage(QString filename);
+    
 public slots:
     void slotItemClick();
     void slotItemClick(QAction* action);
@@ -22,6 +25,7 @@ private:
     QMenu* m_settingMenu;
     QGraphicsScene* m_scene;
     QGraphicsView* m_workspace;
+    QString m_filename;
 };
 //===============================================
 #endif

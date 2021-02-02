@@ -33,7 +33,9 @@ public:
     // file
     QString getFilename(QString fullpath);
     QString getDirname(QString fullpath);
-    QString openFile(QString title, QString filter);
+    QString openFile(QString title, QString filters);
+    QString nextFile(QString filename, QStringList filters, QString message);
+    QString previousFile(QString filename, QStringList filters, QString message);
     // property
     void setProperty(QWidget* widget, QString key, QVariant data);
     // picto
@@ -103,6 +105,7 @@ struct _sGApp {
     QString img_path;
     QMap<QString, QString> img_map;
     QString img_filter;
+    QStringList img_filters;
     // picto
     QColor picto_color;
     // address
