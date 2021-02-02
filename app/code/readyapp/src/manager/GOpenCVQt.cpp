@@ -66,7 +66,7 @@ void GOpenCVQt::slotItemClick(QAction* action) {
     lApp->widget_id = action->data().toString();
 
     if(lApp->widget_id == "open_image") {
-        QString lFilename = GManager::Instance()->openFile("Ouvrir une image");
+        QString lFilename = GManager::Instance()->openFile("Ouvrir une image", lApp->img_filter);
         qDebug() << lFilename;
     }
 }

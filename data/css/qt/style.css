@@ -13,22 +13,6 @@ QWidget, QWidget *, * {
 /*===============================================*/
 /* global */
 /*===============================================*/
-/* QFileDialog */
-QFileDialog {
-    border: 1px solid #ffffff;
-}
-QFileDialog QPushButton {
-    background-color: #503030;
-    border-radius: 5px;
-    padding: 2px 10px;
-}
-QFileDialog QPushButton:hover {
-    background-color: #303050;
-}
-QFileDialog QPushButton:pressed {
-    background-color: transparent;
-}
-/*===============================================*/
 /* QHeaderView */
 QHeaderView::section {
     background-color: #501010;

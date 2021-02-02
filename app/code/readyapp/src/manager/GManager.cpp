@@ -29,6 +29,8 @@ GManager::GManager(QObject* parent) {
     mgr->app->root_pass = "super";
     mgr->app->pdf_path = getEnv("GPDF_PATH");
     mgr->app->path_sep = getEnv("GPATH_SEP");
+    mgr->app->dir_path = ".";
+    mgr->app->img_filter = "Fichiers Images (*.bmp, *.png, *.jpg *.jpeg)";
     // picto
     m_QtAwesome = new QtAwesome(qApp);
 }
@@ -96,13 +98,18 @@ QString GManager::getFilename(QString fullpath) {
     return lFilename;
 }
 //===============================================
-QString GManager::openFile(QString title) {
+QString GManager::getDirname(QString fullpath) {
+    QString lDirname = QFileInfo(fullpath).absolutePath();
+    return lDirname;
+}
+//===============================================
+QString GManager::openFile(QString title, QString filter) {
     sGApp* lApp = GManager::Instance()->getData()->app;
-    QString lFilename = "";
-    GFileDialog lFileDialog(lApp->win, Qt::Dialog | Qt::FramelessWindowHint);
-    lFileDialog.setWindowTitle(title);
-    lFileDialog.setStyleSheet("QPushButton { background-color: red }");
-    lFileDialog.exec();
+    QString lFilename = QFileDialog::getOpenFileName(
+    lApp->win, title, lApp->dir_path, filter);
+    if(lFilename != "") {
+        lApp->dir_path = getDirname(lFilename);
+    }
     return lFilename;
 }
 //===============================================

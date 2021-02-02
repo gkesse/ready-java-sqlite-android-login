@@ -32,7 +32,8 @@ public:
     int getWidth(QString widthMap, int index, int defaultWidth);
     // file
     QString getFilename(QString fullpath);
-    QString openFile(QString title);
+    QString getDirname(QString fullpath);
+    QString openFile(QString title, QString filter);
     // property
     void setProperty(QWidget* widget, QString key, QVariant data);
     // picto
@@ -101,6 +102,7 @@ struct _sGApp {
     // img
     QString img_path;
     QMap<QString, QString> img_map;
+    QString img_filter;
     // picto
     QColor picto_color;
     // address
@@ -130,6 +132,8 @@ struct _sGApp {
     QString path_sep;
     // debug
     QTextEdit* debug;
+    // dir
+    QString dir_path;
 };
 //===============================================
 #endif
