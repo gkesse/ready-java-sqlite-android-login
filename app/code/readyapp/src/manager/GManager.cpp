@@ -1,12 +1,13 @@
 //===============================================
 #include "GManager.h"
 #include "GMessageBox.h"
+#include "GFileDialog.h"
 #include "GSQLite.h"
 //===============================================
 GManager* GManager::m_instance = 0;
 //===============================================
 // constructor
-//===============================================
+//=============================================== 
 GManager::GManager(QObject* parent) {
     // manager
     mgr = new sGManager;
@@ -92,6 +93,16 @@ int GManager::getWidth(QString widthMap, int index, int defaultWidth) {
 //===============================================
 QString GManager::getFilename(QString fullpath) {
     QString lFilename = QFileInfo(fullpath).fileName();
+    return lFilename;
+}
+//===============================================
+QString GManager::openFile(QString title) {
+    sGApp* lApp = GManager::Instance()->getData()->app;
+    QString lFilename = "";
+    GFileDialog lFileDialog(lApp->win, Qt::Dialog | Qt::FramelessWindowHint);
+    lFileDialog.setWindowTitle(title);
+    lFileDialog.setStyleSheet("QPushButton { background-color: red }");
+    lFileDialog.exec();
     return lFilename;
 }
 //===============================================

@@ -2,7 +2,7 @@
 /* common */
 /*===============================================*/
 /* QWidget */
-QWidget, QWidget * {
+QWidget, QWidget *, * {
     background-color: #201010;
     font-family: "Allan";
     font-size: 20px;
@@ -12,6 +12,22 @@ QWidget, QWidget * {
 }
 /*===============================================*/
 /* global */
+/*===============================================*/
+/* QFileDialog */
+QFileDialog {
+    border: 1px solid #ffffff;
+}
+QFileDialog QPushButton {
+    background-color: #503030;
+    border-radius: 5px;
+    padding: 2px 10px;
+}
+QFileDialog QPushButton:hover {
+    background-color: #303050;
+}
+QFileDialog QPushButton:pressed {
+    background-color: transparent;
+}
 /*===============================================*/
 /* QHeaderView */
 QHeaderView::section {
@@ -101,6 +117,30 @@ GAddressBar QLineEdit#address {
     color: #aaaaaa;
 }
 /*===============================================*/
+/* GButton */
+QPushButton#GButton {
+    background-color: #503030;
+    padding: 2px 5px;
+    border-radius: 5px;
+}
+QPushButton#GButton:hover {
+    background-color: #503030;
+}
+QPushButton#GButton:pressed {
+    background-color: transparent;
+}
+/*===============================================*/
+/* GDebug */
+QFrame#GDebug {
+
+}
+QFrame#GDebug QTextEdit#workspace {
+    background-color: #503030;
+    padding: 8px;
+    font-family: "Courier Prime";
+    border-radius: 5px;
+}
+/*===============================================*/
 /* GLineEdit */
 GLineEdit * {
     background-color: transparent;
@@ -183,8 +223,9 @@ GLogin QPushButton#login:pressed {
 }
 /*===============================================*/
 /* GOpenCVQt */
-GOpenCVQt QLabel#workspace{
-    background-color: #010101;
+QFrame#GOpenCVQt QLabel#workspace{
+    background-color: #503030;
+    border-radius: 5px;
 }
 /*===============================================*/
 /* GPdfUi */

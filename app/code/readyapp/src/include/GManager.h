@@ -32,6 +32,7 @@ public:
     int getWidth(QString widthMap, int index, int defaultWidth);
     // file
     QString getFilename(QString fullpath);
+    QString openFile(QString title);
     // property
     void setProperty(QWidget* widget, QString key, QVariant data);
     // picto
@@ -127,6 +128,8 @@ struct _sGApp {
     QString pdf_path;
     // path
     QString path_sep;
+    // debug
+    QTextEdit* debug;
 };
 //===============================================
 #endif

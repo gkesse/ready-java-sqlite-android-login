@@ -18,7 +18,7 @@ GHome::GHome(QWidget* parent) : GWidget(parent) {
     lListBox->addItem("home/pdf", "Pdf", fa::filepdfo);
     lListBox->addItem("home/timesheet", "Timesheet", fa::calendar);
     lListBox->addItem("home/opencv", "OpenCV", fa::camera);
-    lListBox->addItem("home/debug", "Debug", fa::file-text-o);
+    lListBox->addItem("home/debug", "Debug", fa::filetexto);
     
     QVBoxLayout* lMainLayout = new QVBoxLayout;
     lMainLayout->addWidget(lListBox);
