@@ -12,7 +12,9 @@
 #include "GAddressKey.h"
 #include "GHome.h"
 #include "GOpenCVQt.h"
-#include "GDebug.h"
+// qt
+#include "GQtPg.h"
+#include "GGraphicsView.h"
 // login
 #include "GLogin.h"
 #include "GProfil.h"
@@ -28,7 +30,9 @@
 #include "GHtmlView.h"
 // timesheet
 #include "GTimesheet.h"
-//
+// debug
+#include "GDebug.h"
+// error
 #include "GError.h"
 //===============================================
 // constructor
@@ -56,7 +60,9 @@ GWidget* GWidget::Create(QString key, QWidget* parent) {
     if(key == "window") return new GWindow(parent);
     if(key == "home") return new GHome(parent);
     if(key == "opencv") return new GOpenCVQt(parent);
-    if(key == "debug") return new GDebug(parent);
+    // qt
+    if(key == "qt") return new GQtPg(parent);
+    if(key == "qgraphicsview") return new GGraphicsView(parent);
     // login
     if(key == "login") return new GLogin(parent);
     if(key == "profil") return new GProfil(parent);
@@ -72,6 +78,8 @@ GWidget* GWidget::Create(QString key, QWidget* parent) {
     if(key == "htmlview") return new GHtmlView(parent);
     // timesheet
     if(key == "timesheet") return new GTimesheet(parent);
+    // debug
+    if(key == "debug") return new GDebug(parent);
     // widget
     return new GError(parent);
 }

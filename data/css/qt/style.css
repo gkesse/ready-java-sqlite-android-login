@@ -125,6 +125,12 @@ QFrame#GDebug QTextEdit#workspace {
     border-radius: 5px;
 }
 /*===============================================*/
+/* GGraphicsView */
+QFrame#GGraphicsView QGraphicsView#workspace{
+    background-color: #503030;
+    border-radius: 5px;
+}
+/*===============================================*/
 /* GLineEdit */
 GLineEdit * {
     background-color: transparent;

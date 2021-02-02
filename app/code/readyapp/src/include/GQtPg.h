@@ -1,17 +1,17 @@
 //===============================================
-#ifndef _GHome_
-#define _GHome_
+#ifndef _GQtPg_
+#define _GQtPg_
 //===============================================
 #include "GInclude.h"
 #include "GWidget.h"
 //===============================================
-class GHome : public GWidget {    
+class GQtPg : public GWidget {    
     Q_OBJECT
 
 public:
-    GHome(QWidget* parent = 0);
-    ~GHome();
-
+    GQtPg(QWidget* parent = 0);
+    ~GQtPg();
+    
 public slots:
     void slotItemClick();
 };

@@ -1,25 +1,18 @@
 //===============================================
-#include "GHome.h"
+#include "GQtPg.h"
 #include "GWidget.h"
 #include "GManager.h"
 //===============================================
 // constructor
 //===============================================
-GHome::GHome(QWidget* parent) : GWidget(parent) {
-    setObjectName("GHome");
+GQtPg::GQtPg(QWidget* parent) : GWidget(parent) {
+    setObjectName("GQtPg");
     
     sGApp* lApp = GManager::Instance()->getData()->app;
     
     GWidget* lListBox = GWidget::Create("listbox");
     
-    lListBox->addItem("home/login", "Connexion", fa::signin); lApp->login_home = qobject_cast<QPushButton*>(lApp->widget);
-    lListBox->addItem("home/profil", "Profil", fa::user);
-    lListBox->addItem("home/sqlite", "SQLite", fa::database);
-    lListBox->addItem("home/pdf", "Pdf", fa::filepdfo);
-    lListBox->addItem("home/timesheet", "Timesheet", fa::calendar);
-    lListBox->addItem("home/opencv", "OpenCV", fa::camera);
-    lListBox->addItem("home/qt", "Qt", fa::windows);
-    lListBox->addItem("home/debug", "Debug", fa::filetexto);
+    lListBox->addItem("home/qt/qgraphicsview", "QGraphicsView", fa::book); lApp->login_home = qobject_cast<QPushButton*>(lApp->widget);
     
     QVBoxLayout* lMainLayout = new QVBoxLayout;
     lMainLayout->addWidget(lListBox);
@@ -32,13 +25,13 @@ GHome::GHome(QWidget* parent) : GWidget(parent) {
     connect(lListBox, SIGNAL(emitItemClick()), this, SLOT(slotItemClick()));
 }
 //===============================================
-GHome::~GHome() {
+GQtPg::~GQtPg() {
     
 }
 //===============================================
 // slot
 //===============================================
-void GHome::slotItemClick() {
+void GQtPg::slotItemClick() {
     sGApp* lApp = GManager::Instance()->getData()->app;
     if(lApp->widget_id == "home/login") {
         if(lApp->login_on == "on") {

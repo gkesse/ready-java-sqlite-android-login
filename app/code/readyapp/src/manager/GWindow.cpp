@@ -33,7 +33,8 @@ GWindow::GWindow(QWidget* parent) : GWidget(parent) {
     // home
     addPage("home", "Accueil", GWidget::Create("home"), 1);
     addPage("home/opencv", "OpenCV", GWidget::Create("opencv"), 1);
-    addPage("home/debug", "Debug", GWidget::Create("debug"));
+    // qt
+    addPage("home/qt/qgraphicsview", "QGraphicsView", GWidget::Create("qgraphicsview"), 1);
     // login
     addPage("home/login", "Connexion", GWidget::Create("login"));
     addPage("home/profil", "Profil", GWidget::Create("profil"));
@@ -49,6 +50,8 @@ GWindow::GWindow(QWidget* parent) : GWidget(parent) {
     addPage("home/pdf", "Pdf", GWidget::Create("pdfui"));
     // timesheet
     addPage("home/timesheet", "Timesheet", GWidget::Create("timesheet"));
+    // debug
+    addPage("home/debug", "Debug", GWidget::Create("debug"));
     // error
     addPage("home/error", "Erreur", GWidget::Create("error"));
         
