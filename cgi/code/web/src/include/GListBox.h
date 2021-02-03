@@ -11,8 +11,8 @@ public:
     // method
     void start();
     void end();
-    void addItem(std::string text);
-    void addItem(std::string text, std::string link, std::string icon);
+    void addItem(QString text);
+    void addItem(QString text, QString link, QString icon);
 };
 //===============================================
 #endif

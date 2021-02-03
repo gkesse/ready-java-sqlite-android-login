@@ -8,13 +8,13 @@ class GWidget {
 public:
     GWidget();
     virtual ~GWidget();
-    static GWidget* Create(std::string key);
+    static GWidget* Create(QString key);
     // method
     virtual void print();
     virtual void start();
     virtual void end();
-    virtual void addItem(std::string text);
-    virtual void addItem(std::string text, std::string link, std::string icon);
+    virtual void addItem(QString text);
+    virtual void addItem(QString text, QString link, QString icon);
 };
 //===============================================
 #endif

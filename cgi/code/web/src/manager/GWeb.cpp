@@ -34,7 +34,7 @@ void GWeb::run(int argc, char** argv) {
     GWidget::Create("footer")->print();
 }
 //===============================================
-void GWeb::addPage(std::string address, std::string key) {
+void GWeb::addPage(QString address, QString key) {
     m_addressMap[address] = key;
 }
 //===============================================
@@ -56,16 +56,16 @@ void GWeb::selectPage() {
 //===============================================
 void GWeb::showPage() {
     sGApp* lApp = GManager::Instance()->getData()->app;
-    std::string lPageId = m_addressMap[lApp->page_id];
+    QString lPageId = m_addressMap[lApp->page_id];
     GWidget::Create(lPageId)->print();
 }
 //===============================================
-void GWeb::redirect(std::string newUrl) {
+void GWeb::redirect(QString newUrl) {
     printf("Content-type: text/html\n\n");
     printf("<html>\n");
     printf("<head>\n");
     printf("<title>Redirection</title>\n");
-    printf("<meta http-equiv='refresh' content='0; URL=%s'>\n", newUrl.c_str());
+    printf("<meta http-equiv='refresh' content='0; URL=%s'>\n", newUrl.toStdString().c_str());
     printf("</head>\n");
     printf("<body>\n");
     printf("</body>\n");
@@ -73,7 +73,7 @@ void GWeb::redirect(std::string newUrl) {
     exit(0);
 }
 //===============================================
-void GWeb::setCookie(std::string key, std::string value) {
-    printf("Set-Cookie:%s = %s;\n", key.c_str(), value.c_str());
+void GWeb::setCookie(QString key, QString value) {
+    printf("Set-Cookie:%s = %s;\n", key.toStdString().c_str(), value.toStdString().c_str());
 }
 //===============================================

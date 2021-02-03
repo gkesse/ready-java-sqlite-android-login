@@ -12,14 +12,10 @@
 #include <unistd.h>
 #include <signal.h>
 //===============================================
-#elif defined(__MSYS__)
+#elif defined(__GNUC__) && defined(__MINGW32__)
 //===============================================
-#include <iostream>
-#include <string>
-#include <map>
-#include <vector>
-#include <sstream>
-#include <pthread.h>
+#include <QtCore>
+#include <opencv2/opencv.hpp>
 //===============================================
 #elif defined(__WIN32)
 //===============================================

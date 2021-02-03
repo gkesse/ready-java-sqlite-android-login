@@ -12,17 +12,17 @@ public:
     virtual ~GWeb();
     static GWeb* Instance();
     void run(int argc, char** argv);
-    void addPage(std::string address, std::string key);
+    void addPage(QString address, QString key);
     void loadPage();
     void selectPage();
     void showPage();
-    void redirect(std::string newUrl);
-    void setCookie(std::string key, std::string value);
-    void getCookie(std::string key, std::string defaultValue);
+    void redirect(QString newUrl);
+    void setCookie(QString key, QString value);
+    void getCookie(QString key, QString defaultValue);
     
 private:
     static GWeb* m_instance;
-    std::map<std::string, std::string> m_addressMap;
+    QMap<QString, QString> m_addressMap;
 };
 //===============================================
 #endif

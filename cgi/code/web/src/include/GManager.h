@@ -7,6 +7,8 @@
 typedef struct _sGManager sGManager;
 typedef struct _sGApp sGApp;
 //===============================================
+// manager
+//===============================================
 class GManager {
 private:
     GManager();
@@ -16,20 +18,23 @@ public:
     static GManager* Instance();
     // data
     sGManager* getData();
+    // console
+    void print(QString data);
     // env
-    std::string getEnv(std::string key);
+    QString getEnv(QString key);
     void loadEnv();
     // string
-    std::vector<std::string> split(std::string str, char sep);
-    std::map<std::string, std::string> splitMap(std::string str, char sepRow, char sepCol);
-    std::string removeLast(std::string str, char remove) ;
+    QMap<QString, QString> splitMap(QString str, QString sepRow, QString sepCol);
+    QString removeLast(QString str, char remove) ;
     // map
-    std::string getValue(std::map<std::string, std::string> mapId, std::string key, std::string defaultValue);
+    QString getValue(QMap<QString, QString> mapId, QString key, QString defaultValue);
     
 private:
     static GManager* m_instance;
     sGManager* mgr;
 };
+//===============================================
+// struct
 //===============================================
 struct _sGManager {
     sGApp* app;
@@ -37,25 +42,25 @@ struct _sGManager {
 //===============================================
 struct _sGApp {
     // app
-    std::string app_name;
-    std::string app_title;
+    QString app_name;
+    QString app_title;
     // logo
-    std::string logo_path;
+    QString logo_path;
     // style
-    std::string style_path;
+    QString style_path;
     // font
-    std::string font_path;
+    QString font_path;
     // icon
-    std::string icon_path;
+    QString icon_path;
     // page
-    std::string page_id;
-    std::string page_last;
+    QString page_id;
+    QString page_last;
     // query
-    std::string query_string;
-    std::map<std::string, std::string> query_map;
+    QString query_string;
+    QMap<QString, QString> query_map;
     // query
-    std::string cookie_string;
-    std::map<std::string, std::string> cookie_map;
+    QString cookie_string;
+    QMap<QString, QString> cookie_map;
 };
 //===============================================
 #endif

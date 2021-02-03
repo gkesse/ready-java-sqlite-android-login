@@ -21,7 +21,7 @@ GWidget::~GWidget() {
     
 }
 //===============================================
-GWidget* GWidget::Create(std::string key) {
+GWidget* GWidget::Create(QString key) {
     // widget
     if(key =="widget") {return new GWidget;}
     if(key =="header") {return new GHeader;}
@@ -43,6 +43,6 @@ GWidget* GWidget::Create(std::string key) {
 void GWidget::print() {}
 void GWidget::start() {}
 void GWidget::end() {}
-void GWidget::addItem(std::string text) {}
-void GWidget::addItem(std::string text, std::string link, std::string icon) {}
+void GWidget::addItem(QString text) {}
+void GWidget::addItem(QString text, QString link, QString icon) {}
 //===============================================
