@@ -58,9 +58,8 @@ struct _sGApp {
     // query
     QString query_string;
     QMap<QString, QString> query_map;
-    // query
-    QString cookie_string;
-    QMap<QString, QString> cookie_map;
+    // mime
+    QString mime_type;
 };
 //===============================================
 #endif
