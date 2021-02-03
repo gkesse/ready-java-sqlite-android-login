@@ -31,6 +31,7 @@ GGraphicsView::GGraphicsView(QWidget* parent) : GWidget(parent) {
     lSettingMenu->addAction(GManager::Instance()->loadPicto(fa::book, lApp->picto_color), "Zoomer en arrière (-)")->setData("zoom_out");
     lSettingMenu->addAction(GManager::Instance()->loadPicto(fa::book, lApp->picto_color), "Image suivante (+)")->setData("next_image");
     lSettingMenu->addAction(GManager::Instance()->loadPicto(fa::book, lApp->picto_color), "Image précédente (-)")->setData("previous_image");
+    lSettingMenu->addAction(GManager::Instance()->loadPicto(fa::book, lApp->picto_color), "Flouter une image")->setData("blur_image");
     lSettingMenu->setCursor(Qt::PointingHandCursor);
     
     QGraphicsScene* lScene = new QGraphicsScene(this);
@@ -64,12 +65,20 @@ void GGraphicsView::showImage(QString filename) {
     if(filename == "") return;
     m_scene->clear();
     m_workspace->resetMatrix();
-    QPixmap lImage(filename);
-    m_pixmap = m_scene->addPixmap(lImage);
+    QPixmap lPixmap(filename);
+    m_pixmapItem = m_scene->addPixmap(lPixmap);
     m_scene->update();
-    m_workspace->setSceneRect(lImage.rect());
+    m_workspace->setSceneRect(lPixmap.rect());
     m_filename = filename;
     m_state = "open";
+}
+//===============================================
+void GGraphicsView::showImage(const QPixmap& pixmap) {
+    m_scene->clear();
+    m_workspace->resetMatrix();
+    m_pixmapItem = m_scene->addPixmap(pixmap);
+    m_scene->update();
+    m_workspace->setSceneRect(pixmap.rect());
 }
 //===============================================
 // slot
@@ -95,7 +104,7 @@ void GGraphicsView::slotItemClick(QAction* action) {
     else if(lApp->widget_id == "save_image") {
         if(m_state == "none") {return;}
         QString lFilename = GManager::Instance()->saveFile("Enregistrer une image", lApp->img_filter);
-        m_pixmap->pixmap().save(lFilename);
+        m_pixmapItem->pixmap().save(lFilename);
     }
     else if(lApp->widget_id == "zoom_in") {
         if(m_state == "none") {return;}
@@ -116,6 +125,15 @@ void GGraphicsView::slotItemClick(QAction* action) {
         QString lFilename = GManager::Instance()->previousFile(
         m_filename, lApp->img_filters, "Cette image est la première");
         showImage(lFilename);
+    }
+    else if(lApp->widget_id == "blur_image") {
+        if(m_state == "none") {return;}
+        cv::Mat lMat, lTmp; QPixmap lPixmap; QImage lImg;
+        lPixmap = m_pixmapItem->pixmap();
+        GManager::Instance()->convertImage(lPixmap, lImg, lMat);
+        cv::blur(lMat, lTmp, cv::Size(8, 8));
+        GManager::Instance()->convertImage(lTmp, lImg, lPixmap);
+        showImage(lPixmap);
     }
 }
 //===============================================

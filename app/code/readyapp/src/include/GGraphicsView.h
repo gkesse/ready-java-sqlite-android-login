@@ -14,6 +14,7 @@ public:
     
 public:
     void showImage(QString filename);
+    void showImage(const QPixmap& pixmap);
     
 public slots:
     void slotItemClick();
@@ -26,7 +27,7 @@ private:
     QGraphicsScene* m_scene;
     QGraphicsView* m_workspace;
     QString m_filename;
-    QGraphicsPixmapItem* m_pixmap;
+    QGraphicsPixmapItem* m_pixmapItem;
     QString m_state;
 };
 //===============================================

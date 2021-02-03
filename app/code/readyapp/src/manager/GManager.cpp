@@ -279,6 +279,18 @@ int GManager::isLogin() {
     return 0;
 }
 //===============================================
+// image
+//===============================================
+void GManager::convertImage(const QPixmap& pixmap, QImage& img, cv::Mat& mat) {
+    img = pixmap.toImage().convertToFormat(QImage::Format_RGB888);
+    mat = cv::Mat(img.height(), img.width(), CV_8UC3, img.bits(), img.bytesPerLine());
+}
+//===============================================
+void GManager::convertImage(const cv::Mat& mat, QImage& img, QPixmap& pixmap) {
+    img = QImage(mat.data, mat.cols, mat.rows, mat.step, QImage::Format_RGB888);
+    pixmap = QPixmap::fromImage(img);
+}
+//===============================================
 // table
 //===============================================
 QVector<QString> GManager::getTables() {

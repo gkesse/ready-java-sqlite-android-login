@@ -54,6 +54,9 @@ public:
     // message
     int showQuestion(QString text);
     int showInfo(QString text);
+    // image
+    void convertImage(const QPixmap& pixmap, QImage& img, cv::Mat& mat);
+    void convertImage(const cv::Mat& mat, QImage& img, QPixmap& pixmap);
     // login
     int isLogin();
     // table
