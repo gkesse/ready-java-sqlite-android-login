@@ -19,42 +19,26 @@ GOpenCV* GOpenCV::Instance() {
     return m_instance;
 }
 //===============================================
-// image
+// transform
 //===============================================
-void GOpenCV::loadImage(QString imgPath) {
-    std::string lFilename = GManager::Instance()->getFilename(imgPath).toStdString();
-    cv::Mat lImg = cv::imread(imgPath.toStdString());
-    cv::namedWindow(lFilename, cv::WINDOW_AUTOSIZE);
-    cv::imshow(lFilename, lImg);
-    cv::waitKey(0);
-    cv::destroyAllWindows();
-}
-//===============================================
-void GOpenCV::invertImage(QString imgPath) {
-    std::string lFilename = GManager::Instance()->getFilename(imgPath).toStdString();
-    cv::Mat lImg = cv::imread(imgPath.toStdString());
-    cv::Mat lInvert;
-    cv::bitwise_not(lImg, lInvert);
-    cv::namedWindow(lFilename, cv::WINDOW_AUTOSIZE);
-    cv::imshow(lFilename, lInvert);
-    cv::waitKey(0);
-    cv::destroyAllWindows();
-}
-//===============================================
-// video
-//===============================================
-void GOpenCV::loadVideo(QString videoPath) {
-    std::string lFilename = GManager::Instance()->getFilename(videoPath).toStdString();
-    cv::VideoCapture lVideo;
-    lVideo.open(videoPath.toStdString());
-    cv::Mat lImg;
-    cv::namedWindow(lFilename, cv::WINDOW_AUTOSIZE);
-    while(1) {
-        lVideo >> lImg;
-        if(lImg.empty()) break;
-        cv::imshow(lFilename, lImg);
-        if((char)cv::waitKey(30) >= 0) break;
-    }
-    cv::destroyAllWindows();
+void GOpenCV::affineTransform(const cv::Mat& input, cv::Mat& result) {
+    cv::Point2f triangleA[3];
+    cv::Point2f triangleB[3];
+
+    triangleA[0] = cv::Point2f(0 , 0);
+    triangleA[1] = cv::Point2f(1 , 0);
+    triangleA[2] = cv::Point2f(0 , 1);
+
+    triangleB[0] = cv::Point2f(0, 0);
+    triangleB[1] = cv::Point2f(1, 0);
+    triangleB[2] = cv::Point2f(1, 1);
+
+    cv::Mat affineMatrix = cv::getAffineTransform(triangleA, triangleB);
+    cv::warpAffine(
+    input, result,
+    affineMatrix, input.size(), 
+    cv::INTER_CUBIC,
+    cv::BORDER_CONSTANT
+    );
 }
 //===============================================

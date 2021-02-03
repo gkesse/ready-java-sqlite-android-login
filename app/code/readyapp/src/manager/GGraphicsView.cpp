@@ -1,5 +1,6 @@
 //===============================================
 #include "GGraphicsView.h"
+#include "GOpenCV.h"
 #include "GManager.h"
 //===============================================
 // constructor
@@ -32,6 +33,7 @@ GGraphicsView::GGraphicsView(QWidget* parent) : GWidget(parent) {
     lSettingMenu->addAction(GManager::Instance()->loadPicto(fa::book, lApp->picto_color), "Image suivante (+)")->setData("next_image");
     lSettingMenu->addAction(GManager::Instance()->loadPicto(fa::book, lApp->picto_color), "Image précédente (-)")->setData("previous_image");
     lSettingMenu->addAction(GManager::Instance()->loadPicto(fa::book, lApp->picto_color), "Flouter une image")->setData("blur_image");
+    lSettingMenu->addAction(GManager::Instance()->loadPicto(fa::book, lApp->picto_color), "Transformation affine")->setData("affine_transform");
     lSettingMenu->setCursor(Qt::PointingHandCursor);
     
     QGraphicsScene* lScene = new QGraphicsScene(this);
@@ -132,6 +134,15 @@ void GGraphicsView::slotItemClick(QAction* action) {
         lPixmap = m_pixmapItem->pixmap();
         GManager::Instance()->convertImage(lPixmap, lImg, lMat);
         cv::blur(lMat, lTmp, cv::Size(8, 8));
+        GManager::Instance()->convertImage(lTmp, lImg, lPixmap);
+        showImage(lPixmap);
+    }
+    else if(lApp->widget_id == "affine_transform") {
+        if(m_state == "none") {return;}
+        cv::Mat lMat, lTmp; QPixmap lPixmap; QImage lImg;
+        lPixmap = m_pixmapItem->pixmap();
+        GManager::Instance()->convertImage(lPixmap, lImg, lMat);
+        GOpenCV::Instance()->affineTransform(lMat, lTmp);
         GManager::Instance()->convertImage(lTmp, lImg, lPixmap);
         showImage(lPixmap);
     }

@@ -15,8 +15,10 @@ GOBJS =\
 GCFLAGS =\
     -std=gnu++11 \
     
+#================================================
 all: clean compile run
-
+#================================================
+# cpp
 compile: $(GOBJS)
 	@if not exist $(GBIN) ( mkdir $(GBIN) )
 	g++ $(GCFLAGS) -o $(GTARGET) $(GOBJS) $(GLIBS) 
@@ -35,3 +37,14 @@ clean:
 	@if not exist $(GBIN) ( mkdir $(GBIN) )
 	@if not exist $(GBUILD) ( mkdir $(GBUILD) )
 	@del /s /q $(GBUILD)\*.o $(GTARGET)
+#================================================
+# git
+git_push:
+	@cd $(GPROJECT_PATH) && git pull && git add --all && git commit -m "Initial Commit" && git push -u origin master
+git_clone:
+	@cd $(GPROJECT_ROOT) && git clone $(GGIT_URL) $(GGIT_NAME) 
+#================================================
+# batch
+batch_tree:
+	@tree /f $(GTREE_PATH)
+#================================================

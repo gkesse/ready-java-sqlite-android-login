@@ -1,6 +1,6 @@
 //===============================================
 #include "GOpenCVUi.h"
-#include "GOpenCV.h"
+#include "GOpenCVMg.h"
 #include "GConfig.h"
 #include "GProcess.h"
 #include "GManager.h"
@@ -124,7 +124,7 @@ void GOpenCVUi::run_IMAGE_LOAD(int argc, char** argv) {
     lImagePath += lApp->path_sep;
     lImagePath += GConfig::Instance()->getData("G_IMAGE_NAME");
     printf("%s\n", lImagePath.toStdString().c_str());
-    GOpenCV::Instance()->loadImage(lImagePath);
+    GOpenCVMg::Instance()->loadImage(lImagePath);
     G_STATE = "S_SAVE";
 }
 //===============================================
@@ -161,7 +161,7 @@ void GOpenCVUi::run_IMAGE_INVERT(int argc, char** argv) {
     lImagePath += lApp->path_sep;
     lImagePath += GConfig::Instance()->getData("G_IMAGE_NAME");
     printf("%s\n", lImagePath.toStdString().c_str());
-    GOpenCV::Instance()->invertImage(lImagePath);
+    GOpenCVMg::Instance()->invertImage(lImagePath);
     G_STATE = "S_SAVE";
 }
 //===============================================
@@ -198,7 +198,7 @@ void GOpenCVUi::run_VIDEO_LOAD(int argc, char** argv) {
     lVideoPath += lApp->path_sep;
     lVideoPath += GConfig::Instance()->getData("G_VIDEO_NAME");
     printf("%s\n", lVideoPath.toStdString().c_str());
-    GOpenCV::Instance()->loadVideo(lVideoPath);
+    GOpenCVMg::Instance()->loadVideo(lVideoPath);
     G_STATE = "S_SAVE";
 }
 //===============================================

@@ -70,6 +70,7 @@ void GWeb::redirect(std::string newUrl) {
     printf("<body>\n");
     printf("</body>\n");
     printf("</html>\n");
+    exit(0);
 }
 //===============================================
 void GWeb::setCookie(std::string key, std::string value) {

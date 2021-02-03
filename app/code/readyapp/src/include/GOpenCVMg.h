@@ -1,21 +1,24 @@
 //===============================================
-#ifndef _GOpenCV_
-#define _GOpenCV_
+#ifndef _GOpenCVMg_
+#define _GOpenCVMg_
 //===============================================
 #include "GInclude.h"
 //===============================================
-class GOpenCV { 
+class GOpenCVMg { 
 private:
-    GOpenCV();
+    GOpenCVMg();
    
 public:
-    virtual ~GOpenCV();
-    static GOpenCV* Instance();
-    // transform
-    void affineTransform(const cv::Mat& mat, cv::Mat& out);
+    virtual ~GOpenCVMg();
+    static GOpenCVMg* Instance();
+    // image
+    void loadImage(QString imgPath);
+    void invertImage(QString imgPath);
+    // video
+    void loadVideo(QString videoPath);
 
 private:
-    static GOpenCV* m_instance;
+    static GOpenCVMg* m_instance;
 };
 //===============================================
 #endif

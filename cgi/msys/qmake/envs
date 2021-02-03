@@ -1,0 +1,14 @@
+#================================================
+export "GPROJECT_ROOT=/c/Users/Admin/Downloads/Programs"
+export "GPROJECT_PATH=${GPROJECT_ROOT}/ReadyCpp"
+export "GPROJECT_SRC=${GPROJECT_PATH}/cgi/code/web/src"
+export "GPROJECT_WEB=${GPROJECT_PATH}/cgi/code/web/root"
+export "GPROJECT_BIN=${GPROJECT_WEB}/index.cgi"
+#================================================
+export "GPROJECT_DATA=${GPROJECT_PATH}/cgi/data"
+#================================================
+export "GTREE_PATH=C:/Users/Admin/Downloads/Programs/ReadyCpp/cgi/code/web"
+#================================================
+export "GGIT_URL=https://github.com/gkesse/ReadyCpp.git"
+export "GGIT_NAME=ReadyCpp"
+#================================================
