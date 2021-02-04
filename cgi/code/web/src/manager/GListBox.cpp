@@ -24,6 +24,6 @@ void GListBox::addItem(QString text) {
 }
 //===============================================
 void GListBox::addItem(QString text, QString link, QString icon) {
-    printf("<a href='%s'><div class='item'><i class='fa fa-%s'></i> %s</div></a>\n", link.toStdString().c_str(), icon.toStdString().c_str(), text.toStdString().c_str());
+    printf("<a href='%s'><div class='item'><i class='icon fa fa-%s'></i> %s</div></a>\n", link.toStdString().c_str(), icon.toStdString().c_str(), text.toStdString().c_str());
 }
 //===============================================

@@ -202,6 +202,11 @@ void GStyle::run(int argc, char** argv) {
     }\n");
     
     printf("\
+    .listbox_id .item .icon {\n\
+        margin-right: 5px;\n\
+    }\n");
+    
+    printf("\
     .listbox_id .item:hover {\n\
         background-color: #503030;\n\
     }\n");
