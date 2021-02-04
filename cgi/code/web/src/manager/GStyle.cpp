@@ -185,43 +185,45 @@ void GStyle::run(int argc, char** argv) {
     /* html_page */
     printf("\
     .html_page {\n\
-        background-color: red;\n\
         padding: 10px;\n\
     }\n");
     //===============================================
-    /* listbox */
+    /* listbox_id */
     printf("\
-    .listbox {\n\
-        border: 1px solid #ffffff;\n\
+    .listbox_id {\n\
+        \n\
     }\n");
+    
     printf("\
-    .listbox .item {\n\
+    .listbox_id .item {\n\
         padding: 5px 10px;\n\
         cursor: pointer;\n\
     }\n");
+    
     printf("\
-    .listbox .item:hover {\n\
+    .listbox_id .item:hover {\n\
         background-color: #503030;\n\
     }\n");
+    
     printf("\
-    .listbox .item:active {\n\
+    .listbox_id .item:active {\n\
         background-color: transparent;\n\
     }\n");
     //===============================================
     /* main_page */
     printf("\
     .main_page {\n\
-        background-color: green;\n\
         max-width: 1000px;\n\
         margin: auto;\n\
     }\n");
     //===============================================
-    // table
+    // table_id
     printf("\
     .table_id {\n\
         display: inline-block;\n\
         padding: 10px;\n\
     }\n");
+    
     printf("\
     .table_id .name {\n\
         background-color: #305050;\n\
@@ -230,24 +232,29 @@ void GStyle::run(int argc, char** argv) {
         padding: 5px 10px;\n\
         text-align: center;\n\
     }\n");
+    
     printf("\
     .table_id table {\n\
         border-collapse: collapse;\n\
     }\n");
+    
     printf("\
     .table_id table thead tr {\n\
         background-color: #305050;\n\
         text-align: left;\n\
     }\n");
+    
     printf("\
     .table_id table th, .table_id  table td {\n\
         padding: 5px 10px;\n\
         border: 1px solid #aaaaaa;\n\
     }\n");
+    
     printf("\
     .table_id table th {\n\
         font-weight: normal;\n\
     }\n");
+    
     printf("\
     .table_id  table td {\n\
         color: #aaaaaa;\n\
@@ -256,25 +263,59 @@ void GStyle::run(int argc, char** argv) {
     /* titlebar_id */
     printf("\
     .titlebar_id {\n\
+        border-bottom: 5px solid %s;\n\
+        padding-bottom: 5px;\n\
+    }\n", lStyle->app_light_color);
+    
+    printf("\
+    .titlebar_id .content {\n\
         position: relative;\n\
+        min-height: 32px;\n\
     }\n");
     
     printf("\
-    .titlebar_id {\n\
-        position: relative;\n\
+    .titlebar_id .content .logo {\n\
+        position: absolute;\n\
+        top: 5px;\n\
+        left: 0px;\n\
+        width: 25px;\n\
+        height: auto;\n\
     }\n");
 
     printf("\
-    .titlebar_id {\n\
-        position: relative;\n\
+    .titlebar_id .content .app_name {\n\
+        position: absolute;\n\
+        top: 0px;\n\
+        bottom: 0px;\n\
+        left: 30px;\n\
+        padding-top: 5px;\n\
     }\n");
+    
     printf("\
-    .titlebar_id {\n\
-        position: relative;\n\
+    .titlebar_id .content .title {\n\
+        position: absolute;\n\
+        top: 0px;\n\
+        bottom: 0px;\n\
+        left: 100px;\n\
+        right: 130px;\n\
+        padding-top: 5px;\n\
+        text-align: center;\n\
     }\n");
+    
     printf("\
-    .titlebar_id {\n\
-        position: relative;\n\
+    .titlebar_id .content .login {\n\
+        position: absolute;\n\
+        top: 0px;\n\
+        bottom: 0px;\n\
+        right: 0px;\n\
+    }\n");
+    //===============================================
+    /* window_id */
+    printf("\
+    .window_id {\n\
+        border-bottom: 2px solid #aaaaaa;\n\
+        border-radius: 5px;\n\
+        padding: 5px;\n\
     }\n");
     //===============================================
 }

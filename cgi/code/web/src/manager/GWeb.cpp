@@ -58,7 +58,9 @@ void GWeb::selectPage() {
 void GWeb::showPage() {
     sGApp* lApp = GManager::Instance()->getData()->app;
     QString lPageId = m_addressMap[lApp->page_id];
+    printf("<div class='window_id'>\n");
     GWidget::Create(lPageId)->print();
+    printf("</div>\n");
 }
 //===============================================
 void GWeb::redirect(QString newUrl) {

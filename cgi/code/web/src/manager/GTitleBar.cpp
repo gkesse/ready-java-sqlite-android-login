@@ -15,13 +15,15 @@ GTitleBar::~GTitleBar() {
 void GTitleBar::print() {
     sGApp* lApp = GManager::Instance()->getData()->app;
     if(lApp->mime_type != "text/html") {return;}
-    printf("<div class='border_id'>\n");
-    printf("<div class='border_id0 logo'>logo</div>\n");
-    printf("<div class='border_id0 app_name'>app_name</div>\n");
-    printf("<div class='border_id0 title'>title</div>\n");
-    printf("<form class='border_id0' action='' method='post'>\
+    printf("<div class='titlebar_id'>\n");
+    printf("<div class='content'>\n");
+    printf("<img class='logo' src='/data/img/logo_flat.png'/>\n");
+    printf("<div class='app_name'>%s</div>\n", lApp->app_name.toStdString().c_str());
+    printf("<div class='title'>title</div>\n");
+    printf("<form action='' method='post'>\
     <button class='login button_id' type='submit' id='req' name='req' value='login'>\
     <i class='icon fa fa-user'></i> Se Connecter</button></form>\n");
+    printf("</div>\n");
     printf("</div>\n");
 }
 //===============================================

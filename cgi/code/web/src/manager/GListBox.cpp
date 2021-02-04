@@ -1,8 +1,6 @@
 //===============================================
 #include "GListBox.h"
 //===============================================
-// constructor
-//===============================================
 GListBox::GListBox() {
 
 }
@@ -14,7 +12,7 @@ GListBox::~GListBox() {
 // method
 //===============================================
 void GListBox::start() {
-    printf("<div class='listbox'>\n");
+    printf("<div class='listbox_id'>\n");
 }
 //===============================================
 void GListBox::end() {
