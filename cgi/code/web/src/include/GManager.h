@@ -24,10 +24,8 @@ public:
     // string
     QMap<QString, QString> splitMap(QString str, QString sepRow, QString sepCol);
     QString removeLast(QString str, char remove) ;
-    // query
-    QString getQuery(QString key, QString defaultValue);
-    // cookie
-    QString getCookie(QString key, QString defaultValue);
+    // post
+    QString getPost();
     
 private:
     static GManager* m_instance;
@@ -44,7 +42,6 @@ struct _sGManager {
 struct _sGApp {
     // app
     QString app_name;
-    QString app_title;
     // logo
     QString logo_path;
     // style
@@ -62,10 +59,19 @@ struct _sGApp {
     // cookie
     QString cookie_string;
     QMap<QString, QString> cookie_map;
+    // req
+    QString req_string;
+    QMap<QString, QString> req_map;
     // mime
     QString mime_type;
     // image
     QString image_id;
+    // address
+    QMap<QString, QString> address_map;
+    // title
+    QMap<QString, QString> title_map;
+    // req
+    QString req;
 };
 //===============================================
 struct _sGStyle {

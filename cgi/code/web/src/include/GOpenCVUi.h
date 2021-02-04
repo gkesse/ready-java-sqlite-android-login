@@ -10,6 +10,7 @@ public:
     ~GOpenCVUi();
     // method
     void print();
+    void request();
 };
 //===============================================
 #endif

@@ -9,7 +9,6 @@ GManager::GManager() {
     // app
     mgr->app = new sGApp;
     mgr->app->app_name = "ReadyApp";
-    mgr->app->app_title = mgr->app->app_name;
     mgr->app->logo_path = "/data/img/logo.png";
     mgr->app->style_path = "/data/css/style.css";
     mgr->app->icon_path = "/libs/font_awesome/css/font-awesome.min.css";
@@ -56,6 +55,10 @@ void GManager::loadEnv() {
     lApp->cookie_string = getEnv("HTTP_COOKIE");
     lApp->cookie_map = splitMap(lApp->cookie_string, "&", "=");
     lApp->page_last = getCookie("page_last", "");
+    // req_map
+    lApp->req_string = getPost();
+    lApp->req_map = splitMap(lApp->req_string, "&", "=");
+    lApp->req = lApp->req_map("page_last", "");
 }
 //===============================================
 void GManager::showEnv() {
@@ -68,7 +71,8 @@ void GManager::showEnv() {
         "REQUEST_METHOD" << "REQUEST_URI" << "SCRIPT_FILENAME" <<
         "SCRIPT_NAME" << "SERVER_ADDR" << "SERVER_ADMIN" <<      
         "SERVER_NAME" << "SERVER_PORT" << "SERVER_PROTOCOL" <<     
-        "SERVER_SIGNATURE" << "SERVER_SOFTWARE" << "HTTP_COOKIE";
+        "SERVER_SIGNATURE" << "SERVER_SOFTWARE" << "HTTP_COOKIE" <<
+        "INPUT_LENGTH" << "CONTENT_LENGTH";
         
     printf("<div class='table_id'>\n");
     printf("<table>\n");
@@ -109,17 +113,16 @@ QString GManager::removeLast(QString str, char remove) {
     return lData;
 }
 //===============================================
-// query
+// post
 //===============================================
-QString GManager::getQuery(QString key, QString defaultValue) {
-    sGApp* lApp = GManager::Instance()->getData()->app;
-    return lApp->query_map.value(key, defaultValue);
-}
-//===============================================
-// cookie
-//===============================================
-QString GManager::getCookie(QString key, QString defaultValue) {
-    sGApp* lApp = GManager::Instance()->getData()->app;
-    return lApp->cookie_map.value(key, defaultValue);
+QString GManager::getPost() {
+    char lBuffer[1024] = {0}; 
+    QString lEnv = getEnv("CONTENT_LENGTH"); 
+    if(lEnv == "") {return "";}
+    int lLength = lEnv.toInt();
+    int lSize = sizeof(lBuffer) - 1;
+    lLength = qMin(lLength, lSize); 
+    fread(lBuffer, lLength, 1, stdin); 
+    return lBuffer;
 }
 //===============================================

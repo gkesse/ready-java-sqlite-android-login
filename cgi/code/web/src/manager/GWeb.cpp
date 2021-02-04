@@ -35,29 +35,31 @@ void GWeb::run(int argc, char** argv) {
     GWidget::Create("footer")->print();
 }
 //===============================================
-void GWeb::addPage(QString address, QString key) {
-    m_addressMap[address] = key;
+void GWeb::addPage(QString address, QString key, QString title) {
+    sGApp* lApp = GManager::Instance()->getData()->app;
+    lApp->address_map[address] = key;
+    lApp->title_map[address] = title;
 }
 //===============================================
 void GWeb::loadPage() {
-    addPage("", "home");
-    addPage("home", "home");
-    addPage("home/login", "login");
-    addPage("home/sqlite", "sqlite");
-    addPage("home/opencv", "opencv");
-    addPage("home/error", "error");
+    addPage("", "home", "Accueil");
+    addPage("home", "home", "Accueil");
+    addPage("home/login", "login", "Connexion");
+    addPage("home/sqlite", "sqlite", "SQLite");
+    addPage("home/opencv", "opencv", "OpenCV");
+    addPage("home/error", "error", "Erreur");
 }
 //===============================================
 void GWeb::selectPage() {
     sGApp* lApp = GManager::Instance()->getData()->app;
     if(lApp->page_id == "") {redirect("/home"); return;}
-    if(!m_addressMap.count(lApp->page_id)) {redirect("/"+lApp->page_last);}
+    if(!lApp->address_map.count(lApp->page_id)) {redirect("/"+lApp->page_last);}
     else {setCookie("page_last", lApp->page_id);}
 }
 //===============================================
 void GWeb::showPage() {
     sGApp* lApp = GManager::Instance()->getData()->app;
-    QString lPageId = m_addressMap[lApp->page_id];
+    QString lPageId = lApp->address_map[lApp->page_id];
     printf("<div class='window_id'>\n");
     GWidget::Create(lPageId)->print();
     printf("</div>\n");
