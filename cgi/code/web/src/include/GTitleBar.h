@@ -10,6 +10,7 @@ public:
     ~GTitleBar();
     // method
     void print();
+    void request();
 };
 //===============================================
 #endif

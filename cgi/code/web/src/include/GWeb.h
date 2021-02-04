@@ -16,7 +16,6 @@ public:
     void loadPage();
     void selectPage();
     void showPage();
-    void redirect(QString newUrl);
     void setCookie(QString key, QString value);
     void mimeType();
     

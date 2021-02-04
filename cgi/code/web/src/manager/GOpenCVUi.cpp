@@ -24,6 +24,5 @@ void GOpenCVUi::print() {
 //===============================================
 void GOpenCVUi::request() {
     sGApp* lApp = GManager::Instance()->getData()->app;
-    lApp->req = GManager::Instance()->getPost();
 }
 //===============================================

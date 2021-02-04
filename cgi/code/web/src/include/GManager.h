@@ -26,7 +26,9 @@ public:
     QString removeLast(QString str, char remove) ;
     // post
     QString getPost();
-    
+    // redirect
+    void redirect(QString newUrl);
+
 private:
     static GManager* m_instance;
     sGManager* mgr;

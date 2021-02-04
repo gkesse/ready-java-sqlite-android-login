@@ -46,19 +46,22 @@ QString GManager::getEnv(QString key) {
 //===============================================
 void GManager::loadEnv() {
     sGApp* lApp = GManager::Instance()->getData()->app;
-    // page_id
+    // query_map
     lApp->query_string = getEnv("QUERY_STRING");
     lApp->query_map = splitMap(lApp->query_string, "&", "=");
-    lApp->page_id = getQuery("page_id", "");
+    // page_id
+    lApp->page_id = lApp->query_map.value("page_id", "");
     lApp->page_id = removeLast(lApp->page_id, '/');
-    // page_last
+    // cookie_map
     lApp->cookie_string = getEnv("HTTP_COOKIE");
     lApp->cookie_map = splitMap(lApp->cookie_string, "&", "=");
-    lApp->page_last = getCookie("page_last", "");
+    // page_last
+    lApp->page_last = lApp->cookie_map.value("page_last", "");
     // req_map
     lApp->req_string = getPost();
     lApp->req_map = splitMap(lApp->req_string, "&", "=");
-    lApp->req = lApp->req_map("page_last", "");
+    // req
+    lApp->req = lApp->req_map.value("req", "");
 }
 //===============================================
 void GManager::showEnv() {
@@ -124,5 +127,20 @@ QString GManager::getPost() {
     lLength = qMin(lLength, lSize); 
     fread(lBuffer, lLength, 1, stdin); 
     return lBuffer;
+}
+//===============================================
+// redirect
+//===============================================
+void GManager::redirect(QString newUrl) {
+    printf("Content-type: text/html\n\n");
+    printf("<html>\n");
+    printf("<head>\n");
+    printf("<title>Redirection</title>\n");
+    printf("<meta http-equiv='refresh' content='0; URL=%s'>\n", newUrl.toStdString().c_str());
+    printf("</head>\n");
+    printf("<body>\n");
+    printf("</body>\n");
+    printf("</html>\n");
+    exit(0);
 }
 //===============================================

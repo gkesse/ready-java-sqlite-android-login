@@ -17,8 +17,9 @@ GHome::~GHome() {
 void GHome::print() {    
     GWidget* lListBox = GWidget::Create("listbox");
     lListBox->start();
-    lListBox->addItem("SQLite", "home/sqlite", "book");
-    lListBox->addItem("OpenCV", "home/opencv", "book");
+    lListBox->addItem("Connexion", "home/login", "user");
+    lListBox->addItem("SQLite", "home/sqlite", "bdatabase");
+    lListBox->addItem("OpenCV", "home/opencv", "camera");
     lListBox->end();    
 }
 //===============================================

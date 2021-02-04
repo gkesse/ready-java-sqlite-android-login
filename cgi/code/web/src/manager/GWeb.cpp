@@ -52,8 +52,8 @@ void GWeb::loadPage() {
 //===============================================
 void GWeb::selectPage() {
     sGApp* lApp = GManager::Instance()->getData()->app;
-    if(lApp->page_id == "") {redirect("/home"); return;}
-    if(!lApp->address_map.count(lApp->page_id)) {redirect("/"+lApp->page_last);}
+    if(lApp->page_id == "") {GManager::Instance()->redirect("/home");}
+    if(!lApp->address_map.count(lApp->page_id)) {GManager::Instance()->redirect("/"+lApp->page_last);}
     else {setCookie("page_last", lApp->page_id);}
 }
 //===============================================
@@ -63,19 +63,6 @@ void GWeb::showPage() {
     printf("<div class='window_id'>\n");
     GWidget::Create(lPageId)->print();
     printf("</div>\n");
-}
-//===============================================
-void GWeb::redirect(QString newUrl) {
-    printf("Content-type: text/html\n\n");
-    printf("<html>\n");
-    printf("<head>\n");
-    printf("<title>Redirection</title>\n");
-    printf("<meta http-equiv='refresh' content='0; URL=%s'>\n", newUrl.toStdString().c_str());
-    printf("</head>\n");
-    printf("<body>\n");
-    printf("</body>\n");
-    printf("</html>\n");
-    exit(0);
 }
 //===============================================
 void GWeb::setCookie(QString key, QString value) {
