@@ -21,7 +21,7 @@ void GTitleBar::print() {
     printf("<div class='title'>title</div>\n");
     printf("<form action='' method='post'>\
     <button class='login button_id' type='submit' id='req' name='req' value='login'>\
-    <i class='icon fa fa-sign-in'></i> Se Connecter</button></form>\n");
+    <i class='icon fa fa-user'></i> Se Connecter</button></form>\n");
     printf("</div>\n");
 }
 //===============================================
