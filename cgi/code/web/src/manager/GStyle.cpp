@@ -139,11 +139,17 @@ void GStyle::run(int argc, char** argv) {
     //===============================================
     // special
     //===============================================
-    /* border */
+    /* border_id */
     printf("\
     .border_id {\n\
         border: 2px solid black;\n\
         padding: 10px;\n\
+    }\n");
+    //===============================================
+    /* border_id0 */
+    printf("\
+    .border_id0 {\n\
+        border: 2px solid black;\n\
     }\n");
     //===============================================
     // custom
@@ -153,6 +159,7 @@ void GStyle::run(int argc, char** argv) {
     .addresskey_id {\n\
         padding: 10px 10px;\n\
     }\n");
+    
     printf("\
     .addresskey_id .sep {\n\
         padding: 0px 5px;\n\
@@ -244,6 +251,30 @@ void GStyle::run(int argc, char** argv) {
     printf("\
     .table_id  table td {\n\
         color: #aaaaaa;\n\
+    }\n");
+    //===============================================
+    /* titlebar_id */
+    printf("\
+    .titlebar_id {\n\
+        position: relative;\n\
+    }\n");
+    
+    printf("\
+    .titlebar_id {\n\
+        position: relative;\n\
+    }\n");
+
+    printf("\
+    .titlebar_id {\n\
+        position: relative;\n\
+    }\n");
+    printf("\
+    .titlebar_id {\n\
+        position: relative;\n\
+    }\n");
+    printf("\
+    .titlebar_id {\n\
+        position: relative;\n\
     }\n");
     //===============================================
 }
