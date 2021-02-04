@@ -138,6 +138,13 @@ void GStyle::run(int argc, char** argv) {
     //===============================================
     // custom
     //===============================================
+    /* html_page */
+    printf("\
+    .html_page {\n\
+        background-color: red;\n\
+        padding: 10px;\n\
+    }\n");
+    //===============================================
     /* listbox */
     printf("\
     .listbox {\n\

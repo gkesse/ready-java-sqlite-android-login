@@ -29,6 +29,7 @@ void GHeader::print() {
     printf("<link rel='stylesheet' href='/index.cgi?page_id=style'/>\n");
     printf("</head>\n");
     printf("<body>\n");
-    printf("<div class='htmlpage'>\n");
+    printf("<div class='html_page'>\n");
+    printf("<div class='main_page'>\n");
 }
 //===============================================
