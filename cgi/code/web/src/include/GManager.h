@@ -6,8 +6,7 @@
 //===============================================
 typedef struct _sGManager sGManager;
 typedef struct _sGApp sGApp;
-//===============================================
-// manager
+typedef struct _sGStyle sGStyle;
 //===============================================
 class GManager {
 private:
@@ -39,6 +38,7 @@ private:
 //===============================================
 struct _sGManager {
     sGApp* app;
+    sGStyle* style;
 };
 //===============================================
 struct _sGApp {
@@ -64,6 +64,16 @@ struct _sGApp {
     QMap<QString, QString> cookie_map;
     // mime
     QString mime_type;
+    // image
+    QString image_id;
+};
+//===============================================
+struct _sGStyle {
+    // app
+    const char* app_fg_color;
+    const char* app_bg_color;
+    const char* app_light_color;
+    const char* app_font_size;
 };
 //===============================================
 #endif

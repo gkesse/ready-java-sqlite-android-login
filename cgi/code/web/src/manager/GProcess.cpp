@@ -1,6 +1,9 @@
 //===============================================
 #include "GProcess.h"
 #include "GWeb.h"
+#include "GImage.h"
+#include "GStyle.h"
+#include "GManager.h"
 //===============================================
 GProcess* GProcess::m_instance = 0;
 //===============================================
@@ -20,7 +23,7 @@ GProcess* GProcess::Instance() {
 }
 //===============================================
 void GProcess::run(int argc, char** argv) {
-    QString lKey = "web";
+    QString lKey = "cgi";
     if(argc > 1) {lKey = argv[1];}
     if(lKey == "web") {runWeb(argc, argv); return;}
     if(lKey == "img") {runImg(argc, argv); return;}
@@ -28,20 +31,18 @@ void GProcess::run(int argc, char** argv) {
 }
 //===============================================
 void GProcess::runWeb(int argc, char** argv) {
+    sGApp* lApp = GManager::Instance()->getData()->app;
+    GManager::Instance()->loadEnv();
+    if(lApp->page_id == "image") {runImg(argc, argv); return;}
+    if(lApp->page_id == "style") {runStyle(argc, argv); return;}
     GWeb::Instance()->run(argc, argv);
 }
 //===============================================
 void GProcess::runImg(int argc, char** argv) {
-    printf("content-type: image/bmp\n\n");
-    QString lFilename = "./data/img/logo.bmp";
-    FILE* lFile = fopen(lFilename.toStdString().c_str(), "rb");
-    if(lFile != 0) {
-        char lData;
-        while(feof(lFile) == 0) {
-            fread(&lData, 1, 1, lFile);
-            printf("%c", lData);
-        }
-        fclose(lFile);
-    }
+    GImage::Instance()->run(argc, argv);
+}
+//===============================================
+void GProcess::runStyle(int argc, char** argv) {
+    GStyle::Instance()->run(argc, argv);
 }
 //===============================================

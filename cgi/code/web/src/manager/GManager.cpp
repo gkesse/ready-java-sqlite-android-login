@@ -12,10 +12,12 @@ GManager::GManager() {
     mgr->app->app_title = mgr->app->app_name;
     mgr->app->logo_path = "/data/img/logo.png";
     mgr->app->style_path = "/data/css/style.css";
-    mgr->app->font_path = "/libs/font_awesome/css/font-awesome.min.css";
-    mgr->app->icon_path = "/libs/google_fonts";
+    mgr->app->icon_path = "/libs/font_awesome/css/font-awesome.min.css";
+    mgr->app->font_path = "/libs/google_fonts";
     mgr->app->page_last = "home";
     mgr->app->mime_type = "text/html";
+    // style
+    mgr->style = new sGStyle;
 }
 //===============================================
 GManager::~GManager() {
@@ -65,19 +67,24 @@ void GManager::showEnv() {
         "QUERY_STRING" << "REMOTE_ADDR" << "REMOTE_PORT" <<      
         "REQUEST_METHOD" << "REQUEST_URI" << "SCRIPT_FILENAME" <<
         "SCRIPT_NAME" << "SERVER_ADDR" << "SERVER_ADMIN" <<      
-        "SERVER_NAME","SERVER_PORT","SERVER_PROTOCOL" <<     
-        "SERVER_SIGNATURE" << "SERVER_SOFTWARE";
+        "SERVER_NAME" << "SERVER_PORT" << "SERVER_PROTOCOL" <<     
+        "SERVER_SIGNATURE" << "SERVER_SOFTWARE" << "HTTP_COOKIE";
         
-    printf("<table border='0' cellspacing='2'>\n");
+    printf("<div class='table_id'>\n");
+    printf("<table>\n");
+    printf("<tbody>\n");
     for( int i = 0; i < lEnvs.size(); i++ ) {
         QString lEnv = lEnvs[i];
-        printf("<tr><td>%s</td><td>\n", lEnv.toStdString().c_str());
-        QString lValue = getEnv(lEnv);  
-        if(lValue != "") {printf("%s\n", lValue.toStdString().c_str());} 
-        else {printf("Environment variable does not exist.\n");}
-        printf("</td></tr>\n");
+        printf("<tr>\n");
+        printf("<td>%s</td>\n", lEnv.toStdString().c_str());
+        QString lValue = getEnv(lEnv);
+        if(lValue == "") {lValue = "La variable d'environnement n'existe pas";}
+        printf("<td>%s</td>\n", lValue.toStdString().c_str());
+        printf("</tr>\n");
     }
+    printf("</tbody>\n");
     printf("</table>\n");
+    printf("</div >\n");
 }
 //===============================================
 // string

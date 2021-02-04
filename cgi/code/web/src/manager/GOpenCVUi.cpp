@@ -16,7 +16,7 @@ GOpenCVUi::~GOpenCVUi() {
 //===============================================
 void GOpenCVUi::print() {
     printf("<h1>GOpenCVUi</h1>\n");
-    printf("<img src='/image.cgi'/>\n");
+    printf("<img src='index.cgi?page_id=image&image_id=bmp'/a>\n");
     GManager::Instance()->showEnv();
 }
 //===============================================

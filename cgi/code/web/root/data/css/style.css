@@ -139,3 +139,34 @@ span {
 .listbox .item:active {
     background-color: transparent;
 }
+/* ============================================== */
+/* table */
+.table_id {
+    display: inline-block;
+    padding: 10px;
+}
+.table_id .name {
+    background-color: #305050;
+    border: 1px solid #aaaaaa;
+    border-bottom-color: transparent;
+    padding: 5px 10px;
+    text-align: center;
+}
+.table_id table {
+    border-collapse: collapse;
+}
+.table_id table thead tr {
+    background-color: #305050;
+    text-align: left;
+}
+.table_id table th, .table_id  table td {
+    padding: 5px 10px;
+    border: 1px solid #aaaaaa;
+}
+.table_id table th {
+    font-weight: normal;
+}
+.table_id  table td {
+    color: #aaaaaa;
+}
+/* ============================================== */

@@ -1,23 +1,20 @@
 //===============================================
-#ifndef _GProcess_
-#define _GProcess_
+#ifndef _GStyle_
+#define _GStyle_
 //===============================================
 #include "GInclude.h"
 //===============================================
-class GProcess {
+class GStyle {
 private:
-    GProcess();
+    GStyle();
     
 public:
-    virtual ~GProcess();
-    static GProcess* Instance();
+    virtual ~GStyle();
+    static GStyle* Instance();
     void run(int argc, char** argv);
-    void runWeb(int argc, char** argv);
-    void runImg(int argc, char** argv);
-    void runStyle(int argc, char** argv);
     
 private:
-    static GProcess* m_instance;
+    static GStyle* m_instance;
 };
 //===============================================
 #endif

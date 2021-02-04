@@ -24,11 +24,10 @@ GWeb* GWeb::Instance() {
 //===============================================
 void GWeb::run(int argc, char** argv) {
     sGApp* lApp = GManager::Instance()->getData()->app;
-    GManager::Instance()->loadEnv();
     loadPage();
     selectPage();
     mimeType();
-    printf("Content-type: %s\n\n", lApp->mime_type.toStdString().c_str());
+    printf("content-type: %s\n\n", lApp->mime_type.toStdString().c_str());
     GWidget::Create("header")->print();
     showPage();
     GWidget::Create("footer")->print();
