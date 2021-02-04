@@ -19,6 +19,7 @@ public:
     void redirect(QString newUrl);
     void setCookie(QString key, QString value);
     void getCookie(QString key, QString defaultValue);
+    void mimeType();
     
 private:
     static GWeb* m_instance;

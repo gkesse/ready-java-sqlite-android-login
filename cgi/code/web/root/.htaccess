@@ -5,7 +5,7 @@ RewriteEngine on
 #================================================
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ /?pageId=$1 [L,QSA]
+RewriteRule ^(.*)$ /?page_id=$1 [L,QSA]
 #================================================
 </IfModule>
 #================================================

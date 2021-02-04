@@ -15,6 +15,6 @@ GOpenCVUi::~GOpenCVUi() {
 //===============================================
 void GOpenCVUi::print() {
     printf("<h1>GOpenCVUi</h1>\n");
-    //cv::Mat img = cv::imread("/data/img/logo.png", cv::IMREAD_COLOR);
+    printf("<img src='/image.cgi'/>\n");
 }
 //===============================================

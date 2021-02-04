@@ -5,8 +5,6 @@
 //===============================================
 GWeb* GWeb::m_instance = 0;
 //===============================================
-// constructor
-//===============================================
 GWeb::GWeb() {
 
 }
@@ -29,7 +27,8 @@ void GWeb::run(int argc, char** argv) {
     GManager::Instance()->loadEnv();
     loadPage();
     selectPage();
-    printf("Content-type: %s\n\n", lApp->mime_type);
+    mimeType();
+    printf("Content-type: %s\n\n", lApp->mime_type.toStdString().c_str());
     GWidget::Create("header")->print();
     showPage();
     GWidget::Create("footer")->print();
@@ -76,5 +75,10 @@ void GWeb::redirect(QString newUrl) {
 //===============================================
 void GWeb::setCookie(QString key, QString value) {
     printf("Set-Cookie:%s = %s;\n", key.toStdString().c_str(), value.toStdString().c_str());
+}
+//===============================================
+void GWeb::mimeType() {
+    sGApp* lApp = GManager::Instance()->getData()->app;
+    if(lApp->page_id == "home/opencv2") {lApp->mime_type = "image/bmp";}
 }
 //===============================================

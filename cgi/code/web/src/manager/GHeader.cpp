@@ -2,8 +2,6 @@
 #include "GHeader.h"
 #include "GManager.h"
 //===============================================
-// constructor
-//===============================================
 GHeader::GHeader() {
 
 }
@@ -16,6 +14,7 @@ GHeader::~GHeader() {
 //===============================================
 void GHeader::print() {
     sGApp* lApp = GManager::Instance()->getData()->app;
+    if(lApp->mime_type != "text/html") {return;}
     printf("<!DOCTYPE html>\n");
     printf("<html lang='fr'>\n");
     printf("<head>\n");

@@ -18,16 +18,16 @@ public:
     static GManager* Instance();
     // data
     sGManager* getData();
-    // console
-    void print(QString data);
     // env
     QString getEnv(QString key);
     void loadEnv();
     // string
     QMap<QString, QString> splitMap(QString str, QString sepRow, QString sepCol);
     QString removeLast(QString str, char remove) ;
-    // map
-    QString getValue(QMap<QString, QString> mapId, QString key, QString defaultValue);
+    // query
+    QString getQuery(QString key, QString defaultValue);
+    // cookie
+    QString getCookie(QString key, QString defaultValue);
     
 private:
     static GManager* m_instance;
@@ -58,6 +58,9 @@ struct _sGApp {
     // query
     QString query_string;
     QMap<QString, QString> query_map;
+    // cookie
+    QString cookie_string;
+    QMap<QString, QString> cookie_map;
     // mime
     QString mime_type;
 };

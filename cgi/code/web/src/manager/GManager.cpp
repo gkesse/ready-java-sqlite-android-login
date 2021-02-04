@@ -3,8 +3,6 @@
 //===============================================
 GManager* GManager::m_instance = 0;
 //===============================================
-// constructor
-//===============================================
 GManager::GManager() {
     // manager
     mgr = new sGManager;
@@ -37,13 +35,6 @@ sGManager* GManager::getData() {
     return mgr;
 }
 //===============================================
-// console
-//===============================================
-void GManager::print(QString data) {
-    const char* lData = data.toStdString().c_str();
-    printf("%s\n", lData);
-}
-//===============================================
 // env
 //===============================================
 QString GManager::getEnv(QString key) {
@@ -53,15 +44,16 @@ QString GManager::getEnv(QString key) {
 }
 //===============================================
 void GManager::loadEnv() {
+    sGApp* lApp = GManager::Instance()->getData()->app;
     // page_id
-    mgr->app->query_string = getEnv("QUERY_STRING");
-    mgr->app->query_map = splitMap(mgr->app->query_string, "&", "=");
-    mgr->app->page_id = getValue(mgr->app->query_map, "pageId", "");
-    mgr->app->page_id = removeLast(mgr->app->page_id, '/');
+    lApp->query_string = getEnv("QUERY_STRING");
+    lApp->query_map = splitMap(lApp->query_string, "&", "=");
+    lApp->page_id = getQuery("page_id", "");
+    lApp->page_id = removeLast(lApp->page_id, '/');
     // page_last
-    mgr->app->cookie_string = getEnv("HTTP_COOKIE");
-    mgr->app->cookie_map = splitMap(mgr->app->cookie_string, "&", "=");
-    mgr->app->page_last = getValue(mgr->app->cookie_map, "page_last", "");
+    lApp->cookie_string = getEnv("HTTP_COOKIE");
+    lApp->cookie_map = splitMap(lApp->cookie_string, "&", "=");
+    lApp->page_last = getCookie("page_last", "");
 }
 //===============================================
 // string
@@ -86,11 +78,17 @@ QString GManager::removeLast(QString str, char remove) {
     return lData;
 }
 //===============================================
-// map
+// query
 //===============================================
-QString GManager::getValue(QMap<QString, QString> mapId, QString key, QString defaultValue) {
-    QString lData = defaultValue;
-    if(mapId.count(key)) {lData = mapId[key];}
-    return lData;
+QString GManager::getQuery(QString key, QString defaultValue) {
+    sGApp* lApp = GManager::Instance()->getData()->app;
+    return lApp->query_map.value(key, defaultValue);
+}
+//===============================================
+// cookie
+//===============================================
+QString GManager::getCookie(QString key, QString defaultValue) {
+    sGApp* lApp = GManager::Instance()->getData()->app;
+    return lApp->cookie_map.value(key, defaultValue);
 }
 //===============================================
