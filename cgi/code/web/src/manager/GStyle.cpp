@@ -157,7 +157,7 @@ void GStyle::run(int argc, char** argv) {
     /* addresskey_id */
     printf("\
     .addresskey_id {\n\
-        padding: 10px 10px;\n\
+        padding: 10px 0px;\n\
     }\n");
     
     printf("\
@@ -198,6 +198,7 @@ void GStyle::run(int argc, char** argv) {
     .listbox_id .item {\n\
         padding: 5px 10px;\n\
         cursor: pointer;\n\
+        border-radius: 5px;\n\
     }\n");
     
     printf("\
@@ -221,7 +222,6 @@ void GStyle::run(int argc, char** argv) {
     printf("\
     .table_id {\n\
         display: inline-block;\n\
-        padding: 10px;\n\
     }\n");
     
     printf("\
@@ -313,9 +313,11 @@ void GStyle::run(int argc, char** argv) {
     /* window_id */
     printf("\
     .window_id {\n\
-        border-bottom: 2px solid #aaaaaa;\n\
+        border: 1px solid #aaaaaa;\n\
         border-radius: 5px;\n\
-        padding: 5px;\n\
+        padding: 10px;\n\
+        overflow: hidden;\n\
+        overflow-x: auto;\n\
     }\n");
     //===============================================
 }
