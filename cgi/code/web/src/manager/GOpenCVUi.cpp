@@ -15,14 +15,20 @@ GOpenCVUi::~GOpenCVUi() {
 // method
 //===============================================
 void GOpenCVUi::print() {
-    sGApp* lApp = GManager::Instance()->getData()->app;
+    //sGApp* lApp = GManager::Instance()->getData()->app;
     request();
-    printf("<h1>GOpenCVUi : %s</h1>\n", lApp->req.toStdString().c_str());
-    printf("<img src='index.cgi?page_id=image&image_id=bmp'/a>\n");
-    GManager::Instance()->showEnv();
+    printf("<div class='opencv_id'>\n");
+    // settings
+    printf("<div class='setting'>\n");
+    printf("<button class='button_id'><i class='icon fa fa-cog'></i> Paramètres</button>\n");
+    printf("</div>\n");
+    // body
+    printf("<div class='body'>Body</div>\n");
+    //
+    printf("</div>\n");
 }
 //===============================================
 void GOpenCVUi::request() {
-    sGApp* lApp = GManager::Instance()->getData()->app;
+    //sGApp* lApp = GManager::Instance()->getData()->app;
 }
 //===============================================

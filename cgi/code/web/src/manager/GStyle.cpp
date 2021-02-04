@@ -223,6 +223,21 @@ void GStyle::run(int argc, char** argv) {
         margin: auto;\n\
     }\n");
     //===============================================
+    /* opencv_id */
+    printf("\
+    .opencv_id .setting {\n\
+        padding-bottom: 10px;\n\
+    }\n");
+    
+    printf("\
+    .opencv_id .body {\n\
+        background-color: %s;\n\
+        padding: 10px;\n\
+        min-height: 300px;\n\
+        border-radius: 5px;\n\
+        text-align: center;\n\
+    }\n", lStyle->app_light_color);
+    //===============================================
     // table_id
     printf("\
     .table_id {\n\
