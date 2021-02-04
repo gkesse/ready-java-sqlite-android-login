@@ -29,6 +29,8 @@ void GWeb::run(int argc, char** argv) {
     mimeType();
     printf("content-type: %s\n\n", lApp->mime_type.toStdString().c_str());
     GWidget::Create("header")->print();
+    GWidget::Create("titlebar")->print();
+    GWidget::Create("addresskey")->print();
     showPage();
     GWidget::Create("footer")->print();
 }

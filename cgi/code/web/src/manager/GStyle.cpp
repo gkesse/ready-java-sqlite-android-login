@@ -29,6 +29,7 @@ void GStyle::run(int argc, char** argv) {
     lStyle->app_bg_color = "#301010";
     lStyle->app_light_color = "#503030";
     lStyle->app_font_size = "20";
+    lStyle->app_font_family = "Allan";
     //===============================================
     // common
     //===============================================
@@ -58,10 +59,10 @@ void GStyle::run(int argc, char** argv) {
     printf("\
     body {\n\
         background-color: %s;\n\
-        font-family: allan;\n\
+        font-family: %s;\n\
         font-size: %spx;\n\
         text-align: left;\n\
-    }\n", lStyle->app_bg_color, lStyle->app_font_size);
+    }\n", lStyle->app_bg_color, lStyle->app_font_family, lStyle->app_font_size);
 
     printf("\
     button {\n\
@@ -136,7 +137,43 @@ void GStyle::run(int argc, char** argv) {
         word-break: break-all;\n\
     }\n");
     //===============================================
+    // special
+    //===============================================
+    /* border */
+    printf("\
+    .border_id {\n\
+        border: 2px solid black;\n\
+        padding: 10px;\n\
+    }\n");
+    //===============================================
     // custom
+    //===============================================
+    /* addresskey_id */
+    printf("\
+    .addresskey_id {\n\
+        padding: 10px 10px;\n\
+    }\n");
+    printf("\
+    .addresskey_id .sep {\n\
+        padding: 0px 5px;\n\
+        font-size: 16px;\n\
+    }\n");
+    //===============================================
+    /* button_id */
+    printf("\
+    .button_id {\n\
+        background-color: %s;\n\
+        display: inline-block;\n\
+        border-radius: 5px;\n\
+        padding: 5px 10px;\n\
+        font-family: %s;\n\
+        font-size: %spx;\n\
+    }\n", lStyle->app_light_color, lStyle->app_font_family, lStyle->app_font_size);
+    
+    printf("\
+    .button_id .icon:not(last-child) {\n\
+        margin-right: 5px;\n\
+    }\n");
     //===============================================
     /* html_page */
     printf("\
@@ -162,6 +199,14 @@ void GStyle::run(int argc, char** argv) {
     printf("\
     .listbox .item:active {\n\
         background-color: transparent;\n\
+    }\n");
+    //===============================================
+    /* main_page */
+    printf("\
+    .main_page {\n\
+        background-color: green;\n\
+        max-width: 1000px;\n\
+        margin: auto;\n\
     }\n");
     //===============================================
     // table

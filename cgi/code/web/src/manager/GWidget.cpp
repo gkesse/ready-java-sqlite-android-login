@@ -4,6 +4,8 @@
 #include "GHeader.h"
 #include "GFooter.h"
 #include "GListBox.h"
+#include "GTitleBar.h"
+#include "GAddressKey.h"
 // page
 #include "GHome.h"
 #include "GLogin.h"
@@ -27,6 +29,8 @@ GWidget* GWidget::Create(QString key) {
     if(key =="header") {return new GHeader;}
     if(key =="footer") {return new GFooter;}
     if(key =="listbox") {return new GListBox;}
+    if(key =="titlebar") {return new GTitleBar;}
+    if(key =="addresskey") {return new GAddressKey;}
     // page
     if(key =="home") {return new GHome;}
     if(key =="login") {return new GLogin;}

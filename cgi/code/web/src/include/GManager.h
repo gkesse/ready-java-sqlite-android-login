@@ -74,6 +74,7 @@ struct _sGStyle {
     const char* app_bg_color;
     const char* app_light_color;
     const char* app_font_size;
+    const char* app_font_family;
 };
 //===============================================
 #endif
