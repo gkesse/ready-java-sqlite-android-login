@@ -13,7 +13,7 @@ GManager::GManager() {
     mgr->app->logo_path = "/data/img/logo.png";
     mgr->app->style_path = "/data/css/style.css";
     mgr->app->font_path = "/libs/font_awesome/css/font-awesome.min.css";
-    mgr->app->icon_path = "/libs/google_fonts/1.0.0";
+    mgr->app->icon_path = "/libs/google_fonts";
     mgr->app->page_last = "home";
     mgr->app->mime_type = "text/html";
 }
@@ -54,6 +54,30 @@ void GManager::loadEnv() {
     lApp->cookie_string = getEnv("HTTP_COOKIE");
     lApp->cookie_map = splitMap(lApp->cookie_string, "&", "=");
     lApp->page_last = getCookie("page_last", "");
+}
+//===============================================
+void GManager::showEnv() {
+    const QStringList lEnvs = QStringList() <<
+        "COMSPEC" << "DOCUMENT_ROOT" << "GATEWAY_INTERFACE" <<   
+        "HTTP_ACCEPT" << "HTTP_ACCEPT_ENCODING" <<             
+        "HTTP_ACCEPT_LANGUAGE" << "HTTP_CONNECTION" <<         
+        "HTTP_HOST" << "HTTP_USER_AGENT" << "PATH" <<            
+        "QUERY_STRING" << "REMOTE_ADDR" << "REMOTE_PORT" <<      
+        "REQUEST_METHOD" << "REQUEST_URI" << "SCRIPT_FILENAME" <<
+        "SCRIPT_NAME" << "SERVER_ADDR" << "SERVER_ADMIN" <<      
+        "SERVER_NAME","SERVER_PORT","SERVER_PROTOCOL" <<     
+        "SERVER_SIGNATURE" << "SERVER_SOFTWARE";
+        
+    printf("<table border='0' cellspacing='2'>\n");
+    for( int i = 0; i < lEnvs.size(); i++ ) {
+        QString lEnv = lEnvs[i];
+        printf("<tr><td>%s</td><td>\n", lEnv.toStdString().c_str());
+        QString lValue = getEnv(lEnv);  
+        if(lValue != "") {printf("%s\n", lValue.toStdString().c_str());} 
+        else {printf("Environment variable does not exist.\n");}
+        printf("</td></tr>\n");
+    }
+    printf("</table>\n");
 }
 //===============================================
 // string

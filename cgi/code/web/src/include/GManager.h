@@ -21,6 +21,7 @@ public:
     // env
     QString getEnv(QString key);
     void loadEnv();
+    void showEnv();
     // string
     QMap<QString, QString> splitMap(QString str, QString sepRow, QString sepCol);
     QString removeLast(QString str, char remove) ;

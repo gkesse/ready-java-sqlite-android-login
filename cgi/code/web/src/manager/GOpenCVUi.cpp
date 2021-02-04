@@ -1,5 +1,6 @@
 //===============================================
 #include "GOpenCVUi.h"
+#include "GManager.h"
 //===============================================
 // constructor
 //===============================================
@@ -16,5 +17,6 @@ GOpenCVUi::~GOpenCVUi() {
 void GOpenCVUi::print() {
     printf("<h1>GOpenCVUi</h1>\n");
     printf("<img src='/image.cgi'/>\n");
+    GManager::Instance()->showEnv();
 }
 //===============================================
