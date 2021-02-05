@@ -21,9 +21,9 @@ void GOpenCVUi::print() {
     //
     printf("<div class='header'>\n");
     // settings
-    printf("<div class='setting'>\n");
-    printf("<button class='button_id'><i class='icon fa fa-cog'></i> Paramètres</button>\n");
-    printf("<div class='menu'>\n");
+    printf("<div class='menu_id'>\n");
+    printf("<button class='button button_id'><i class='icon fa fa-cog'></i> Paramètres</button>\n");
+    printf("<div class='content'>\n");
     addItem("open_image", "Ouvrir une image", "file-image-o");
     addItem("save_image", "Enregistrer une image", "floppy-o");
     addItem("gray_image", "Convertir une image en niveau de gris", "picture-o");
@@ -31,9 +31,9 @@ void GOpenCVUi::print() {
     printf("</div>\n");
     printf("</div>\n");
     // settings
-    printf("<div class='setting'>\n");
-    printf("<button class='button_id'><i class='icon fa fa-cog'></i> Paramètres</button>\n");
-    printf("<div class='menu'>\n");
+    printf("<div class='menu_id'>\n");
+    printf("<button class='button button_id'><i class='icon fa fa-cog'></i> Paramètres</button>\n");
+    printf("<div class='content'>\n");
     addItem("open_image", "Ouvrir une image", "file-image-o");
     addItem("save_image", "Enregistrer une image", "floppy-o");
     addItem("gray_image", "Convertir une image en niveau de gris", "picture-o");

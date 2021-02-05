@@ -185,7 +185,7 @@ void GStyle::run(int argc, char** argv) {
     
     printf("\
     .button_id:not(last-child) {\n\
-        margin-right: 10px;\n\
+        margin-right: 5px;\n\
     }\n");
     //===============================================
     /* html_page */
@@ -229,19 +229,29 @@ void GStyle::run(int argc, char** argv) {
         margin: auto;\n\
     }\n");
     //===============================================
-    /* opencv_id */
+    /* menu_id */
     printf("\
-    .opencv_id .setting {\n\
+    .menu_id {\n\
         position: relative;\n\
         display: inline-block;\n\
-        padding-bottom: 10px;\n\
     }\n");
         
     printf("\
-    .opencv_id .menu {\n\
+    .menu_id:hover .button {\n\
+        background-color: #603030;\n\
+    }\n");
+        
+    
+    printf("\
+    .menu_id:hover .content {\n\
+        display: block;\n\
+    }\n");
+
+    printf("\
+    .menu_id .content {\n\
         display: none;\n\
         background-color: #301010;\n\
-        border: 2px solid #503030;\n\
+        border: 2px solid #603030;\n\
         border-radius: 5px;\n\
         position: absolute;\n\
         min-width: 250px;\n\
@@ -250,12 +260,7 @@ void GStyle::run(int argc, char** argv) {
     }\n");
     
     printf("\
-    .opencv_id .setting:hover .menu {\n\
-        display: block;\n\
-    }\n");
-    
-    printf("\
-    .opencv_id .menu .item {\n\
+    .menu_id .content .item {\n\
         display: block;\n\
         padding: 5px;\n\
         border-radius: 5px;\n\
@@ -264,14 +269,20 @@ void GStyle::run(int argc, char** argv) {
     }\n");
     
     printf("\
-    .opencv_id .menu .item .icon {\n\
+    .menu_id .content .item .icon {\n\
         margin-right: 5px;\n\
     }\n");
     
     printf("\
-    .opencv_id .menu .item:hover {\n\
+    .menu_id .content .item:hover {\n\
         background-color: %s;\n\
     }\n", lStyle->app_light_color);
+    //===============================================
+    /* opencv_id */
+    printf("\
+    .opencv_id .header {\n\
+        padding-bottom: 10px;\n\
+    }\n");
     
     printf("\
     .opencv_id .body {\n\
