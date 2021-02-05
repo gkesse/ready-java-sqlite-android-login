@@ -15,6 +15,7 @@ public:
     
 private:
     GWidget* m_workspace;
+    QString m_title;
 };
 //===============================================
 #endif

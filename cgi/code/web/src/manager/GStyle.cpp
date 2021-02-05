@@ -206,6 +206,7 @@ void GStyle::run(int argc, char** argv) {
     printf("\
     .header {\n\
         background-color: red;\n\
+        position: relative;\n\
         margin-bottom: 10px;\n\
     }\n");
     //===============================================
@@ -237,6 +238,21 @@ void GStyle::run(int argc, char** argv) {
     printf("\
     .item:active {\n\
         background-color: transparent;\n\
+    }\n");
+    //===============================================
+    /* login */
+    printf("\
+    .item2 {\n\
+        display: block;\n\
+        padding: 5px 10px;\n\
+        border-radius: 5px;\n\
+        width: 100%%;\n\
+        text-align: left;\n\
+    }\n");
+
+    printf("\
+    .item2:hover {\n\
+        background-color: #503030;\n\
     }\n");
     //===============================================
     /* login */
@@ -273,6 +289,11 @@ void GStyle::run(int argc, char** argv) {
     }\n");
         
     printf("\
+    .menu:hover .button {\n\
+        background-color: #603030;\n\
+    }\n");
+        
+    printf("\
     .menu:hover .content2 {\n\
         display: block;\n\
     }\n");
@@ -292,6 +313,18 @@ void GStyle::run(int argc, char** argv) {
         bottom: 0px;\n\
         left: 100px;\n\
         right: 130px;\n\
+        padding-top: 5px;\n\
+        text-align: center;\n\
+    }\n");
+    //===============================================
+    printf("\
+    .title2 {\n\
+        background-color: teal;\n\
+        position: absolute;\n\
+        top: 0px;\n\
+        bottom: 0px;\n\
+        right: 0px;\n\
+        left: 120px;\n\
         padding-top: 5px;\n\
         text-align: center;\n\
     }\n");

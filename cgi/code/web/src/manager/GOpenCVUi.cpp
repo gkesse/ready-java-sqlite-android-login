@@ -6,8 +6,9 @@
 //===============================================
 GOpenCVUi::GOpenCVUi() {
     m_workspace = GWidget::Create("stackwidget");
-    m_workspace->addPage("upload_image", "uploadfile");
-    m_workspace->addPage("open_image", "selectfile");
+    m_workspace->addPage("upload_image", "uploadfile", "Ouvrir une image");
+    m_workspace->addPage("open_image", "selectfile", "Sélectionner une image");
+    m_title = "";
 }
 //===============================================
 GOpenCVUi::~GOpenCVUi() {
@@ -18,6 +19,7 @@ GOpenCVUi::~GOpenCVUi() {
 //===============================================
 void GOpenCVUi::print() {
     sGApp* lApp = GManager::Instance()->getData()->app;
+    m_title = m_workspace->getTitle(lApp->req);
     request();
     printf("<div class='opencv'>\n");
     //
@@ -34,7 +36,7 @@ void GOpenCVUi::print() {
     printf("</div>\n");
     printf("</div>\n");
     //
-    printf("<div class='title'>%s</div>\n", "Title");
+    printf("<div class='title2'>%s</div>\n", m_title.toStdString().c_str());
     //
     printf("</div>\n");
     // body
@@ -60,7 +62,7 @@ void GOpenCVUi::request() {
 //===============================================
 void GOpenCVUi::addItem(QString key, QString text, QString icon) {
     printf("<form action='' method='post'>\
-    <button class='item' id='req' name='req' value='%s'>\
+    <button class='item2' id='req' name='req' value='%s'>\
     <i class='icon fa fa-%s'></i> %s</button></form>\n",
     key.toStdString().c_str(), icon.toStdString().c_str(), text.toStdString().c_str());
 }

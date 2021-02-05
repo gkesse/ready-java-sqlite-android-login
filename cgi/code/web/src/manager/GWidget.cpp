@@ -55,6 +55,7 @@ void GWidget::start() {}
 void GWidget::end() {}
 void GWidget::addItem(QString text) {}
 void GWidget::addItem(QString text, QString link, QString icon) {}
-void GWidget::addPage(QString key, QString page) {}
+void GWidget::addPage(QString key, QString page, QString title) {}
 void GWidget::showPage(QString key) {}
+void QString getTitle(QString key) {return "";}
 //===============================================
