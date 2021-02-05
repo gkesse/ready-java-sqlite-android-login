@@ -1,20 +1,16 @@
 //===============================================
-#ifndef _GOpenCVUi_
-#define _GOpenCVUi_
+#ifndef _GUploadFile_
+#define _GUploadFile_
 //===============================================
 #include "GWidget.h"
 //===============================================
-class GOpenCVUi : public GWidget {
+class GUploadFile : public GWidget {
 public:
-    GOpenCVUi();
-    ~GOpenCVUi();
+    GUploadFile();
+    ~GUploadFile();
     // method
     void print();
     void request();
-    void addItem(QString key, QString text, QString icon);
-    
-private:
-    GWidget* m_workspace;
 };
 //===============================================
 #endif

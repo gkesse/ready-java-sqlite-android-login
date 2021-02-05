@@ -14,6 +14,6 @@ GSQLiteUi::~GSQLiteUi() {
 // method
 //===============================================
 void GSQLiteUi::print() {
-    printf("<h1>GSQLiteUi</h1>\n");
+    printf("<div>GSQLiteUi</div>\n");
 }
 //===============================================

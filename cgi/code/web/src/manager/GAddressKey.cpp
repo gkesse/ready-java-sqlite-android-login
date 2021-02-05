@@ -19,7 +19,7 @@ void GAddressKey::print() {
     QStringList lMap = lApp->page_id.split("/");
     QString lKeyId = "/";
     
-    printf("<div class='addresskey_id'>");
+    printf("<div class='addresskey'>");
     
     for(int i = 0; i < lMap.size(); i++) {
         if(i != 0) {
@@ -31,7 +31,7 @@ void GAddressKey::print() {
         if(i != 0) {lKeyId += "/";}
         lKeyId += lKey;
         
-        printf("<a class='item' href='%s'>%s</a>\n", lKeyId.toStdString().c_str(), lKey.toStdString().c_str());
+        printf("<a href='%s'>%s</a>\n", lKeyId.toStdString().c_str(), lKey.toStdString().c_str());
     }
     
     printf("</div>");

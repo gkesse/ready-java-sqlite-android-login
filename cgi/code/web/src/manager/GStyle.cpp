@@ -138,38 +138,27 @@ void GStyle::run(int argc, char** argv) {
         word-break: break-all;\n\
     }\n");
     //===============================================
-    // special
-    //===============================================
-    /* border_id */
-    printf("\
-    .border_id {\n\
-        border: 2px solid black;\n\
-        padding: 10px;\n\
-    }\n");
-    //===============================================
-    /* border_id0 */
-    printf("\
-    .border_id0 {\n\
-        border: 2px solid black;\n\
-    }\n");
-    //===============================================
     // custom
     //===============================================
-    /* addresskey_id */
+    /* addresskey */
     printf("\
-    .addresskey_id {\n\
+    .addresskey {\n\
         padding: 10px 0px;\n\
     }\n");
-    
+    //===============================================
+    /* app_name */
     printf("\
-    .addresskey_id .sep {\n\
-        padding: 0px 5px;\n\
-        font-size: 16px;\n\
+    .app_name {\n\
+        position: absolute;\n\
+        top: 0px;\n\
+        bottom: 0px;\n\
+        left: 30px;\n\
+        padding-top: 5px;\n\
     }\n");
     //===============================================
-    /* button_id */
+    /* button */
     printf("\
-    .button_id {\n\
+    .button {\n\
         background-color: %s;\n\
         display: inline-block;\n\
         border-radius: 5px;\n\
@@ -177,197 +166,85 @@ void GStyle::run(int argc, char** argv) {
         font-family: %s;\n\
         font-size: %spx;\n\
     }\n", lStyle->app_light_color, lStyle->app_font_family, lStyle->app_font_size);
-    
+        
     printf("\
-    .button_id .icon {\n\
-        margin-right: 5px;\n\
-    }\n");
-    
-    printf("\
-    .button_id:not(last-child) {\n\
+    .button:not(last-child) {\n\
         margin-right: 5px;\n\
     }\n");
     //===============================================
-    /* html_page */
+    /* content */
     printf("\
-    .html_page {\n\
+    .content {\n\
+        position: relative;\n\
+        min-height: 32px;\n\
+    }\n");
+    //===============================================
+    /* html */
+    printf("\
+    .html {\n\
         padding: 10px;\n\
     }\n");
     //===============================================
-    /* listbox_id */
+    /* icon */
     printf("\
-    .listbox_id {\n\
-        \n\
+    .icon {\n\
+        margin-right: 5px;\n\
     }\n");
-    
+    //===============================================
+    /* item */
     printf("\
-    .listbox_id .item {\n\
+    .item {\n\
         padding: 5px 10px;\n\
         cursor: pointer;\n\
         border-radius: 5px;\n\
     }\n");
     
     printf("\
-    .listbox_id .item .icon {\n\
-        margin-right: 5px;\n\
-    }\n");
-    
-    printf("\
-    .listbox_id .item:hover {\n\
+    .item:hover {\n\
         background-color: #503030;\n\
     }\n");
     
     printf("\
-    .listbox_id .item:active {\n\
+    .item:active {\n\
         background-color: transparent;\n\
     }\n");
     //===============================================
-    /* main_page */
+    /* login */
     printf("\
-    .main_page {\n\
-        max-width: 1000px;\n\
-        margin: auto;\n\
-    }\n");
-    //===============================================
-    /* menu_id */
-    printf("\
-    .menu_id {\n\
-        position: relative;\n\
-        display: inline-block;\n\
-    }\n");
-        
-    printf("\
-    .menu_id:hover .button {\n\
-        background-color: #603030;\n\
-    }\n");
-        
-    
-    printf("\
-    .menu_id:hover .content {\n\
-        display: block;\n\
-    }\n");
-
-    printf("\
-    .menu_id .content {\n\
-        display: none;\n\
-        background-color: #301010;\n\
-        border: 2px solid #603030;\n\
-        border-radius: 5px;\n\
+    .login {\n\
         position: absolute;\n\
-        min-width: 250px;\n\
-        padding: 5px;\n\
-        z-index: 1;\n\
-    }\n");
-    
-    printf("\
-    .menu_id .content .item {\n\
-        display: block;\n\
-        padding: 5px 10px;\n\
-        border-radius: 5px;\n\
-        width: 100%%;\n\
-        text-align: left;\n\
-    }\n");
-
-    printf("\
-    .menu_id .content .item .icon {\n\
-        margin-right: 5px;\n\
-    }\n");
-    
-    printf("\
-    .menu_id .content .item:hover {\n\
-        background-color: #503030;\n\
+        top: 0px;\n\
+        bottom: 0px;\n\
+        right: 0px;\n\
     }\n");
     //===============================================
-    /* opencv_id */
+    /* logo */
     printf("\
-    .opencv_id .header {\n\
-        padding-bottom: 10px;\n\
-    }\n");
-    
-    printf("\
-    .opencv_id .body {\n\
-        background-color: %s;\n\
-        padding: 10px;\n\
-        min-height: 300px;\n\
-        border-radius: 5px;\n\
-        text-align: center;\n\
-    }\n", lStyle->app_light_color);
-    //===============================================
-    // table_id
-    printf("\
-    .table_id {\n\
-        display: inline-block;\n\
-    }\n");
-    
-    printf("\
-    .table_id .name {\n\
-        background-color: #305050;\n\
-        border: 1px solid #aaaaaa;\n\
-        border-bottom-color: transparent;\n\
-        padding: 5px 10px;\n\
-        text-align: center;\n\
-    }\n");
-    
-    printf("\
-    .table_id table {\n\
-        border-collapse: collapse;\n\
-    }\n");
-    
-    printf("\
-    .table_id table thead tr {\n\
-        background-color: #305050;\n\
-        text-align: left;\n\
-    }\n");
-    
-    printf("\
-    .table_id table th, .table_id  table td {\n\
-        padding: 5px 10px;\n\
-        border: 1px solid #aaaaaa;\n\
-    }\n");
-    
-    printf("\
-    .table_id table th {\n\
-        font-weight: normal;\n\
-    }\n");
-    
-    printf("\
-    .table_id  table td {\n\
-        color: #aaaaaa;\n\
-    }\n");
-    //===============================================
-    /* titlebar_id */
-    printf("\
-    .titlebar_id {\n\
-        border-bottom: 5px solid %s;\n\
-        padding-bottom: 5px;\n\
-    }\n", lStyle->app_light_color);
-    
-    printf("\
-    .titlebar_id .content {\n\
-        position: relative;\n\
-        min-height: 32px;\n\
-    }\n");
-    
-    printf("\
-    .titlebar_id .content .logo {\n\
+    .logo {\n\
         position: absolute;\n\
         top: 5px;\n\
         left: 0px;\n\
         width: 25px;\n\
         height: auto;\n\
     }\n");
-
+    //===============================================
+    /* main */
     printf("\
-    .titlebar_id .content .app_name {\n\
-        position: absolute;\n\
-        top: 0px;\n\
-        bottom: 0px;\n\
-        left: 30px;\n\
-        padding-top: 5px;\n\
+    .main {\n\
+        max-width: 1000px;\n\
+        margin: auto;\n\
     }\n");
-    
+    //===============================================
+    /* sep */
     printf("\
-    .titlebar_id .content .title {\n\
+    .sep {\n\
+        padding: 0px 5px;\n\
+        font-size: 16px;\n\
+    }\n");
+    //===============================================
+    /* title */
+    printf("\
+    .title {\n\
         position: absolute;\n\
         top: 0px;\n\
         bottom: 0px;\n\
@@ -376,23 +253,16 @@ void GStyle::run(int argc, char** argv) {
         padding-top: 5px;\n\
         text-align: center;\n\
     }\n");
-    
-    printf("\
-    .titlebar_id .content .login {\n\
-        position: absolute;\n\
-        top: 0px;\n\
-        bottom: 0px;\n\
-        right: 0px;\n\
-    }\n");
     //===============================================
-    /* window_id */
+    /* window */
     printf("\
-    .window_id {\n\
+    .window {\n\
         border: 1px solid #aaaaaa;\n\
         border-radius: 5px;\n\
         padding: 10px;\n\
         overflow: hidden;\n\
         overflow-x: auto;\n\
+        position: relative;\n\
     }\n");
     //===============================================
 }

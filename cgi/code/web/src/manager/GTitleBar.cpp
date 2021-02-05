@@ -17,7 +17,7 @@ void GTitleBar::print() {
     request();
     if(lApp->mime_type != "text/html") {return;}
     QString lTitle = lApp->title_map[lApp->page_id];
-    printf("<div class='titlebar_id'>\n");
+    printf("<div class='titlebar'>\n");
     printf("<div class='content'>\n");
     printf("<a href='/home'>\n");
     printf("<img class='logo' src='/data/img/logo_flat.png'/>\n");
@@ -25,7 +25,7 @@ void GTitleBar::print() {
     printf("</a>\n");
     printf("<div class='title'>%s</div>\n", lTitle.toStdString().c_str());
     printf("<form action='' method='post'>\
-    <button class='login button_id' type='submit' id='req' name='req' value='login'>\
+    <button class='login button' type='submit' id='req' name='req' value='login'>\
     <i class='icon fa fa-user'></i> Se Connecter</button></form>\n");
     printf("</div>\n");
     printf("</div>\n");

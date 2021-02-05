@@ -14,6 +14,6 @@ GLogin::~GLogin() {
 // method
 //===============================================
 void GLogin::print() {
-    printf("<h1>GLogin</h1>\n");
+    printf("<div>GLogin</div>\n");
 }
 //===============================================

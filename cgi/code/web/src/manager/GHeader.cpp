@@ -25,11 +25,10 @@ void GHeader::print() {
     printf("<meta name='viewport' content='width=device-width, maximum-scale=1.0, minimum-scale=1.0, initial-scale=1.0, user-scalable=no'/>\n");
     printf("<link rel='stylesheet' href='%s'/>\n", "/libs/google_fonts/Allan/css.css");
     printf("<link rel='stylesheet' href='%s'/>\n", lApp->icon_path.toStdString().c_str());
-    //printf("<link rel='stylesheet' href='%s'/>\n", lApp->style_path.toStdString().c_str());
     printf("<link rel='stylesheet' href='/index.cgi?page_id=style'/>\n");
     printf("</head>\n");
     printf("<body>\n");
-    printf("<div class='html_page'>\n");
-    printf("<div class='main_page'>\n");
+    printf("<div class='html'>\n");
+    printf("<div class='main'>\n");
 }
 //===============================================

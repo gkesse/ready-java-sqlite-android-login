@@ -1,20 +1,16 @@
 //===============================================
-#ifndef _GOpenCVUi_
-#define _GOpenCVUi_
+#ifndef _GSelectFile_
+#define _GSelectFile_
 //===============================================
 #include "GWidget.h"
 //===============================================
-class GOpenCVUi : public GWidget {
+class GSelectFile : public GWidget {
 public:
-    GOpenCVUi();
-    ~GOpenCVUi();
+    GSelectFile();
+    ~GSelectFile();
     // method
     void print();
     void request();
-    void addItem(QString key, QString text, QString icon);
-    
-private:
-    GWidget* m_workspace;
 };
 //===============================================
 #endif

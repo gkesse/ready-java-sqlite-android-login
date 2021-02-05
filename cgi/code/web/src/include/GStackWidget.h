@@ -1,20 +1,19 @@
 //===============================================
-#ifndef _GOpenCVUi_
-#define _GOpenCVUi_
+#ifndef _GStackWidget_
+#define _GStackWidget_
 //===============================================
 #include "GWidget.h"
 //===============================================
-class GOpenCVUi : public GWidget {
+class GStackWidget : public GWidget {
 public:
-    GOpenCVUi();
-    ~GOpenCVUi();
+    GStackWidget();
+    ~GStackWidget();
     // method
-    void print();
-    void request();
-    void addItem(QString key, QString text, QString icon);
-    
+    void addPage(QString key, QString page);
+    void showPage(QString key);
+
 private:
-    GWidget* m_workspace;
+    QMap<QString, QString> m_widgetMap;
 };
 //===============================================
 #endif

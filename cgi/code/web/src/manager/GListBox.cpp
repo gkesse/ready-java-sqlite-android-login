@@ -12,7 +12,7 @@ GListBox::~GListBox() {
 // method
 //===============================================
 void GListBox::start() {
-    printf("<div class='listbox_id'>\n");
+    printf("<div class='listbox'>\n");
 }
 //===============================================
 void GListBox::end() {

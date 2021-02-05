@@ -5,7 +5,9 @@
 // constructor
 //===============================================
 GOpenCVUi::GOpenCVUi() {
-
+    m_workspace = GWidget::Create("stackwidget");
+    m_workspace->addPage("upload_image", "uploadfile");
+    m_workspace->addPage("open_image", "selectfile");
 }
 //===============================================
 GOpenCVUi::~GOpenCVUi() {
@@ -15,9 +17,9 @@ GOpenCVUi::~GOpenCVUi() {
 // method
 //===============================================
 void GOpenCVUi::print() {
-    //sGApp* lApp = GManager::Instance()->getData()->app;
+    sGApp* lApp = GManager::Instance()->getData()->app;
     request();
-    printf("<div class='opencv_id'>\n");
+    printf("<div class='opencv'>\n");
     //
     printf("<div class='header'>\n");
     // settings
@@ -32,16 +34,28 @@ void GOpenCVUi::print() {
     printf("</div>\n");
     printf("</div>\n");
     //
+    printf("<div class='title'>%s</div>\n", "Title");
+    //
     printf("</div>\n");
     // body
-    printf("<div class='body'>Body</div>\n");
+    if(lApp->req != "") {
+        m_workspace->showPage(lApp->req);
+    }
+    else {
+        printf("<div class='body_id'>Body</div>\n");
+    }
     //
     printf("</div>\n");
 }
 //===============================================
 void GOpenCVUi::request() {
     sGApp* lApp = GManager::Instance()->getData()->app;
-    if(lApp->req == "
+    if(lApp->req == "upload_image") {
+        
+    }
+    else if(lApp->req == "open_image") {
+        
+    }
 }
 //===============================================
 void GOpenCVUi::addItem(QString key, QString text, QString icon) {

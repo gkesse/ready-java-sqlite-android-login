@@ -60,7 +60,7 @@ void GWeb::selectPage() {
 void GWeb::showPage() {
     sGApp* lApp = GManager::Instance()->getData()->app;
     QString lPageId = lApp->address_map[lApp->page_id];
-    printf("<div class='window_id'>\n");
+    printf("<div class='window'>\n");
     GWidget::Create(lPageId)->print();
     printf("</div>\n");
 }
