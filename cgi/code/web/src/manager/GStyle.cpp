@@ -179,8 +179,13 @@ void GStyle::run(int argc, char** argv) {
     }\n", lStyle->app_light_color, lStyle->app_font_family, lStyle->app_font_size);
     
     printf("\
-    .button_id .icon:not(last-child) {\n\
+    .button_id .icon {\n\
         margin-right: 5px;\n\
+    }\n");
+    
+    printf("\
+    .button_id:not(last-child) {\n\
+        margin-right: 10px;\n\
     }\n");
     //===============================================
     /* html_page */
@@ -239,7 +244,7 @@ void GStyle::run(int argc, char** argv) {
         border: 2px solid #503030;\n\
         border-radius: 5px;\n\
         position: absolute;\n\
-        min-width: 200px;\n\
+        min-width: 250px;\n\
         padding: 5px;\n\
         z-index: 1;\n\
     }\n");

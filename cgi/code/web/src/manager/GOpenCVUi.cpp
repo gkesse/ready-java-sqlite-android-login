@@ -18,15 +18,29 @@ void GOpenCVUi::print() {
     //sGApp* lApp = GManager::Instance()->getData()->app;
     request();
     printf("<div class='opencv_id'>\n");
+    //
+    printf("<div class='header'>\n");
     // settings
     printf("<div class='setting'>\n");
     printf("<button class='button_id'><i class='icon fa fa-cog'></i> Paramètres</button>\n");
     printf("<div class='menu'>\n");
-    addItem("open_image", "Ouvrir une image", "file-text-o");
-    addItem("open_image", "Ouvrir une image", "file-text-o");
-    addItem("open_image", "Ouvrir une image", "file-text-o");
-    addItem("open_image", "Ouvrir une image", "file-text-o");
+    addItem("open_image", "Ouvrir une image", "file-image-o");
+    addItem("save_image", "Enregistrer une image", "floppy-o");
+    addItem("gray_image", "Convertir une image en niveau de gris", "picture-o");
+    addItem("canny_image", "Appliquer le filtre de canny à une image", "picture-o");
     printf("</div>\n");
+    printf("</div>\n");
+    // settings
+    printf("<div class='setting'>\n");
+    printf("<button class='button_id'><i class='icon fa fa-cog'></i> Paramètres</button>\n");
+    printf("<div class='menu'>\n");
+    addItem("open_image", "Ouvrir une image", "file-image-o");
+    addItem("save_image", "Enregistrer une image", "floppy-o");
+    addItem("gray_image", "Convertir une image en niveau de gris", "picture-o");
+    addItem("canny_image", "Appliquer le filtre de canny à une image", "picture-o");
+    printf("</div>\n");
+    printf("</div>\n");
+    //
     printf("</div>\n");
     // body
     printf("<div class='body'>Body</div>\n");
@@ -35,7 +49,8 @@ void GOpenCVUi::print() {
 }
 //===============================================
 void GOpenCVUi::request() {
-    //sGApp* lApp = GManager::Instance()->getData()->app;
+    sGApp* lApp = GManager::Instance()->getData()->app;
+    printf("<div>%s</div>\n", lApp->req.toStdString().c_str());
 }
 //===============================================
 void GOpenCVUi::addItem(QString key, QString text, QString icon) {
