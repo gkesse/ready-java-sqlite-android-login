@@ -11,6 +11,7 @@ public:
     // method
     void print();
     void request();
+    void addItem(QString key, QString text, QString icon);
 };
 //===============================================
 #endif

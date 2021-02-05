@@ -69,10 +69,11 @@ void GStyle::run(int argc, char** argv) {
         background-color: transparent;\n\
         border: none;\n\
         padding: 5px 10px 5px 5px;\n\
-        font-size: 16px;\n\
+        font-size: 20px;\n\
+        font-family: %s;\n\
         color: white;\n\
         cursor: pointer;\n\
-    }\n");
+    }\n", lStyle->app_font_family);
 
     printf("\
     input {\n\
@@ -226,8 +227,46 @@ void GStyle::run(int argc, char** argv) {
     /* opencv_id */
     printf("\
     .opencv_id .setting {\n\
+        position: relative;\n\
+        display: inline-block;\n\
         padding-bottom: 10px;\n\
     }\n");
+        
+    printf("\
+    .opencv_id .menu {\n\
+        display: none;\n\
+        background-color: #301010;\n\
+        border: 2px solid #503030;\n\
+        border-radius: 5px;\n\
+        position: absolute;\n\
+        min-width: 200px;\n\
+        padding: 5px;\n\
+        z-index: 1;\n\
+    }\n");
+    
+    printf("\
+    .opencv_id .setting:hover .menu {\n\
+        display: block;\n\
+    }\n");
+    
+    printf("\
+    .opencv_id .menu .item {\n\
+        display: block;\n\
+        padding: 5px;\n\
+        border-radius: 5px;\n\
+        width: 100%%;\n\
+        text-align: left;\n\
+    }\n");
+    
+    printf("\
+    .opencv_id .menu .item .icon {\n\
+        margin-right: 5px;\n\
+    }\n");
+    
+    printf("\
+    .opencv_id .menu .item:hover {\n\
+        background-color: %s;\n\
+    }\n", lStyle->app_light_color);
     
     printf("\
     .opencv_id .body {\n\
