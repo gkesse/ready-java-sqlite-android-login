@@ -15,7 +15,7 @@ GSelectFile::~GSelectFile() {
 void GSelectFile::print() {
     sGApp* lApp = GManager::Instance()->getData()->app;
     request();
-    printf("<div class='body_id'>\n");
+    printf("<div class='body'>\n");
     printf("<div>GSelectFile</div>\n");
     printf("</div>\n");
 }

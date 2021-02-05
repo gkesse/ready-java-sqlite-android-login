@@ -15,7 +15,7 @@ GUploadFile::~GUploadFile() {
 void GUploadFile::print() {
     sGApp* lApp = GManager::Instance()->getData()->app;
     request();
-    printf("<div class='body_id'>\n");
+    printf("<div class='body'>\n");
     printf("<div>GUploadFile</div>\n");
     printf("</div>\n");
 }

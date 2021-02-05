@@ -156,6 +156,16 @@ void GStyle::run(int argc, char** argv) {
         padding-top: 5px;\n\
     }\n");
     //===============================================
+    /* body */
+    printf("\
+    .body {\n\
+        background-color: %s;\n\
+        padding: 10px;\n\
+        min-height: 300px;\n\
+        border-radius: 5px;\n\
+        text-align: center;\n\
+    }\n", lStyle->app_light_color);
+    //===============================================
     /* button */
     printf("\
     .button {\n\
@@ -177,6 +187,26 @@ void GStyle::run(int argc, char** argv) {
     .content {\n\
         position: relative;\n\
         min-height: 32px;\n\
+    }\n");
+    //===============================================
+    /* content2 */
+    printf("\
+    .content2 {\n\
+        display: none;\n\
+        background-color: #301010;\n\
+        border: 2px solid #603030;\n\
+        border-radius: 5px;\n\
+        position: absolute;\n\
+        min-width: 250px;\n\
+        padding: 5px;\n\
+        z-index: 1;\n\
+    }\n");
+    //===============================================
+    /* header */
+    printf("\
+    .header {\n\
+        background-color: red;\n\
+        margin-bottom: 10px;\n\
     }\n");
     //===============================================
     /* html */
@@ -233,6 +263,18 @@ void GStyle::run(int argc, char** argv) {
     .main {\n\
         max-width: 1000px;\n\
         margin: auto;\n\
+    }\n");
+    //===============================================
+    /* menu */
+    printf("\
+    .menu {\n\
+        position: relative;\n\
+        display: inline-block;\n\
+    }\n");
+        
+    printf("\
+    .menu:hover .content2 {\n\
+        display: block;\n\
     }\n");
     //===============================================
     /* sep */

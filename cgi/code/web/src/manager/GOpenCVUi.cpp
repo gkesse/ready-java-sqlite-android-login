@@ -23,9 +23,9 @@ void GOpenCVUi::print() {
     //
     printf("<div class='header'>\n");
     // settings
-    printf("<div class='menu_id'>\n");
-    printf("<button class='button button_id'><i class='icon fa fa-cog'></i> Paramètres</button>\n");
-    printf("<div class='content'>\n");
+    printf("<div class='menu'>\n");
+    printf("<button class='button'><i class='icon fa fa-cog'></i> Paramètres</button>\n");
+    printf("<div class='content2'>\n");
     addItem("upload_image", "Charger une image", "upload");
     addItem("open_image", "Ouvrir une image", "folder-open-o");
     addItem("save_image", "Enregistrer une image", "floppy-o");
@@ -42,7 +42,7 @@ void GOpenCVUi::print() {
         m_workspace->showPage(lApp->req);
     }
     else {
-        printf("<div class='body_id'>Body</div>\n");
+        printf("<div class='body'>Body</div>\n");
     }
     //
     printf("</div>\n");
