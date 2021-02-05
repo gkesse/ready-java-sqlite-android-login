@@ -262,12 +262,12 @@ void GStyle::run(int argc, char** argv) {
     printf("\
     .menu_id .content .item {\n\
         display: block;\n\
-        padding: 5px;\n\
+        padding: 5px 10px;\n\
         border-radius: 5px;\n\
         width: 100%%;\n\
         text-align: left;\n\
     }\n");
-    
+
     printf("\
     .menu_id .content .item .icon {\n\
         margin-right: 5px;\n\
@@ -275,7 +275,7 @@ void GStyle::run(int argc, char** argv) {
     
     printf("\
     .menu_id .content .item:hover {\n\
-        border: 2px solid #603030;\n\
+        background-color: #503030;\n\
     }\n");
     //===============================================
     /* opencv_id */

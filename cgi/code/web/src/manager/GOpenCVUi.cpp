@@ -24,17 +24,8 @@ void GOpenCVUi::print() {
     printf("<div class='menu_id'>\n");
     printf("<button class='button button_id'><i class='icon fa fa-cog'></i> Paramètres</button>\n");
     printf("<div class='content'>\n");
-    addItem("open_image", "Ouvrir une image", "file-image-o");
-    addItem("save_image", "Enregistrer une image", "floppy-o");
-    addItem("gray_image", "Convertir une image en niveau de gris", "picture-o");
-    addItem("canny_image", "Appliquer le filtre de canny à une image", "picture-o");
-    printf("</div>\n");
-    printf("</div>\n");
-    // settings
-    printf("<div class='menu_id'>\n");
-    printf("<button class='button button_id'><i class='icon fa fa-cog'></i> Paramètres</button>\n");
-    printf("<div class='content'>\n");
-    addItem("open_image", "Ouvrir une image", "file-image-o");
+    addItem("upload_image", "Charger une image", "upload");
+    addItem("open_image", "Ouvrir une image", "folder-open-o");
     addItem("save_image", "Enregistrer une image", "floppy-o");
     addItem("gray_image", "Convertir une image en niveau de gris", "picture-o");
     addItem("canny_image", "Appliquer le filtre de canny à une image", "picture-o");
@@ -50,7 +41,7 @@ void GOpenCVUi::print() {
 //===============================================
 void GOpenCVUi::request() {
     sGApp* lApp = GManager::Instance()->getData()->app;
-    printf("<div>%s</div>\n", lApp->req.toStdString().c_str());
+    if(lApp->req == "
 }
 //===============================================
 void GOpenCVUi::addItem(QString key, QString text, QString icon) {
