@@ -275,8 +275,8 @@ void GStyle::run(int argc, char** argv) {
     
     printf("\
     .menu_id .content .item:hover {\n\
-        background-color: %s;\n\
-    }\n", lStyle->app_light_color);
+        border: 2px solid #603030;\n\
+    }\n");
     //===============================================
     /* opencv_id */
     printf("\
