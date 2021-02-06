@@ -14,7 +14,7 @@ GManager::GManager() {
     mgr->app->icon_path = "/libs/font_awesome/css/font-awesome.min.css";
     mgr->app->font_path = "/libs/google_fonts";
     mgr->app->page_last = "home";
-    mgr->app->mime_type = "text/html";
+    mgr->app->user_name = "unknow";
     // style
     mgr->style = new sGStyle;
 }
@@ -54,7 +54,7 @@ void GManager::loadEnv() {
     lApp->page_id = removeLast(lApp->page_id, '/');
     // cookie_map
     lApp->cookie_string = getEnv("HTTP_COOKIE");
-    lApp->cookie_map = splitMap(lApp->cookie_string, "&", "=");
+    lApp->cookie_map = splitMap(lApp->cookie_string, ";", "=");
     // page_last
     lApp->page_last = lApp->cookie_map.value("page_last", "");
     // req_map
@@ -142,5 +142,20 @@ void GManager::redirect(QString newUrl) {
     printf("</body>\n");
     printf("</html>\n");
     exit(0);
+}
+//===============================================
+// page
+//===============================================
+void GManager::selectPage() {
+    sGApp* lApp = GManager::Instance()->getData()->app;
+    if(lApp->page_id == "") {GManager::Instance()->redirect("/home");}
+    if(lApp->page_map->getPage(lApp->page_id) == "") {GManager::Instance()->redirect("/"+lApp->page_last);}
+    setCookie("page_last", lApp->page_id);
+}
+//===============================================
+// cookie
+//===============================================
+void GManager::setCookie(QString key, QString value) {
+    printf("Set-Cookie:%s = %s;\n", key.toStdString().c_str(), value.toStdString().c_str());
 }
 //===============================================

@@ -13,7 +13,6 @@ GSelectFile::~GSelectFile() {
 // method
 //===============================================
 void GSelectFile::print() {
-    sGApp* lApp = GManager::Instance()->getData()->app;
     request();
     printf("<div class='body'>\n");
     printf("<div>GSelectFile</div>\n");

@@ -13,9 +13,7 @@ GAddressKey::~GAddressKey() {
 // method
 //===============================================
 void GAddressKey::print() {
-    sGApp* lApp = GManager::Instance()->getData()->app;
-    if(lApp->mime_type != "text/html") {return;}
-    
+    sGApp* lApp = GManager::Instance()->getData()->app;    
     QStringList lMap = lApp->page_id.split("/");
     QString lKeyId = "/";
     

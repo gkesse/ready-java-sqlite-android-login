@@ -2,12 +2,11 @@
 #include "GOpenCVUi.h"
 #include "GManager.h"
 //===============================================
-// constructor
-//===============================================
 GOpenCVUi::GOpenCVUi() {
     m_workspace = GWidget::Create("stackwidget");
-    m_workspace->addPage("upload_image", "uploadfile", "Ouvrir une image");
-    m_workspace->addPage("open_image", "selectfile", "Sélectionner une image");
+    m_workspace->addPage("home", "opencvpg", "");
+    m_workspace->addPage("upload_image", "uploadfile", "Charger une image");
+    m_workspace->addPage("open_image", "selectfile", "Ouvrir une image");
     m_title = "";
 }
 //===============================================
@@ -40,24 +39,14 @@ void GOpenCVUi::print() {
     //
     printf("</div>\n");
     // body
-    if(lApp->req != "") {
-        m_workspace->showPage(lApp->req);
-    }
-    else {
-        printf("<div class='body'>Body</div>\n");
-    }
+    m_workspace->showPage(lApp->req);
     //
     printf("</div>\n");
 }
 //===============================================
 void GOpenCVUi::request() {
     sGApp* lApp = GManager::Instance()->getData()->app;
-    if(lApp->req == "upload_image") {
-        
-    }
-    else if(lApp->req == "open_image") {
-        
-    }
+    if(lApp->req == "") {lApp->req = "home";}
 }
 //===============================================
 void GOpenCVUi::addItem(QString key, QString text, QString icon) {

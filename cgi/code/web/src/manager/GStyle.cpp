@@ -205,7 +205,6 @@ void GStyle::run(int argc, char** argv) {
     /* header */
     printf("\
     .header {\n\
-        background-color: red;\n\
         position: relative;\n\
         margin-bottom: 10px;\n\
     }\n");
@@ -319,7 +318,6 @@ void GStyle::run(int argc, char** argv) {
     //===============================================
     printf("\
     .title2 {\n\
-        background-color: teal;\n\
         position: absolute;\n\
         top: 0px;\n\
         bottom: 0px;\n\
@@ -331,13 +329,19 @@ void GStyle::run(int argc, char** argv) {
     //===============================================
     /* window */
     printf("\
+    .titlebar {\n\
+        border-bottom: 5px solid %s;\n\
+        padding-bottom: 5px;\n\
+    }\n", lStyle->app_light_color);
+    //===============================================
+    /* window */
+    printf("\
     .window {\n\
         border: 1px solid #aaaaaa;\n\
         border-radius: 5px;\n\
         padding: 10px;\n\
         overflow: hidden;\n\
         overflow-x: auto;\n\
-        position: relative;\n\
     }\n");
     //===============================================
 }

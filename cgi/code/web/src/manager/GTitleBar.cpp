@@ -15,7 +15,6 @@ GTitleBar::~GTitleBar() {
 void GTitleBar::print() {
     sGApp* lApp = GManager::Instance()->getData()->app;
     request();
-    if(lApp->mime_type != "text/html") {return;}
     QString lTitle = lApp->title_map[lApp->page_id];
     printf("<div class='titlebar'>\n");
     printf("<div class='content'>\n");

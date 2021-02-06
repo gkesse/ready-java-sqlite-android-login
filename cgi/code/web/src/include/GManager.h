@@ -3,6 +3,7 @@
 #define _GManager_
 //===============================================
 #include "GInclude.h"
+#include "GWidget.h"
 //===============================================
 typedef struct _sGManager sGManager;
 typedef struct _sGApp sGApp;
@@ -28,6 +29,10 @@ public:
     QString getPost();
     // redirect
     void redirect(QString newUrl);
+    // page
+    void selectPage();
+    // cookie
+    void setCookie(QString key, QString value);
 
 private:
     static GManager* m_instance;
@@ -53,6 +58,7 @@ struct _sGApp {
     // icon
     QString icon_path;
     // page
+    GWidget* page_map;
     QString page_id;
     QString page_last;
     // query
@@ -64,16 +70,14 @@ struct _sGApp {
     // req
     QString req_string;
     QMap<QString, QString> req_map;
-    // mime
-    QString mime_type;
     // image
     QString image_id;
-    // address
-    QMap<QString, QString> address_map;
     // title
     QMap<QString, QString> title_map;
     // req
     QString req;
+    // user
+    QString user_name;
 };
 //===============================================
 struct _sGStyle {

@@ -1,6 +1,5 @@
 //===============================================
 #include "GStackWidget.h"
-#include "GWidget.h"
 #include "GManager.h"
 //===============================================
 GStackWidget::GStackWidget() {
@@ -19,11 +18,20 @@ void GStackWidget::addPage(QString key, QString page, QString title) {
 }
 //===============================================
 void GStackWidget::showPage(QString key) {
-    QString lPageId = m_widgetMap[key];
+    QString lPageId = getPage(key);
     GWidget::Create(lPageId)->print();
 }
 //===============================================
+void GStackWidget::setCookies(QString key) {
+    QString lPageId = getPage(key);
+    GWidget::Create(lPageId)->setCookies();
+}
+//===============================================
 QString GStackWidget::getTitle(QString key) {
-    return m_titleMap[key];
+    return m_titleMap.value(key, "");
+}
+//===============================================
+QString GStackWidget::getPage(QString key) {
+    return m_widgetMap.value(key, "");
 }
 //===============================================

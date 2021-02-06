@@ -9,14 +9,14 @@
 #include "GUploadFile.h"
 #include "GSelectFile.h"
 #include "GStackWidget.h"
+#include "GWindow.h"
 // page
 #include "GHome.h"
 #include "GLogin.h"
 #include "GSQLiteUi.h"
 #include "GOpenCVUi.h"
+#include "GOpenCVPg.h"
 #include "GError.h"
-//===============================================
-// constructor
 //===============================================
 GWidget::GWidget() {
 
@@ -37,11 +37,13 @@ GWidget* GWidget::Create(QString key) {
     if(key =="uploadfile") {return new GUploadFile;}
     if(key =="selectfile") {return new GSelectFile;}
     if(key =="stackwidget") {return new GStackWidget;}
+    if(key =="window") {return new GWindow;}
     // page
     if(key =="home") {return new GHome;}
     if(key =="login") {return new GLogin;}
     if(key =="sqlite") {return new GSQLiteUi;}
     if(key =="opencv") {return new GOpenCVUi;}
+    if(key =="opencvpg") {return new GOpenCVPg;}
     // error
     if(key =="error") {return new GError;}
     // default
@@ -57,5 +59,8 @@ void GWidget::addItem(QString text) {}
 void GWidget::addItem(QString text, QString link, QString icon) {}
 void GWidget::addPage(QString key, QString page, QString title) {}
 void GWidget::showPage(QString key) {}
-void QString getTitle(QString key) {return "";}
+QString GWidget::getTitle(QString key) {return "";}
+QString GWidget::getPage(QString key) {return "";}
+void GWidget::setCookies(QString key) {}
+void GWidget::setCookies() {}
 //===============================================

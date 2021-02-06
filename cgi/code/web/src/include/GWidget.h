@@ -18,6 +18,9 @@ public:
     virtual void addPage(QString key, QString page, QString title);
     virtual void showPage(QString key);
     virtual QString getTitle(QString key);
+    virtual QString getPage(QString key);
+    virtual void setCookies(QString key);
+    virtual void setCookies();
 };
 //===============================================
 #endif
