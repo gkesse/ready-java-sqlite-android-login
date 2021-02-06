@@ -182,6 +182,12 @@ void GStyle::run(int argc, char** argv) {
         margin-right: 5px;\n\
     }\n");
     //===============================================
+    /* button2 */
+    printf("\
+    .button2 {\n\
+        background-color: #101030;\n\
+    }\n");
+    //===============================================
     /* content */
     printf("\
     .content {\n\
@@ -239,7 +245,7 @@ void GStyle::run(int argc, char** argv) {
         background-color: transparent;\n\
     }\n");
     //===============================================
-    /* login */
+    /* item2 */
     printf("\
     .item2 {\n\
         display: block;\n\
@@ -252,6 +258,12 @@ void GStyle::run(int argc, char** argv) {
     printf("\
     .item2:hover {\n\
         background-color: #503030;\n\
+    }\n");
+    //===============================================
+    /* item3 */
+    printf("\
+    .item3 {\n\
+        margin: 20px 0px;\n\
     }\n");
     //===============================================
     /* login */
@@ -327,7 +339,19 @@ void GStyle::run(int argc, char** argv) {
         text-align: center;\n\
     }\n");
     //===============================================
-    /* window */
+    /* upload */
+    printf("\
+    .upload {\n\
+        background-color: %s;\n\
+        padding: 10px;\n\
+        text-align: left;\n\
+        max-width: 600px;\n\
+        margin: auto;\n\
+        margin-top: 50px;\n\
+        border-radius: 5px;\n\
+    }\n", lStyle->app_bg_color);
+    //===============================================
+    /* titlebar */
     printf("\
     .titlebar {\n\
         border-bottom: 5px solid %s;\n\

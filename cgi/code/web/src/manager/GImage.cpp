@@ -21,7 +21,7 @@ GImage* GImage::Instance() {
 //===============================================
 void GImage::run(int argc, char** argv) {
     printf("content-type: image/jpeg\n\n");
-    QString lFilename = "./data/img/logo.bmp";
+    QString lFilename = "./data/img/logo.png";
     cv::Mat lImg = cv::imread(lFilename.toStdString());
     cv::Mat lGray;
     cv::cvtColor(lImg, lGray, cv::COLOR_BGR2GRAY);
