@@ -20,16 +20,13 @@ GImage* GImage::Instance() {
 }
 //===============================================
 void GImage::run(int argc, char** argv) {
-    printf("content-type: image/bmp\n\n");
+    printf("content-type: image/jpeg\n\n");
     QString lFilename = "./data/img/logo.bmp";
-    FILE* lFile = fopen(lFilename.toStdString().c_str(), "rb");
-    if(lFile != 0) {
-        char lData;
-        while(feof(lFile) == 0) {
-            fread(&lData, 1, 1, lFile);
-            printf("%c", lData);
-        }
-        fclose(lFile);
-    }
+    cv::Mat lImg = cv::imread(lFilename.toStdString());
+    cv::Mat lGray;
+    cv::cvtColor(lImg, lGray, cv::COLOR_BGR2GRAY);
+    std::vector<uchar> lBuffer;
+    cv::imencode(".jpg", lGray, lBuffer);
+    std::fwrite(lBuffer.data(), 1, lBuffer.size(), stdout);
 }
 //===============================================
