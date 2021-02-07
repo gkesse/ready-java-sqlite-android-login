@@ -56,3 +56,10 @@ void GOpenCVUi::addItem(QString key, QString text, QString icon) {
     key.toStdString().c_str(), icon.toStdString().c_str(), text.toStdString().c_str());
 }
 //===============================================
+void GOpenCVUi::setCookies() {
+    sGApp* lApp = GManager::Instance()->getData()->app;
+    if(lApp->req == "") {lApp->req = "home";}
+    m_workspace->setCookies(lApp->req);
+    GManager::Instance()->log("GOpenCVUi::setCookies");
+}
+//===============================================
