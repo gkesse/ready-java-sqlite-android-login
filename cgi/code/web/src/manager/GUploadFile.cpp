@@ -17,22 +17,25 @@ void GUploadFile::print() {
     printf("<div class='body'>\n");
     printf("<div class='upload'>\n");
     printf("<form action='' method='post' enctype='multipart/form-data'>\n");
-    printf("<div class=''>Sélectionner une image à télécharger :</div>\n");
+    printf("<label class='label' for='upload_file'>Sélectionner une image à télécharger :</label>\n");
     printf("<input class='button item3' type='file' id='upload_file' name='upload_file' required/>\n");
-    printf("<button class='button' type='submit' id='req' name='req' value='send'>\
+    printf("<input type='hidden' id='req' name='req' value='upload_image'/>\n");
+    printf("<div class='right'>\n");
+    printf("<a class='button' href='/home/opencv'>\
+    <i class='icon fa fa-times'></i> Annuler</a>\n");
+    printf("<button class='button' type='submit' id='action' name='action' value='send'>\
     <i class='icon fa fa-upload'></i> Envoyer</button>\n");
     printf("</form>\n");
+    printf("</div>\n");
     printf("</div>\n");
     printf("</div>\n");
 }
 //===============================================
 void GUploadFile::request() {
     sGApp* lApp = GManager::Instance()->getData()->app;
-    if(lApp->req == "upload_image") {
-        
-    }
-    else if(lApp->req == "open_image") {
-        
-    }
+    if(lApp->action == "send") {
+        GManager::Instance()->uploadFile("upload_file", "img");
+        //GManager::Instance()->redirect("/home/opencv");
+    }    
 }
 //===============================================

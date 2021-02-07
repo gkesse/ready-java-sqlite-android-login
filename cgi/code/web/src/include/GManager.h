@@ -26,17 +26,29 @@ public:
     QMap<QString, QString> splitMap(QString str, QString sepRow, QString sepCol);
     QString removeLast(QString str, char remove) ;
     // post
-    QString getPost();
+    QString getPost(QString key);
     // redirect
     void redirect(QString newUrl);
     // page
     void selectPage();
     // cookie
     void setCookie(QString key, QString value);
+    // file
+    void uploadFile(QString key, QString dir);
+    QString getFilePath(QString dir);
+    // dir
+    void createDir(QString path);
+    // user
+    QString getUsername();
+    // log
+    void log(const char* format, ...);
+    // date
+    void Date(char* buffer);
 
 private:
     static GManager* m_instance;
     sGManager* mgr;
+    rude::CGI cgi;
 };
 //===============================================
 // struct
@@ -67,9 +79,9 @@ struct _sGApp {
     // cookie
     QString cookie_string;
     QMap<QString, QString> cookie_map;
-    // req
-    QString req_string;
-    QMap<QString, QString> req_map;
+    // post
+    QString post_string;
+    QMap<QString, QString> post_map;
     // image
     QString image_id;
     // title
@@ -78,6 +90,12 @@ struct _sGApp {
     QString req;
     // user
     QString user_name;
+    // action
+    QString action;
+    // log
+    QString log_path;
+    // cgi
+    rude::CGI* cgi;
 };
 //===============================================
 struct _sGStyle {

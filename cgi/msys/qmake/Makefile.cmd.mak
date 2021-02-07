@@ -64,3 +64,35 @@ qte_compile:
 qte_run:
 	cd $(GQTE_PATH) && release/$(GQTE_EXE)
 #================================================    
+# lib_git
+lib_git_download:
+	if ! [ -d $(GLIB_SRC) ] ; then mkdir -p $(GLIB_SRC) ; fi
+	cd $(GLIB_SRC) && git clone $(GLIB_GIT_URL) $(GLIB_NAME)
+lib_git_configure_help:
+	cd $(GLIB_GIT_PATH) && ./configure --help
+lib_git_configure_build:
+	cd $(GLIB_GIT_PATH) && ./configure --prefix=$(GLIB_BUILD)
+lib_git_configure_make:
+	if ! [ -d $(GLIB_BUILD) ] ; then mkdir -p $(GLIB_BUILD) ; fi
+	cd $(GLIB_GIT_PATH) && make && make install
+#================================================    
+# lib_dwl
+lib_dwl_configure_help:
+	cd $(GLIB_DWL_PATH) && ./configure --help
+lib_dwl_configure_build:
+	cd $(GLIB_DWL_PATH) && ./configure --prefix=$(GLIB_BUILD)
+lib_dwl_configure_make:
+	if ! [ -d $(GLIB_BUILD) ] ; then mkdir -p $(GLIB_BUILD) ; fi
+	cd $(GLIB_DWL_PATH) && make && make install
+#================================================    
+# lib_aur
+lib_aur_download:
+	if ! [ -d $(GLIB_SRC) ] ; then mkdir -p $(GLIB_SRC) ; fi
+	cd $(GLIB_SRC) && git clone $(GLIB_GIT_URL) $(GLIB_NAME)
+lib_aur_make:
+	cd $(GLIB_GIT_PATH) && makepkg -si
+#================================================    
+# lib_mak
+lib_mak_make:
+	cd $(GLIB_MAK_PATH) && make
+#================================================    

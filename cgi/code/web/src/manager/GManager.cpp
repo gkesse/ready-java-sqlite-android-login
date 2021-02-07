@@ -14,9 +14,12 @@ GManager::GManager() {
     mgr->app->icon_path = "/libs/font_awesome/css/font-awesome.min.css";
     mgr->app->font_path = "/libs/google_fonts";
     mgr->app->page_last = "home";
-    mgr->app->user_name = "unknow";
+    mgr->app->user_name = "unknown";
+    mgr->app->log_path = "./data/log/log.txt";
     // style
     mgr->style = new sGStyle;
+    // cgi
+    mgr->app->cgi = new rude::CGI();
 }
 //===============================================
 GManager::~GManager() {
@@ -57,11 +60,10 @@ void GManager::loadEnv() {
     lApp->cookie_map = splitMap(lApp->cookie_string, ";", "=");
     // page_last
     lApp->page_last = lApp->cookie_map.value("page_last", "");
-    // req_map
-    lApp->req_string = getPost();
-    lApp->req_map = splitMap(lApp->req_string, "&", "=");
     // req
-    lApp->req = lApp->req_map.value("req", "");
+    lApp->req = getPost("req");
+    // action
+    lApp->action = getPost("action");
 }
 //===============================================
 void GManager::showEnv() {
@@ -75,7 +77,7 @@ void GManager::showEnv() {
         "SCRIPT_NAME" << "SERVER_ADDR" << "SERVER_ADMIN" <<      
         "SERVER_NAME" << "SERVER_PORT" << "SERVER_PROTOCOL" <<     
         "SERVER_SIGNATURE" << "SERVER_SOFTWARE" << "HTTP_COOKIE" <<
-        "INPUT_LENGTH" << "CONTENT_LENGTH";
+        "INPUT_LENGTH" << "CONTENT_LENGTH" << "CONTENT_TYPE";
         
     printf("<div class='table_id'>\n");
     printf("<table>\n");
@@ -118,15 +120,12 @@ QString GManager::removeLast(QString str, char remove) {
 //===============================================
 // post
 //===============================================
-QString GManager::getPost() {
-    char lBuffer[1024] = {0}; 
-    QString lEnv = getEnv("CONTENT_LENGTH"); 
-    if(lEnv == "") {return "";}
-    int lLength = lEnv.toInt();
-    int lSize = sizeof(lBuffer) - 1;
-    lLength = qMin(lLength, lSize); 
-    fread(lBuffer, lLength, 1, stdin); 
-    return lBuffer;
+QString GManager::getPost(QString key) {
+    sGApp* lApp = GManager::Instance()->getData()->app;
+    QString lData = "";
+    const char* lKey = key.toStdString().c_str();
+    if(lApp->cgi->exists(lKey)) {lData = lApp->cgi->value(lKey);}
+    return lData;
 }
 //===============================================
 // redirect
@@ -157,5 +156,81 @@ void GManager::selectPage() {
 //===============================================
 void GManager::setCookie(QString key, QString value) {
     printf("Set-Cookie:%s = %s;\n", key.toStdString().c_str(), value.toStdString().c_str());
+}
+//===============================================
+// file
+//===============================================
+void GManager::uploadFile(QString key, QString dir) {
+    sGApp* lApp = GManager::Instance()->getData()->app;
+    const char* lKey = key.toStdString().c_str();
+    if(!(lApp->cgi->exists(lKey) && lApp->cgi->isFile(lKey))) {return;}
+    QString lPath = getFilePath(dir);
+    QString lFilename = lApp->cgi->filename(lKey);
+    QString lFilePath = lPath + "/" + lFilename;
+    FILE* lFile = fopen(lFilePath.toLatin1().constData(), "wb");
+        
+    if(lFile) {
+        const char* lData = lApp->cgi->value(lKey);
+        int lFileSize = lApp->cgi->length(lKey);
+        fwrite(lData, 1, lFileSize, lFile);
+        fclose(lFile);
+    }
+}
+//===============================================
+QString GManager::getFilePath(QString dir) {
+    QString lPath = "./data/users";
+    QString lUsername = getUsername();
+    QString lFilePath = lPath + "/" + lUsername + "/" + dir;
+    createDir(lFilePath);
+    return lFilePath;
+}
+//===============================================
+// dir
+//===============================================
+void GManager::createDir(QString path) {
+    QDir lDir(path);
+    if(!lDir.exists()) {
+        lDir.mkpath(".");
+    }
+}
+//===============================================
+// user
+//===============================================
+QString GManager::getUsername() {
+    sGApp* lApp = GManager::Instance()->getData()->app;
+    return lApp->user_name;
+}
+//===============================================
+// log
+//===============================================
+void GManager::log(const char* format, ...) {
+    sGApp* lApp = GManager::Instance()->getData()->app;
+    createDir(QFileInfo(lApp->log_path).absolutePath());
+    FILE* lFile = fopen(lApp->log_path.toStdString().c_str(), "a");
+    if(lFile == 0) {return;}
+    char lDate[256];
+    char lData[256];
+    Date(lDate);
+    va_list lArgs;
+    va_start(lArgs, format);
+    vsprintf(lData, format, lArgs);
+    va_end(lArgs);
+    fprintf(lFile, "%s | %s\n", lDate, lData);
+    fclose(lFile);
+}
+//===============================================
+// date
+//===============================================
+void GManager::Date(char* buffer) {
+    time_t lTime;
+    time(&lTime);
+    struct tm* lTimeInfo = localtime(&lTime);
+    int lDay = lTimeInfo->tm_mday;
+    int lMonth = lTimeInfo->tm_mon + 1;
+    int lYear = lTimeInfo->tm_year + 1900;
+    int lHour = lTimeInfo->tm_hour;
+    int lMin = lTimeInfo->tm_min;
+    int lSec = lTimeInfo->tm_sec;
+    sprintf(buffer, "%02d/%02d/%04d %02d:%02d:%02d", lDay, lMonth, lYear, lHour, lMin, lSec);
 }
 //===============================================

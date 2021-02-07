@@ -21,12 +21,11 @@ GImage* GImage::Instance() {
 //===============================================
 void GImage::run(int argc, char** argv) {
     printf("content-type: image/jpeg\n\n");
-    QString lFilename = "./data/img/logo.png";
+    QString lFilename = "./data/users/unknown/img/logo.png";
     cv::Mat lImg = cv::imread(lFilename.toStdString());
-    cv::Mat lGray;
-    cv::cvtColor(lImg, lGray, cv::COLOR_BGR2GRAY);
+    if(lImg.empty()) {return;}
     std::vector<uchar> lBuffer;
-    cv::imencode(".jpg", lGray, lBuffer);
+    cv::imencode(".jpg", lImg, lBuffer);
     std::fwrite(lBuffer.data(), 1, lBuffer.size(), stdout);
 }
 //===============================================
