@@ -20,8 +20,9 @@ GImage* GImage::Instance() {
 }
 //===============================================
 void GImage::run(int argc, char** argv) {
+    sGApp* lApp = GManager::Instance()->getData()->app;
     printf("content-type: image/jpeg\n\n");
-    QString lFilename = "./data/users/unknown/img/logo.png";
+    QString lFilename = lApp->image_path;
     cv::Mat lImg = cv::imread(lFilename.toStdString());
     if(lImg.empty()) {return;}
     std::vector<uchar> lBuffer;

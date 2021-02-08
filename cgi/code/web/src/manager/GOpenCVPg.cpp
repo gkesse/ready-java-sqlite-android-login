@@ -13,20 +13,20 @@ GOpenCVPg::~GOpenCVPg() {
 // method
 //===============================================
 void GOpenCVPg::print() {
-    //sGApp* lApp = GManager::Instance()->getData()->app;
+    sGApp* lApp = GManager::Instance()->getData()->app;
     request();
     printf("<div class='body'>\n");
-    printf("<div><img src='/index.cgi?page_id=image'/></div>\n");
+    if(lApp->image_file != "") {
+        printf("<div><img src='/index.cgi?page_id=image&image_path=%s'/></div>\n",
+        lApp->image_file.toStdString().c_str());
+    }
     printf("</div>\n");
 }
 //===============================================
 void GOpenCVPg::request() {
     sGApp* lApp = GManager::Instance()->getData()->app;
-    if(lApp->req == "upload_image") {
-        
-    }
-    else if(lApp->req == "open_image") {
-        
+    if(lApp->opencv_state == "upload_image") {
+        //lApp->image_file = lApp->upload_file;
     }
 }
 //===============================================

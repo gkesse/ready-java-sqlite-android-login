@@ -60,6 +60,11 @@ void GManager::loadEnv() {
     lApp->cookie_map = splitMap(lApp->cookie_string, ";", "=");
     // page_last
     lApp->page_last = lApp->cookie_map.value("page_last", "");
+    // image
+    lApp->image_file = lApp->cookie_map.value("image_file", "");
+    lApp->image_path = lApp->query_map.value("image_path", "");
+    // opencv
+    lApp->opencv_state = lApp->cookie_map.value("opencv_state", "");
     // req
     lApp->req = getPost("req");
     // action
@@ -105,8 +110,8 @@ QMap<QString, QString> GManager::splitMap(QString str, QString sepRow, QString s
     for(int i = 0; i < lDataRow.size(); i++) {
         QString lData = lDataRow[i];
         QStringList lDataCol = lData.split(sepCol);
-        QString lKey = lDataCol[0];
-        QString lValue = lDataCol[1];
+        QString lKey = lDataCol[0].simplified();
+        QString lValue = lDataCol[1].simplified();
         lDataMap[lKey] = lValue;
     }
     return lDataMap;
@@ -158,15 +163,28 @@ void GManager::setCookie(QString key, QString value) {
     printf("Set-Cookie:%s = %s;\n", key.toStdString().c_str(), value.toStdString().c_str());
 }
 //===============================================
+QString GManager::getCookie(QString key) {
+    sGApp* lApp = GManager::Instance()->getData()->app;
+    return lApp->cookie_map.value(key, "");
+}
+//===============================================
 // file
+//===============================================
+QString GManager::getUploadFile(QString key, QString dir) {
+    sGApp* lApp = GManager::Instance()->getData()->app;
+    const char* lKey = key.toStdString().c_str();
+    if(!(lApp->cgi->exists(lKey) && lApp->cgi->isFile(lKey))) {return "";}
+    QString lPath = getFilePath(dir);
+    QString lFilename = lApp->cgi->filename(lKey);
+    QString lFilePath = lPath + "/" + lFilename;
+    return lFilePath;
+}
 //===============================================
 void GManager::uploadFile(QString key, QString dir) {
     sGApp* lApp = GManager::Instance()->getData()->app;
     const char* lKey = key.toStdString().c_str();
     if(!(lApp->cgi->exists(lKey) && lApp->cgi->isFile(lKey))) {return;}
-    QString lPath = getFilePath(dir);
-    QString lFilename = lApp->cgi->filename(lKey);
-    QString lFilePath = lPath + "/" + lFilename;
+    QString lFilePath = getUploadFile(key, dir);
     FILE* lFile = fopen(lFilePath.toLatin1().constData(), "wb");
         
     if(lFile) {

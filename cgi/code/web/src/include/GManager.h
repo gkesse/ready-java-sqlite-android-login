@@ -33,7 +33,9 @@ public:
     void selectPage();
     // cookie
     void setCookie(QString key, QString value);
+    QString getCookie(QString key);
     // file
+    QString getUploadFile(QString key, QString dir);
     void uploadFile(QString key, QString dir);
     QString getFilePath(QString dir);
     // dir
@@ -79,11 +81,9 @@ struct _sGApp {
     // cookie
     QString cookie_string;
     QMap<QString, QString> cookie_map;
-    // post
-    QString post_string;
-    QMap<QString, QString> post_map;
     // image
-    QString image_id;
+    QString image_file;
+    QString image_path;
     // title
     QMap<QString, QString> title_map;
     // req
@@ -96,6 +96,8 @@ struct _sGApp {
     QString log_path;
     // cgi
     rude::CGI* cgi;
+    // opencv
+    QString opencv_state;
 };
 //===============================================
 struct _sGStyle {

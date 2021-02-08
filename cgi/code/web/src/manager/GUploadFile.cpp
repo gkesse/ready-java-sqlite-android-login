@@ -31,11 +31,20 @@ void GUploadFile::print() {
     printf("</div>\n");
 }
 //===============================================
+void GUploadFile::setCookies() {
+    sGApp* lApp = GManager::Instance()->getData()->app;
+    if(lApp->action == "send") {
+        QString lUploadFile = GManager::Instance()->getUploadFile("upload_file", "img");
+        GManager::Instance()->setCookie("image_file", lUploadFile);
+        GManager::Instance()->setCookie("opencv_state", "upload_image");
+    }    
+}
+//===============================================
 void GUploadFile::request() {
     sGApp* lApp = GManager::Instance()->getData()->app;
     if(lApp->action == "send") {
         GManager::Instance()->uploadFile("upload_file", "img");
-        //GManager::Instance()->redirect("/home/opencv");
+        GManager::Instance()->redirect("/home/opencv");
     }    
 }
 //===============================================

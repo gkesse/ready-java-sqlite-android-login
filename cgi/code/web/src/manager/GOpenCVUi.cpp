@@ -44,6 +44,12 @@ void GOpenCVUi::print() {
     printf("</div>\n");
 }
 //===============================================
+void GOpenCVUi::setCookies() {
+    sGApp* lApp = GManager::Instance()->getData()->app;
+    if(lApp->req == "") {lApp->req = "home";}
+    m_workspace->setCookies(lApp->req);
+}
+//===============================================
 void GOpenCVUi::request() {
     sGApp* lApp = GManager::Instance()->getData()->app;
     if(lApp->req == "") {lApp->req = "home";}
@@ -54,12 +60,5 @@ void GOpenCVUi::addItem(QString key, QString text, QString icon) {
     <button class='item2' id='req' name='req' value='%s'>\
     <i class='icon fa fa-%s'></i> %s</button></form>\n",
     key.toStdString().c_str(), icon.toStdString().c_str(), text.toStdString().c_str());
-}
-//===============================================
-void GOpenCVUi::setCookies() {
-    sGApp* lApp = GManager::Instance()->getData()->app;
-    if(lApp->req == "") {lApp->req = "home";}
-    m_workspace->setCookies(lApp->req);
-    GManager::Instance()->log("GOpenCVUi::setCookies");
 }
 //===============================================

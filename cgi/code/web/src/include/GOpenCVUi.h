@@ -10,9 +10,9 @@ public:
     ~GOpenCVUi();
     // method
     void print();
+    void setCookies();
     void request();
     void addItem(QString key, QString text, QString icon);
-    void setCookies();
     
 private:
     GWidget* m_workspace;

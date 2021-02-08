@@ -10,6 +10,7 @@ public:
     ~GUploadFile();
     // method
     void print();
+    void setCookies();
     void request();
 };
 //===============================================
