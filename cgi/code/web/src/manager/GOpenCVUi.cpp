@@ -19,6 +19,7 @@ GOpenCVUi::~GOpenCVUi() {
 void GOpenCVUi::print() {
     sGApp* lApp = GManager::Instance()->getData()->app;
     QString lTitle = m_workspace->getTitle(lApp->req);
+    GManager::Instance()->log("opencv_state : %s", lApp->opencv_state.toStdString().c_str());
     request();
     printf("<div class='opencv'>\n");
     //

@@ -27,8 +27,10 @@ public:
     QString removeLast(QString str, char remove) ;
     // post
     QString getPost(QString key);
+    bool isPost();
     // redirect
     void redirect(QString newUrl);
+    void redirectPost(QString newUrl);
     // page
     void selectPage();
     // cookie

@@ -33,6 +33,7 @@ void GUploadFile::print() {
 //===============================================
 void GUploadFile::setCookies() {
     sGApp* lApp = GManager::Instance()->getData()->app;
+    
     if(lApp->action == "send") {
         QString lUploadFile = GManager::Instance()->getUploadFile("upload_file", "img");
         GManager::Instance()->setCookie("image_file", lUploadFile);

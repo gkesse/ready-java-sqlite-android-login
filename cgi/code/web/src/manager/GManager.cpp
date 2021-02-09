@@ -8,7 +8,7 @@ GManager::GManager() {
     mgr = new sGManager;
     // app
     mgr->app = new sGApp;
-    mgr->app->app_name = "ReadyApp";
+    mgr->app->app_name = "ReadyCGI";
     mgr->app->logo_path = "/data/img/logo.png";
     mgr->app->style_path = "/data/css/style.css";
     mgr->app->icon_path = "/libs/font_awesome/css/font-awesome.min.css";
@@ -134,6 +134,12 @@ QString GManager::getPost(QString key) {
     return lData;
 }
 //===============================================
+bool GManager::isPost() {
+    QString lContentLength = getEnv("CONTENT_LENGTH");
+    if(lContentLength == "") return 0;
+    return 1;
+}
+//===============================================
 // redirect
 //===============================================
 void GManager::redirect(QString newUrl) {
@@ -146,6 +152,12 @@ void GManager::redirect(QString newUrl) {
     printf("<body>\n");
     printf("</body>\n");
     printf("</html>\n");
+    exit(0);
+}
+//===============================================
+void GManager::redirectPost(QString newUrl) {
+    printf("HTTP/1.1 303n\n");
+    printf("Location: %s\n", newUrl.toStdString().c_str());
     exit(0);
 }
 //===============================================
