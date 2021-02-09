@@ -38,6 +38,9 @@ public:
     QString getUploadFile(QString key, QString dir);
     void uploadFile(QString key, QString dir);
     QString getFilePath(QString dir);
+    QString getFilePath(QString dir, QString filename);
+    QStringList getFileList(QString dir);
+    QStringList getFileFilters(QString dir);
     // dir
     void createDir(QString path);
     // user
@@ -84,6 +87,7 @@ struct _sGApp {
     // image
     QString image_file;
     QString image_path;
+    QString image_run;
     // title
     QMap<QString, QString> title_map;
     // req

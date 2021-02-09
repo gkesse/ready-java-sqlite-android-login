@@ -7,6 +7,7 @@
 #include "GTitleBar.h"
 #include "GAddressKey.h"
 #include "GUploadFile.h"
+#include "GDownloadFile.h"
 #include "GSelectFile.h"
 #include "GStackWidget.h"
 #include "GWindow.h"
@@ -35,6 +36,7 @@ GWidget* GWidget::Create(QString key) {
     if(key =="titlebar") {return new GTitleBar;}
     if(key =="addresskey") {return new GAddressKey;}
     if(key =="uploadfile") {return new GUploadFile;}
+    if(key =="downloadfile") {return new GDownloadFile;}
     if(key =="selectfile") {return new GSelectFile;}
     if(key =="stackwidget") {return new GStackWidget;}
     if(key =="window") {return new GWindow;}

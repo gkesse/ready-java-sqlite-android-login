@@ -68,23 +68,21 @@ void GStyle::run(int argc, char** argv) {
     button {\n\
         background-color: transparent;\n\
         border: none;\n\
-        padding: 5px 10px 5px 5px;\n\
-        font-size: 20px;\n\
         font-family: %s;\n\
+        font-size: %spx;\n\
         color: white;\n\
         cursor: pointer;\n\
-    }\n", lStyle->app_font_family);
+    }\n", lStyle->app_font_family, lStyle->app_font_size);
 
     printf("\
     input {\n\
         background-color: transparent;\n\
         border: none;\n\
         border-radius: 0;\n\
-        padding: 5px 10px 5px 10px;\n\
-        font-size: 16px;\n\
+        font-family: %s;\n\
+        font-size: %spx;\n\
         color: white;\n\
-        width: 100%%;\n\
-    }\n");
+    }\n", lStyle->app_font_family, lStyle->app_font_size);
 
     printf("\
     input:-webkit-autofill,;\n\
@@ -137,6 +135,11 @@ void GStyle::run(int argc, char** argv) {
     span {\n\
         word-break: break-all;\n\
     }\n");
+    
+    printf("\
+    form {\n\
+        display: inline-block;\n\
+    }\n");
     //===============================================
     // custom
     //===============================================
@@ -164,8 +167,38 @@ void GStyle::run(int argc, char** argv) {
         min-height: 300px;\n\
         border-radius: 5px;\n\
         text-align: center;\n\
+        overflow: auto;\n\
     }\n", lStyle->app_light_color);
     //===============================================
+    /* body2 */
+    printf("\
+    .body2 {\n\
+        border: 1px solid %s;\n\
+        padding: 0px 0px 5px 0px;\n\
+        min-height: 300px;\n\
+        border-radius: 5px;\n\
+        text-align: center;\n\
+        overflow: auto;\n\
+    }\n", lStyle->app_light_color);
+    //===============================================
+    /* bottom */
+    printf("\
+    .bottom {\n\
+        margin-bottom: 5px;\n\
+    }\n");
+    //===============================================
+    /* box */
+    printf("\
+    .box {\n\
+        background-color: %s;\n\
+        padding: 10px;\n\
+        text-align: left;\n\
+        max-width: 600px;\n\
+        margin: auto;\n\
+        margin-top: 50px;\n\
+        border-radius: 5px;\n\
+    }\n", lStyle->app_bg_color);
+    //===============================================    
     /* button */
     printf("\
     .button {\n\
@@ -186,6 +219,23 @@ void GStyle::run(int argc, char** argv) {
     printf("\
     .button2 {\n\
         background-color: #101030;\n\
+    }\n");
+    //===============================================    
+    /* button3 */
+    printf("\
+    .button3 {\n\
+        background-color: %s;\n\
+        display: inline-block;\n\
+        border-radius: 5px;\n\
+        padding: 5px 10px;\n\
+        font-family: %s;\n\
+        font-size: %spx;\n\
+    }\n", lStyle->app_light_color, lStyle->app_font_family, lStyle->app_font_size);
+    //===============================================
+    /* center */
+    printf("\
+    .center {\n\
+        text-align: center;\n\
     }\n");
     //===============================================
     /* content */
@@ -215,6 +265,14 @@ void GStyle::run(int argc, char** argv) {
         margin-bottom: 10px;\n\
     }\n");
     //===============================================
+    /* header2 */
+    printf("\
+    .header2 {\n\
+        border-bottom: 1px solid %s;\n\
+        padding: 10px;\n\
+        margin-bottom: 5px;\n\
+    }\n", lStyle->app_light_color);
+    //===============================================
     /* html */
     printf("\
     .html {\n\
@@ -225,6 +283,31 @@ void GStyle::run(int argc, char** argv) {
     printf("\
     .icon {\n\
         margin-right: 5px;\n\
+    }\n");
+    //===============================================
+    /* img */
+    printf("\
+    .img {\n\
+        border: 2px solid transparent;\n\
+        display: inline-block;\n\
+        width: 100px;\n\
+        height: auto;\n\
+        border-radius: 5px;\n\
+        margin: 5px;\n\
+    }\n");
+    
+    printf("\
+    .img:hover {\n\
+        border: 2px solid orange;\n\
+    }\n");
+    //===============================================
+    /* img2 */
+    printf("\
+    .img2 {\n\
+        display: inline-block;\n\
+        width: 100px;\n\
+        height: auto;\n\
+        border-radius: 5px;\n\
     }\n");
     //===============================================
     /* item */
@@ -264,6 +347,23 @@ void GStyle::run(int argc, char** argv) {
     printf("\
     .item3 {\n\
         margin: 20px 0px;\n\
+    }\n");
+    //===============================================
+    /* item4 */
+    printf("\
+    .item4 {\n\
+        background-color: %s;\n\
+        border: 1px solid %s;\n\
+        display: inline-block;\n\
+        margin-right: 5px;\n\
+        padding: 5px;\n\
+        border-radius: 5px 10px;\n\
+    }\n", lStyle->app_light_color, lStyle->app_light_color);
+    //===============================================
+    /* left */
+    printf("\
+    .left {\n\
+        text-align: left;\n\
     }\n");
     //===============================================
     /* login */
@@ -309,6 +409,12 @@ void GStyle::run(int argc, char** argv) {
         display: block;\n\
     }\n");
     //===============================================
+    /* right */
+    printf("\
+    .right {\n\
+        text-align: right;\n\
+    }\n");
+    //===============================================
     /* sep */
     printf("\
     .sep {\n\
@@ -338,18 +444,6 @@ void GStyle::run(int argc, char** argv) {
         padding-top: 5px;\n\
         text-align: center;\n\
     }\n");
-    //===============================================
-    /* upload */
-    printf("\
-    .upload {\n\
-        background-color: %s;\n\
-        padding: 10px;\n\
-        text-align: left;\n\
-        max-width: 600px;\n\
-        margin: auto;\n\
-        margin-top: 50px;\n\
-        border-radius: 5px;\n\
-    }\n", lStyle->app_bg_color);
     //===============================================
     /* titlebar */
     printf("\

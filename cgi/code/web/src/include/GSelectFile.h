@@ -10,7 +10,15 @@ public:
     ~GSelectFile();
     // method
     void print();
+    void setCookies();
     void request();
+    
+private:
+    QStringList m_files;
+    QString m_path;
+    int m_total;
+    int m_page;
+    int m_colMax;
 };
 //===============================================
 #endif

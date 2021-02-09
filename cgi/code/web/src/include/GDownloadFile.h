@@ -1,22 +1,18 @@
 //===============================================
-#ifndef _GOpenCVUi_
-#define _GOpenCVUi_
+#ifndef _GDownloadFile_
+#define _GDownloadFile_
 //===============================================
 #include "GWidget.h"
 //===============================================
-class GOpenCVUi : public GWidget {
+class GDownloadFile : public GWidget {
 public:
-    GOpenCVUi();
-    ~GOpenCVUi();
+    GDownloadFile();
+    ~GDownloadFile();
     // method
     void print();
-    void setCookies();
-    void request();
-    void addItem(QString key, QString text, QString icon);
-    void addAction(QString key, QString text, QString icon);
     
 private:
-    GWidget* m_workspace;
+    QString m_tmpImgFile;
 };
 //===============================================
 #endif

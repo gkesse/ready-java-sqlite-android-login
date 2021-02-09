@@ -63,6 +63,7 @@ void GManager::loadEnv() {
     // image
     lApp->image_file = lApp->cookie_map.value("image_file", "");
     lApp->image_path = lApp->query_map.value("image_path", "");
+    lApp->image_run = lApp->query_map.value("image_run", "");
     // opencv
     lApp->opencv_state = lApp->cookie_map.value("opencv_state", "");
     // req
@@ -201,6 +202,28 @@ QString GManager::getFilePath(QString dir) {
     QString lFilePath = lPath + "/" + lUsername + "/" + dir;
     createDir(lFilePath);
     return lFilePath;
+}
+//===============================================
+QString GManager::getFilePath(QString dir, QString filename) {
+    QString lPath = getFilePath(dir);
+    QString lFilename = lPath + "/" + filename;
+    return lFilename;
+}
+//===============================================
+QStringList GManager::getFileList(QString dir) {
+    QString lPath = getFilePath(dir);
+    QStringList lFilters = getFileFilters(dir);
+    QDir lDir(lPath);
+    QStringList lFiles = lDir.entryList(lFilters, QDir::Files);
+    return lFiles;
+}
+//===============================================
+QStringList GManager::getFileFilters(QString dir) {
+    QStringList lFilters;
+    if(dir == "img") {
+        lFilters << "*.png" << "*.jpg" << "*.bmp";
+    }
+    return lFilters;
 }
 //===============================================
 // dir

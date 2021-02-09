@@ -6,8 +6,8 @@ GOpenCVUi::GOpenCVUi() {
     m_workspace = GWidget::Create("stackwidget");
     m_workspace->addPage("home", "opencvpg", "");
     m_workspace->addPage("upload_image", "uploadfile", "Charger une image");
+    m_workspace->addPage("download_image", "downloadfile", "Télécharger une image");
     m_workspace->addPage("open_image", "selectfile", "Ouvrir une image");
-    m_title = "";
 }
 //===============================================
 GOpenCVUi::~GOpenCVUi() {
@@ -18,7 +18,7 @@ GOpenCVUi::~GOpenCVUi() {
 //===============================================
 void GOpenCVUi::print() {
     sGApp* lApp = GManager::Instance()->getData()->app;
-    m_title = m_workspace->getTitle(lApp->req);
+    QString lTitle = m_workspace->getTitle(lApp->req);
     request();
     printf("<div class='opencv'>\n");
     //
@@ -29,13 +29,13 @@ void GOpenCVUi::print() {
     printf("<div class='content2'>\n");
     addItem("upload_image", "Charger une image", "upload");
     addItem("open_image", "Ouvrir une image", "folder-open-o");
-    addItem("save_image", "Enregistrer une image", "floppy-o");
-    addItem("gray_image", "Convertir une image en niveau de gris", "picture-o");
-    addItem("canny_image", "Appliquer le filtre de canny à une image", "picture-o");
+    addItem("download_image", "Télécharger une image", "download");
+    addAction("gray_image", "Convertir une image en niveau de gris", "picture-o");
+    addAction("canny_image", "Appliquer le filtre de canny à une image", "picture-o");
     printf("</div>\n");
     printf("</div>\n");
     //
-    printf("<div class='title2'>%s</div>\n", m_title.toStdString().c_str());
+    printf("<div class='title2'>%s</div>\n", lTitle.toStdString().c_str());
     //
     printf("</div>\n");
     // body
@@ -60,5 +60,14 @@ void GOpenCVUi::addItem(QString key, QString text, QString icon) {
     <button class='item2' id='req' name='req' value='%s'>\
     <i class='icon fa fa-%s'></i> %s</button></form>\n",
     key.toStdString().c_str(), icon.toStdString().c_str(), text.toStdString().c_str());
+}
+//===============================================
+void GOpenCVUi::addAction(QString key, QString text, QString icon) {
+    printf("<form action='' method='post'>\n");
+    printf("<input type='hidden' id='action' name='action' value='%s'/>\n", key.toStdString().c_str());
+    printf("<button class='item2' id='req' name='req' value='home'>\
+    <i class='icon fa fa-%s'></i> %s</button>\n",
+    icon.toStdString().c_str(), text.toStdString().c_str());
+    printf("</form>\n");
 }
 //===============================================
