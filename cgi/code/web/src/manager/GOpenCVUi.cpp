@@ -7,7 +7,7 @@ GOpenCVUi::GOpenCVUi() {
     m_workspace->addPage("home", "opencvpg", "");
     m_workspace->addPage("upload_image", "uploadfile", "Charger une image");
     m_workspace->addPage("download_image", "downloadfile", "Télécharger une image");
-    m_workspace->addPage("open_image", "selectfile", "Ouvrir une image");
+    m_workspace->addPage("open_image", "selectfile", "Sélectionner une image");
 }
 //===============================================
 GOpenCVUi::~GOpenCVUi() {
@@ -28,7 +28,7 @@ void GOpenCVUi::print() {
     printf("<button class='button'><i class='icon fa fa-cog'></i> Paramètres</button>\n");
     printf("<div class='content2'>\n");
     addItem("upload_image", "Charger une image", "upload");
-    addItem("open_image", "Ouvrir une image", "folder-open-o");
+    addItem("open_image", "Sélectionner une image", "folder-open-o");
     addItem("download_image", "Télécharger une image", "download");
     addAction("gray_image", "Convertir une image en niveau de gris", "picture-o");
     addAction("canny_image", "Appliquer le filtre de canny à une image", "picture-o");
