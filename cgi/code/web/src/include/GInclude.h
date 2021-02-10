@@ -4,13 +4,9 @@
 //===============================================
 #if defined(__unix)
 //===============================================
-#include <iostream>
-#include <string>
-#include <map>
-#include <vector>
-#include <sstream>
-#include <unistd.h>
-#include <signal.h>
+#include <QtCore>
+#include <opencv2/opencv.hpp>
+#include <rude/cgi.h>
 //===============================================
 #elif defined(__GNUC__) && defined(__MINGW32__)
 //===============================================

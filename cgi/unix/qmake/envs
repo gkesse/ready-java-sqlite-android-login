@@ -1,0 +1,32 @@
+#================================================
+export "GPROJECT_ROOT=/home/pi/Programs/ReadyStudio"
+export "GPROJECT_PATH=${GPROJECT_ROOT}/ReadyCpp"
+export "GPROJECT_SRC=${GPROJECT_PATH}/cgi/code/web/src"
+export "GPROJECT_WEB=${GPROJECT_PATH}/cgi/code/web/root"
+export "GPROJECT_BIN=${GPROJECT_WEB}/index.cgi"
+#================================================
+export "GPROJECT_DATA=${GPROJECT_PATH}/cgi/data"
+#================================================  
+export "GTREE_PATH=${GPROJECT_PATH}/cgi/code/web"
+#================================================
+export "LD_LIBRARY_PATH=/home/pi/Programs/ReadyStudio/ReadyLib/dev/rudecgi/unix/lib/"
+#================================================
+export "GLIB_ROOT=/c/Users/Admin/Downloads/Programs/ReadyLib/dev"
+export "GLIB_NAME=cgic"
+export "GLIB_PATH=${GLIB_ROOT}/${GLIB_NAME}"
+export "GLIB_SRC=${GLIB_PATH}/src"
+export "GLIB_BUILD=${GLIB_PATH}/build"
+export "GLIB_GIT_URL=https://aur.archlinux.org/qdecoder.git"
+export "GLIB_GIT_PATH=${GLIB_SRC}/${GLIB_NAME}"
+export "GLIB_DWL_PATH=/c/Users/Admin/Downloads/Compressed/cgic-master/cgic-master"
+export "GLIB_MAK_PATH=/c/Users/Admin/Downloads/ccgi-1.2/ccgi-1.2"
+#================================================
+export "GAPT_PACKAGE_SEARCH=opencv"
+export "GAPT_PACKAGE_INSTALL="
+export "GAPT_PACKAGE_INSTALL=build-essential ${GAPT_PACKAGE_INSTALL}"
+export "GAPT_PACKAGE_INSTALL=qt5-default ${GAPT_PACKAGE_INSTALL}"
+export "GAPT_PACKAGE_INSTALL=libopencv-dev ${GAPT_PACKAGE_INSTALL}"
+#================================================
+export "GGIT_URL=https://github.com/gkesse/ReadyCpp.git"
+export "GGIT_NAME=ReadyCpp"
+#================================================

@@ -120,7 +120,8 @@ QMap<QString, QString> GManager::splitMap(QString str, QString sepRow, QString s
 //===============================================
 QString GManager::removeLast(QString str, char remove) {
     QString lData = str;
-    if(lData.back() == remove) lData.chop(1);
+    QChar lLast = lData.at(lData.size() - 1);
+    if(lLast == remove) lData.chop(1);
     return lData;
 }
 //===============================================
