@@ -143,7 +143,7 @@ bool GManager::isPost() {
 // redirect
 //===============================================
 void GManager::redirect(QString newUrl) {
-    printf("Content-type: text/html\n\n");
+    printf("Content-type: text/html\r\n\r\n");
     printf("<html>\n");
     printf("<head>\n");
     printf("<title>Redirection</title>\n");

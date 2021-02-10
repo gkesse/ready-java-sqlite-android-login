@@ -18,7 +18,7 @@ void GTitleBar::print() {
     QString lTitle = lApp->title_map[lApp->page_id];
     printf("<div class='titlebar'>\n");
     printf("<div class='content'>\n");
-    printf("<a href='/home'>\n");
+    printf("<a href='https://readydev.ovh'>\n");
     printf("<img class='logo' src='/data/img/logo_flat.png'/>\n");
     printf("<div class='app_name'>%s</div>\n", lApp->app_name.toStdString().c_str());
     printf("</a>\n");

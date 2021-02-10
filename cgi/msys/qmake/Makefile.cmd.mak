@@ -25,6 +25,10 @@ clean:
 # git
 git_push:
 	@cd $(GPROJECT_PATH) && git pull && git add --all && git commit -m "Initial Commit" && git push -u origin master
+git_push_o:
+	@cd $(GPROJECT_PATH) && git add --all && git commit -m "Initial Commit" && git push -u origin master
+git_pull:
+	@cd $(GPROJECT_PATH) && git pull
 git_status:
 	@cd $(GPROJECT_PATH) && git status
 git_clone:
