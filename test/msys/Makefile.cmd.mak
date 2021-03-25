@@ -25,7 +25,7 @@ $(GBUILD)/%.o: $(GSRC)/%.cpp
 	@if ! [ -d $(GBUILD) ] ; then mkdir -p $(GBUILD) ; fi
 	@g++ $(GCFLAGS) -c $< -o $@ $(GINCS)
 run:
-	$(GTARGET) $(argv)
+	@$(GTARGET) $(argv)
 clean_exe: 
 	@if ! [ -d $(GBIN) ] ; then mkdir -p $(GBIN) ; fi
 	@rm -f $(GTARGET)
