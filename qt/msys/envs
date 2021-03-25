@@ -1,0 +1,12 @@
+#================================================
+export "PATH=/mingw32/bin:$PATH"
+#================================================
+export "GPROJECT_ROOT=/c/Users/Admin/Downloads/Programs"
+export "GPROJECT_PATH=$GPROJECT_ROOT/ReadyCpp"
+export "GPROJECT_SRC=$GPROJECT_PATH/qt/code/readyapp/src"
+export "GPROJECT_EXE=rdcpp"
+export "GPROJECT_TARGET=$GPROJECT_PATH/qt/msys/bin/$GPROJECT_EXE"
+#================================================
+export "GGIT_URL=https://github.com/gkesse/ReadyCpp.git"
+export "GGIT_NAME=ReadyCpp"
+#================================================

@@ -1,29 +1,15 @@
 GSRC = $(GPROJECT_SRC)
 GBIN = bin
 GBUILD = build
-GTARGET = $(GPROJECT_EXE)
-
-GINCS = \
-    -I$(GSRC)\include \
-    
-GLIBS = \
-
-GOBJS = \
-    $(patsubst $(GSRC)/%.cpp, $(GBUILD)/%.o, $(wildcard $(GSRC)/*.cpp)) \
-
-GCFLAGS = \
-    -std=gnu++11 \
-    
+GTARGET = $(GPROJECT_TARGET)    
 #================================================
 # cpp
-all: clean_exe compile run
+all: clean_exe qmake compile run
 
+qmake:
+	@qmake
 compile: $(GOBJS)
-	@if ! [ -d $(GBIN) ] ; then mkdir -p $(GBIN) ; fi
-	g++ $(GCFLAGS) -o $(GTARGET) $(GOBJS) $(GLIBS) 
-$(GBUILD)/%.o: $(GSRC)/%.cpp
-	@if ! [ -d $(GBUILD) ] ; then mkdir -p $(GBUILD) ; fi
-	g++ $(GCFLAGS) -c $< -o $@ $(GINCS)
+	@make 
 run:
 	@$(GTARGET) $(argv)
 clean_exe: 
@@ -34,11 +20,19 @@ clean:
 	@if ! [ -d $(GBUILD) ] ; then mkdir -p $(GBUILD) ; fi
 	@rm -f $(GBUILD)/*.o $(GTARGET)
 #================================================    
+# qt
+qt_install:
+	@pacman -S --needed -y \
+	mingw-w64-i686-qt5 \
+	mingw-w64-i686-qt-creator \
+	mingw-w64-i686-gdb \
+	mingw-w64-i686-cmake \
+	mingw-w64-i686-clang \
+#================================================    
 # git
 git_install:
-	@pacman -S --needed -y \
-	git \
-	vim \
+	@pacman -S --needed git
+	@pacman -S --needed vim
 git_config:
 	@git config --global user.name "Gerard KESSE"
 	@git config --global user.email "tiakagerard@hotmail.com"
