@@ -31,10 +31,39 @@ sGManager* GManager::getData() {
     return mgr;
 }
 //===============================================
+void GManager::showData(std::string data) {
+    printf("[%s]\n", data.c_str());
+}
+//===============================================
+void GManager::showData(std::vector<std::string> data) {
+    for(int i = 0; i < data.size(); i++) {
+        std::string lData = data.at(i);
+        if(i == 0) {printf("[");}
+        if(i != 0) {printf(" ; ");}
+        printf("%s", lData.c_str());
+        if(i + 1 == data.size()) {printf("]\n");}
+    }
+}
+//===============================================
+void GManager::showData(std::vector<std::vector<std::string>> data) {
+    for(int i = 0; i < data.size(); i++) {
+        std::vector<std::string> lRow = data.at(i);
+        for(int j = 0; j < lRow.size(); j++) {
+            std::string lData = lRow.at(j);
+            if(j == 0) {printf("[");}
+            if(j != 0) {printf(" ; ");}
+            printf("%s", lData.c_str());
+            if(j + 1 == lRow.size()) {printf("]\n");}
+        }
+    }
+}
+//===============================================
 // env
 //===============================================
-std::string GManager::getEnv(std::string env) {
-    std::string lValue = std::getenv(env.c_str());
+std::string GManager::getEnv(std::string env, std::string defaultValue) {
+    std::string lValue = defaultValue;
+    char* lData = std::getenv(env.c_str());
+    if(lData != 0) {lValue = lData;}
     return lValue;
 }
 //===============================================

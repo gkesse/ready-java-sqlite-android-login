@@ -14,7 +14,7 @@ typedef int (*GSQLITE_CALLBACK)(void* params, int colCount, char** colValue, cha
 struct _sGSQLiteShow {
     int onHeader;
     int onGrid;
-    const char* widthMap;
+    std::string widthMap;
     int defaultWidth;
     int colCount;
 };
@@ -35,7 +35,6 @@ struct _sGSQLiteMap {
 };
 //===============================================
 GSQLite::GSQLite() {
-    char lQuery[256];
     // config_data
     queryWrite(GManager::Instance()->format("\
     create table if not exists config_data (\n\
@@ -55,6 +54,33 @@ GSQLite* GSQLite::Instance() {
     return m_instance;
 }
 //===============================================
+void GSQLite::test(int argc, char** argv) {
+    sGApp* lApp = GManager::Instance()->getData()->app;
+    //
+    queryShow(GManager::Instance()->format("\
+    select type, name, tbl_name, rootpage\n\
+    from sqlite_master\n\
+    ", "5"));
+    printf("\n");
+    //
+    std::string lData = queryValue(GManager::Instance()->format("\
+    select name from sqlite_master\n\
+    "));
+    GManager::Instance()->showData(lData);
+    printf("\n");
+    //
+    std::vector<std::string> lRow = queryRow(GManager::Instance()->format("\
+    select * from sqlite_master\n\
+    "));
+    GManager::Instance()->showData(lRow);
+    printf("\n");
+    //
+    std::vector<std::vector<std::string>> lMap = queryMap(GManager::Instance()->format("\
+    select * from sqlite_master\n\
+    "));
+    GManager::Instance()->showData(lMap);
+}
+//===============================================
 void* GSQLite::open() {
     sGApp* lApp = GManager::Instance()->getData()->app;
     sqlite3* lDb;
@@ -67,12 +93,12 @@ void GSQLite::exec(std::string sqlQuery, void* onExec, void* params) {
 	sqlite3* lDb = (sqlite3*)open();
     char* lError;
 	int lOk = sqlite3_exec(lDb, sqlQuery.c_str(), (GSQLITE_CALLBACK)onExec, params, &lError);
-	if(lOk != SQLITE_OK) {printf("[error] %s() : %s\n", __FUNCTION__, lError);}
+	if(lOk != SQLITE_OK) {printf("[error] GSQLite::exec() : %s\n", lError);}
     sqlite3_close(lDb);
 }
 //===============================================
 void GSQLite::queryShow(std::string sqlQuery, std::string widthMap, int defaultWidth) {
-    sGSQLiteShow lParams = {1, 1, widthMap.c_str(), defaultWidth, 0};
+    sGSQLiteShow lParams = {1, 1, widthMap, defaultWidth, 0};
     exec(sqlQuery, (void*)onQueryShow, &lParams);
     
     if(lParams.colCount > 0) printf("+-");

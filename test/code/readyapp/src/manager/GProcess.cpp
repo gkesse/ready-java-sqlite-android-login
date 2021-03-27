@@ -1,6 +1,7 @@
 //===============================================
 #include "GProcess.h"
 #include "GProcessUi.h"
+#include "GSQLite.h"
 #include "GManager.h"
 //===============================================
 GProcess* GProcess::m_instance = 0;
@@ -29,7 +30,7 @@ void GProcess::run(int argc, char** argv) {
 }
 //===============================================
 void GProcess::runTest(int argc, char** argv) {
-    printf("runTest\n");
+    GSQLite::Instance()->test(argc, argv);
 }
 //===============================================
 void GProcess::runUi(int argc, char** argv) {

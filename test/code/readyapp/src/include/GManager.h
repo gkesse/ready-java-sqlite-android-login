@@ -18,8 +18,11 @@ public:
     static GManager* Instance();
     // data
     sGManager* getData();
+    void showData(std::string data);
+    void showData(std::vector<std::string> data);
+    void showData(std::vector<std::vector<std::string>> data);
     // env
-    std::string getEnv(std::string env);
+    std::string getEnv(std::string env, std::string defaultValue = "");
     // string
     std::string format(const char* format, ...);
     int getWidth(std::string widthMap, int index, int defaultWidth);
