@@ -29,6 +29,10 @@ qt_install:
 	@pacman -S --needed -y mingw-w64-i686-cmake
 	@pacman -S --needed -y mingw-w64-i686-clang
 #================================================    
+# gsl
+gsl_install:
+	@pacman -S --needed -y mingw-w64-i686-gsl
+#================================================    
 # git
 git_install:
 	@pacman -S --needed -y git
