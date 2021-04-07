@@ -79,7 +79,7 @@ std::string GManager::format(const char* format, ...) {
 }
 //===============================================
 int GManager::getWidth(std::string widthMap, int index, int defaultWidth) {
-    std::vector<std::string> lWidthMap = split(widthMap, ";");
+    std::vector<std::string> lWidthMap = split(widthMap, ';');
     int lLength = lWidthMap.size();
     if(index >= lLength) {return defaultWidth;}
     std::string lWidthId = lWidthMap.at(index);
@@ -95,16 +95,13 @@ bool GManager::isNumber(const std::string& str) {
     return !str.empty() && lIter == str.end();
 }
 //===============================================
-std::vector<std::string> GManager::split(std::string str, std::string sep) {
+std::vector<std::string> GManager::split(std::string str, char sep) {
     std::vector<std::string> lDataMap;
-    size_t lPos = 0;
-    std::string lToken;
-    while ((lPos = str.find(sep)) != std::string::npos) {
-        lToken = str.substr(0, lPos);
-        lDataMap.push_back(str);
-        str.erase(0, lPos + sep.length());
+    std::stringstream lStream(str);
+    std::string lLine;
+    while (std::getline(lStream, lLine, sep)) {
+        lDataMap.push_back(lLine);
     }
-    lDataMap.push_back(str);
     return lDataMap;
 }
 //===============================================

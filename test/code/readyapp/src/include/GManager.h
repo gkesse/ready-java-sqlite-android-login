@@ -27,7 +27,7 @@ public:
     std::string format(const char* format, ...);
     int getWidth(std::string widthMap, int index, int defaultWidth);
     bool isNumber(const std::string& str);
-    std::vector<std::string> split(std::string str, std::string sep);
+    std::vector<std::string> split(std::string str, char sep);
 
 private:
     static GManager* m_instance;

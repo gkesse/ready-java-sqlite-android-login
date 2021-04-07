@@ -14,11 +14,11 @@ run:
 	@$(GTARGET) $(argv)
 clean_exe: 
 	@if ! [ -d $(GBIN) ] ; then mkdir -p $(GBIN) ; fi
-	@rm -f $(GTARGET)
+	@rm -f $(GBIN)/*
 clean: 
 	@if ! [ -d $(GBIN) ] ; then mkdir -p $(GBIN) ; fi
 	@if ! [ -d $(GBUILD) ] ; then mkdir -p $(GBUILD) ; fi
-	@rm -f $(GBUILD)/*.o $(GTARGET)
+	@rm -f $(GBUILD)/*.o $(GBIN)/*
 #================================================    
 # qt
 qt_install:

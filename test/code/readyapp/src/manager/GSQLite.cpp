@@ -60,23 +60,38 @@ void GSQLite::test(int argc, char** argv) {
     queryShow(GManager::Instance()->format("\
     select type, name, tbl_name, rootpage\n\
     from sqlite_master\n\
-    ", "5"));
+    where type='table'\n\
+    "), "5;20;15;10");
     printf("\n");
     //
     std::string lData = queryValue(GManager::Instance()->format("\
-    select name from sqlite_master\n\
+    select name\n\
+    from sqlite_master\n\
+    where type='table'\n\
     "));
     GManager::Instance()->showData(lData);
     printf("\n");
     //
+    std::vector<std::string> lCol = queryCol(GManager::Instance()->format("\
+    select name\n\
+    from sqlite_master\n\
+    where type='table'\n\
+    "));
+    GManager::Instance()->showData(lCol);
+    printf("\n");
+    //
     std::vector<std::string> lRow = queryRow(GManager::Instance()->format("\
-    select * from sqlite_master\n\
+    select type, name, tbl_name, rootpage\n\
+    from sqlite_master\n\
+    where type='table'\n\
     "));
     GManager::Instance()->showData(lRow);
     printf("\n");
     //
     std::vector<std::vector<std::string>> lMap = queryMap(GManager::Instance()->format("\
-    select * from sqlite_master\n\
+    select type, name, tbl_name, rootpage\n\
+    from sqlite_master\n\
+    where type='table'\n\
     "));
     GManager::Instance()->showData(lMap);
 }
