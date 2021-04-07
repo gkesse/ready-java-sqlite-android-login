@@ -23,20 +23,22 @@ clean:
 #================================================    
 # qt
 qt_install:
-	@pacman -S --needed -y mingw-w64-i686-qt5
-	@pacman -S --needed -y mingw-w64-i686-qt-creator
-	@pacman -S --needed -y mingw-w64-i686-gdb
-	@pacman -S --needed -y mingw-w64-i686-cmake
-	@pacman -S --needed -y mingw-w64-i686-clang
+	@pacman -S --needed --noconfirm mingw-w64-i686-qt5
+	@pacman -S --needed --noconfirm mingw-w64-i686-qt-creator
+	@pacman -S --needed --noconfirm mingw-w64-i686-gdb
+	@pacman -S --needed --noconfirm mingw-w64-i686-cmake
+	@pacman -S --needed --noconfirm mingw-w64-i686-clang
 #================================================    
 # gsl
 gsl_install:
-	@pacman -S --needed -y mingw-w64-i686-gsl
+	@pacman -S --needed --noconfirm mingw-w64-i686-gsl
+gsl_remove:
+	@pacman -R mingw-w64-i686-gsl
 #================================================    
 # git
 git_install:
-	@pacman -S --needed -y git
-	@pacman -S --needed -y vim
+	@pacman -S --needed --noconfirm git
+	@pacman -S --needed --noconfirm vim
 git_config:
 	@git config --global user.name "Gerard KESSE"
 	@git config --global user.email "tiakagerard@hotmail.com"
