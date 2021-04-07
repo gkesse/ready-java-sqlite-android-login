@@ -1,3 +1,4 @@
+#================================================
 GSRC = $(GPROJECT_SRC)
 GBIN = bin
 GBUILD = build
@@ -22,17 +23,16 @@ clean:
 #================================================    
 # qt
 qt_install:
-	@pacman -S --needed -y \
-	mingw-w64-i686-qt5 \
-	mingw-w64-i686-qt-creator \
-	mingw-w64-i686-gdb \
-	mingw-w64-i686-cmake \
-	mingw-w64-i686-clang \
+	@pacman -S --needed -y mingw-w64-i686-qt5
+	@pacman -S --needed -y mingw-w64-i686-qt-creator
+	@pacman -S --needed -y mingw-w64-i686-gdb
+	@pacman -S --needed -y mingw-w64-i686-cmake
+	@pacman -S --needed -y mingw-w64-i686-clang
 #================================================    
 # git
 git_install:
-	@pacman -S --needed git
-	@pacman -S --needed vim
+	@pacman -S --needed -y git
+	@pacman -S --needed -y vim
 git_config:
 	@git config --global user.name "Gerard KESSE"
 	@git config --global user.email "tiakagerard@hotmail.com"
