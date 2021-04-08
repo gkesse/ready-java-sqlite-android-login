@@ -35,6 +35,33 @@ GMainWindow::GMainWindow(QWidget* parent) : GWidget(parent) {
     lTextEdit->setObjectName("workspace");
     lWorkspace->setCentralWidget(lTextEdit);
     
+    QTextCursor lTextCursor(lTextEdit->textCursor());
+    lTextCursor.movePosition(QTextCursor::Start);
+    QTextFrame* lTextFrame = lTextCursor.currentFrame();
+
+    QTextTableFormat lTextTableFormat;
+    lTextTableFormat.setBorder(1);
+    lTextTableFormat.setCellPadding(16);
+    lTextTableFormat.setAlignment(Qt::AlignRight);
+    
+    QTextCharFormat lTextCharFormat;
+    
+    QTextCharFormat lTextCharFormatBold;
+    lTextCharFormatBold.setFontWeight(QFont::Bold);
+    
+    lTextCursor.insertTable(1, 1, lTextTableFormat);
+    lTextCursor.insertText("Gerard KESSE", lTextCharFormatBold);
+    
+    lTextCursor.insertBlock();
+    lTextCursor.insertText("25 Rue du Général Leclerc", lTextCharFormat);
+    lTextCursor.insertBlock();
+    lTextCursor.insertText("67000 Strasbourg", lTextCharFormat);
+    lTextCursor.insertBlock();
+    lTextCursor.insertText(tr("https://readydev.ovh"), lTextCharFormat);
+    
+    lTextCursor.setPosition(lTextFrame->lastPosition());
+    lTextCursor.insertText(QDate::currentDate().toString("d MMMM yyyy"), lTextCharFormat);
+
     // on crée le qdockwidget (clients)
     QDockWidget* lDockWidget = new QDockWidget(tr("Clients"), lWorkspace);
     // on définit les positions du qdockwidget (gauche, droite)
