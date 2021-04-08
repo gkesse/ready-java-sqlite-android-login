@@ -34,7 +34,9 @@ GWindow::GWindow(QWidget* parent) : GWidget(parent) {
     addPage("home", "Accueil", GWidget::Create("home"), 1);
     addPage("home/opencv", "OpenCV", GWidget::Create("opencv"), 1);
     // qt
+    addPage("home/qt", "Qt", GWidget::Create("qt"), 1);
     addPage("home/qt/qgraphicsview", "QGraphicsView", GWidget::Create("qgraphicsview"), 1);
+    addPage("home/qt/qmainwindow", "QMainWindow", GWidget::Create("qmainwindow"), 1);
     // login
     addPage("home/login", "Connexion", GWidget::Create("login"));
     addPage("home/profil", "Profil", GWidget::Create("profil"));

@@ -29,6 +29,12 @@ qt_install:
 	@pacman -S --needed --noconfirm mingw-w64-i686-cmake
 	@pacman -S --needed --noconfirm mingw-w64-i686-clang
 #================================================    
+# qt_example
+qte_all:
+	@cd $(GQT_EXAMPLE_ROOT) && qmake && make
+qte_run:
+	@$(GQT_EXAMPLE_BIN)
+#================================================    
 # gsl
 gsl_install:
 	@pacman -S --needed --noconfirm mingw-w64-i686-gsl

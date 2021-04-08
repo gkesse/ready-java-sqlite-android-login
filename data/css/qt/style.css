@@ -13,6 +13,36 @@ QWidget, QWidget *, * {
 /*===============================================*/
 /* global */
 /*===============================================*/
+/* QDockWidget */
+QDockWidget {
+    border: 5px solid red;
+    titlebar-close-icon: url(:/img/close.png);
+    titlebar-normal-icon: url(:/img/windowrestore.png);
+}
+
+QDockWidget::title {
+    text-align: left;
+    background: #305030;
+    padding: 2px 5px 2px 5px;
+}
+
+QDockWidget::close-button, 
+QDockWidget::float-button {
+    border: none;
+    background: transparent;
+    padding: 0px;
+}
+
+QDockWidget::close-button:hover, 
+QDockWidget::float-button:hover {
+    background: transparent;
+}
+
+QDockWidget::close-button:pressed, 
+QDockWidget::float-button:pressed {
+    padding: 1px -1px -1px 1px;
+}
+/*===============================================*/
 /* QHeaderView */
 QHeaderView::section {
     background-color: #501010;
@@ -25,6 +55,44 @@ QHeaderView::section:checked {
 }
 QHeaderView::section:hover {
     background-color: #f38000;
+}
+/*===============================================*/
+/* QListView */
+QListView {
+    show-decoration-selected: 1; 
+}
+QListView::item {
+    border: 0px;
+    padding: 2px 5px;
+}
+QListView::icon {
+    /*left: 10px;*/
+}
+QListView::text {
+    /*left: 10px;*/
+}
+QListView::item:alternate {
+    background-color: #201010;
+}
+QListView::item:selected {
+    border: none;
+}
+QListView::item:selected:!active {
+
+    color: white;
+}
+QListView::item:selected:active {
+
+}
+QListView::item:hover {
+    background-color: purple;
+}
+/*===============================================*/
+/* QMainWindow */
+QMainWindow#workspace {
+    background-color: #503030;
+    border-radius: 5px;
+    padding: 10px;
 }
 /*===============================================*/
 /* QMenu */
@@ -56,6 +124,30 @@ QSizeGrip {
     background-color: #503030;
 }
 /*===============================================*/
+/* QTabWidget */
+QTabWidget::pane {
+    border-top: 2px solid #303050;
+}
+QTabWidget::tab-bar {
+    left: 5px;
+}
+QTabBar::tab {
+    background-color: transparent;
+    border: none;
+    padding: 2px 5px;
+}
+
+QTabBar::tab:selected {
+    background-color: #305030;
+    border: none;
+}
+QTabBar::tab:!selected {
+    margin: 0px; 
+}
+QTabBar::tab:hover {
+
+}
+/*===============================================*/
 /* QTableWidget */
 QTableWidget {
     alternate-background-color: #705050;
@@ -75,6 +167,13 @@ QTableCornerButton::section {
 /*===============================================*/
 /* QTextEdit */
 QTextEdit#debug {
+    background-color: #503030;
+    border-radius: 5px;
+    padding: 10px;
+}
+/*===============================================*/
+/* QTextEdit */
+QTextEdit#workspace {
     background-color: #503030;
     border-radius: 5px;
     padding: 10px;

@@ -7,6 +7,7 @@ UI_DIR = build
 RCC_DIR = build
 CONFIG += console release gnu++11
 QT += widgets sql printsupport
+RESOURCES += $$(GPROJECT_RES)
 
 QMAKE_CXXFLAGS +=\
     -Wno-unused-parameter \

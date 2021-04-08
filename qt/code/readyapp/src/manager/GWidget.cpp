@@ -15,6 +15,7 @@
 // qt
 #include "GQtPg.h"
 #include "GGraphicsView.h"
+#include "GMainWindow.h"
 // login
 #include "GLogin.h"
 #include "GProfil.h"
@@ -63,6 +64,7 @@ GWidget* GWidget::Create(QString key, QWidget* parent) {
     // qt
     if(key == "qt") return new GQtPg(parent);
     if(key == "qgraphicsview") return new GGraphicsView(parent);
+    if(key == "qmainwindow") return new GMainWindow(parent);
     // login
     if(key == "login") return new GLogin(parent);
     if(key == "profil") return new GProfil(parent);

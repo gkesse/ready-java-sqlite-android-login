@@ -1,0 +1,11 @@
+<!DOCTYPE RCC>
+<!-- ============================================ -->
+<RCC version="1.0">
+    <!-- ============================================ -->
+    <qresource prefix="img">
+        <file alias="close.png">img/close.png</file>
+        <file alias="windowrestore.png">img/windowrestore.png</file>
+    </qresource>
+    <!-- ============================================ -->
+</RCC>
+<!-- ============================================ -->
