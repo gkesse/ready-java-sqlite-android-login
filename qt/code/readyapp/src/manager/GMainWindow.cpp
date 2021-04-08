@@ -39,28 +39,45 @@ GMainWindow::GMainWindow(QWidget* parent) : GWidget(parent) {
     lTextCursor.movePosition(QTextCursor::Start);
     QTextFrame* lTextFrame = lTextCursor.currentFrame();
 
-    QTextTableFormat lTextTableFormat;
-    lTextTableFormat.setBorder(1);
-    lTextTableFormat.setCellPadding(16);
-    lTextTableFormat.setAlignment(Qt::AlignRight);
+    QTextTableFormat lTextTableFormatLeft;
+    lTextTableFormatLeft.setBorder(0);
+    lTextTableFormatLeft.setCellPadding(0);
+    lTextTableFormatLeft.setAlignment(Qt::AlignLeft);
+    
+    QTextTableFormat lTextTableFormatRight;
+    lTextTableFormatRight.setBorder(0);
+    lTextTableFormatRight.setCellPadding(0);
+    lTextTableFormatRight.setAlignment(Qt::AlignRight);
     
     QTextCharFormat lTextCharFormat;
     
     QTextCharFormat lTextCharFormatBold;
     lTextCharFormatBold.setFontWeight(QFont::Bold);
-    
-    lTextCursor.insertTable(1, 1, lTextTableFormat);
+        
+    lTextCursor.insertTable(1, 1, lTextTableFormatLeft);
     lTextCursor.insertText("Gerard KESSE", lTextCharFormatBold);
-    
     lTextCursor.insertBlock();
     lTextCursor.insertText("25 Rue du Général Leclerc", lTextCharFormat);
     lTextCursor.insertBlock();
     lTextCursor.insertText("67000 Strasbourg", lTextCharFormat);
-    lTextCursor.insertBlock();
-    lTextCursor.insertText(tr("https://readydev.ovh"), lTextCharFormat);
     
     lTextCursor.setPosition(lTextFrame->lastPosition());
-    lTextCursor.insertText(QDate::currentDate().toString("d MMMM yyyy"), lTextCharFormat);
+    lTextCursor.insertTable(1, 1, lTextTableFormatRight);
+    lTextCursor.insertText(QDate::currentDate().toString("dd MMMM yyyy"), lTextCharFormat);
+   
+    lTextCursor.setPosition(lTextFrame->lastPosition());
+    lTextCursor.insertText("Monsieur le Directeur,", lTextCharFormat);
+
+    for(int i = 0; i < 2; ++i) {lTextCursor.insertBlock();}
+    lTextCursor.insertText("Je vous transmets ci-joint ma feuille de temps du mois d'avril 2021.", lTextCharFormat);
+    for(int i = 0; i < 2; ++i) {lTextCursor.insertBlock();}
+    
+    lTextCursor.insertTable(1, 1, lTextTableFormatRight);
+    lTextCursor.insertText("Cordialement,", lTextCharFormat);
+    lTextCursor.insertBlock();
+    lTextCursor.insertText("Gérard KESSE", lTextCharFormat);
+    lTextCursor.insertBlock();
+    lTextCursor.insertText("Architecte logiciel C/C++/Qt", lTextCharFormat);
 
     // on crée le qdockwidget (clients)
     QDockWidget* lDockWidget = new QDockWidget(tr("Clients"), lWorkspace);
