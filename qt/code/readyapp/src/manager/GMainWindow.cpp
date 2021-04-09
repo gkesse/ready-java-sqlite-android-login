@@ -31,48 +31,56 @@ GMainWindow::GMainWindow(QWidget* parent) : GWidget(parent) {
     QMainWindow* lWorkspace = new QMainWindow;
     lWorkspace->setObjectName("workspace");
     
+    // on cree un qtextedit
     QTextEdit* lTextEdit = new QTextEdit;
     lTextEdit->setObjectName("workspace");
     lWorkspace->setCentralWidget(lTextEdit);
     
+    // on recupere le curseur du qtextedit
     QTextCursor lTextCursor(lTextEdit->textCursor());
+    // on initialise la position du curseur du qtextedit
     lTextCursor.movePosition(QTextCursor::Start);
+    // on recupere le pointeur de position du curseur du qtextedit
     QTextFrame* lTextFrame = lTextCursor.currentFrame();
 
-    QTextTableFormat lTextTableFormatLeft;
-    lTextTableFormatLeft.setBorder(0);
-    lTextTableFormatLeft.setCellPadding(0);
-    lTextTableFormatLeft.setAlignment(Qt::AlignLeft);
-    
+    // on cree un objet de formatage texte pour table (droite)   
     QTextTableFormat lTextTableFormatRight;
     lTextTableFormatRight.setBorder(0);
     lTextTableFormatRight.setCellPadding(0);
     lTextTableFormatRight.setAlignment(Qt::AlignRight);
     
+    // on cree un objet de formatage texte (par defaut)  
     QTextCharFormat lTextCharFormat;
     
+    // on cree un objet de formatage texte (gras)  
     QTextCharFormat lTextCharFormatBold;
     lTextCharFormatBold.setFontWeight(QFont::Bold);
         
-    lTextCursor.insertTable(1, 1, lTextTableFormatLeft);
+    // on insere des textes dans le qtextedit
     lTextCursor.insertText("Gerard KESSE", lTextCharFormatBold);
     lTextCursor.insertBlock();
     lTextCursor.insertText("25 Rue du Général Leclerc", lTextCharFormat);
     lTextCursor.insertBlock();
     lTextCursor.insertText("67000 Strasbourg", lTextCharFormat);
     
-    lTextCursor.setPosition(lTextFrame->lastPosition());
+    // on insere une table (1 ligne, 1 colonne) dans le qtextedit
     lTextCursor.insertTable(1, 1, lTextTableFormatRight);
+    // on insere des textes dans le qtextedit
     lTextCursor.insertText(QDate::currentDate().toString("dd MMMM yyyy"), lTextCharFormat);
    
+    // on initialise la position du curseur dans le qtextedit
     lTextCursor.setPosition(lTextFrame->lastPosition());
+    // on ecrit des textes dans qtextedit
     lTextCursor.insertText("Monsieur le Directeur,", lTextCharFormat);
 
+    // on insere des textes dans qtextedit
     for(int i = 0; i < 2; ++i) {lTextCursor.insertBlock();}
     lTextCursor.insertText("Je vous transmets ci-joint ma feuille de temps du mois d'avril 2021.", lTextCharFormat);
     for(int i = 0; i < 2; ++i) {lTextCursor.insertBlock();}
     
+    // on insere une table (1 ligne, 1 colonne) dans le qtextedit
     lTextCursor.insertTable(1, 1, lTextTableFormatRight);
+    // on insere des textes dans le qtextedit
     lTextCursor.insertText("Cordialement,", lTextCharFormat);
     lTextCursor.insertBlock();
     lTextCursor.insertText("Gérard KESSE", lTextCharFormat);
