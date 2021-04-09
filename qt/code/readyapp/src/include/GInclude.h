@@ -33,6 +33,7 @@
 #include <QtWidgets>
 #include <QtSql>
 #include <QPrinter>
+#include <QPrintDialog>
 #include <QtAwesome.h>
 //===============================================
 #elif defined(__WIN32)

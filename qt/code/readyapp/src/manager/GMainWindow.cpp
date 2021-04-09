@@ -26,6 +26,7 @@ GMainWindow::GMainWindow(QWidget* parent) : GWidget(parent) {
 
     QMenu* lSettingMenu = new QMenu(this);
     m_settingMenu = lSettingMenu;
+    lSettingMenu->addAction(GManager::Instance()->loadPicto(fa::book, lApp->picto_color), "Imprimer...")->setData("print_data");
     lSettingMenu->setCursor(Qt::PointingHandCursor);
         
     QMainWindow* lWorkspace = new QMainWindow;
@@ -33,6 +34,7 @@ GMainWindow::GMainWindow(QWidget* parent) : GWidget(parent) {
     
     // on cree un qtextedit
     QTextEdit* lTextEdit = new QTextEdit;
+    m_textEdit = lTextEdit;
     lTextEdit->setObjectName("workspace");
     lWorkspace->setCentralWidget(lTextEdit);
     
@@ -174,8 +176,17 @@ void GMainWindow::slotItemClick(QAction* action) {
     sGApp* lApp = GManager::Instance()->getData()->app;
     lApp->widget_id = action->data().toString();
 
-    if(lApp->widget_id == "open_image") {
-
+    if(lApp->widget_id == "print_data") {
+        // on recupere le document du qtextedit
+        QTextDocument* lTextDocument = m_textEdit->document();
+        // on declare un qprinter
+        QPrinter lPrinter;
+        // on initialise la boite de dialogue du qprinter 
+        QPrintDialog lPrintDialog(&lPrinter, this);
+        // on ouvre la boite de dialogue du qprinter 
+        if (lPrintDialog.exec() != QDialog::Accepted) {return;}
+        // on demarre l'impression du contenu du qtextedit 
+        lTextDocument->print(&lPrinter);
     }
 }
 //===============================================

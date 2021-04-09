@@ -32,8 +32,9 @@ qt_install:
 # qt_example
 qte_all:
 	@cd $(GQT_EXAMPLE_ROOT) && qmake && make
+	$(GQT_EXAMPLE_BIN)
 qte_run:
-	@$(GQT_EXAMPLE_BIN)
+	$(GQT_EXAMPLE_BIN)
 #================================================    
 # gsl
 gsl_install:
