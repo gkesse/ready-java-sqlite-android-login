@@ -43,6 +43,13 @@ QDockWidget::float-button:pressed {
     padding: 1px -1px -1px 1px;
 }
 /*===============================================*/
+/* QFrame */
+QFrame#workspace {
+    background-color: #503030;
+    border-radius: 5px;
+    padding: 10px;
+}
+/*===============================================*/
 /* QHeaderView */
 QHeaderView::section {
     background-color: #501010;
@@ -234,19 +241,14 @@ QFrame#GGraphicsView QGraphicsView#workspace {
 GLineEdit * {
     background-color: transparent;
 }
-GLineEdit[mode="normal"] QLineEdit#edit {
-    background-color: #503030;
+GLineEdit#mode_label {
+    border: 2px solid #503030;
     border-radius: 5px;
-    padding: 2px 5px;
 }
-GLineEdit[mode="field"] QFrame#field {
-    background-color: #503030;
-    border-radius: 5px;
-    padding: 2px 5px;
-}
-GLineEdit[mode="label"] QPushButton#label {
+GLineEdit#mode_label QPushButton#label {
     background-color: #503030;
     padding: 2px 10px;
+    text-align: left;
 }
 /*===============================================*/
 /* GListBox */

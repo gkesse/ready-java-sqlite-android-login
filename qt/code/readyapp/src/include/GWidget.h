@@ -38,7 +38,17 @@ public:
     virtual void clearContent();
     //
     virtual void fillContent();
-    
+    //
+    virtual void setLabel(QString text);
+    virtual void setLabelWidth(int width);
+    virtual void setLabelIcon(int icon, QColor color = "white");
+    virtual void setGoToIcon(int icon, QColor color = "white");
+    virtual void setIcon(int icon, QColor color = "white");
+    virtual void setText(QString text);
+    virtual void setEchoMode(QLineEdit::EchoMode mode);
+    virtual void setReadOnly(bool flag);
+    virtual QString getText();
+
 public slots:
     virtual void slotItemClick();
     virtual void slotItemClick(QAction* action);

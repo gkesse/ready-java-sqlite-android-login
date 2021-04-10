@@ -13,11 +13,15 @@ public:
     ~GLineEdit();
 
 public:
-    void setContent(QString key, QString text);
-    void setContent(QString key, int icon, QColor color);
-    void setContent(QString key, int data);
-    void setOption(QString key, int mode);
-    void getData(QString key, QString& data);
+    void setLabel(QString text);
+    void setLabelWidth(int width);
+    void setLabelIcon(int icon, QColor color = "white");
+    void setGoToIcon(int icon, QColor color = "white");
+    void setIcon(int icon, QColor color = "white");
+    void setText(QString text);
+    void setEchoMode(QLineEdit::EchoMode mode);
+    void setReadOnly(bool flag);
+    QString getText();
     
 public slots:
     void slotItemClick();

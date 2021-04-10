@@ -40,7 +40,7 @@ public:
     // property
     void setProperty(QWidget* widget, QString key, QVariant data);
     // picto
-    QIcon loadPicto(int picto, QColor color);
+    QIcon loadPicto(int picto, QColor color = "white");
     // font
     void loadFont();
     // img

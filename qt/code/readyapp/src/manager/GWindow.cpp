@@ -31,12 +31,13 @@ GWindow::GWindow(QWidget* parent) : GWidget(parent) {
     lScrollArea->setWidgetResizable(true);
 
     // home
-    addPage("home", "Accueil", GWidget::Create("home"), 1);
-    addPage("home/opencv", "OpenCV", GWidget::Create("opencv"), 1);
+    addPage("home", "Accueil", GWidget::Create("home"));
+    addPage("home/opencv", "OpenCV", GWidget::Create("opencv"));
     // qt
     addPage("home/qt", "Qt", GWidget::Create("qt"), 1);
-    addPage("home/qt/qgraphicsview", "QGraphicsView", GWidget::Create("qgraphicsview"), 1);
-    addPage("home/qt/qmainwindow", "QMainWindow", GWidget::Create("qmainwindow"), 1);
+    addPage("home/qt/qgraphicsview", "QGraphicsView", GWidget::Create("qgraphicsview"));
+    addPage("home/qt/qmainwindow", "QMainWindow", GWidget::Create("qmainwindow"));
+    addPage("home/qt/qdatastream", "QDataStream", GWidget::Create("qdatastream"), 1);
     // login
     addPage("home/login", "Connexion", GWidget::Create("login"));
     addPage("home/profil", "Profil", GWidget::Create("profil"));
@@ -61,7 +62,7 @@ GWindow::GWindow(QWidget* parent) : GWidget(parent) {
     lMainLayout->addWidget(lTitleBar);
     lMainLayout->addWidget(lAddressBar);
     lMainLayout->addWidget(lAddressKey);
-    lMainLayout->addWidget(lScrollArea, 1);
+    lMainLayout->addWidget(lScrollArea);
     lMainLayout->setMargin(10);
     lMainLayout->setSpacing(10);
     

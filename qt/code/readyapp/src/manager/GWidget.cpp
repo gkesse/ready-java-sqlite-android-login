@@ -5,17 +5,19 @@
 #include "GListBox.h"
 #include "GListWidget.h"
 #include "GTableWidget.h"
-// page
-#include "GWindow.h"
 #include "GTitleBar.h"
 #include "GAddressBar.h"
 #include "GAddressKey.h"
+#include "GKeyValue.h"
+// page
+#include "GWindow.h"
 #include "GHome.h"
 #include "GOpenCVQt.h"
 // qt
 #include "GQtPg.h"
 #include "GGraphicsView.h"
 #include "GMainWindow.h"
+#include "GDataStream.h"
 // login
 #include "GLogin.h"
 #include "GProfil.h"
@@ -57,6 +59,7 @@ GWidget* GWidget::Create(QString key, QWidget* parent) {
     if(key == "titlebar") return new GTitleBar(parent);
     if(key == "addressbar") return new GAddressBar(parent);
     if(key == "addresskey") return new GAddressKey(parent);
+    if(key == "keyvalue") return new GKeyValue(parent);
     // page
     if(key == "window") return new GWindow(parent);
     if(key == "home") return new GHome(parent);
@@ -65,6 +68,7 @@ GWidget* GWidget::Create(QString key, QWidget* parent) {
     if(key == "qt") return new GQtPg(parent);
     if(key == "qgraphicsview") return new GGraphicsView(parent);
     if(key == "qmainwindow") return new GMainWindow(parent);
+    if(key == "qdatastream") return new GDataStream(parent);
     // login
     if(key == "login") return new GLogin(parent);
     if(key == "profil") return new GProfil(parent);
@@ -114,6 +118,16 @@ void GWidget::resetContent() {}
 void GWidget::clearContent() {}
 //
 void GWidget::fillContent() {}
+//
+void GWidget::setLabel(QString text) {}
+void GWidget::setLabelWidth(int width) {}
+void GWidget::setLabelIcon(int icon, QColor color) {}
+void GWidget::setGoToIcon(int icon, QColor color) {}
+void GWidget::setIcon(int icon, QColor color) {}
+void GWidget::setText(QString text) {}
+void GWidget::setEchoMode(QLineEdit::EchoMode mode) {}
+void GWidget::setReadOnly(bool flag) {}
+QString GWidget::getText() {return "";}
 //===============================================
 // slot
 //===============================================

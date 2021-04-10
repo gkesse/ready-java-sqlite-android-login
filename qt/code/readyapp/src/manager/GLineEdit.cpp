@@ -60,29 +60,48 @@ GLineEdit::~GLineEdit() {
 //===============================================
 // method
 //===============================================
-void GLineEdit::setContent(QString key, QString text) {
-    if(key == "edit") {m_edit->setText(text); if(text == "") {m_goto->setVisible(false);}}
-    else if(key == "label") {m_label->setText(text); m_label->setVisible(true);}
+void GLineEdit::setLabel(QString text) {
+    m_label->setText(text);
+    m_label->setVisible(true);
 }
 //===============================================
-void GLineEdit::setContent(QString key, int icon, QColor color) {
-    if(key == "icon") {m_icon->setIcon(GManager::Instance()->loadPicto(icon, color)); m_icon->setVisible(true);}
-    else if(key == "goto") {m_goto->setIcon(GManager::Instance()->loadPicto(icon, color)); m_goto->setVisible(true);}
-    else if(key == "label") {m_label->setIcon(GManager::Instance()->loadPicto(icon, color)); m_label->setVisible(true);}
+void GLineEdit::setLabelWidth(int width) {
+    m_label->setStyleSheet(QString("\
+    QPushButton {\n\
+        min-width: %1px;\n\
+    }\n\
+    ").arg(width));
 }
 //===============================================
-void GLineEdit::setContent(QString key, int data) {
-    if(key == "icon") {m_icon->setVisible(data);}
-    else if(key == "goto") {m_goto->setVisible(data);}
+void GLineEdit::setLabelIcon(int icon, QColor color) {
+    m_label->setIcon(GManager::Instance()->loadPicto(icon, color)); 
+    m_icon->setVisible(true);
 }
 //===============================================
-void GLineEdit::setOption(QString key, int mode) {
-    if(key == "echomode") {m_edit->setEchoMode((QLineEdit::EchoMode)mode);}
-    else if(key == "readonly") {m_edit->setReadOnly((bool)mode);}
+void GLineEdit::setGoToIcon(int icon, QColor color) {
+    m_goto->setIcon(GManager::Instance()->loadPicto(icon, color)); 
+    m_goto->setVisible(true);
 }
 //===============================================
-void GLineEdit::getData(QString key, QString& data) {
-    if(key == "edit") {data = m_edit->text();}
+void GLineEdit::setIcon(int icon, QColor color) {
+    m_icon->setIcon(GManager::Instance()->loadPicto(icon, color)); 
+    m_icon->setVisible(true);
+}
+//===============================================
+void GLineEdit::setText(QString text) {
+    m_edit->setText(text); 
+}
+//===============================================
+void GLineEdit::setEchoMode(QLineEdit::EchoMode mode) {
+    m_edit->setEchoMode(mode);
+}
+//===============================================
+void GLineEdit::setReadOnly(bool flag) {
+    m_edit->setReadOnly(flag);
+}
+//===============================================
+QString GLineEdit::getText() {
+    return m_edit->text();
 }
 //===============================================
 // slot
