@@ -9,6 +9,7 @@
 #include "GAddressBar.h"
 #include "GAddressKey.h"
 #include "GKeyValue.h"
+#include "GTitle.h"
 // page
 #include "GWindow.h"
 #include "GHome.h"
@@ -60,6 +61,7 @@ GWidget* GWidget::Create(QString key, QWidget* parent) {
     if(key == "addressbar") return new GAddressBar(parent);
     if(key == "addresskey") return new GAddressKey(parent);
     if(key == "keyvalue") return new GKeyValue(parent);
+    if(key == "title") return new GTitle(parent);
     // page
     if(key == "window") return new GWindow(parent);
     if(key == "home") return new GHome(parent);
@@ -127,6 +129,8 @@ void GWidget::setIcon(int icon, QColor color) {}
 void GWidget::setText(QString text) {}
 void GWidget::setEchoMode(QLineEdit::EchoMode mode) {}
 void GWidget::setReadOnly(bool flag) {}
+void GWidget::setTitle(QString text) {}
+void GWidget::setTitleIcon(int icon) {}
 QString GWidget::getText() {return "";}
 //===============================================
 // slot

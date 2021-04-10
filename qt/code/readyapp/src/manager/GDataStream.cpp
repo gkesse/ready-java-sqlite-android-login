@@ -31,6 +31,7 @@ GDataStream::GDataStream(QWidget* parent) : GWidget(parent) {
         
     GWidget* lWorkspace = GWidget::Create("keyvalue");
     lWorkspace->setObjectName("workspace");
+    lWorkspace->setTitle("Ajouter une variable");
         
     QVBoxLayout* lMainLayout = new QVBoxLayout;
     lMainLayout->addLayout(lHeaderLayout);

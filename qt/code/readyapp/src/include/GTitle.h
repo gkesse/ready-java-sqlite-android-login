@@ -1,16 +1,16 @@
 //===============================================
-#ifndef _GKeyValue_
-#define _GKeyValue_
+#ifndef _GTitle_
+#define _GTitle_
 //===============================================
 #include "GInclude.h"
 #include "GWidget.h"
 //===============================================
-class GKeyValue : public GWidget {    
+class GTitle : public GWidget {    
     Q_OBJECT
 
 public:
-    GKeyValue(QWidget* parent = 0);
-    ~GKeyValue();
+    GTitle(QWidget* parent = 0);
+    ~GTitle();
     
 public:
     void setTitle(QString text);
@@ -21,7 +21,8 @@ public slots:
     
 private:
     QMap<QWidget*, QString> m_widgetId;
-    GWidget* m_title;
+    QPushButton* m_title;
+    QPushButton* m_close;
 };
 //===============================================
 #endif

@@ -8,20 +8,22 @@ GKeyValue::GKeyValue(QWidget* parent) : GWidget(parent) {
     
     QFrame* lContent = new QFrame;
     
-    QLabel* lTitle = new QLabel;
-    lTitle->setText("Ajouter un titre");
+    GWidget* lTitle = GWidget::Create("title");
+    m_title = lTitle;
+    lTitle->setVisible(false);
+    m_widgetId[lTitle] = "title";
     
     GWidget* lName = GWidget::Create("lineedit");
     lName->setObjectName("mode_label");
     lName->setLabel("Nom de la variable");
     lName->setLabelWidth(150);
-    lName->setLabelIcon(fa::book);
+    m_widgetId[lName] = "name";
     
     GWidget* lValue = GWidget::Create("lineedit");
     lValue->setObjectName("mode_label");
     lValue->setLabel("Valeur de la variable");
     lValue->setLabelWidth(150);
-    lValue->setLabelIcon(fa::book);
+    m_widgetId[lValue] = "value";
     
     QVBoxLayout* lContentLayout = new QVBoxLayout;
     lContentLayout->addWidget(lTitle);
@@ -40,9 +42,34 @@ GKeyValue::GKeyValue(QWidget* parent) : GWidget(parent) {
     lMainLayout->setSpacing(0);
     
     setLayout(lMainLayout);    
+
+    connect(lTitle, SIGNAL(emitItemClick()), this, SLOT(slotItemClick()));
+    connect(lName, SIGNAL(emitItemClick()), this, SLOT(slotItemClick()));
+    connect(lValue, SIGNAL(emitItemClick()), this, SLOT(slotItemClick()));
 }
 //===============================================
 GKeyValue::~GKeyValue() {
     
+}
+//===============================================
+// method
+//===============================================
+void GKeyValue::setTitle(QString text) {
+    m_title->setTitle(text);
+    m_title->setVisible(true);
+}
+//===============================================
+void GKeyValue::setTitleIcon(int icon) {
+    m_title->setTitleIcon(icon);
+    m_title->setVisible(true);
+}
+//===============================================
+// slot
+//===============================================
+void GKeyValue::slotItemClick() {
+    sGApp* lApp = GManager::Instance()->getData()->app;
+    QWidget* lWidget = qobject_cast<QWidget*>(sender());
+    lApp->widget_id = m_widgetId[lWidget];
+    emit emitItemClick();
 }
 //===============================================

@@ -47,6 +47,8 @@ public:
     virtual void setText(QString text);
     virtual void setEchoMode(QLineEdit::EchoMode mode);
     virtual void setReadOnly(bool flag);
+    virtual void setTitle(QString text);
+    virtual void setTitleIcon(int icon);
     virtual QString getText();
 
 public slots:

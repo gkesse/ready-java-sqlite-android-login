@@ -75,7 +75,6 @@ void GLineEdit::setLabelWidth(int width) {
 //===============================================
 void GLineEdit::setLabelIcon(int icon, QColor color) {
     m_label->setIcon(GManager::Instance()->loadPicto(icon, color)); 
-    m_icon->setVisible(true);
 }
 //===============================================
 void GLineEdit::setGoToIcon(int icon, QColor color) {
