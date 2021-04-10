@@ -126,6 +126,13 @@ QMessageBox QPushButton:pressed {
     background-color: transparent;
 }
 /*===============================================*/
+/* QPushButton */
+QPushButton#button {
+    background-color: #503030;
+    border-radius: 5px;
+    padding: 2px 10px;
+}
+/*===============================================*/
 /* QSizeGrip */
 QSizeGrip {
     background-color: #503030;

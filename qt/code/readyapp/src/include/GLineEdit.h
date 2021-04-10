@@ -19,7 +19,7 @@ public:
     void setGoToIcon(int icon, QColor color = "white");
     void setIcon(int icon, QColor color = "white");
     void setText(QString text);
-    void setEchoMode(QLineEdit::EchoMode mode);
+    void setEchoMode(int mode);
     void setReadOnly(bool flag);
     QString getText();
     

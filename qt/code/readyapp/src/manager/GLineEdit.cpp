@@ -91,8 +91,8 @@ void GLineEdit::setText(QString text) {
     m_edit->setText(text); 
 }
 //===============================================
-void GLineEdit::setEchoMode(QLineEdit::EchoMode mode) {
-    m_edit->setEchoMode(mode);
+void GLineEdit::setEchoMode(int mode) {
+    m_edit->setEchoMode((QLineEdit::EchoMode)mode);
 }
 //===============================================
 void GLineEdit::setReadOnly(bool flag) {

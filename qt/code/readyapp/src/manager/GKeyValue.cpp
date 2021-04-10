@@ -1,6 +1,5 @@
 //===============================================
 #include "GKeyValue.h"
-#include "GWidget.h"
 #include "GManager.h"
 //===============================================
 GKeyValue::GKeyValue(QWidget* parent) : GWidget(parent) {
@@ -25,10 +24,17 @@ GKeyValue::GKeyValue(QWidget* parent) : GWidget(parent) {
     lValue->setLabelWidth(150);
     m_widgetId[lValue] = "value";
     
+    GWidget* lButtons = GWidget::Create("buttonrow");
+    lButtons->setAlignment(Qt::AlignRight);
+    lButtons->addItem("cancel", "Annuler");
+    lButtons->addItem("add", "Ajouter");
+    m_widgetId[lButtons] = "buttons";
+    
     QVBoxLayout* lContentLayout = new QVBoxLayout;
     lContentLayout->addWidget(lTitle);
     lContentLayout->addWidget(lName);
     lContentLayout->addWidget(lValue);
+    lContentLayout->addWidget(lButtons);
     lContentLayout->setMargin(10);
     lContentLayout->setSpacing(10);
     
@@ -46,6 +52,7 @@ GKeyValue::GKeyValue(QWidget* parent) : GWidget(parent) {
     connect(lTitle, SIGNAL(emitItemClick()), this, SLOT(slotItemClick()));
     connect(lName, SIGNAL(emitItemClick()), this, SLOT(slotItemClick()));
     connect(lValue, SIGNAL(emitItemClick()), this, SLOT(slotItemClick()));
+    connect(lButtons, SIGNAL(emitItemClick()), this, SLOT(slotItemClick()));
 }
 //===============================================
 GKeyValue::~GKeyValue() {

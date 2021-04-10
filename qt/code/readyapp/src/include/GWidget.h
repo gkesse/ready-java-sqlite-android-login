@@ -45,10 +45,11 @@ public:
     virtual void setGoToIcon(int icon, QColor color = "white");
     virtual void setIcon(int icon, QColor color = "white");
     virtual void setText(QString text);
-    virtual void setEchoMode(QLineEdit::EchoMode mode);
+    virtual void setEchoMode(int mode);
     virtual void setReadOnly(bool flag);
     virtual void setTitle(QString text);
     virtual void setTitleIcon(int icon);
+    virtual void setAlignment(int alignment);
     virtual QString getText();
 
 public slots:

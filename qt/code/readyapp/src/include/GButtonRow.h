@@ -1,27 +1,28 @@
 //===============================================
-#ifndef _GTitle_
-#define _GTitle_
+#ifndef _GButtonRow_
+#define _GButtonRow_
 //===============================================
 #include "GInclude.h"
 #include "GWidget.h"
 //===============================================
-class GTitle : public GWidget {    
+class GButtonRow : public GWidget {    
     Q_OBJECT
 
 public:
-    GTitle(QWidget* parent = 0);
-    ~GTitle();
+    GButtonRow(QWidget* parent = 0);
+    ~GButtonRow();
     
 public:
-    void setTitle(QString text);
-    void setTitleIcon(int icon);
+    void addItem(QString key, QString text);
+    void addItem(QString key, QString text, int icon);
+    void setAlignment(int alignment);
     
 public slots:
     void slotItemClick();
     
 private:
     QMap<QWidget*, QString> m_widgetId;
-    QPushButton* m_title;
+    QHBoxLayout* m_mainLayout;
 };
 //===============================================
 #endif

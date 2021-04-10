@@ -1,5 +1,6 @@
 //===============================================
 #include "GProcessUi.h"
+#include "GSQLiteUi.h"
 #include "GConfig.h"
 //===============================================
 GProcessUi* GProcessUi::m_instance = 0;
@@ -64,7 +65,7 @@ void GProcessUi::run_CHOICE(int argc, char** argv) {
 }
 //===============================================
 void GProcessUi::run_SQLITE(int argc, char** argv) {
-    //GSQLiteUi::Instance()->run(argc, argv);
+    GSQLiteUi::Instance()->run(argc, argv);
     G_STATE = "S_SAVE";
 }
 //===============================================
