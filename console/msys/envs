@@ -8,6 +8,7 @@ export "GPROJECT_EXE=${GPROJECT_PATH}/console/msys/bin/rdcpp.exe"
 export "GPROJECT_DATA=${GPROJECT_PATH}/data"
 #================================================
 export "GSQLITE_DB_PATH=${GPROJECT_DATA}/sqlite/config.dat"
+export "GIMG_PATH=${GPROJECT_DATA}/img/opencv"
 #================================================
 export "GGIT_URL=https://github.com/gkesse/ReadyCpp.git"
 export "GGIT_NAME=ReadyCpp"

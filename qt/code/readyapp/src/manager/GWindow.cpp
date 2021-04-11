@@ -22,41 +22,41 @@ GWindow::GWindow(QWidget* parent) : GWidget(parent) {
     GWidget* lAddressKey = GWidget::Create("addresskey");
     lApp->address_key = lAddressKey;
     
-    GStackWidget* lWorkspace = new GStackWidget;
+    GWidget* lWorkspace = GWidget::Create("stackwidget");
     lApp->page_map = lWorkspace;
+
+    // home
+    lWorkspace->addPage("home", "Accueil", GWidget::Create("home"));
+    lWorkspace->addPage("home/opencv", "OpenCV", GWidget::Create("opencv"));
+    // qt
+    lWorkspace->addPage("home/qt", "Qt", GWidget::Create("qt"), 1);
+    lWorkspace->addPage("home/qt/qgraphicsview", "QGraphicsView", GWidget::Create("qgraphicsview"));
+    lWorkspace->addPage("home/qt/qmainwindow", "QMainWindow", GWidget::Create("qmainwindow"));
+    lWorkspace->addPage("home/qt/qdatastream", "QDataStream", GWidget::Create("qdatastream"), 1);
+    // login
+    lWorkspace->addPage("home/login", "Connexion", GWidget::Create("login"));
+    lWorkspace->addPage("home/profil", "Profil", GWidget::Create("profil"));
+    // sqlite
+    lWorkspace->addPage("home/sqlite", "Tables", GWidget::Create("sqlitetables"));
+    lWorkspace->addPage("home/sqlite/users", "Table USERS", GWidget::Create("usermap"));
+    lWorkspace->addPage("home/sqlite/users/show", "Données d'un utilisateur", GWidget::Create("usershow"));
+    lWorkspace->addPage("home/sqlite/users/schema", "Schéma de la table USER", GWidget::Create("schema"));
+    lWorkspace->addPage("home/sqlite/users/add", "Ajouter un utilisateur", GWidget::Create("useradd"));
+    lWorkspace->addPage("home/sqlite/config_data", "Table CONFIG_DATA", GWidget::Create("config_data"));
+    lWorkspace->addPage("home/sqlite/config_data/schema", "Afficher le schéma", GWidget::Create("schema"));
+    // pdf
+    lWorkspace->addPage("home/pdf", "Pdf", GWidget::Create("pdfui"));
+    // timesheet
+    lWorkspace->addPage("home/timesheet", "Timesheet", GWidget::Create("timesheet"));
+    // debug
+    lWorkspace->addPage("home/debug", "Debug", GWidget::Create("debug"));
+    // error
+    lWorkspace->addPage("home/error", "Erreur", GWidget::Create("error"));
 
     QScrollArea* lScrollArea = new QScrollArea;
     lScrollArea->setObjectName("workspace");
     lScrollArea->setWidget(lWorkspace);
     lScrollArea->setWidgetResizable(true);
-
-    // home
-    addPage("home", "Accueil", GWidget::Create("home"));
-    addPage("home/opencv", "OpenCV", GWidget::Create("opencv"));
-    // qt
-    addPage("home/qt", "Qt", GWidget::Create("qt"), 1);
-    addPage("home/qt/qgraphicsview", "QGraphicsView", GWidget::Create("qgraphicsview"));
-    addPage("home/qt/qmainwindow", "QMainWindow", GWidget::Create("qmainwindow"));
-    addPage("home/qt/qdatastream", "QDataStream", GWidget::Create("qdatastream"), 1);
-    // login
-    addPage("home/login", "Connexion", GWidget::Create("login"));
-    addPage("home/profil", "Profil", GWidget::Create("profil"));
-    // sqlite
-    addPage("home/sqlite", "Tables", GWidget::Create("sqlitetables"));
-    addPage("home/sqlite/users", "Table USERS", GWidget::Create("usermap"));
-    addPage("home/sqlite/users/show", "Données d'un utilisateur", GWidget::Create("usershow"));
-    addPage("home/sqlite/users/schema", "Schéma de la table USER", GWidget::Create("schema"));
-    addPage("home/sqlite/users/add", "Ajouter un utilisateur", GWidget::Create("useradd"));
-    addPage("home/sqlite/config_data", "Table CONFIG_DATA", GWidget::Create("config_data"));
-    addPage("home/sqlite/config_data/schema", "Afficher le schéma", GWidget::Create("schema"));
-    // pdf
-    addPage("home/pdf", "Pdf", GWidget::Create("pdfui"));
-    // timesheet
-    addPage("home/timesheet", "Timesheet", GWidget::Create("timesheet"));
-    // debug
-    addPage("home/debug", "Debug", GWidget::Create("debug"));
-    // error
-    addPage("home/error", "Erreur", GWidget::Create("error"));
         
     QVBoxLayout* lMainLayout = new QVBoxLayout;
     lMainLayout->addWidget(lTitleBar);
@@ -78,19 +78,6 @@ GWindow::GWindow(QWidget* parent) : GWidget(parent) {
 //===============================================
 GWindow::~GWindow() {
     
-}
-//===============================================
-// methods
-//===============================================
-void GWindow::addPage(QString key, QString title, QWidget* widget, bool isDefault) {
-    sGApp* lApp = GManager::Instance()->getData()->app;
-    int lWidgetId = lApp->page_map->count();
-    lApp->page_id[key] = lWidgetId;
-    lApp->title_map[key] = title;
-    lApp->page_map->addWidget(widget);
-    if(isDefault == 1) {
-        GManager::Instance()->setPage(key);
-    }
 }
 //===============================================
 // callback

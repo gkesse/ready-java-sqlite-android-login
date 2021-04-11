@@ -203,13 +203,13 @@ void GManager::setPage(QString address)  {
         lApp->address_key->setContent(address);
         return;
     }
-    GWidget* lPage = qobject_cast<GWidget*>(lApp->page_map->widget(lPageId));
+    GWidget* lPage = lApp->page_map->getPage(address);
     lApp->address_new = address;
     if(lPage->loadPage() == 0) {
         lApp->address->setText(lApp->address_url);
         return;
     }
-    lApp->page_map->setCurrentIndex(lPageId);
+    lApp->page_map->setPage(address);
     lApp->address->setText(address);
     lApp->address_url = address;
     lApp->address_key->setContent(address);

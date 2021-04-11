@@ -13,7 +13,7 @@ public:
     static GWidget* Create(QString key, QWidget* parent = 0);
 
 public:
-    virtual void addPage(QString key, QString title, QWidget* widget, bool isDefault);
+    virtual void addPage(QString key, QString title, QWidget* widget, bool isDefault = 0);
     virtual int loadPage();
     //
     virtual void addItem(QString key, QString text);
@@ -50,7 +50,13 @@ public:
     virtual void setTitle(QString text);
     virtual void setTitleIcon(int icon);
     virtual void setAlignment(int alignment);
+    virtual void setPage(QString page);
     virtual QString getText();
+    virtual QString getName();
+    virtual QString getValue();
+    virtual GWidget* getPage(QString key);
+    virtual QWidget* getWidget(QString key);
+    virtual QString getTitle(QString key);
 
 public slots:
     virtual void slotItemClick();

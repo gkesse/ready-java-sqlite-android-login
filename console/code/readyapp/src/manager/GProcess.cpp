@@ -1,6 +1,7 @@
 //===============================================
 #include "GProcess.h"
 #include "GProcessUi.h"
+#include "GOpenCVPc.h"
 #include "GSQLite.h"
 #include "GManager.h"
 //===============================================
@@ -26,6 +27,7 @@ void GProcess::run(int argc, char** argv) {
     if(argc > 1) {lKey = argv[1];}
     if(lKey == "test") {runTest(argc, argv); return;}
     if(lKey == "ui") {runUi(argc, argv); return;}
+    if(lKey == "opencv") {runOpenCV(argc, argv); return;}
     runTest(argc, argv);
 }
 //===============================================
@@ -35,5 +37,10 @@ void GProcess::runTest(int argc, char** argv) {
 //===============================================
 void GProcess::runUi(int argc, char** argv) {
     GProcessUi::Instance()->run(argc, argv);
+}
+//===============================================
+void GProcess::runOpenCV(int argc, char** argv) {
+    GManager::Instance()->loadImage();
+    GOpenCVPc::Instance()->run(argc, argv);
 }
 //===============================================

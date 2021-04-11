@@ -12,6 +12,7 @@ GManager::GManager() {
     mgr->app = new sGApp;
     mgr->app->app_name = "ReadyApp";
     mgr->app->sqlite_db_path = getEnv("GSQLITE_DB_PATH");
+    mgr->app->img_path = getEnv("GIMG_PATH");
 }
 //===============================================
 GManager::~GManager() {
@@ -103,5 +104,29 @@ std::vector<std::string> GManager::split(std::string str, char sep) {
         lDataMap.push_back(lLine);
     }
     return lDataMap;
+}
+//===============================================
+// image
+//===============================================
+void GManager::loadImage() {
+    sGApp* lApp = GManager::Instance()->getData()->app;
+    
+    DIR* lDir = opendir(lApp->img_path.c_str());
+    
+    if(lDir == 0) {
+        printf("[error] le repertoire image n'existe pas\n");
+        printf("[error] %s\n", lApp->img_path.c_str());
+        return;
+    }
+    
+    struct dirent* lEntry;
+     
+    while((lEntry = readdir(lDir)) != NULL) {
+        std::string lFilename = lEntry->d_name;
+        if(lFilename == ".") {continue;}
+        if(lFilename == "..") {continue;}
+        std::string lFullname = lApp->img_path + "/" + lFilename;
+        lApp->img_paths[lFilename] = lFullname;
+    }
 }
 //===============================================

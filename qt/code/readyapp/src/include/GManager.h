@@ -98,7 +98,7 @@ struct _sGApp {
     int win_width;
     int win_height;
     // page
-    QStackedWidget* page_map;
+    GWidget* page_map;
     QMap<QString, int> page_id;
     // widget
     QWidget* widget;

@@ -11,6 +11,7 @@
 #include "GKeyValue.h"
 #include "GTitle.h"
 #include "GButtonRow.h"
+#include "GStackWidget.h"
 // page
 #include "GWindow.h"
 #include "GHome.h"
@@ -64,6 +65,7 @@ GWidget* GWidget::Create(QString key, QWidget* parent) {
     if(key == "keyvalue") return new GKeyValue(parent);
     if(key == "title") return new GTitle(parent);
     if(key == "buttonrow") return new GButtonRow(parent);
+    if(key == "stackwidget") return new GStackWidget(parent);
     // page
     if(key == "window") return new GWindow(parent);
     if(key == "home") return new GHome(parent);
@@ -134,7 +136,13 @@ void GWidget::setReadOnly(bool flag) {}
 void GWidget::setTitle(QString text) {}
 void GWidget::setTitleIcon(int icon) {}
 void GWidget::setAlignment(int alignment) {}
+void GWidget::setPage(QString page) {}
 QString GWidget::getText() {return "";}
+QString GWidget::getName() {return "";}
+QString GWidget::getValue() {return "";}
+GWidget* GWidget::getPage(QString key) {return 0;}
+QWidget* GWidget::getWidget(QString key) {return 0;}
+QString GWidget::getTitle(QString key) {return "";}
 //===============================================
 // slot
 //===============================================

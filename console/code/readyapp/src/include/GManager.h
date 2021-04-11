@@ -28,6 +28,8 @@ public:
     int getWidth(std::string widthMap, int index, int defaultWidth);
     bool isNumber(const std::string& str);
     std::vector<std::string> split(std::string str, char sep);
+    // img
+    void loadImage();
 
 private:
     static GManager* m_instance;
@@ -45,6 +47,9 @@ struct _sGApp {
     std::string app_name;
     // sqlite
     std::string sqlite_db_path;
+    // img
+    std::string img_path;
+    std::map<std::string, std::string> img_paths;
 };
 //===============================================
 #endif

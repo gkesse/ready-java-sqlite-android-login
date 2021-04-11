@@ -16,6 +16,7 @@ public:
 private:
     void runTest(int argc, char** argv);
     void runUi(int argc, char** argv);
+    void runOpenCV(int argc, char** argv);
 
 private:
     static GProcess* m_instance;

@@ -1,0 +1,23 @@
+#================================================
+export "PATH=/mingw32/bin:$PATH"
+#================================================
+export "GPROJECT_ROOT=/c/Users/Admin/Downloads/Programs"
+export "GPROJECT_PATH=${GPROJECT_ROOT}/ReadyCpp"
+export "GPROJECT_SRC=${GPROJECT_PATH}/qt/code/readyapp/src"
+export "GPROJECT_EXE=rdcpp"
+export "GPROJECT_TARGET=${GPROJECT_PATH}/qt/msys/bin/${GPROJECT_EXE}"
+export "GPROJECT_DATA=${GPROJECT_PATH}/data"
+export "GPROJECT_RES=${GPROJECT_DATA}/resources.qrc"
+#================================================
+export "GSTYLE_PATH=${GPROJECT_DATA}/css/qt/style.css"
+export "GIMG_PATH=${GPROJECT_DATA}/img"
+export "GSQLITE_DB_PATH=${GPROJECT_DATA}/sqlite/config.dat"
+export "GFONT_PATH=${GPROJECT_DATA}/font"
+#================================================
+export "GQT_EXAMPLE_ROOT=/c/Qt/Examples/Qt-5.15.0/widgets/tutorials/addressbook/part6"
+export "GQT_EXAMPLE_MODULE=part6"
+export "GQT_EXAMPLE_BIN=${GQT_EXAMPLE_ROOT}/release/${GQT_EXAMPLE_MODULE}"
+#================================================
+export "GGIT_URL=https://github.com/gkesse/ReadyCpp.git"
+export "GGIT_NAME=ReadyCpp"
+#================================================

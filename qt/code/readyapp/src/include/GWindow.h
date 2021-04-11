@@ -12,9 +12,6 @@ public:
     GWindow(QWidget* parent = 0);
     ~GWindow();
 
-public:
-    void addPage(QString key, QString title, QWidget* widget, bool isDefault = 0);
-
 protected:
     void resizeEvent(QResizeEvent *event);
     void closeEvent(QCloseEvent *event);

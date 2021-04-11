@@ -20,6 +20,7 @@
 #include <vector>
 #include <sstream>
 #include <pthread.h>
+#include <dirent.h>
 //===============================================
 #include <sqlite3.h>
 #include <opencv2/opencv.hpp>
