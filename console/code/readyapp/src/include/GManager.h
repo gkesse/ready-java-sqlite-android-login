@@ -28,8 +28,10 @@ public:
     int getWidth(std::string widthMap, int index, int defaultWidth);
     bool isNumber(const std::string& str);
     std::vector<std::string> split(std::string str, char sep);
-    // img
+    // image
     void loadImage();
+    // video
+    void loadVideo();
 
 private:
     static GManager* m_instance;
@@ -50,6 +52,9 @@ struct _sGApp {
     // img
     std::string img_path;
     std::map<std::string, std::string> img_paths;
+    // video
+    std::string video_path;
+    std::map<std::string, std::string> video_paths;
 };
 //===============================================
 #endif

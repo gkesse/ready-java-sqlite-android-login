@@ -9,6 +9,7 @@ export "GPROJECT_DATA=${GPROJECT_PATH}/data"
 #================================================
 export "GSQLITE_DB_PATH=${GPROJECT_DATA}/sqlite/config.dat"
 export "GIMG_PATH=${GPROJECT_DATA}/img/opencv"
+export "GVIDEO_PATH=/c/Users/Admin/Downloads/Programs/ReadyData/video"
 #================================================
 export "GGIT_URL=https://github.com/gkesse/ReadyCpp.git"
 export "GGIT_NAME=ReadyCpp"

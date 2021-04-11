@@ -16,6 +16,7 @@ public:
 private:
     void runTest(int argc, char** argv);
     void runImageLoad(int argc, char** argv);
+    void runVideoLoad(int argc, char** argv);
 
 private:
     static GOpenCVPc* m_instance;

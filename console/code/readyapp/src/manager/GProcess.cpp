@@ -41,6 +41,7 @@ void GProcess::runUi(int argc, char** argv) {
 //===============================================
 void GProcess::runOpenCV(int argc, char** argv) {
     GManager::Instance()->loadImage();
+    GManager::Instance()->loadVideo();
     GOpenCVPc::Instance()->run(argc, argv);
 }
 //===============================================

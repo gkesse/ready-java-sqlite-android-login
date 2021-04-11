@@ -13,6 +13,7 @@ GManager::GManager() {
     mgr->app->app_name = "ReadyApp";
     mgr->app->sqlite_db_path = getEnv("GSQLITE_DB_PATH");
     mgr->app->img_path = getEnv("GIMG_PATH");
+    mgr->app->video_path = getEnv("GVIDEO_PATH");
 }
 //===============================================
 GManager::~GManager() {
@@ -127,6 +128,30 @@ void GManager::loadImage() {
         if(lFilename == "..") {continue;}
         std::string lFullname = lApp->img_path + "/" + lFilename;
         lApp->img_paths[lFilename] = lFullname;
+    }
+}
+//===============================================
+// video
+//===============================================
+void GManager::loadVideo() {
+    sGApp* lApp = GManager::Instance()->getData()->app;
+    
+    DIR* lDir = opendir(lApp->video_path.c_str());
+    
+    if(lDir == 0) {
+        printf("[error] le repertoire image n'existe pas\n");
+        printf("[error] %s\n", lApp->video_path.c_str());
+        return;
+    }
+    
+    struct dirent* lEntry;
+     
+    while((lEntry = readdir(lDir)) != NULL) {
+        std::string lFilename = lEntry->d_name;
+        if(lFilename == ".") {continue;}
+        if(lFilename == "..") {continue;}
+        std::string lFullname = lApp->video_path + "/" + lFilename;
+        lApp->video_paths[lFilename] = lFullname;
     }
 }
 //===============================================
