@@ -35,9 +35,9 @@ void GOpenCVPc::runImageLoad(int argc, char** argv) {
     sGApp* lApp = GManager::Instance()->getData()->app;
     std::string lFilename = lApp->img_paths["gazebo_uav.png"];
     cv::Mat lImg = cv::imread(lFilename, -1);
-    cv::namedWindow("ReadyApp", cv::WINDOW_AUTOSIZE);
-    cv::imshow("ReadyApp", lImg );
-    cv::waitKey( 0 );
+    cv::namedWindow(lApp->app_name, cv::WINDOW_AUTOSIZE);
+    cv::imshow(lApp->app_name, lImg );
+    cv::waitKey(0);
     cv::destroyAllWindows();
 }
 //===============================================
