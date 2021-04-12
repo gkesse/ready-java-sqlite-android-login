@@ -196,7 +196,7 @@ void GManager::loadImg()  {
 //===============================================
 void GManager::setPage(QString address)  {
     sGApp* lApp = GManager::Instance()->getData()->app;
-    int lPageId = lApp->page_id.value(address, -1);
+    int lPageId = lApp->page_map->getPageId(address);
     if(lPageId == -1) {
         setPage("home/error");
         lApp->address->setText(address);
@@ -213,7 +213,7 @@ void GManager::setPage(QString address)  {
     lApp->address->setText(address);
     lApp->address_url = address;
     lApp->address_key->setContent(address);
-    lApp->title->setText(lApp->title_map[address]);
+    lApp->title->setText(lApp->page_map->getTitle(address));
 }
 //===============================================
 // layout

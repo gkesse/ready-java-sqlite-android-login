@@ -99,7 +99,6 @@ struct _sGApp {
     int win_height;
     // page
     GWidget* page_map;
-    QMap<QString, int> page_id;
     // widget
     QWidget* widget;
     QString widget_id;

@@ -8,6 +8,7 @@ GError::GError(QWidget* parent) : GWidget(parent) {
     setObjectName("GError");
 
     QLabel* lLabel = new QLabel;
+    lLabel->setObjectName("workspace");
     lLabel->setText("Page non trouvée");
     lLabel->setAlignment(Qt::AlignCenter);
     

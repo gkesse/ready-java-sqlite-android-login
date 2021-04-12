@@ -53,6 +53,8 @@ GWindow::GWindow(QWidget* parent) : GWidget(parent) {
     // error
     lWorkspace->addPage("home/error", "Erreur", GWidget::Create("error"));
 
+    GManager::Instance()->setPage(lWorkspace->getDefaultKey());
+    
     QScrollArea* lScrollArea = new QScrollArea;
     lScrollArea->setObjectName("workspace");
     lScrollArea->setWidget(lWorkspace);

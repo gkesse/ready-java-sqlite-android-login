@@ -14,7 +14,10 @@ GStackWidget::GStackWidget(QWidget* parent) : GWidget(parent)  {
     lMainLayout->setMargin(0);
     lMainLayout->setSpacing(0);
 
-    setLayout(lMainLayout);    
+    setLayout(lMainLayout);   
+
+    m_defaultKeyFlag = true;
+    m_defaultKey = "";
 }
 //===============================================
 GStackWidget::~GStackWidget() {
@@ -28,7 +31,11 @@ void GStackWidget::addPage(QString key, QString title, QWidget* widget, bool isD
     m_pageId[key] = lPageId;
     m_titleMap[key] = title;
     m_workspace->addWidget(widget);
+    
+    if(m_defaultKeyFlag == true) {m_defaultKey = key;m_defaultKeyFlag = false;}
+    
     if(isDefault == 1) {
+        m_defaultKey = key;
         m_workspace->setCurrentIndex(lPageId);
     }
 }
@@ -47,6 +54,11 @@ GWidget* GStackWidget::getPage(QString key) {
     return lPage;
 }
 //===============================================
+int GStackWidget::getPageId(QString key) {
+    int lPageId = m_pageId.value(key, -1);
+    return lPageId;
+}
+//===============================================
 QWidget* GStackWidget::getWidget(QString key) {
     int lPageId = m_pageId.value(key, -1);
     if(lPageId == -1) {return 0;}
@@ -57,6 +69,10 @@ QWidget* GStackWidget::getWidget(QString key) {
 QString GStackWidget::getTitle(QString key) {
     QString lTitle = m_titleMap.value(key, "");
     return lTitle;
+}
+//===============================================
+QString GStackWidget::getDefaultKey() {
+    return m_defaultKey;
 }
 //===============================================
 // callback

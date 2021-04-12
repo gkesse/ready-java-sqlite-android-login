@@ -51,12 +51,15 @@ public:
     virtual void setTitleIcon(int icon);
     virtual void setAlignment(int alignment);
     virtual void setPage(QString page);
+    virtual void setClear(bool flag);
     virtual QString getText();
     virtual QString getName();
     virtual QString getValue();
     virtual GWidget* getPage(QString key);
+    virtual int getPageId(QString key);
     virtual QWidget* getWidget(QString key);
     virtual QString getTitle(QString key);
+    virtual QString getDefaultKey();
 
 public slots:
     virtual void slotItemClick();

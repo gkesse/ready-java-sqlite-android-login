@@ -44,7 +44,7 @@
 // constructor
 //===============================================
 GWidget::GWidget(QWidget* parent) : QFrame(parent) {
-    setObjectName("GWidget");
+    setObjectName("workspace");
     m_oneOnly = true;
 }
 //===============================================
@@ -137,12 +137,15 @@ void GWidget::setTitle(QString text) {}
 void GWidget::setTitleIcon(int icon) {}
 void GWidget::setAlignment(int alignment) {}
 void GWidget::setPage(QString page) {}
+void GWidget::setClear(bool flag) {}
 QString GWidget::getText() {return "";}
 QString GWidget::getName() {return "";}
 QString GWidget::getValue() {return "";}
 GWidget* GWidget::getPage(QString key) {return 0;}
+int GWidget::getPageId(QString key) {return 0;}
 QWidget* GWidget::getWidget(QString key) {return 0;}
 QString GWidget::getTitle(QString key) {return "";}
+QString GWidget::getDefaultKey() {return "";}
 //===============================================
 // slot
 //===============================================

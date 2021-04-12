@@ -13,6 +13,8 @@ public:
     ~GKeyValue();
     
 public:
+    int loadPage();
+    void setClear(bool flag);
     void setTitle(QString text);
     void setTitleIcon(int icon);
     QString getName();
@@ -26,6 +28,7 @@ private:
     GWidget* m_title;
     GWidget* m_name;
     GWidget* m_value;
+    bool m_clearFlag;
 };
 //===============================================
 #endif

@@ -26,13 +26,18 @@ GDataStream::GDataStream(QWidget* parent) : GWidget(parent) {
 
     QMenu* lSettingMenu = new QMenu(this);
     m_settingMenu = lSettingMenu;
-    lSettingMenu->addAction(GManager::Instance()->loadPicto(fa::book, lApp->picto_color), "Imprimer...")->setData("print_data");
+    lSettingMenu->addAction(GManager::Instance()->loadPicto(fa::book, lApp->picto_color), "Ajouter une variable")->setData("add_data");
     lSettingMenu->setCursor(Qt::PointingHandCursor);
         
-    GWidget* lWorkspace = GWidget::Create("keyvalue");
-    lWorkspace->setObjectName("workspace");
-    lWorkspace->setTitle("Ajouter une variable");
-    m_widgetId[lWorkspace] = "workspace";
+    GWidget* lKeyValue = GWidget::Create("keyvalue");
+    lKeyValue->setObjectName("workspace");
+    lKeyValue->setTitle("Ajouter une variable");
+    m_widgetId[lKeyValue] = "keyvalue";
+
+    GWidget* lWorkspace = GWidget::Create("stackwidget");
+    m_workspace = lWorkspace;
+    lWorkspace->addPage("home", "", GWidget::Create("widget"));
+    lWorkspace->addPage("add_data", "", lKeyValue);
         
     QVBoxLayout* lMainLayout = new QVBoxLayout;
     lMainLayout->addLayout(lHeaderLayout);
@@ -44,7 +49,7 @@ GDataStream::GDataStream(QWidget* parent) : GWidget(parent) {
     
     connect(lSetting, SIGNAL(clicked()), this, SLOT(slotItemClick()));
     connect(lSettingMenu, SIGNAL(triggered(QAction*)), this, SLOT(slotItemClick(QAction*)));
-    connect(lWorkspace, SIGNAL(emitItemClick()), this, SLOT(slotItemClick()));
+    connect(lKeyValue, SIGNAL(emitItemClick()), this, SLOT(slotItemClick()));
 }
 //===============================================
 GDataStream::~GDataStream() {
@@ -57,22 +62,31 @@ void GDataStream::slotItemClick() {
     sGApp* lApp = GManager::Instance()->getData()->app;
     QWidget* lWidget = qobject_cast<QWidget*>(sender());
     QString lWidgetId = m_widgetId[lWidget];
+    
     if(lWidgetId == "setting") {
         QPoint lPos = QCursor::pos();
         m_settingMenu->exec(lPos);
     }
+    else if(lWidgetId == "keyvalue") {
+        if(lApp->widget_id == "close") {
+            m_workspace->setPage("home");
+        }
+        else if(lApp->widget_id == "cancel") {
+            m_workspace->setPage("home");
+        }
+    }
 
-    qDebug() << m_widgetId[lWidget];
-    qDebug() << lApp->widget_id;
     lApp->widget_id = m_widgetId[lWidget];
 }
 //===============================================
 void GDataStream::slotItemClick(QAction* action) {
     sGApp* lApp = GManager::Instance()->getData()->app;
-    lApp->widget_id = action->data().toString();
+    QString lWidgetId = action->data().toString();
 
-    if(lApp->widget_id == "print_data") {
-
+    if(lWidgetId == "add_data") {
+        m_workspace->setPage("add_data");
     }
+    
+    lApp->widget_id = lWidgetId;
 }
 //===============================================

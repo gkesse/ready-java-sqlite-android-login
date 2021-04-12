@@ -51,6 +51,8 @@ GKeyValue::GKeyValue(QWidget* parent) : GWidget(parent) {
     
     setLayout(lMainLayout);    
 
+    m_clearFlag = false;
+
     connect(lTitle, SIGNAL(emitItemClick()), this, SLOT(slotItemClick()));
     connect(lName, SIGNAL(emitItemClick()), this, SLOT(slotItemClick()));
     connect(lValue, SIGNAL(emitItemClick()), this, SLOT(slotItemClick()));
@@ -62,6 +64,18 @@ GKeyValue::~GKeyValue() {
 }
 //===============================================
 // method
+//===============================================
+int GKeyValue::loadPage() {
+    if(m_clearFlag == true) {
+        m_name->setText("");
+        m_value->setText("");
+    }
+    return 1;
+}
+//===============================================
+void GKeyValue::setClear(bool flag) {
+    m_clearFlag = flag;
+}
 //===============================================
 void GKeyValue::setTitle(QString text) {
     m_title->setTitle(text);
