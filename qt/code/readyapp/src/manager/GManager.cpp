@@ -92,6 +92,15 @@ int GManager::getWidth(QString widthMap, int index, int defaultWidth) {
     return lWidth;
 }
 //===============================================
+QString GManager::format(const char* format, ...) {
+    sGApp* lApp = GManager::Instance()->getData()->app;
+    va_list lArgs;
+    va_start(lArgs, format);
+    vsprintf(lApp->format, format, lArgs);
+    va_end(lArgs);
+    return lApp->format;
+}
+//===============================================
 // file
 //===============================================
 QString GManager::getFilename(QString fullpath) {

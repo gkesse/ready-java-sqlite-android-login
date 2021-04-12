@@ -52,6 +52,7 @@ public:
     virtual void setAlignment(int alignment);
     virtual void setPage(QString page);
     virtual void setClear(bool flag);
+    virtual void append(QString text);
     virtual QString getText();
     virtual QString getName();
     virtual QString getValue();

@@ -1,28 +1,27 @@
 //===============================================
-#ifndef _GDataStream_
-#define _GDataStream_
+#ifndef _GTextEdit_
+#define _GTextEdit_
 //===============================================
 #include "GInclude.h"
 #include "GWidget.h"
 //===============================================
-class GDataStream : public GWidget {    
+class GTextEdit : public GWidget {    
     Q_OBJECT
 
 public:
-    GDataStream(QWidget* parent = 0);
-    ~GDataStream();
-        
+    GTextEdit(QWidget* parent = 0);
+    ~GTextEdit();
+
+public:
+    void setText(QString text);
+    void append(QString text);
+    
 public slots:
     void slotItemClick();
-    void slotItemClick(QAction* action);
-
+    
 private:
     QMap<QWidget*, QString> m_widgetId;
-    QPushButton* m_setting;
-    QMenu* m_settingMenu;
-    GWidget* m_workspace;
-    GWidget* m_home;
-    GWidget* m_keyValue;
+    QTextEdit* m_textEdit;
 };
 //===============================================
 #endif

@@ -36,13 +36,14 @@ void GStackWidget::addPage(QString key, QString title, QWidget* widget, bool isD
     
     if(isDefault == 1) {
         m_defaultKey = key;
-        m_workspace->setCurrentIndex(lPageId);
+        setPage(key);
     }
 }
 //===============================================
 void GStackWidget::setPage(QString key) {
     int lPageId = m_pageId.value(key, -1);
     if(lPageId == -1) {return;}
+    getPage(key)->loadPage();
     m_workspace->setCurrentIndex(lPageId);
 }
 //===============================================

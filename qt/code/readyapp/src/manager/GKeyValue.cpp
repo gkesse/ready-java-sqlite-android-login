@@ -92,7 +92,7 @@ QString GKeyValue::getName() {
 }
 //===============================================
 QString GKeyValue::getValue() {
-    return m_name->getValue();
+    return m_value->getText();
 }
 //===============================================
 // slot

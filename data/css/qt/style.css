@@ -193,6 +193,15 @@ QTextEdit#workspace {
     padding: 10px;
 }
 /*===============================================*/
+/* QTextEdit */
+QTextEdit#terminal {
+    background-color: #503030;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: "Courier Prime";
+    font-size: 14px;
+}
+/*===============================================*/
 /* QToolTip */
 QToolTip {
     background-color: #305030;
@@ -225,17 +234,6 @@ QPushButton#GButton:hover {
 }
 QPushButton#GButton:pressed {
     background-color: transparent;
-}
-/*===============================================*/
-/* GDebug */
-QFrame#GDebug {
-
-}
-QFrame#GDebug QTextEdit#workspace {
-    background-color: #503030;
-    padding: 8px;
-    font-family: "Courier Prime";
-    border-radius: 5px;
 }
 /*===============================================*/
 /* GGraphicsView */

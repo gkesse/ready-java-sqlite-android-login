@@ -29,14 +29,20 @@ GDataStream::GDataStream(QWidget* parent) : GWidget(parent) {
     lSettingMenu->addAction(GManager::Instance()->loadPicto(fa::book, lApp->picto_color), "Ajouter une variable")->setData("add_data");
     lSettingMenu->setCursor(Qt::PointingHandCursor);
         
+    GWidget* lHome = GWidget::Create("textedit");
+    m_home = lHome;
+    m_widgetId[lHome] = "home";
+
     GWidget* lKeyValue = GWidget::Create("keyvalue");
+    m_keyValue = lKeyValue;
     lKeyValue->setObjectName("workspace");
+    lKeyValue->setClear(true);
     lKeyValue->setTitle("Ajouter une variable");
     m_widgetId[lKeyValue] = "keyvalue";
 
     GWidget* lWorkspace = GWidget::Create("stackwidget");
     m_workspace = lWorkspace;
-    lWorkspace->addPage("home", "", GWidget::Create("widget"));
+    lWorkspace->addPage("home", "", lHome);
     lWorkspace->addPage("add_data", "", lKeyValue);
         
     QVBoxLayout* lMainLayout = new QVBoxLayout;
@@ -72,6 +78,14 @@ void GDataStream::slotItemClick() {
             m_workspace->setPage("home");
         }
         else if(lApp->widget_id == "cancel") {
+            m_workspace->setPage("home");
+        }
+        else if(lApp->widget_id == "add") {
+            if(m_keyValue->getName() == "") {return;}
+            if(m_keyValue->getValue() == "") {return;}
+            m_home->append(GManager::Instance()->format("%-30s : %s",
+            m_keyValue->getName().toStdString().c_str(),
+            m_keyValue->getValue().toStdString().c_str()));
             m_workspace->setPage("home");
         }
     }

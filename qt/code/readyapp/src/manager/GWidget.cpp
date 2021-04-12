@@ -12,6 +12,7 @@
 #include "GTitle.h"
 #include "GButtonRow.h"
 #include "GStackWidget.h"
+#include "GTextEdit.h"
 // page
 #include "GWindow.h"
 #include "GHome.h"
@@ -66,6 +67,7 @@ GWidget* GWidget::Create(QString key, QWidget* parent) {
     if(key == "title") return new GTitle(parent);
     if(key == "buttonrow") return new GButtonRow(parent);
     if(key == "stackwidget") return new GStackWidget(parent);
+    if(key == "textedit") return new GTextEdit(parent);
     // page
     if(key == "window") return new GWindow(parent);
     if(key == "home") return new GHome(parent);
@@ -138,6 +140,7 @@ void GWidget::setTitleIcon(int icon) {}
 void GWidget::setAlignment(int alignment) {}
 void GWidget::setPage(QString page) {}
 void GWidget::setClear(bool flag) {}
+void GWidget::append(QString text) {}
 QString GWidget::getText() {return "";}
 QString GWidget::getName() {return "";}
 QString GWidget::getValue() {return "";}

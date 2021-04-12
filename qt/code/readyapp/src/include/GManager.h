@@ -30,6 +30,7 @@ public:
     void loadStyle();
     // string
     int getWidth(QString widthMap, int index, int defaultWidth);
+    QString format(const char* format, ...);
     // file
     QString getFilename(QString fullpath);
     QString getDirname(QString fullpath);
@@ -75,6 +76,7 @@ public:
     void addUser(QString username, QString password);
     QVector<QVector<QString>> getUser();
     void deleteUser(QString username);
+    
 
 private:
     static GManager* m_instance;
@@ -140,6 +142,8 @@ struct _sGApp {
     QTextEdit* debug;
     // dir
     QString dir_path;
+    // format
+    char format[1024];
 };
 //===============================================
 #endif
