@@ -16,12 +16,17 @@
 // page
 #include "GWindow.h"
 #include "GHome.h"
+// tuto
+#include "GTutorial.h"
 #include "GOpenCVQt.h"
+#include "GOpenGLQt.h"
+#include "GGslQt.h"
 // qt
 #include "GQtPg.h"
 #include "GGraphicsView.h"
 #include "GMainWindow.h"
 #include "GDataStream.h"
+#include "GQCustomPlot.h"
 // login
 #include "GLogin.h"
 #include "GProfil.h"
@@ -71,12 +76,17 @@ GWidget* GWidget::Create(QString key, QWidget* parent) {
     // page
     if(key == "window") return new GWindow(parent);
     if(key == "home") return new GHome(parent);
+    // tuto
+    if(key == "tuto") return new GTutorial(parent);
     if(key == "opencv") return new GOpenCVQt(parent);
+    if(key == "opengl") return new GOpenGLQt(parent);
+    if(key == "gsl") return new GGslQt(parent);
     // qt
     if(key == "qt") return new GQtPg(parent);
     if(key == "qgraphicsview") return new GGraphicsView(parent);
     if(key == "qmainwindow") return new GMainWindow(parent);
     if(key == "qdatastream") return new GDataStream(parent);
+    if(key == "qcustomplot") return new GQCustomPlot(parent);
     // login
     if(key == "login") return new GLogin(parent);
     if(key == "profil") return new GProfil(parent);
@@ -141,6 +151,10 @@ void GWidget::setAlignment(int alignment) {}
 void GWidget::setPage(QString page) {}
 void GWidget::setClear(bool flag) {}
 void GWidget::append(QString text) {}
+void GWidget::setName(QString text) {}
+void GWidget::setValue(QString text) {}
+void GWidget::setNameLabel(QString text) {}
+void GWidget::setValueLabel(QString text) {}
 QString GWidget::getText() {return "";}
 QString GWidget::getName() {return "";}
 QString GWidget::getValue() {return "";}

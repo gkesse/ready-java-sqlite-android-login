@@ -15,6 +15,7 @@ GQtPg::GQtPg(QWidget* parent) : GWidget(parent) {
     lListBox->addItem("home/qt/qgraphicsview", "QGraphicsView", fa::book); lApp->login_home = qobject_cast<QPushButton*>(lApp->widget);
     lListBox->addItem("home/qt/qmainwindow", "QMainWindow", fa::book); lApp->login_home = qobject_cast<QPushButton*>(lApp->widget);
     lListBox->addItem("home/qt/qdatastream", "QDataStream", fa::book); lApp->login_home = qobject_cast<QPushButton*>(lApp->widget);
+    lListBox->addItem("home/qt/qcustomplot", "QCustomPlot", fa::book); lApp->login_home = qobject_cast<QPushButton*>(lApp->widget);
     
     QVBoxLayout* lMainLayout = new QVBoxLayout;
     lMainLayout->addWidget(lListBox);

@@ -53,6 +53,10 @@ public:
     virtual void setPage(QString page);
     virtual void setClear(bool flag);
     virtual void append(QString text);
+    virtual void setName(QString text);
+    virtual void setValue(QString text);
+    virtual void setNameLabel(QString text);
+    virtual void setValueLabel(QString text);
     virtual QString getText();
     virtual QString getName();
     virtual QString getValue();

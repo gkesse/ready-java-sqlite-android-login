@@ -1,11 +1,12 @@
 //===============================================
-#include "GDebug.h"
+#include "GOpenGLQt.h"
+#include "GWidget.h"
 #include "GManager.h"
 //===============================================
 // constructor
 //===============================================
-GDebug::GDebug(QWidget* parent) : GWidget(parent) {
-    setObjectName("GDebug");
+GOpenGLQt::GOpenGLQt(QWidget* parent) : GWidget(parent) {
+    setObjectName("GOpenGLQt");
     
     sGApp* lApp = GManager::Instance()->getData()->app;
     
@@ -25,14 +26,11 @@ GDebug::GDebug(QWidget* parent) : GWidget(parent) {
 
     QMenu* lSettingMenu = new QMenu(this);
     m_settingMenu = lSettingMenu;
-    lSettingMenu->addAction(GManager::Instance()->loadPicto(fa::trasho, lApp->picto_color), "Nettoyer le débogueur")->setData("clear");
+    lSettingMenu->addAction(GManager::Instance()->loadPicto(fa::plus, lApp->picto_color), "Ajouter une variable")->setData("add_data");
     lSettingMenu->setCursor(Qt::PointingHandCursor);
-
-    QTextEdit* lWorkspace = new QTextEdit;
-    lApp->debug = lWorkspace;
-    lWorkspace->setObjectName("workspace");
-    lWorkspace->setReadOnly(true);
-    
+        
+    QCustomPlot* lWorkspace = new QCustomPlot; 
+        
     QVBoxLayout* lMainLayout = new QVBoxLayout;
     lMainLayout->addLayout(lHeaderLayout);
     lMainLayout->addWidget(lWorkspace);
@@ -40,33 +38,38 @@ GDebug::GDebug(QWidget* parent) : GWidget(parent) {
     lMainLayout->setSpacing(10);
 
     setLayout(lMainLayout);
-
+    
     connect(lSetting, SIGNAL(clicked()), this, SLOT(slotItemClick()));
     connect(lSettingMenu, SIGNAL(triggered(QAction*)), this, SLOT(slotItemClick(QAction*)));
 }
 //===============================================
-GDebug::~GDebug() {
+GOpenGLQt::~GOpenGLQt() {
 
 }
 //===============================================
-// slot
+// method
 //===============================================
-void GDebug::slotItemClick() {
+void GOpenGLQt::slotItemClick() {
     sGApp* lApp = GManager::Instance()->getData()->app;
     QWidget* lWidget = qobject_cast<QWidget*>(sender());
-    lApp->widget_id = m_widgetId[lWidget];
-    if(lApp->widget_id == "setting") {
+    QString lWidgetId = m_widgetId[lWidget];
+    
+    if(lWidgetId == "setting") {
         QPoint lPos = QCursor::pos();
         m_settingMenu->exec(lPos);
     }
+
+    lApp->widget_id = m_widgetId[lWidget];
 }
 //===============================================
-void GDebug::slotItemClick(QAction* action) {
+void GOpenGLQt::slotItemClick(QAction* action) {
     sGApp* lApp = GManager::Instance()->getData()->app;
-    lApp->widget_id = action->data().toString();
+    QString lWidgetId = action->data().toString();
 
-    if(lApp->widget_id == "clear") {
-        lApp->debug->clear();
+    if(lWidgetId == "add_data") {
+
     }
+    
+    lApp->widget_id = lWidgetId;
 }
 //===============================================

@@ -50,6 +50,17 @@ QFrame#workspace {
     padding: 10px;
 }
 /*===============================================*/
+/* QFrame */
+QFrame#none {
+    background-color: transparent;
+}
+/*===============================================*/
+/* QFrame */
+QFrame#item {
+    padding: 5px 10px;
+    text-align: left;
+}
+/*===============================================*/
 /* QHeaderView */
 QHeaderView::section {
     background-color: #501010;

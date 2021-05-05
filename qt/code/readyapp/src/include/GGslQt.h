@@ -1,16 +1,16 @@
 //===============================================
-#ifndef _GDataStream_
-#define _GDataStream_
+#ifndef _GGslQt_
+#define _GGslQt_
 //===============================================
 #include "GInclude.h"
 #include "GWidget.h"
 //===============================================
-class GDataStream : public GWidget {    
+class GGslQt : public GWidget {    
     Q_OBJECT
 
 public:
-    GDataStream(QWidget* parent = 0);
-    ~GDataStream();
+    GGslQt(QWidget* parent = 0);
+    ~GGslQt();
         
 public slots:
     void slotItemClick();
@@ -21,9 +21,6 @@ private:
     QPushButton* m_setting;
     QMenu* m_settingMenu;
     GWidget* m_workspace;
-    GWidget* m_home;
-    GWidget* m_keyValue;
-    QMap<QString, QString> m_cityMap;
 };
 //===============================================
 #endif

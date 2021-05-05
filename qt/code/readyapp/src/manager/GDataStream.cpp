@@ -26,7 +26,11 @@ GDataStream::GDataStream(QWidget* parent) : GWidget(parent) {
 
     QMenu* lSettingMenu = new QMenu(this);
     m_settingMenu = lSettingMenu;
-    lSettingMenu->addAction(GManager::Instance()->loadPicto(fa::book, lApp->picto_color), "Ajouter une variable")->setData("add_data");
+    lSettingMenu->addAction(GManager::Instance()->loadPicto(fa::plus, lApp->picto_color), "Ajouter une variable")->setData("add_data");
+    lSettingMenu->addAction(GManager::Instance()->loadPicto(fa::save, lApp->picto_color), "Enregistrer les données")->setData("save_data");
+    lSettingMenu->addAction(GManager::Instance()->loadPicto(fa::refresh, lApp->picto_color), "Charger les données")->setData("load_data");
+    lSettingMenu->addAction(GManager::Instance()->loadPicto(fa::trash, lApp->picto_color), "Nettoyer les données")->setData("clear_data");
+    lSettingMenu->addAction(GManager::Instance()->loadPicto(fa::eye, lApp->picto_color), "Afficher les données")->setData("show_data");
     lSettingMenu->setCursor(Qt::PointingHandCursor);
         
     GWidget* lHome = GWidget::Create("textedit");
@@ -37,7 +41,9 @@ GDataStream::GDataStream(QWidget* parent) : GWidget(parent) {
     m_keyValue = lKeyValue;
     lKeyValue->setObjectName("workspace");
     lKeyValue->setClear(true);
-    lKeyValue->setTitle("Ajouter une variable");
+    lKeyValue->setTitle("Ajouter une ville");
+    lKeyValue->setNameLabel("Nom");
+    lKeyValue->setValueLabel("Code postal");
     m_widgetId[lKeyValue] = "keyvalue";
 
     GWidget* lWorkspace = GWidget::Create("stackwidget");
@@ -83,9 +89,10 @@ void GDataStream::slotItemClick() {
         else if(lApp->widget_id == "add") {
             if(m_keyValue->getName() == "") {return;}
             if(m_keyValue->getValue() == "") {return;}
-            m_home->append(GManager::Instance()->format("%-30s : %s",
+            m_home->append(GManager::Instance()->format("%-20s : %s",
             m_keyValue->getName().toStdString().c_str(),
             m_keyValue->getValue().toStdString().c_str()));
+            m_cityMap[m_keyValue->getName()] = m_keyValue->getValue();
             m_workspace->setPage("home");
         }
     }
@@ -99,6 +106,63 @@ void GDataStream::slotItemClick(QAction* action) {
 
     if(lWidgetId == "add_data") {
         m_workspace->setPage("add_data");
+    }
+    else if(lWidgetId == "save_data") {
+        // on ouvre un fichier en ecriture seule
+        QFile file("city_map.dat");
+        if (!file.open(QIODevice::WriteOnly)) {
+            // on affiche un message en cas de probleme
+            QMessageBox::information(this, tr("Impossible d'ouvrir le fichier"), file.errorString());
+            return;
+        }
+        // on serialise les donnees
+        QDataStream out(&file);
+        out.setVersion(QDataStream::Qt_4_5);
+        out << m_cityMap;
+        m_workspace->setPage("home");
+    }
+    else if(lWidgetId == "load_data") {
+        // on ouvre un fichier en lecture seule
+        QFile file("city_map.dat");
+        if (!file.open(QIODevice::ReadOnly)) {
+            // on affiche un message en cas de probleme
+            QMessageBox::information(this, tr("Impossible d'ouvrir le fichier"), file.errorString());
+            return;
+        }
+        // on deserialise les donnees
+        QDataStream in(&file);
+        in.setVersion(QDataStream::Qt_4_5);
+        in >> m_cityMap;
+        
+        m_home->setText("");
+        
+        QList<QString> lKeys = m_cityMap.keys();
+        
+        for(int i = 0; i < lKeys.size(); i++) {
+            QString lKey = lKeys[i];
+            QString lValue = m_cityMap[lKey];
+            m_home->append(GManager::Instance()->format("%-20s : %s",
+            lKey.toStdString().c_str(),
+            lValue.toStdString().c_str()));
+        }
+        
+        m_workspace->setPage("home");
+    }
+    else if(lWidgetId == "clear_data") {
+        m_home->setText("");
+    }
+    else if(lWidgetId == "show_data") {
+        m_home->setText("");
+        
+        QList<QString> lKeys = m_cityMap.keys();
+        
+        for(int i = 0; i < lKeys.size(); i++) {
+            QString lKey = lKeys[i];
+            QString lValue = m_cityMap[lKey];
+            m_home->append(GManager::Instance()->format("%-20s : %s",
+            lKey.toStdString().c_str(),
+            lValue.toStdString().c_str()));
+        }
     }
     
     lApp->widget_id = lWidgetId;

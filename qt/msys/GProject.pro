@@ -15,6 +15,7 @@ QMAKE_CXXFLAGS +=\
 
 include($$(GPROJECT_SRC)/GMain.pri)
 include(C:\Users\Admin\Downloads\Programs\ReadyLib\dev\qtawesome\4.7.0\mingw\QtAwesome.pri)
+include(C:\Users\Admin\Downloads\Programs\ReadyLib\dev\qcustomplot\2.0.1\mingw\GQCustomPlot.pri)
 
 INCLUDEPATH +=\
     /mingw32/include \

@@ -35,6 +35,7 @@
 #include <QPrinter>
 #include <QPrintDialog>
 #include <QtAwesome.h>
+#include <qcustomplot.h>
 //===============================================
 #elif defined(__WIN32)
 //===============================================

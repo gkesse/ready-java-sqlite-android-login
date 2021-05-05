@@ -2,9 +2,9 @@
 #include "GListBox.h"
 #include "GManager.h"
 //===============================================
-GListBox::GListBox(QWidget* parent) : GWidget(parent) {
-    setObjectName("GListBox");
-    
+GListBox::GListBox(QWidget* parent) : GWidget(parent) {    
+    setObjectName("none");
+
     QVBoxLayout* lScrollLayout = new QVBoxLayout;
     m_scrollLayout = lScrollLayout;
     lScrollLayout->setAlignment(Qt::AlignTop);

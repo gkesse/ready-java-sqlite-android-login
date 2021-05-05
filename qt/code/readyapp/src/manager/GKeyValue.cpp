@@ -87,6 +87,22 @@ void GKeyValue::setTitleIcon(int icon) {
     m_title->setVisible(true);
 }
 //===============================================
+void GKeyValue::setName(QString text) {
+    m_name->setText(text);
+}
+//===============================================
+void GKeyValue::setValue(QString text) {
+    m_value->setText(text);
+}
+//===============================================
+void GKeyValue::setNameLabel(QString text) {
+    m_name->setLabel(text);
+}
+//===============================================
+void GKeyValue::setValueLabel(QString text) {
+    m_value->setLabel(text);
+}
+//===============================================
 QString GKeyValue::getName() {
     return m_name->getText();
 }

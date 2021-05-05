@@ -17,6 +17,10 @@ public:
     void setClear(bool flag);
     void setTitle(QString text);
     void setTitleIcon(int icon);
+    void setName(QString text);
+    void setValue(QString text);
+    void setNameLabel(QString text);
+    void setValueLabel(QString text);
     QString getName();
     QString getValue();
     

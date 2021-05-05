@@ -53,6 +53,8 @@ git_config:
 	@git config --list
 git_store:
 	@git config credential.helper store
+git_status:
+	@cd $(GPROJECT_PATH) && git status -u
 git_push:
 	@cd $(GPROJECT_PATH) && git pull && git add --all && git commit -m "Initial Commit" && git push -u origin master
 git_push_o:
