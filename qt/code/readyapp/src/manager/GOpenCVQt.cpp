@@ -26,12 +26,15 @@ GOpenCVQt::GOpenCVQt(QWidget* parent) : GWidget(parent) {
     QMenu* lSettingMenu = new QMenu(this);
     m_settingMenu = lSettingMenu;
     lSettingMenu->addAction(GManager::Instance()->loadPicto(fa::book, lApp->picto_color), "Ouvrir une image...")->setData("open_image");
-    lSettingMenu->addAction(GManager::Instance()->loadPicto(fa::book, lApp->picto_color), "Zoomer en avant une image (+)")->setData("zoom_in_image");
-    lSettingMenu->addAction(GManager::Instance()->loadPicto(fa::book, lApp->picto_color), "Zoomer en arrière une image (-)")->setData("zoom_out_image");
-    lSettingMenu->addAction(GManager::Instance()->loadPicto(fa::book, lApp->picto_color), "Zoomer en normal une image (0)")->setData("zoom_normal_image");
+    lSettingMenu->addAction(GManager::Instance()->loadPicto(fa::book, lApp->picto_color), "Zoomer en avant l'image (+)")->setData("zoom_in_image");
+    lSettingMenu->addAction(GManager::Instance()->loadPicto(fa::book, lApp->picto_color), "Zoomer en arrière l'image (-)")->setData("zoom_out_image");
+    lSettingMenu->addAction(GManager::Instance()->loadPicto(fa::book, lApp->picto_color), "Zoomer en normal l'image (0)")->setData("zoom_normal_image");
     lSettingMenu->addAction(GManager::Instance()->loadPicto(fa::book, lApp->picto_color), "Aller à l'image suivante (+)")->setData("next_image");
     lSettingMenu->addAction(GManager::Instance()->loadPicto(fa::book, lApp->picto_color), "Aller à l'image précédente (-)")->setData("previous_image");
     lSettingMenu->addAction(GManager::Instance()->loadPicto(fa::book, lApp->picto_color), "Enresistrer l'image sous...")->setData("save_as_image");
+    lSettingMenu->addSeparator();
+    lSettingMenu->addAction(GManager::Instance()->loadPicto(fa::book, lApp->picto_color), "Flouter l'image")->setData("blur_image");
+    lSettingMenu->addAction(GManager::Instance()->loadPicto(fa::book, lApp->picto_color), "Appliquer une transformation affine à l'image")->setData("affine_transform");
     lSettingMenu->setCursor(Qt::PointingHandCursor);
 
     QGraphicsScene* lScene = new QGraphicsScene;
