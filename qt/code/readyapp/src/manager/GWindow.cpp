@@ -29,7 +29,7 @@ GWindow::GWindow(QWidget* parent) : GWidget(parent) {
     lWorkspace->addPage("home", "Accueil", GWidget::Create("home"));
     // tuto
     lWorkspace->addPage("home/tuto", "Tutoriels", GWidget::Create("tuto"));
-    lWorkspace->addPage("home/tuto/opencv", "OpenCV", GWidget::Create("opencv"));
+    lWorkspace->addPage("home/tuto/opencv", "OpenCV", GWidget::Create("opencv"), 1);
     lWorkspace->addPage("home/tuto/opengl", "GSL", GWidget::Create("opengl"));
     lWorkspace->addPage("home/tuto/gsl", "GSL", GWidget::Create("gsl"));
     // qt

@@ -134,7 +134,7 @@ QString GManager::saveFile(QString title, QString filters) {
 }
 //===============================================
 QString GManager::nextFile(QString filename, QStringList filters, QString message) {
-    QString lFilename = filename;
+    QString lFilename = "";
     QFileInfo lFileInfo(filename);
     QDir lDir = lFileInfo.absoluteDir();
     QStringList lFileNames = lDir.entryList(filters, QDir::Files, QDir::Name);
@@ -148,7 +148,7 @@ QString GManager::nextFile(QString filename, QStringList filters, QString messag
 }
 //===============================================
 QString GManager::previousFile(QString filename, QStringList filters, QString message) {
-    QString lFilename = filename;
+    QString lFilename = "";
     QFileInfo lFileInfo(filename);
     QDir lDir = lFileInfo.absoluteDir();
     QStringList lFileNames = lDir.entryList(filters, QDir::Files, QDir::Name);

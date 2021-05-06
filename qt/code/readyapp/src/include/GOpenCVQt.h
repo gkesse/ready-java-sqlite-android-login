@@ -15,6 +15,7 @@ public:
 public slots:
     void slotItemClick();
     void slotItemClick(QAction* action);
+    void showImage(QString filename);
 
 private:
     QMap<QWidget*, QString> m_widgetId;
@@ -22,6 +23,9 @@ private:
     QMenu* m_settingMenu;
     QGraphicsScene* m_scene;
     QGraphicsView* m_view;
+    QString m_state;
+    QString m_filename;
+    QGraphicsPixmapItem* m_currentImage;
 };
 //===============================================
 #endif
