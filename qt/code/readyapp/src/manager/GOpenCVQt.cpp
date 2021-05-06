@@ -28,14 +28,15 @@ GOpenCVQt::GOpenCVQt(QWidget* parent) : GWidget(parent) {
     lSettingMenu->addAction(GManager::Instance()->loadPicto(fa::book, lApp->picto_color), "Ouvrir une image")->setData("open_image");
     lSettingMenu->setCursor(Qt::PointingHandCursor);
 
-    QLabel* lWorkspace = new QLabel;
-    lWorkspace->setObjectName("workspace");
-    lWorkspace->setText("GOpenCVQt");
-    lWorkspace->setAlignment(Qt::AlignCenter);
+    QGraphicsScene* lScene = new QGraphicsScene;
+    m_scene = lScene;
+    
+    QGraphicsView* lView = new QGraphicsView(lScene);
+    m_view = lView;
     
     QVBoxLayout* lMainLayout = new QVBoxLayout;
     lMainLayout->addLayout(lHeaderLayout);
-    lMainLayout->addWidget(lWorkspace);
+    lMainLayout->addWidget(lView);
     lMainLayout->setMargin(10);
     lMainLayout->setSpacing(10);
 
@@ -67,7 +68,13 @@ void GOpenCVQt::slotItemClick(QAction* action) {
 
     if(lApp->widget_id == "open_image") {
         QString lFilename = GManager::Instance()->openFile("Ouvrir une image", lApp->img_filter);
-        qDebug() << lFilename;
+        if(lFilename == "") {return;}
+        m_scene->clear();
+        m_view->resetMatrix();
+        QPixmap lImage(lFilename);
+        m_scene->addPixmap(lImage);
+        m_scene->update();
+        m_view->setSceneRect(lImage.rect());
     }
 }
 //===============================================

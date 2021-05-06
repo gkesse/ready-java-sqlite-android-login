@@ -20,6 +20,8 @@ private:
     QMap<QWidget*, QString> m_widgetId;
     QPushButton* m_setting;
     QMenu* m_settingMenu;
+    QGraphicsScene* m_scene;
+    QGraphicsView* m_view;
 };
 //===============================================
 #endif
