@@ -5,13 +5,13 @@
 // constructor
 //===============================================
 GOpenCVQt::GOpenCVQt(QWidget* parent) : GWidget(parent) {
-    setObjectName("GOpenCVQt");
+    setObjectName("none");
     
     sGApp* lApp = GManager::Instance()->getData()->app;
     
     QPushButton* lSetting = new QPushButton;
     m_setting = lSetting;
-    lSetting->setObjectName("GButton");
+    lSetting->setObjectName("button2");
     lSetting->setIcon(GManager::Instance()->loadPicto(fa::cog, lApp->picto_color));
     lSetting->setText("Paramètres");
     lSetting->setCursor(Qt::PointingHandCursor);
@@ -19,7 +19,7 @@ GOpenCVQt::GOpenCVQt(QWidget* parent) : GWidget(parent) {
         
     QHBoxLayout* lHeaderLayout = new QHBoxLayout;
     lHeaderLayout->addWidget(lSetting);
-    lHeaderLayout->setAlignment(Qt::AlignRight);
+    lHeaderLayout->setAlignment(Qt::AlignLeft);
     lHeaderLayout->setMargin(0);
     lHeaderLayout->setSpacing(10);
 

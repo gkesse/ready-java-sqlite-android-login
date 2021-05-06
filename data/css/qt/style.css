@@ -60,6 +60,12 @@ QFrame#item {
     padding: 5px 10px;
     text-align: left;
 }
+QFrame#item:hover {
+    background-color: #503030;
+}
+QFrame#item:pressed {
+    background-color: transparent;
+}
 /*===============================================*/
 /* QHeaderView */
 QHeaderView::section {
@@ -142,6 +148,36 @@ QPushButton#button {
     background-color: #503030;
     border-radius: 5px;
     padding: 2px 10px;
+}
+/*===============================================*/
+/* QPushButton#button2 */
+QPushButton#button2 {
+    background-color: #503030;
+    padding: 2px 5px;
+    border-radius: 5px;
+}
+QPushButton#button2:hover {
+    background-color: #503030;
+}
+QPushButton#button2:pressed {
+    background-color: transparent;
+}
+/*===============================================*/
+/* QPushButton#item */
+QPushButton#item {
+    padding: 5px 10px;
+    text-align: left;
+}
+QPushButton#item:hover {
+    background-color: #503030;
+}
+QPushButton#item:pressed {
+    background-color: transparent;
+}
+/*===============================================*/
+/* QPushButton#key */
+QPushButton#key {
+    text-align: left;
 }
 /*===============================================*/
 /* QSizeGrip */
@@ -232,19 +268,6 @@ GAddressBar {
 }
 GAddressBar QLineEdit#address {
     color: #aaaaaa;
-}
-/*===============================================*/
-/* GButton */
-QPushButton#GButton {
-    background-color: #503030;
-    padding: 2px 5px;
-    border-radius: 5px;
-}
-QPushButton#GButton:hover {
-    background-color: #503030;
-}
-QPushButton#GButton:pressed {
-    background-color: transparent;
 }
 /*===============================================*/
 /* GGraphicsView */

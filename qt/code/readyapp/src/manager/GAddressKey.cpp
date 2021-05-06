@@ -3,7 +3,7 @@
 #include "GManager.h"
 //===============================================
 GAddressKey::GAddressKey(QWidget* parent) : GWidget(parent) {
-    setObjectName("GAddressKey");
+    setObjectName("none");
         
     QHBoxLayout* lMainLayout = new QHBoxLayout;
     m_mainLayout = lMainLayout;
@@ -31,7 +31,7 @@ void GAddressKey::setContent(QString text) {
     for(int i = 0; i < lMap.size(); i++) {
         if(i != 0) {
             QPushButton* lSep = new QPushButton;
-            lSep->setObjectName("sep");
+            lSep->setObjectName("none");
             lSep->setIcon(GManager::Instance()->loadPicto(fa::chevronright, lApp->picto_color));
             m_mainLayout->addWidget(lSep);
         }
@@ -40,7 +40,7 @@ void GAddressKey::setContent(QString text) {
         lKey += lMap[i];
         
         QPushButton* lButton = new QPushButton;
-        lButton->setObjectName("item");
+        lButton->setObjectName("none");
         lButton->setText(lMap[i]);
         lButton->setCursor(Qt::PointingHandCursor);
         m_widgetId[lButton] = lKey;

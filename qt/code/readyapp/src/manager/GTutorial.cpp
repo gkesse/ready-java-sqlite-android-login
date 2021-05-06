@@ -12,11 +12,12 @@ GTutorial::GTutorial(QWidget* parent) : GWidget(parent) {
     
     GWidget* lListBox = GWidget::Create("listbox");
     
-    lListBox->addItem("home/tuto/qt", "Qt", fa::windows);
-    lListBox->addItem("home/tuto/opencv", "OpenCV", fa::camera);
-    lListBox->addItem("home/tuto/opengl", "OpenGL", fa::camera);
+    lListBox->addItem("home/tuto/opencv", "OpenCV", fa::book);
+    lListBox->addItem("home/tuto/opengl", "OpenGL", fa::book);
     lListBox->addItem("home/tuto/gsl", "GSL", fa::book); 
-    
+    lListBox->addItem("home/tuto/qt", "Qt", fa::book);
+    lListBox->addItem("home/tuto/qcustomplot", "QCustomPlot", fa::book); lApp->login_home = qobject_cast<QPushButton*>(lApp->widget);
+
     QVBoxLayout* lMainLayout = new QVBoxLayout;
     lMainLayout->addWidget(lListBox);
     lMainLayout->setAlignment(Qt::AlignTop);
