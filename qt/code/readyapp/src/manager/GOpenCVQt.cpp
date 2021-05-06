@@ -116,6 +116,15 @@ void GOpenCVQt::slotItemClick(QAction* action) {
         if(lFilename == "") {return;}
         m_currentImage->pixmap().save(lFilename);
     }
+    else if(lApp->widget_id == "blur_image") {
+        if(m_state == "none") {return;}
+        cv::Mat lMat, lTmp; QPixmap lPixmap; QImage lImg;
+        lPixmap = m_pixmapItem->pixmap();
+        GManager::Instance()->convertImage(lPixmap, lImg, lMat);
+        cv::blur(lMat, lTmp, cv::Size(8, 8));
+        GManager::Instance()->convertImage(lTmp, lImg, lPixmap);
+        showImage(lPixmap);
+    }
 }
 //===============================================
 void GOpenCVQt::showImage(QString filename) {
@@ -123,6 +132,15 @@ void GOpenCVQt::showImage(QString filename) {
     m_view->resetMatrix();
     QPixmap lImage(filename);
     m_currentImage = m_scene->addPixmap(lImage);
+    m_scene->update();
+    m_view->setSceneRect(lImage.rect());
+    m_filename = filename;
+}
+//===============================================
+void GOpenCVQt::showImage(const QPixmap& image) {
+    m_scene->clear();
+    m_view->resetMatrix();
+    m_currentImage = m_scene->addPixmap(image);
     m_scene->update();
     m_view->setSceneRect(lImage.rect());
     m_filename = filename;
