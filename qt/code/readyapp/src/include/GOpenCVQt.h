@@ -15,7 +15,8 @@ public:
 public slots:
     void slotItemClick();
     void slotItemClick(QAction* action);
-    void showImage(QString filename);
+    void showImage(const QString& filename);
+    void showImage(const QPixmap& image);
 
 private:
     QMap<QWidget*, QString> m_widgetId;

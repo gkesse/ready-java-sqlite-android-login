@@ -1,16 +1,16 @@
 //===============================================
-#ifndef _GQCustomPlot_
-#define _GQCustomPlot_
+#ifndef _GQCustomPlotQt_
+#define _GQCustomPlotQt_
 //===============================================
 #include "GInclude.h"
 #include "GWidget.h"
 //===============================================
-class GQCustomPlot : public GWidget {    
+class GQCustomPlotQt : public GWidget {    
     Q_OBJECT
 
 public:
-    GQCustomPlot(QWidget* parent = 0);
-    ~GQCustomPlot();
+    GQCustomPlotQt(QWidget* parent = 0);
+    ~GQCustomPlotQt();
         
 public slots:
     void slotItemClick();
@@ -20,7 +20,7 @@ private:
     QMap<QWidget*, QString> m_widgetId;
     QPushButton* m_setting;
     QMenu* m_settingMenu;
-    GWidget* m_workspace;
+    QCustomPlot* m_plot;
 };
 //===============================================
 #endif

@@ -26,7 +26,7 @@
 #include "GGraphicsView.h"
 #include "GMainWindow.h"
 #include "GDataStream.h"
-#include "GQCustomPlot.h"
+#include "GQCustomPlotQt.h"
 // login
 #include "GLogin.h"
 #include "GProfil.h"
@@ -86,7 +86,7 @@ GWidget* GWidget::Create(QString key, QWidget* parent) {
     if(key == "qgraphicsview") return new GGraphicsView(parent);
     if(key == "qmainwindow") return new GMainWindow(parent);
     if(key == "qdatastream") return new GDataStream(parent);
-    if(key == "qcustomplot") return new GQCustomPlot(parent);
+    if(key == "qcustomplot") return new GQCustomPlotQt(parent);
     // login
     if(key == "login") return new GLogin(parent);
     if(key == "profil") return new GProfil(parent);

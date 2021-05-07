@@ -30,7 +30,7 @@ GGslQt::GGslQt(QWidget* parent) : GWidget(parent) {
     lSettingMenu->setCursor(Qt::PointingHandCursor);
         
     QCustomPlot* lWorkspace = new QCustomPlot; 
-        
+    
     QVBoxLayout* lMainLayout = new QVBoxLayout;
     lMainLayout->addLayout(lHeaderLayout);
     lMainLayout->addWidget(lWorkspace);

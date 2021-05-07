@@ -32,12 +32,12 @@ GWindow::GWindow(QWidget* parent) : GWidget(parent) {
     lWorkspace->addPage("home/tuto/opencv", "OpenCV", GWidget::Create("opencv"), 1);
     lWorkspace->addPage("home/tuto/opengl", "GSL", GWidget::Create("opengl"));
     lWorkspace->addPage("home/tuto/gsl", "GSL", GWidget::Create("gsl"));
+    lWorkspace->addPage("home/tuto/qcustomplot", "QCustomPlot", GWidget::Create("qcustomplot"), 1);
     // qt
     lWorkspace->addPage("home/tuto/qt", "Qt", GWidget::Create("qt"));
     lWorkspace->addPage("home/tuto/qt/qgraphicsview", "QGraphicsView", GWidget::Create("qgraphicsview"));
     lWorkspace->addPage("home/tuto/qt/qmainwindow", "QMainWindow", GWidget::Create("qmainwindow"));
     lWorkspace->addPage("home/tuto/qt/qdatastream", "QDataStream", GWidget::Create("qdatastream"));
-    lWorkspace->addPage("home/tuto/qt/qcustomplot", "QCustomPlot", GWidget::Create("qcustomplot"));
     // login
     lWorkspace->addPage("home/login", "Connexion", GWidget::Create("login"));
     lWorkspace->addPage("home/profil", "Profil", GWidget::Create("profil"));
