@@ -28,16 +28,16 @@ GWindow::GWindow(QWidget* parent) : GWidget(parent) {
     // home
     lWorkspace->addPage("home", "Accueil", GWidget::Create("home"));
     // tuto
-    lWorkspace->addPage("home/tuto", "Tutoriels", GWidget::Create("tuto"));
-    lWorkspace->addPage("home/tuto/opencv", "OpenCV", GWidget::Create("opencv"), 1);
-    lWorkspace->addPage("home/tuto/opengl", "GSL", GWidget::Create("opengl"));
-    lWorkspace->addPage("home/tuto/gsl", "GSL", GWidget::Create("gsl"));
-    lWorkspace->addPage("home/tuto/qcustomplot", "QCustomPlot", GWidget::Create("qcustomplot"), 1);
+    lWorkspace->addPage("home/demo", "Demo", GWidget::Create("demo"));
+    lWorkspace->addPage("home/demo/opencv", "OpenCV", GWidget::Create("opencv"));
+    lWorkspace->addPage("home/demo/opengl", "GSL", GWidget::Create("opengl"));
+    lWorkspace->addPage("home/demo/gsl", "GSL", GWidget::Create("gsl"), 1);
+    lWorkspace->addPage("home/demo/qcustomplot", "QCustomPlot", GWidget::Create("qcustomplot"));
     // qt
-    lWorkspace->addPage("home/tuto/qt", "Qt", GWidget::Create("qt"));
-    lWorkspace->addPage("home/tuto/qt/qgraphicsview", "QGraphicsView", GWidget::Create("qgraphicsview"));
-    lWorkspace->addPage("home/tuto/qt/qmainwindow", "QMainWindow", GWidget::Create("qmainwindow"));
-    lWorkspace->addPage("home/tuto/qt/qdatastream", "QDataStream", GWidget::Create("qdatastream"));
+    lWorkspace->addPage("home/demo/qt", "Qt", GWidget::Create("qt"));
+    lWorkspace->addPage("home/demo/qt/qgraphicsview", "QGraphicsView", GWidget::Create("qgraphicsview"));
+    lWorkspace->addPage("home/demo/qt/qmainwindow", "QMainWindow", GWidget::Create("qmainwindow"));
+    lWorkspace->addPage("home/demo/qt/qdatastream", "QDataStream", GWidget::Create("qdatastream"));
     // login
     lWorkspace->addPage("home/login", "Connexion", GWidget::Create("login"));
     lWorkspace->addPage("home/profil", "Profil", GWidget::Create("profil"));

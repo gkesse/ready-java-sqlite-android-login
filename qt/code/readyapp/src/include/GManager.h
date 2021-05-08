@@ -60,6 +60,10 @@ public:
     void convertImage(const cv::Mat& mat, QImage& img, QPixmap& pixmap);
     // login
     int isLogin();
+    // min
+    double min(QVector<double> data);
+    // max
+    double max(QVector<double> data);
     // table
     QVector<QString> getTables();
     int countTable(QString table);

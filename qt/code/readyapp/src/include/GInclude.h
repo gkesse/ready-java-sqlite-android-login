@@ -30,6 +30,7 @@
 #include <opencv2/opencv.hpp>
 #include <gsl/gsl_spmatrix.h>
 #include <gsl/gsl_poly.h>
+#include <gsl/gsl_odeiv2.h>
 #include <QtWidgets>
 #include <QtSql>
 #include <QPrinter>

@@ -300,6 +300,28 @@ void GManager::convertImage(const cv::Mat& mat, QImage& img, QPixmap& pixmap) {
     pixmap = QPixmap::fromImage(img);
 }
 //===============================================
+// min
+//===============================================
+double GManager::min(QVector<double> data) {
+    double lMin = data[0];
+    for(int i = 0; i < data.size(); i++) {
+        double lData = data[i];
+        if(lData < lMin) {lMin = lData;}
+    }
+    return lMin;
+}
+//===============================================
+// max
+//===============================================
+double GManager::max(QVector<double> data) {
+    double lMax = data[0];
+    for(int i = 0; i < data.size(); i++) {
+        double lData = data[i];
+        if(lData > lMax) {lMax = lData;}
+    }
+    return lMax;
+}
+//===============================================
 // table
 //===============================================
 QVector<QString> GManager::getTables() {

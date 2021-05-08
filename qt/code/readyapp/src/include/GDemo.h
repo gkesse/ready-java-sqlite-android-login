@@ -1,16 +1,16 @@
 //===============================================
-#ifndef _GTutorial_
-#define _GTutorial_
+#ifndef _GDemo_
+#define _GDemo_
 //===============================================
 #include "GInclude.h"
 #include "GWidget.h"
 //===============================================
-class GTutorial : public GWidget {    
+class GDemo : public GWidget {    
     Q_OBJECT
 
 public:
-    GTutorial(QWidget* parent = 0);
-    ~GTutorial();
+    GDemo(QWidget* parent = 0);
+    ~GDemo();
     
 public slots:
     void slotItemClick();

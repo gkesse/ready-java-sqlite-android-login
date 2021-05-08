@@ -15,12 +15,14 @@ public:
 public slots:
     void slotItemClick();
     void slotItemClick(QAction* action);
+    static int onFunction(double t, const double y[], double f[], void *params);
+    static int onJacobian(double t, const double y[], double *dfdy, double dfdt[], void *params);
 
 private:
     QMap<QWidget*, QString> m_widgetId;
     QPushButton* m_setting;
     QMenu* m_settingMenu;
-    GWidget* m_workspace;
+    QCustomPlot* m_plot;
 };
 //===============================================
 #endif

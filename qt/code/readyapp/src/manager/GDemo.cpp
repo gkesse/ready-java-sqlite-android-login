@@ -1,22 +1,22 @@
 //===============================================
-#include "GTutorial.h"
+#include "GDemo.h"
 #include "GWidget.h"
 #include "GManager.h"
 //===============================================
 // constructor
 //===============================================
-GTutorial::GTutorial(QWidget* parent) : GWidget(parent) {    
+GDemo::GDemo(QWidget* parent) : GWidget(parent) {    
     setObjectName("none");
     
     sGApp* lApp = GManager::Instance()->getData()->app;
     
     GWidget* lListBox = GWidget::Create("listbox");
     
-    lListBox->addItem("home/tuto/opencv", "OpenCV", fa::book);
-    lListBox->addItem("home/tuto/opengl", "OpenGL", fa::book);
-    lListBox->addItem("home/tuto/gsl", "GSL", fa::book); 
-    lListBox->addItem("home/tuto/qt", "Qt", fa::book);
-    lListBox->addItem("home/tuto/qcustomplot", "QCustomPlot", fa::book); lApp->login_home = qobject_cast<QPushButton*>(lApp->widget);
+    lListBox->addItem("home/demo/opencv", "OpenCV", fa::book);
+    lListBox->addItem("home/demo/opengl", "OpenGL", fa::book);
+    lListBox->addItem("home/demo/gsl", "GSL", fa::book); 
+    lListBox->addItem("home/demo/qt", "Qt", fa::book);
+    lListBox->addItem("home/demo/qcustomplot", "QCustomPlot", fa::book); lApp->login_home = qobject_cast<QPushButton*>(lApp->widget);
 
     QVBoxLayout* lMainLayout = new QVBoxLayout;
     lMainLayout->addWidget(lListBox);
@@ -29,13 +29,13 @@ GTutorial::GTutorial(QWidget* parent) : GWidget(parent) {
     connect(lListBox, SIGNAL(emitItemClick()), this, SLOT(slotItemClick()));
 }
 //===============================================
-GTutorial::~GTutorial() {
+GDemo::~GDemo() {
     
 }
 //===============================================
 // slot
 //===============================================
-void GTutorial::slotItemClick() {
+void GDemo::slotItemClick() {
     sGApp* lApp = GManager::Instance()->getData()->app;
     GManager::Instance()->setPage(lApp->widget_id);
 }

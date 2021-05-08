@@ -17,7 +17,7 @@
 #include "GWindow.h"
 #include "GHome.h"
 // tuto
-#include "GTutorial.h"
+#include "GDemo.h"
 #include "GOpenCVQt.h"
 #include "GOpenGLQt.h"
 #include "GGslQt.h"
@@ -77,7 +77,7 @@ GWidget* GWidget::Create(QString key, QWidget* parent) {
     if(key == "window") return new GWindow(parent);
     if(key == "home") return new GHome(parent);
     // tuto
-    if(key == "tuto") return new GTutorial(parent);
+    if(key == "demo") return new GDemo(parent);
     if(key == "opencv") return new GOpenCVQt(parent);
     if(key == "opengl") return new GOpenGLQt(parent);
     if(key == "gsl") return new GGslQt(parent);
