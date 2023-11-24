@@ -1,4 +1,4 @@
-# ReadyCpp
+# Introduction
 
 Développement d'un système de gestion de connexion et d'inscription de nouveaux utilisateurs en Java - Android.
 # Demos
