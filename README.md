@@ -1,3 +1,6 @@
 # ReadyCpp
 
-Bibliothèque de focntions C++ pour le développement d'applications modulaires et réutilisables multi-plateformes.
+Développement d'un système de gestion de connexion et d'inscription de nouveaux utilisateurs en Java - Android.
+# Demos
+
+![demos.gif](./img/demos.gif "demos.gif")
