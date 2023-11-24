@@ -1,6 +1,8 @@
 # Introduction
 
-Développement d'un système de gestion de connexion et d'inscription de nouveaux utilisateurs en Java - Android.
+Développement d'une application mobile Android en Java - SQLite 
+pour la gestion d'un système de connexion et d'inscription de nouveaux utilisateurs.
+
 # Demos
 
 ![demos.gif](./img/demos.gif "demos.gif")
